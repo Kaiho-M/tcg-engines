@@ -771,7 +771,9 @@ export function finalizeBeginTurnRefresh(state: MatchState, seat: MatchSeat, ski
     visibility: "public",
   });
   const player = getPlayer(state, seat);
-  const placedDon = Math.min(2, player.donDeckCount);
+  // The player who goes first only adds 1 DON!! card on their first turn.
+  const isFirstPlayersFirstTurn = state.turnNumber === 1 && seat === state.config.firstPlayer;
+  const placedDon = Math.min(isFirstPlayersFirstTurn ? 1 : 2, player.donDeckCount);
   const givenDon = Math.min(placedDon, donGivenFromDonPhase(state, seat));
   addDonFromDeck(state, seat, placedDon - givenDon, false);
   if (givenDon > 0) {

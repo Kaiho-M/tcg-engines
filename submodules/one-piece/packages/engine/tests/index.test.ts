@@ -244,7 +244,7 @@ describe("@tcg/op-engine", () => {
     expect(started.accepted).toBe(true);
     expect(started.state.status).toBe("active");
     expect(started.state.phase).toBe("main");
-    expect(started.state.players.south.activeDon).toBe(2);
+    expect(started.state.players.south.activeDon).toBe(1);
     expect(
       started.state.logHistory.some((entry) => entry.message.includes("enters DON!! phase")),
     ).toBe(true);
@@ -265,6 +265,24 @@ describe("@tcg/op-engine", () => {
         entry.message.includes("You accepted the mulligan and your new opening hand is:"),
       ),
     ).toBe(true);
+  });
+
+  test("adds 1 DON!! on the first player's first turn and 2 DON!! afterwards", () => {
+    const created = resolveSetupTurnChoice(createMatch(buildConfig()));
+    const started = runCommands(created, [
+      { type: "keepHand", seat: "south" },
+      { type: "keepHand", seat: "north" },
+      { type: "startGame", seat: "south" },
+    ]);
+    const secondTurn = applyCommand(started, { type: "endTurn", seat: "south" });
+    const thirdTurn = applyCommand(secondTurn.state, { type: "endTurn", seat: "north" });
+
+    expect(started.players.south.activeDon).toBe(1);
+    expect(started.players.south.donDeckCount).toBe(9);
+    expect(secondTurn.state.players.north.activeDon).toBe(2);
+    expect(secondTurn.state.players.north.donDeckCount).toBe(8);
+    expect(thirdTurn.state.players.south.activeDon).toBe(3);
+    expect(thirdTurn.state.players.south.donDeckCount).toBe(7);
   });
 
   test("supports refusing a mulligan without changing the opening hand", () => {
@@ -601,7 +619,12 @@ describe("@tcg/op-engine", () => {
   });
 
   test("plays a stage, activates it, and projects the modified character power", () => {
-    const started = runCommands(createMatch(buildConfig()), startGameCommands());
+    // Playing both cards costs 2 DON!!, so act on south's second turn.
+    const started = runCommands(createMatch(buildConfig()), [
+      ...startGameCommands(),
+      { type: "endTurn", seat: "south" },
+      { type: "endTurn", seat: "north" },
+    ]);
     const otamaId = findCardInZone(started, "south", "hand", op13Otama043);
     const afterOtama = applyCommand(started, {
       type: "playCard",
