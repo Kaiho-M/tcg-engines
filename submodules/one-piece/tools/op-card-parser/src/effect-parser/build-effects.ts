@@ -702,7 +702,26 @@ function actionAsDependentCost(action: Action): Cost | null {
  * into a single pipeline. Only includes `EffectBlock`s where at least one
  * action was successfully parsed.
  */
+export interface SegmentDiagnostic {
+  rawActionText: string;
+  /** Trailing text `parseActions` could not turn into actions. */
+  unparsed: string;
+  /** The segment produced no actions and was left out of the result. */
+  dropped: boolean;
+}
+
+let segmentDiagnostics: SegmentDiagnostic[] = [];
+
+/**
+ * Segment-level diagnostics for the most recent `buildCardEffects` call.
+ * Segments that special-case handlers consumed entirely are not listed.
+ */
+export function lastSegmentDiagnostics(): readonly SegmentDiagnostic[] {
+  return segmentDiagnostics;
+}
+
 export function buildCardEffects(effectText: string): CardEffects | undefined {
+  segmentDiagnostics = [];
   if (!effectText) return undefined;
 
   const deckBuildingRules = parseDeckBuildingRules(effectText);
@@ -1090,6 +1109,11 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
       }
     }
 
+    segmentDiagnostics.push({
+      rawActionText: seg.rawActionText,
+      unparsed: actionsResult.unparsed,
+      dropped: actionsResult.parsed.length === 0,
+    });
     if (actionsResult.parsed.length === 0) continue;
 
     const costs: Cost[] = [];

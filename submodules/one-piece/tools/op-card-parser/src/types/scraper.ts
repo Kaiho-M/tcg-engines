@@ -16,7 +16,7 @@ export interface RawOPCard {
   life: string | null;
   card_cost: string | null;
   card_power: string | null;
-  sub_types: string;
+  sub_types: string | null;
   counter_amount: number | null;
   attribute: string | null;
   card_image_id: string | null;

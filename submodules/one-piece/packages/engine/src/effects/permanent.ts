@@ -464,6 +464,8 @@ export function getPermanentModifierTotal(
 
   try {
     let total = 0;
+    // "base power becomes N" does not stack when several sources say so.
+    let basePowerSet = false;
     for (const source of Object.values(state.cards)) {
       const sourceIsSelfInHand = source.instanceId === targetInstanceId && source.zone === "hand";
       if (
@@ -477,7 +479,8 @@ export function getPermanentModifierTotal(
       for (const effect of card.effects?.permanentEffects ?? []) {
         const relevantActions = effect.actions.filter(
           (action) =>
-            (type === "power" && action.action === "setBasePowerFrom") ||
+            (type === "power" &&
+              (action.action === "setBasePowerFrom" || action.action === "setBasePower")) ||
             actionIsDynamicModifier(action, type),
         );
         if (relevantActions.length === 0) {
@@ -494,6 +497,34 @@ export function getPermanentModifierTotal(
         }
 
         for (const action of relevantActions) {
+          if (type === "power" && action.action === "setBasePower") {
+            if (basePowerSet) continue;
+            if (action.condition) {
+              const actionCondition = evaluateConditions(
+                state,
+                source.controller,
+                source.instanceId,
+                [action.condition],
+              );
+              if (!actionCondition.supported || !actionCondition.matches) continue;
+            }
+            if (action.target.count.amount !== "all" && !action.target.self) continue;
+            const pool = candidatePoolForTarget(
+              state,
+              source.controller,
+              source.instanceId,
+              action.target,
+            );
+            if (!pool.supported || !pool.candidateIds.includes(targetInstanceId)) continue;
+            const targetCard = getCard(state.cards[targetInstanceId]!.cardId);
+            const targetBasePower =
+              targetCard.cardType === "leader" || targetCard.cardType === "character"
+                ? (targetCard.power ?? 0)
+                : 0;
+            total += action.value - targetBasePower;
+            basePowerSet = true;
+            continue;
+          }
           if (type === "power" && action.action === "setBasePowerFrom") {
             const targetPool = candidatePoolForTarget(
               state,

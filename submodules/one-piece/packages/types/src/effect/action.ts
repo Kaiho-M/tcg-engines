@@ -30,6 +30,7 @@ export type Action =
   | AddToLifeAction
   | RemoveFromLifeAction
   | SetPowerAction
+  | SetBasePowerAction
   | SetBasePowerFromAction
   | CopyPowerAction
   | SwapBasePowerAction
@@ -329,6 +330,15 @@ export interface RemoveFromLifeAction {
 
 export interface SetPowerAction {
   action: "setPower";
+  target: Target;
+  value: number;
+  duration: Duration;
+  condition?: Condition;
+}
+
+/** Set a card's base power to a printed value while preserving other modifiers. */
+export interface SetBasePowerAction {
+  action: "setBasePower";
   target: Target;
   value: number;
   duration: Duration;

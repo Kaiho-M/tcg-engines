@@ -80,7 +80,8 @@ function parseAttribute(
   cardId: string,
 ): OPAttribute | OPAttribute[] | undefined {
   if (!raw || isNullValue(raw)) return undefined;
-  const attributes = raw.split("/").map((part) => {
+  // API uses either "/" or space as separator (e.g. "Slash/Wisdom" or "Slash Wisdom")
+  const attributes = (raw.includes("/") ? raw.split("/") : raw.split(" ")).map((part) => {
     const attr = ATTRIBUTE_MAP[part.trim().toLowerCase()];
     if (!attr) throw new NormalizationError(cardId, "attribute", `unknown attribute "${part}"`);
     return attr;
@@ -96,8 +97,8 @@ function parseRarity(raw: string, cardId: string): OPRarity {
   return rarity;
 }
 
-function parseTraits(raw: string): string[] {
-  if (!raw.trim()) return [];
+function parseTraits(raw: string | null): string[] {
+  if (!raw || !raw.trim()) return [];
   return raw
     .split(/[;,/]/)
     .map((s) => s.trim())
@@ -185,6 +186,19 @@ function extractTrigger(text: string): { effect?: string; trigger?: string } {
   return { effect: text.trim() || undefined };
 }
 
+/**
+ * The API drops the "−" from some printed texts, turning
+ * "give up to 1 of your opponent's Characters −2000 power" into "... 2000 power"
+ * while "+2000 power" keeps its sign. A signless power or cost modifier handed
+ * out by "give ..." is therefore always a lost minus, so restore it.
+ */
+const DROPPED_MINUS_PATTERN =
+  /\b(gives?\s+[^.:]*?(?:Characters?|cards?|Leader|hand))\s(\d+)\s+(power|cost)\b/gi;
+
+export function repairDroppedMinus(text: string): string {
+  return text.replace(DROPPED_MINUS_PATTERN, "$1 −$2 $3");
+}
+
 export function normalize(raw: RawOPCard): OPCard {
   const id = raw.card_set_id;
   const cardTypeRaw = raw.card_type.trim().toLowerCase();
@@ -195,8 +209,9 @@ export function normalize(raw: RawOPCard): OPCard {
   const setId = parseSetId(raw.set_id);
   const imageUrl = raw.card_image ?? undefined;
   const name = raw.card_name.trim();
-  const { effect, trigger } = extractTrigger(raw.card_text ?? "");
-  const keywords = parseKeywords(raw.card_text ?? "");
+  const cardText = repairDroppedMinus(raw.card_text ?? "");
+  const { effect, trigger } = extractTrigger(cardText);
+  const keywords = parseKeywords(cardText);
   const effects: CardEffects | undefined = keywords.length > 0 ? { keywords } : undefined;
   const counter =
     raw.counter_amount != null && raw.counter_amount > 0 ? raw.counter_amount : undefined;

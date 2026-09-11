@@ -25,7 +25,7 @@ export type { RawOPCard, RawSet, Scraper } from "./types/scraper.ts";
 
 export { OptcgApiScraper } from "./scrapers/optcg-api.ts";
 
-export { NormalizationError, normalize, normalizeAll } from "./normalizer.ts";
+export { NormalizationError, normalize, normalizeAll, repairDroppedMinus } from "./normalizer.ts";
 
 export {
   buildCardEffects,

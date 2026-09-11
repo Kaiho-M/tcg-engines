@@ -5,6 +5,7 @@ import {
   NormalizationError,
   RecordCardCatalog,
   parseKeywords,
+  repairDroppedMinus,
 } from "../src/index.ts";
 import type { RawOPCard } from "../src/index.ts";
 
@@ -179,6 +180,45 @@ describe("normalize", () => {
       life: "5",
     };
     expect(() => normalize(raw)).toThrowError(NormalizationError);
+  });
+});
+
+describe("repairDroppedMinus", () => {
+  test("restores the minus the API drops from opponent power and cost modifiers", () => {
+    expect(
+      repairDroppedMinus(
+        "[When Attacking] Give up to 1 of your opponent's Characters 2000 power during this turn.",
+      ),
+    ).toBe(
+      "[When Attacking] Give up to 1 of your opponent's Characters −2000 power during this turn.",
+    );
+    expect(
+      repairDroppedMinus("Give all of your opponent's Characters 1 cost during this turn."),
+    ).toBe("Give all of your opponent's Characters −1 cost during this turn.");
+    expect(repairDroppedMinus("give this card in your hand 3 cost.")).toBe(
+      "give this card in your hand −3 cost.",
+    );
+  });
+
+  test("leaves signed modifiers and filters alone", () => {
+    const signed = "Give up to 1 of your Leader or Character cards +1000 power during this turn.";
+    expect(repairDroppedMinus(signed)).toBe(signed);
+    const filter = "K.O. up to 1 of your opponent's Characters with 5000 power or less.";
+    expect(repairDroppedMinus(filter)).toBe(filter);
+    const perCost =
+      "This Character gains +1000 power during this turn per 1 cost on the revealed card.";
+    expect(repairDroppedMinus(perCost)).toBe(perCost);
+  });
+
+  test("is applied by normalize", () => {
+    const card = normalize({
+      ...baseRaw,
+      card_text:
+        "[On Play] Give up to 1 of your opponent's Characters 3000 power during this turn.",
+    });
+    expect(card.i18n.en.effect).toBe(
+      "[On Play] Give up to 1 of your opponent's Characters −3000 power during this turn.",
+    );
   });
 });
 

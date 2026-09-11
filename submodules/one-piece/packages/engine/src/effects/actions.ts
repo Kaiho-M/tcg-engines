@@ -2148,6 +2148,42 @@ export function processEffectAction(
       );
       return true;
     }
+    case "setBasePower": {
+      const targetIds = resolveActionTargets(
+        state,
+        controller,
+        sourceInstanceId,
+        action,
+        selectedTargetIds,
+        previousActionTargetIds,
+      );
+      if (targetIds === "prompt" || !targetIds) {
+        return false;
+      }
+      for (const targetId of targetIds) {
+        const printedBasePower = basePower(getCardForInstance(state, targetId));
+        addModifier(state, sourceInstanceId, targetId, {
+          type: "power",
+          value: action.value - printedBasePower,
+          duration: action.duration,
+          expiresAtTurn: action.duration === "thisTurn" ? state.turnNumber : null,
+          expiresAtBattleId: action.duration === "thisBattle" ? (state.battle?.id ?? null) : null,
+          expiresOnTurnStartOfSeat: action.duration === "untilStartOfNextTurn" ? controller : null,
+        });
+      }
+      emitLog(
+        state,
+        controller,
+        `${effectSourceName(state, sourceInstanceId)} sets the base power of ${targetNames(state, targetIds)} to ${action.value} ${durationLabel(action.duration)}.`,
+        {
+          sourceCardId: getInstance(state, sourceInstanceId).cardId,
+          sourceInstanceId,
+          targetIds,
+          visibility: "public",
+        },
+      );
+      return true;
+    }
     case "setBasePowerFrom": {
       const targetIds = resolveActionTargets(
         state,
