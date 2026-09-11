@@ -1,0 +1,53 @@
+import type { EventCard } from "@tcg/op-types";
+import { op15eb04WouldYouLetMeEatTheFlameFlameFruit056I18n } from "./056-would-you-let-me-eat-the-flame-flame-fruit.i18n.ts";
+
+export const op15eb04WouldYouLetMeEatTheFlameFlameFruit056: EventCard = {
+  id: "OP15-056",
+  canonicalId: "OP15-056",
+  slug: "would-you-let-me-eat-the-flame-flame-fruit",
+  name: "Would You Let Me Eat the Flame-Flame Fruit?",
+  printings: [
+    {
+      id: "OP15-056",
+      artId: "OP15-056",
+      setCode: "OP15EB04",
+      collectorNumber: "056",
+      rarity: "C",
+      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-056_CoWMe41.jpg",
+    },
+  ],
+  cardType: "event",
+  color: ["blue"],
+  rarity: "C",
+  setId: "OP15EB04",
+  cost: 7,
+  trigger: "Draw 2 cards.",
+  traits: ["Revolutionary Army Dressrosa"],
+  effect:
+    "[Main] Draw 2 cards. Then, your [Lucy] Leader gains [Double Attack] and +3000 power during this turn.\n(This card deals 2 damage.)",
+  effects: {
+    effects: [
+      {
+        trigger: "main",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+        ],
+      },
+    ],
+  },
+  i18n: op15eb04WouldYouLetMeEatTheFlameFlameFruit056I18n,
+};

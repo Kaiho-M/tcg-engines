@@ -1,0 +1,31 @@
+import type { CharacterCard } from "@tcg/op-types";
+import { op15eb04Cabaji005I18n } from "./005-cabaji.i18n.ts";
+
+export const op15eb04Cabaji005: CharacterCard = {
+  id: "OP15-005",
+  canonicalId: "OP15-005",
+  slug: "cabaji/op15-005",
+  name: "Cabaji",
+  printings: [
+    {
+      id: "OP15-005",
+      artId: "OP15-005",
+      setCode: "OP15EB04",
+      collectorNumber: "005",
+      rarity: "C",
+      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-005_ycH14Fr.jpg",
+    },
+  ],
+  cardType: "character",
+  color: ["red"],
+  rarity: "C",
+  setId: "OP15EB04",
+  cost: 2,
+  power: 3000,
+  counter: 1000,
+  traits: ["Buggy Pirates East Blue"],
+  attribute: "slash",
+  effect:
+    "[When Attacking] If your opponent has any DON!! cards given, this Character gains +2000 power during this turn.",
+  i18n: op15eb04Cabaji005I18n,
+};

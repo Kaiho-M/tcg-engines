@@ -1,0 +1,48 @@
+import type { CharacterCard } from "@tcg/op-types";
+import { op15eb04SmokerTashigi003I18n } from "./003-smoker-tashigi.i18n.ts";
+
+export const op15eb04SmokerTashigi003: CharacterCard = {
+  id: "EB04-003",
+  canonicalId: "EB04-003",
+  slug: "smoker-tashigi",
+  name: "Smoker & Tashigi",
+  printings: [
+    {
+      id: "EB04-003",
+      artId: "EB04-003",
+      setCode: "OP15EB04",
+      collectorNumber: "003",
+      rarity: "R",
+      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-003_wJsToTH.jpg",
+    },
+    {
+      id: "EB04-003_p1",
+      artId: "EB04-003_p1",
+      setCode: "OP15EB04",
+      collectorNumber: "003",
+      rarity: "R",
+      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-003_p1_s3bTHgp.jpg",
+    },
+  ],
+  cardType: "character",
+  color: ["red"],
+  rarity: "R",
+  setId: "OP15EB04",
+  cost: 8,
+  power: 8000,
+  traits: ["Navy Punk Hazard"],
+  attribute: ["slash", "special"],
+  artVariants: [
+    {
+      type: "spr",
+      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-003_p1_s3bTHgp.jpg",
+      imageId: "EB04-003_p1",
+    },
+  ],
+  effect:
+    "[Rush] (This card can attack on the turn in which it is played.)\n[Opponent's Turn] Your {Navy} type Leader's base power becomes 7000.",
+  effects: {
+    keywords: ["rush"],
+  },
+  i18n: op15eb04SmokerTashigi003I18n,
+};

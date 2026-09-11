@@ -1,0 +1,31 @@
+import type { CharacterCard } from "@tcg/op-types";
+import { op15eb04MeowbanBrothers028I18n } from "./028-meowban-brothers.i18n.ts";
+
+export const op15eb04MeowbanBrothers028: CharacterCard = {
+  id: "OP15-028",
+  canonicalId: "OP15-028",
+  slug: "meowban-brothers",
+  name: "Meowban Brothers",
+  printings: [
+    {
+      id: "OP15-028",
+      artId: "OP15-028",
+      setCode: "OP15EB04",
+      collectorNumber: "028",
+      rarity: "UC",
+      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-028.jpg",
+    },
+  ],
+  cardType: "character",
+  color: ["green"],
+  rarity: "UC",
+  setId: "OP15EB04",
+  cost: 1,
+  power: 2000,
+  counter: 2000,
+  traits: ["East Blue Black Cat Pirates"],
+  attribute: "slash",
+  effect:
+    "[On Play] If your Leader has the {East Blue} type, give up to 1 DON!! card from your opponent's cost area to 1 of your opponent's Characters.",
+  i18n: op15eb04MeowbanBrothers028I18n,
+};
