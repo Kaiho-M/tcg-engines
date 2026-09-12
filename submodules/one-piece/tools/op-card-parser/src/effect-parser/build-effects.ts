@@ -4,6 +4,7 @@ import type {
   Condition,
   Cost,
   EffectBlock,
+  OPAttribute,
   PermanentEffect,
   ReplacementEffect,
   TargetFilter,
@@ -554,6 +555,27 @@ function mapRawCost(raw: RawCost): Cost | null {
       };
     }
     case "restCards": {
+      // "rest your (Slash) attribute Leader or 1 of your DON!! cards": rest the Leader, or
+      // alternatively rest N DON!! (orRestDon). The attribute, if any, restricts the Leader.
+      const leaderOrDonMatch =
+        /rest\s+your\s+(?:\(([A-Za-z]+)\)\s+attribute\s+)?Leader\s+or\s+(\d+)\s+of\s+your\s+DON!!\s+cards?/i.exec(
+          raw.raw,
+        );
+      if (leaderOrDonMatch) {
+        const filters: TargetFilter[] = [{ filter: "cardCategory", value: "leader" }];
+        if (leaderOrDonMatch[1]) {
+          filters.push({
+            filter: "attribute",
+            value: leaderOrDonMatch[1].toLowerCase() as OPAttribute,
+          });
+        }
+        return {
+          cost: "restCards",
+          amount: 1,
+          filters,
+          orRestDon: parseInt(leaderOrDonMatch[2]!, 10),
+        };
+      }
       const numberedMatch = /(?:rest|and)\s+(\d+)\s+of\s+your\s+(.+)/i.exec(raw.raw);
       const ownedNumberedMatch = /rest\s+your\s+(\d+)\s+(Leader|Character|Stage)/i.exec(raw.raw);
       const leaderOrStageMatch =

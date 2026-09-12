@@ -621,6 +621,11 @@ function parseTextCosts(text: string): RawCost[] {
   }
   // "You may rest N of your cards/Characters/...", "rest your N Leader", or "rest your Leader"
   // (but NOT "DON!! cards" — that's restDon).
+  // "rest your Leader or 1 of your DON!! cards" (ST32-001; the Leader may carry an attribute)
+  const restLeaderOrDonMatch =
+    /rest\s+your\s+(?:\([A-Za-z]+\)\s+attribute\s+)?Leader\s+or\s+\d+\s+of\s+your\s+DON!!\s+cards?/i.exec(
+      text,
+    );
   const restLeaderOrStageMatch =
     /rest\s+your\s+Leader\s+or\s+\d+\s+of\s+your\s+Stage\s+cards?/i.exec(text);
   const boundedRestCardsMatch =
@@ -628,6 +633,7 @@ function parseTextCosts(text: string): RawCost[] {
       text,
     );
   const restCardsMatch =
+    restLeaderOrDonMatch ??
     restLeaderOrStageMatch ??
     boundedRestCardsMatch ??
     /rest\s+\d+\s+of\s+your\s+(?!DON!!)/i.exec(text) ??
@@ -642,7 +648,9 @@ function parseTextCosts(text: string): RawCost[] {
       cost: {
         type: "restCards",
         raw:
-          restCardsMatch === restLeaderOrStageMatch || restCardsMatch === boundedRestCardsMatch
+          restCardsMatch === restLeaderOrDonMatch ||
+          restCardsMatch === restLeaderOrStageMatch ||
+          restCardsMatch === boundedRestCardsMatch
             ? restCardsMatch[0]
             : text,
       },

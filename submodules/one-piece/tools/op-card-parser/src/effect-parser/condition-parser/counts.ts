@@ -689,17 +689,28 @@ export function parseCountCondition(text: string): Condition | null {
     };
   }
 
-  // Two named cards on the field: "you have [Monkey.D.Luffy] and [Mr.3(Galdino)]"
-  m = /^you\s+have\s+\[([^\]]+)\]\s+and\s+\[([^\]]+)\]$/i.exec(t);
+  // Two named cards on the field: "you have [Monkey.D.Luffy] and [Mr.3(Galdino)]".
+  // "you have [A] and [B] Characters with 6000 base power" (ST30-016) qualifies both.
+  m =
+    /^you\s+have\s+\[([^\]]+)\]\s+and\s+\[([^\]]+)\](?:\s+Characters?(?:\s+with\s+(\d+)\s+base\s+power)?)?$/i.exec(
+      t,
+    );
   if (m) {
+    const characters = /Characters?/i.test(m[0]);
+    const basePower = m[3] ? parseInt(m[3], 10) : null;
     return {
       condition: "compound",
       operator: "and",
       conditions: [m[1]!, m[2]!].map((name) => ({
         condition: "hasCard" as const,
         player: "self" as const,
-        zone: "field" as const,
-        filters: [{ filter: "name" as const, value: name }],
+        zone: characters ? ("character" as const) : ("field" as const),
+        filters: [
+          { filter: "name" as const, value: name },
+          ...(basePower !== null
+            ? [{ filter: "basePower" as const, comparison: "eq" as const, value: basePower }]
+            : []),
+        ],
       })),
     };
   }

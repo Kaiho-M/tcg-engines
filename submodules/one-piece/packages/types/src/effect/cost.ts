@@ -152,6 +152,12 @@ export interface RestCardsCost {
   cost: "restCards";
   amount: number;
   filters?: TargetFilter[];
+  /**
+   * Alternative payment: rest this many active DON!! cards instead of the cards
+   * ("You may rest your Leader or 1 of your DON!! cards", ST32-001). Offered as the
+   * virtual candidate `rest-don:<n>` in the cost prompt.
+   */
+  orRestDon?: number;
 }
 
 export interface TrashCharacterCost {

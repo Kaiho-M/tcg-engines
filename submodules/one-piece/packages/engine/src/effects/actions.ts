@@ -987,7 +987,7 @@ export function candidatesForRestCardsCost(
   cost: RestCardsCost,
 ): string[] {
   const player = getPlayer(state, controller);
-  return [
+  const cardIds = [
     player.leaderInstanceId,
     ...player.characterArea.filter((entry): entry is string => Boolean(entry)),
     ...(player.stageArea ? [player.stageArea] : []),
@@ -1000,6 +1000,20 @@ export function candidatesForRestCardsCost(
         return result.supported && result.matches;
       }),
   );
+  // "rest your Leader or N of your DON!! cards": the DON!! alternative is one virtual candidate.
+  if (cost.orRestDon !== undefined && player.activeDon >= cost.orRestDon) {
+    cardIds.push(restDonCandidateId(cost.orRestDon));
+  }
+  return cardIds;
+}
+
+export function restDonCandidateId(amount: number): string {
+  return `rest-don:${amount}`;
+}
+
+function restDonCandidateAmount(candidateId: string): number | null {
+  const match = /^rest-don:(\d+)$/.exec(candidateId);
+  return match ? Number(match[1]) : null;
 }
 
 function candidatesForCardCostOption(
@@ -6091,6 +6105,13 @@ export function payCosts(
             cost.amount,
           );
         for (const instanceId of selected) {
+          const donAmount = restDonCandidateAmount(instanceId);
+          if (donAmount !== null) {
+            const player = getPlayer(state, controller);
+            player.activeDon -= donAmount;
+            player.restedDon += donAmount;
+            continue;
+          }
           restCard(state, instanceId, controller);
         }
         break;

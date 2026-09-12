@@ -1,4 +1,4 @@
-import type { Action, Target, TargetFilter, Zone } from "@tcg/op-types";
+import type { Action, OPAttribute, Target, TargetFilter, Zone } from "@tcg/op-types";
 import { mapZoneNoun, parseComparison } from "../helpers.ts";
 import {
   extractTargetFilters,
@@ -318,6 +318,28 @@ export function parsePlayDescription(text: string): TargetFilter[] | null {
     rest =
       rest.slice(0, excludeMatch.index) + rest.slice(excludeMatch.index + excludeMatch[0].length);
     rest = rest.trim();
+  }
+
+  // Extract "that is either [Name] or has the (Attribute) attribute" (ST32-003) before the
+  // cost/power suffixes so their $ anchors still match.
+  const eitherNameOrAttributeMatch =
+    /\s+that\s+is\s+either\s+\[([^\]]+)\]\s+or\s+has\s+the\s+\(([A-Za-z]+)\)\s+attribute$/i.exec(
+      rest,
+    );
+  if (eitherNameOrAttributeMatch) {
+    filters.push({
+      filter: "anyOf",
+      groups: [
+        [{ filter: "name", value: eitherNameOrAttributeMatch[1]! }],
+        [
+          {
+            filter: "attribute",
+            value: eitherNameOrAttributeMatch[2]!.toLowerCase() as OPAttribute,
+          },
+        ],
+      ],
+    });
+    rest = rest.slice(0, eitherNameOrAttributeMatch.index).trim();
   }
 
   // Extract "and no base effect" (before cost/power so it doesn't block their $ anchors)

@@ -480,9 +480,36 @@ export function applyQueuedCommandMutation(
       if (card.cardType === "character") {
         const openSlots = getOpenCharacterSlots(state, command.seat);
         const slotIndex = command.slotIndex ?? openSlots[0];
-        if (slotIndex === undefined || !openSlots.includes(slotIndex)) {
+        // With a full character area the player may trash one of their Characters to make room
+        // (rule 6-2-2-1). The command names the occupied slot to replace.
+        const replacedId =
+          openSlots.length === 0 && slotIndex !== undefined
+            ? (player.characterArea[slotIndex] ?? undefined)
+            : undefined;
+        if (
+          slotIndex === undefined ||
+          (!openSlots.includes(slotIndex) && replacedId === undefined)
+        ) {
           reason = "A valid character slot is required.";
           break;
+        }
+        if (replacedId !== undefined) {
+          emitLog(
+            state,
+            command.seat,
+            `${player.playerName} trashes ${cardName(getCardForInstance(state, replacedId))} to make room.`,
+            {
+              sourceCardId: instance.cardId,
+              sourceInstanceId: command.instanceId,
+              targetIds: [replacedId],
+              visibility: "public",
+            },
+          );
+          moveCard(state, replacedId, getInstance(state, replacedId).owner, "trash", {
+            faceUp: true,
+            publicKnowledge: true,
+            actor: command.seat,
+          });
         }
         player.activeDon -= cardCost;
         player.restedDon += cardCost;

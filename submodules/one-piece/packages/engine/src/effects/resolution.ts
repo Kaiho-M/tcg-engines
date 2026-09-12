@@ -41,6 +41,7 @@ import {
   candidatesForRevealFromHandCost,
   candidatesForReturnCharacterCost,
   candidatesForRestCardsCost,
+  restDonCandidateId,
   candidatesForReturnCharacterToDeckCost,
   candidatesForReturnTrashToDeckCost,
   koCharacterByEffect,
@@ -668,12 +669,16 @@ export function processEffectBlock(
         sourceCardId: source.cardId,
         sourceInstanceId: item.sourceInstanceId,
         eventId: null,
-        options: candidateIds.map((instanceId) => ({
-          id: instanceId,
-          label: cardName(getCardForInstance(state, instanceId)),
-          value: instanceId,
-          targetId: instanceId,
-        })),
+        options: candidateIds.map((instanceId) =>
+          instanceId === restDonCandidateId(restCardsCost.orRestDon ?? -1)
+            ? { id: instanceId, label: `Rest ${restCardsCost.orRestDon} DON!!`, value: instanceId }
+            : {
+                id: instanceId,
+                label: cardName(getCardForInstance(state, instanceId)),
+                value: instanceId,
+                targetId: instanceId,
+              },
+        ),
         minSelections: restCardsCost.amount,
         maxSelections: restCardsCost.amount,
         context: {

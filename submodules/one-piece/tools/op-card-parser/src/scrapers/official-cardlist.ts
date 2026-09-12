@@ -88,8 +88,19 @@ export const OFFICIAL_SERIES: Record<string, string> = {
   OTHER: "569801",
 };
 
+/**
+ * The official page writes attribute icons as bare `<Slash>` / `<Strike>` ... (not escaped), so a
+ * naive tag strip would delete them. Rewrite them to the `(Slash)` notation the parser expects.
+ */
+const ATTRIBUTE_ICON = /<(Slash|Strike|Wisdom|Ranged|Special)>/g;
+
 function stripTags(html: string): string {
-  return decodeEntities(html.replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]+>/g, "")).trim();
+  return decodeEntities(
+    html
+      .replace(ATTRIBUTE_ICON, "($1)")
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<[^>]+>/g, ""),
+  ).trim();
 }
 
 function decodeEntities(text: string): string {
