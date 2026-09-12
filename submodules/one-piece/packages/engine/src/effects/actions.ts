@@ -1319,7 +1319,16 @@ export function playCardFromEffect(
   if (card.cardType === "character") {
     const slotIndex = getOpenCharacterSlots(state, controller)[0];
     if (slotIndex === undefined) {
-      return false;
+      // Full character area: the controller trashes one of their Characters to make room
+      // (rule 6-2-2-1). The play resumes when the prompt resolves; the queue waits meanwhile.
+      return promptToMakeRoom(
+        state,
+        controller,
+        instanceId,
+        playState,
+        effectSourceInstanceId,
+        options,
+      );
     }
     if (fromZone === "hand") {
       consumeNextPlayCostModifiers(state, instanceId);
@@ -1397,6 +1406,62 @@ export function playCardFromEffect(
       ]);
     }
   }
+  return true;
+}
+
+/**
+ * How many Characters an effect can place for `seat`: the open slots, or — with a full area —
+ * every slot, since each play may trash one Character first (rule 6-2-2-1).
+ */
+export function characterPlayCapacity(state: MatchState, seat: MatchSeat): number {
+  const player = getPlayer(state, seat);
+  const open = getOpenCharacterSlots(state, seat).length;
+  if (open > 0) return open;
+  return player.characterArea.every((entry) => entry !== null) ? player.characterArea.length : 0;
+}
+
+function promptToMakeRoom(
+  state: MatchState,
+  controller: MatchSeat,
+  instanceId: string,
+  playState: PlayAction["playState"],
+  effectSourceInstanceId: string,
+  options: { deferOnPlay?: boolean },
+): boolean {
+  const candidateIds = getPlayer(state, controller).characterArea.filter((entry): entry is string =>
+    Boolean(entry),
+  );
+  if (candidateIds.length === 0) {
+    return false;
+  }
+  const card = getCardForInstance(state, instanceId);
+  createChoicePrompt(state, {
+    choiceKind: "selectTargets",
+    seat: controller,
+    label: `${cardName(card)} needs room`,
+    details: "Your character area is full. Choose 1 of your Characters to trash.",
+    sourceCardId: card.id,
+    sourceInstanceId: instanceId,
+    eventId: null,
+    options: candidateIds.map((candidateId) => ({
+      id: candidateId,
+      label: cardName(getCardForInstance(state, candidateId)),
+      value: candidateId,
+      targetId: candidateId,
+    })),
+    minSelections: 1,
+    maxSelections: 1,
+    context: { action: "play", role: "makeRoom" },
+    resolutionContext: {
+      intent: "effectPlayMakeRoom",
+      sourceInstanceId: effectSourceInstanceId,
+      controller,
+      playInstanceId: instanceId,
+      playState: playState === "rested" ? "rested" : "active",
+      deferOnPlay: options.deferOnPlay ?? false,
+      candidateIds,
+    },
+  });
   return true;
 }
 
@@ -3922,7 +3987,15 @@ export function processEffectAction(
       if (card.cardType === "character") {
         const slotIndex = getOpenCharacterSlots(state, controller)[0];
         if (slotIndex === undefined) {
-          return false;
+          // Full area (e.g. a [Trigger] Character): make room, then play via playCardFromEffect.
+          return promptToMakeRoom(
+            state,
+            controller,
+            sourceInstanceId,
+            "active",
+            sourceInstanceId,
+            {},
+          );
         }
         moveCard(state, sourceInstanceId, controller, "character", {
           slotIndex,
@@ -4199,7 +4272,7 @@ export function processEffectAction(
       }
       if (
         selectedCards.filter((card) => card.cardType === "character").length >
-          getOpenCharacterSlots(state, playingSeat).length ||
+          characterPlayCapacity(state, playingSeat) ||
         selectedCards.filter((card) => card.cardType === "stage").length > 1
       ) {
         recordCapabilityIssue(state, {

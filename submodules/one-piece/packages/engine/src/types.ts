@@ -482,6 +482,19 @@ export type PromptResolutionContext =
       };
     }
   | {
+      /**
+       * A Character is being played by an effect while the character area is full:
+       * choose one of the controller's Characters to trash first (rule 6-2-2-1).
+       */
+      intent: "effectPlayMakeRoom";
+      sourceInstanceId: string;
+      controller: MatchSeat;
+      playInstanceId: string;
+      playState: "active" | "rested";
+      deferOnPlay: boolean;
+      candidateIds: string[];
+    }
+  | {
       intent: "effectCostKoCharacter";
       sourceInstanceId: string;
       controller: MatchSeat;

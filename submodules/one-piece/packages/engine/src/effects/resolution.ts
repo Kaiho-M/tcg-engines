@@ -46,6 +46,7 @@ import {
   candidatesForReturnTrashToDeckCost,
   koCharacterByEffect,
   playCardFromEffect,
+  characterPlayCapacity,
   promptForEffectRemovalReplacement,
   promptForRearrangeDeckOrder,
   processEffectAction,
@@ -1443,7 +1444,7 @@ function completeGroupedPlay(
     ).includes(activeId) ||
     selectedIds.filter(
       (instanceId) => getCardForInstance(state, instanceId).cardType === "character",
-    ).length > getOpenCharacterSlots(state, playingSeat).length
+    ).length > characterPlayCapacity(state, playingSeat)
   ) {
     return false;
   }
@@ -2253,6 +2254,44 @@ export function resolveEffectChoicePrompt(
         { next: true },
       );
       return true;
+    case "effectPlayMakeRoom": {
+      const context = prompt.resolutionContext;
+      const selectedIds = command.selectedIds ?? [];
+      const player = getPlayer(state, context.controller);
+      const trashId = selectedIds[0];
+      if (
+        selectedIds.length !== 1 ||
+        trashId === undefined ||
+        !context.candidateIds.includes(trashId) ||
+        !player.characterArea.includes(trashId)
+      ) {
+        return false;
+      }
+      emitLog(
+        state,
+        context.controller,
+        `${player.playerName} trashes ${cardName(getCardForInstance(state, trashId))} to make room.`,
+        {
+          sourceCardId: getInstance(state, context.playInstanceId).cardId,
+          sourceInstanceId: context.playInstanceId,
+          targetIds: [trashId],
+          visibility: "public",
+        },
+      );
+      moveCard(state, trashId, getInstance(state, trashId).owner, "trash", {
+        faceUp: true,
+        publicKnowledge: true,
+        actor: context.controller,
+      });
+      return playCardFromEffect(
+        state,
+        context.controller,
+        context.playInstanceId,
+        context.playState,
+        context.sourceInstanceId,
+        { deferOnPlay: context.deferOnPlay },
+      );
+    }
     case "effectCostRestCards": {
       const context = prompt.resolutionContext;
       const selectedIds = command.selectedIds ?? [];
@@ -2763,7 +2802,7 @@ export function resolveEffectChoicePrompt(
         context.action.revealCount.amount === "all"
           ? context.eligibleIds.length
           : context.action.revealCount.amount;
-      const openCharacterSlots = getOpenCharacterSlots(state, context.controller).length;
+      const openCharacterSlots = characterPlayCapacity(state, context.controller);
       const playableEligibleIds =
         context.action.revealDestination === "character"
           ? context.eligibleIds.filter((instanceId) => {
