@@ -26,29 +26,9 @@ export const op15eb04Genbo103: CharacterCard = {
   trigger: "Draw 1 card. Then, if you have 2 or less Life cards, play this card.",
   traits: ["Sky Island", "Shandian Warrior"],
   attribute: "ranged",
-  effect:
-    "[Trigger] [Trigger] Draw 1 card. Then, if you have 2 or less Life cards, play this card.",
+  effect: "[Trigger] Draw 1 card. Then, if you have 2 or less Life cards, play this card.",
   effects: {
     effects: [
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "draw",
-            player: "self",
-            amount: 1,
-          },
-          {
-            action: "playThisCard",
-            condition: {
-              condition: "lifeCount",
-              player: "self",
-              comparison: "lte",
-              value: 2,
-            },
-          },
-        ],
-      },
       {
         trigger: "trigger",
         actions: [

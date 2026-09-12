@@ -27,41 +27,9 @@ export const op15eb04Octoballoon106: CharacterCard = {
   traits: ["Animal", "Sky Island"],
   attribute: "wisdom",
   effect:
-    "[Trigger] [Trigger] Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
+    "[Trigger] Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
   effects: {
     effects: [
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "draw",
-            player: "self",
-            amount: 1,
-          },
-          {
-            action: "play",
-            source: {
-              player: "self",
-              zone: "hand",
-            },
-            count: {
-              amount: 1,
-              upTo: true,
-            },
-            filters: [
-              {
-                filter: "cost",
-                comparison: "lte",
-                value: 2,
-              },
-              {
-                filter: "color",
-                value: "yellow",
-              },
-            ],
-          },
-        ],
-      },
       {
         trigger: "trigger",
         actions: [

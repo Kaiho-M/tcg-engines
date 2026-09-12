@@ -28,61 +28,9 @@ export const op16GeckoMoria105: CharacterCard = {
   traits: ["The Seven Warlords of the Sea", "Thriller Bark Pirates"],
   attribute: "special",
   effect:
-    "[Trigger] [Trigger] If you have 1 or less Life cards, play up to 1 [Absalom], up to 1 [Dr. Hogback], and up to 1 [Perona], with a cost of 4 or less from your trash.",
+    "[Trigger] If you have 1 or less Life cards, play up to 1 [Absalom], up to 1 [Dr. Hogback], and up to 1 [Perona], with a cost of 4 or less from your trash.",
   effects: {
     effects: [
-      {
-        trigger: "trigger",
-        conditions: [
-          {
-            condition: "lifeCount",
-            player: "self",
-            comparison: "lte",
-            value: 1,
-          },
-        ],
-        actions: [
-          {
-            action: "play",
-            source: {
-              player: "self",
-              zone: "trash",
-            },
-            count: {
-              amount: 1,
-              upTo: true,
-            },
-            filters: [
-              {
-                filter: "name",
-                value: "Absalom",
-              },
-            ],
-          },
-          {
-            action: "play",
-            source: {
-              player: "self",
-              zone: "trash",
-            },
-            count: {
-              amount: 1,
-              upTo: true,
-            },
-            filters: [
-              {
-                filter: "cost",
-                comparison: "lte",
-                value: 4,
-              },
-              {
-                filter: "name",
-                value: "Perona",
-              },
-            ],
-          },
-        ],
-      },
       {
         trigger: "trigger",
         conditions: [

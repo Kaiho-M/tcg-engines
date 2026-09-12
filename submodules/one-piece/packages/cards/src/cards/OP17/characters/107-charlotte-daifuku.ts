@@ -41,17 +41,9 @@ export const op17CharlotteDaifuku107: CharacterCard = {
       imageId: "OP17-107_p1",
     },
   ],
-  effect: "[Trigger] [Trigger] Play this card.",
+  effect: "[Trigger] Play this card.",
   effects: {
     effects: [
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "playThisCard",
-          },
-        ],
-      },
       {
         trigger: "trigger",
         actions: [
