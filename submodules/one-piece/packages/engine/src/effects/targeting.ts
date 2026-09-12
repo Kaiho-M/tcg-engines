@@ -2,7 +2,7 @@ import { getCard } from "../../../cards/src/runtime-catalog.ts";
 import type { Target, TargetFilter } from "@tcg/op-types";
 import {
   baseCost,
-  basePower,
+  getCardBasePower,
   cardNames,
   donCardsOnField,
   effectBlocksFor,
@@ -74,7 +74,10 @@ export function matchesTargetFilter(
     }
     case "power":
     case "basePower": {
-      const value = filter.filter === "power" ? getCardPower(state, candidateId) : basePower(card);
+      const value =
+        filter.filter === "power"
+          ? getCardPower(state, candidateId)
+          : getCardBasePower(state, candidateId);
       switch (filter.comparison) {
         case "eq":
           return { supported: true, matches: value === filter.value };

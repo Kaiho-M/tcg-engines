@@ -73,6 +73,8 @@ export interface OncePerTurnCondition {
 export interface LeaderNameCondition {
   condition: "leaderName";
   name: string;
+  /** "includes" matches a leader whose card name contains the text (default: exact). */
+  match?: "exact" | "includes";
 }
 
 export interface LeaderAttributeCondition {
@@ -170,6 +172,8 @@ export interface CompareHandsCondition {
 
 export interface LeaderMulticoloredCondition {
   condition: "leaderMulticolored";
+  /** True to require a monocolored Leader instead. */
+  negate?: boolean;
 }
 
 export interface DonFieldCountCondition {

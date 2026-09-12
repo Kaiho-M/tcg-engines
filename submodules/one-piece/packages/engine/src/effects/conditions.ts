@@ -46,7 +46,13 @@ function evaluateCondition(
             : state.activeSeat !== controller,
       };
     case "leaderName":
-      return { supported: true, matches: cardNames(leader).includes(condition.name) };
+      return {
+        supported: true,
+        matches:
+          condition.match === "includes"
+            ? cardNames(leader).some((name) => name.includes(condition.name))
+            : cardNames(leader).includes(condition.name),
+      };
     case "leaderAttribute":
       return { supported: true, matches: leader.attribute === condition.attribute };
     case "leaderTrait":
@@ -57,8 +63,10 @@ function evaluateCondition(
             ? (leader.traits ?? []).includes(condition.trait)
             : (leader.traits ?? []).some((trait) => trait.includes(condition.trait)),
       };
-    case "leaderMulticolored":
-      return { supported: true, matches: leader.color.length > 1 };
+    case "leaderMulticolored": {
+      const multicolored = leader.color.length > 1;
+      return { supported: true, matches: condition.negate ? !multicolored : multicolored };
+    }
     case "leaderColor":
       return { supported: true, matches: leader.color.includes(condition.color) };
     case "zoneCount": {

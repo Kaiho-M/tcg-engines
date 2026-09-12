@@ -16,9 +16,11 @@ import type {
 } from "./types.ts";
 import {
   arePlayerEffectsNegatedByPermanentEffect,
+  getPermanentBasePower,
   getPermanentKeywords,
   getPermanentModifierTotal,
   getPermanentSetCost,
+  isBasePowerApplicabilityBeingEvaluated,
   isRefreshPreventedByPermanentEffect,
 } from "./effects/permanent.ts";
 
@@ -64,12 +66,38 @@ export function cardNames(card: OPCard): readonly string[] {
   return [cardName(card), ...(card.alternateNames ?? [])];
 }
 
+/** Printed base power of a card definition. Prefer getCardBasePower for a card in a match. */
 export function basePower(card: OPCard): number {
   if (card.cardType === "leader" || card.cardType === "character") {
     return card.power ?? 0;
   }
 
   return 0;
+}
+
+/**
+ * Current base power of a card instance: the printed value, overwritten by "base power
+ * becomes N" effects. Permanent effects apply first, then one-shot ones in the order they
+ * resolved; the last one wins and none of them add up. +/- modifiers and DON!! are layered on
+ * top by getCardPower. While a "becomes" effect is deciding whether it applies, this returns
+ * the printed value (see isBasePowerApplicabilityBeingEvaluated).
+ */
+export function getCardBasePower(state: MatchState, instanceId: string): number {
+  const printed = basePower(getCardForInstance(state, instanceId));
+  if (isBasePowerApplicabilityBeingEvaluated(state)) {
+    return printed;
+  }
+  let value = getPermanentBasePower(state, instanceId) ?? printed;
+  for (const modifier of Object.values(state.modifiers)) {
+    if (
+      modifier.targetId === instanceId &&
+      modifier.type === "setBasePower" &&
+      modifier.value !== undefined
+    ) {
+      value = modifier.value;
+    }
+  }
+  return value;
 }
 
 export function baseCost(card: OPCard): number {
@@ -456,9 +484,8 @@ export function isCardPreventedFromRefreshing(state: MatchState, instanceId: str
 
 export function getCardPower(state: MatchState, instanceId: string): number {
   const instance = getInstance(state, instanceId);
-  const card = getCard(instance.cardId);
   return (
-    basePower(card) +
+    getCardBasePower(state, instanceId) +
     (state.activeSeat === instance.controller ? instance.attachedDon * 1000 : 0) +
     getPowerModifierTotal(state, instanceId) +
     getPermanentModifierTotal(state, instanceId, "power")

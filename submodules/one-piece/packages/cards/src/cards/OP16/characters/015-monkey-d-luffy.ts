@@ -41,5 +41,89 @@ export const op16MonkeyDLuffy015: CharacterCard = {
   ],
   effect:
     "If your Leader's card name includes \"Ace\" and you have 6 or more DON!! cards on your field, give this card in your hand −2 cost.\n[On Your Opponent's Attack] You may trash 1 Character card with 8000 power from your hand: Your Leader and this Character's base power becomes 7000 during this turn.",
+  effects: {
+    effects: [
+      {
+        trigger: "onOpponentAttack",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+            filters: [
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+              {
+                filter: "power",
+                comparison: "eq",
+                value: 8000,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 7000,
+            duration: "thisTurn",
+          },
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 7000,
+            duration: "thisTurn",
+          },
+        ],
+        optional: true,
+      },
+    ],
+    permanentEffects: [
+      {
+        conditions: [
+          {
+            condition: "leaderName",
+            name: "Ace",
+            match: "includes",
+          },
+          {
+            condition: "donFieldCount",
+            player: "self",
+            comparison: "gte",
+            value: 6,
+          },
+        ],
+        actions: [
+          {
+            action: "modifyCost",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: -2,
+            duration: "permanent",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op16MonkeyDLuffy015I18n,
 };

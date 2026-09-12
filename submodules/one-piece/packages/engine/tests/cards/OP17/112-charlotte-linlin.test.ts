@@ -3,6 +3,7 @@ import { eb01Doma005, eb01Fourtricks025 } from "@tcg/op-cards";
 import { op17CharlotteLinlin112 } from "../../../../cards/src/cards/OP17/characters/112-charlotte-linlin.ts";
 import { op17CharlottePerospero110 } from "../../../../cards/src/cards/OP17/characters/110-charlotte-perospero.ts";
 import { OnePieceTestEngine } from "../../../src/index.ts";
+import { matchesTargetFilter } from "../../../src/effects/targeting.ts";
 
 describe("OP17-112 Charlotte Linlin", () => {
   test("sets 4000-base [Trigger] Characters to 8000 base power on your turn, without stacking", () => {
@@ -34,6 +35,29 @@ describe("OP17-112 Charlotte Linlin", () => {
 
     engine.endTurn("south");
     expect(powerOf(perosperoId)).toBe(4000);
+  });
+
+  test("base-power filters of other cards see the 8000 while its own 4000 check stays satisfied", () => {
+    const engine = OnePieceTestEngine.create(
+      { character: [op17CharlotteLinlin112, op17CharlottePerospero110] },
+      { character: [eb01Doma005] },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const perosperoId = engine.findCardInZone("south", "character", op17CharlottePerospero110);
+    const opposingId = engine.findCardInZone("north", "character", eb01Doma005);
+    const basePowerAtMost = (value: number) =>
+      matchesTargetFilter(engine.getState(), opposingId, perosperoId, {
+        filter: "basePower",
+        comparison: "lte",
+        value,
+      }).matches;
+
+    // e.g. an opposing [Trigger] "K.O. up to 1 Character with 5000 base power or less".
+    expect(basePowerAtMost(5000)).toBe(false);
+    expect(basePowerAtMost(8000)).toBe(true);
+
+    engine.endTurn("south");
+    expect(basePowerAtMost(5000)).toBe(true);
   });
 
   test("[On Play] draws 1, then may add the top of the deck to Life", () => {

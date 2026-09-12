@@ -2,6 +2,7 @@ import { getCard } from "../../../cards/src/runtime-catalog.ts";
 import type { Action, EffectTrigger, Keyword } from "@tcg/op-types";
 import type { CardInstance, MatchState } from "../types.ts";
 import { evaluateConditions } from "./conditions.ts";
+import { getCardBasePower } from "../shared.ts";
 import { candidatePoolForTarget, matchesTargetFilter } from "./targeting.ts";
 
 const activeEvaluations = new WeakMap<MatchState, Set<string>>();
@@ -464,8 +465,6 @@ export function getPermanentModifierTotal(
 
   try {
     let total = 0;
-    // "base power becomes N" does not stack when several sources say so.
-    let basePowerSet = false;
     for (const source of Object.values(state.cards)) {
       const sourceIsSelfInHand = source.instanceId === targetInstanceId && source.zone === "hand";
       if (
@@ -477,11 +476,8 @@ export function getPermanentModifierTotal(
 
       const card = getCard(source.cardId);
       for (const effect of card.effects?.permanentEffects ?? []) {
-        const relevantActions = effect.actions.filter(
-          (action) =>
-            (type === "power" &&
-              (action.action === "setBasePowerFrom" || action.action === "setBasePower")) ||
-            actionIsDynamicModifier(action, type),
+        const relevantActions = effect.actions.filter((action) =>
+          actionIsDynamicModifier(action, type),
         );
         if (relevantActions.length === 0) {
           continue;
@@ -497,66 +493,6 @@ export function getPermanentModifierTotal(
         }
 
         for (const action of relevantActions) {
-          if (type === "power" && action.action === "setBasePower") {
-            if (basePowerSet) continue;
-            if (action.condition) {
-              const actionCondition = evaluateConditions(
-                state,
-                source.controller,
-                source.instanceId,
-                [action.condition],
-              );
-              if (!actionCondition.supported || !actionCondition.matches) continue;
-            }
-            if (action.target.count.amount !== "all" && !action.target.self) continue;
-            const pool = candidatePoolForTarget(
-              state,
-              source.controller,
-              source.instanceId,
-              action.target,
-            );
-            if (!pool.supported || !pool.candidateIds.includes(targetInstanceId)) continue;
-            const targetCard = getCard(state.cards[targetInstanceId]!.cardId);
-            const targetBasePower =
-              targetCard.cardType === "leader" || targetCard.cardType === "character"
-                ? (targetCard.power ?? 0)
-                : 0;
-            total += action.value - targetBasePower;
-            basePowerSet = true;
-            continue;
-          }
-          if (type === "power" && action.action === "setBasePowerFrom") {
-            const targetPool = candidatePoolForTarget(
-              state,
-              source.controller,
-              source.instanceId,
-              action.target,
-            );
-            if (!targetPool.supported || !targetPool.candidateIds.includes(targetInstanceId)) {
-              continue;
-            }
-            const sourcePool = candidatePoolForTarget(
-              state,
-              source.controller,
-              source.instanceId,
-              action.source,
-            );
-            if (!sourcePool.supported || sourcePool.candidateIds.length !== 1) {
-              continue;
-            }
-            const targetCard = getCard(state.cards[targetInstanceId]!.cardId);
-            const sourceCard = getCard(state.cards[sourcePool.candidateIds[0]!]!.cardId);
-            const targetBasePower =
-              targetCard.cardType === "leader" || targetCard.cardType === "character"
-                ? (targetCard.power ?? 0)
-                : 0;
-            const sourceBasePower =
-              sourceCard.cardType === "leader" || sourceCard.cardType === "character"
-                ? (sourceCard.power ?? 0)
-                : 0;
-            total += sourceBasePower - targetBasePower;
-            continue;
-          }
           if (!actionIsDynamicModifier(action, type)) {
             continue;
           }
@@ -606,6 +542,138 @@ export function getPermanentModifierTotal(
       }
     }
     return total;
+  } finally {
+    active.delete(evaluationKey);
+    if (active.size === 0) {
+      activeEvaluations.delete(state);
+    }
+  }
+}
+
+const basePowerApplicabilityDepth = new WeakMap<MatchState, number>();
+
+/**
+ * True while a "base power becomes N" effect is deciding whether it applies (its conditions
+ * and target filters are being evaluated). During that window every base-power lookup reads
+ * the printed value, so a self-referential effect such as OP17-112 ("Characters with 4000
+ * base power become 8000") stays applied instead of switching itself off, and the evaluation
+ * cannot recurse.
+ */
+export function isBasePowerApplicabilityBeingEvaluated(state: MatchState): boolean {
+  return (basePowerApplicabilityDepth.get(state) ?? 0) > 0;
+}
+
+function withBasePowerApplicability<T>(state: MatchState, evaluate: () => T): T {
+  const depth = basePowerApplicabilityDepth.get(state) ?? 0;
+  basePowerApplicabilityDepth.set(state, depth + 1);
+  try {
+    return evaluate();
+  } finally {
+    if (depth === 0) basePowerApplicabilityDepth.delete(state);
+    else basePowerApplicabilityDepth.set(state, depth);
+  }
+}
+
+function withoutBasePowerApplicability<T>(state: MatchState, evaluate: () => T): T {
+  const depth = basePowerApplicabilityDepth.get(state) ?? 0;
+  basePowerApplicabilityDepth.delete(state);
+  try {
+    return evaluate();
+  } finally {
+    if (depth > 0) basePowerApplicabilityDepth.set(state, depth);
+  }
+}
+
+type SetBasePowerAction = Extract<Action, { action: "setBasePower" | "setBasePowerFrom" }>;
+
+/**
+ * Base power given to a card by permanent "base power becomes N" effects, or null when none
+ * applies. Several such effects never add up: the one whose source entered play last wins.
+ * The copied value of "becomes the same as X" is X's current base power.
+ */
+export function getPermanentBasePower(state: MatchState, targetInstanceId: string): number | null {
+  const evaluationKey = `basePower:${targetInstanceId}`;
+  const active = activeEvaluations.get(state) ?? new Set<string>();
+  if (active.has(evaluationKey)) {
+    return null;
+  }
+  activeEvaluations.set(state, active);
+  active.add(evaluationKey);
+
+  try {
+    let winner: { value: number; order: number } | null = null;
+    for (const source of Object.values(state.cards)) {
+      if (
+        !sourceIsInPlay(state, source.instanceId) ||
+        sourceEffectsAreNegated(state, source.instanceId)
+      ) {
+        continue;
+      }
+      const card = getCard(source.cardId);
+      for (const effect of card.effects?.permanentEffects ?? []) {
+        const setActions = effect.actions.filter(
+          (action): action is SetBasePowerAction =>
+            action.action === "setBasePower" || action.action === "setBasePowerFrom",
+        );
+        if (setActions.length === 0) {
+          continue;
+        }
+        const conditionsMatch = withBasePowerApplicability(state, () => {
+          const conditions = evaluateConditions(
+            state,
+            source.controller,
+            source.instanceId,
+            effect.conditions,
+          );
+          return conditions.supported && conditions.matches;
+        });
+        if (!conditionsMatch) {
+          continue;
+        }
+        for (const action of setActions) {
+          const targetsCard = withBasePowerApplicability(state, () => {
+            if (action.condition) {
+              const actionCondition = evaluateConditions(
+                state,
+                source.controller,
+                source.instanceId,
+                [action.condition],
+              );
+              if (!actionCondition.supported || !actionCondition.matches) return false;
+            }
+            if (action.target.count.amount !== "all" && !action.target.self) return false;
+            const pool = candidatePoolForTarget(
+              state,
+              source.controller,
+              source.instanceId,
+              action.target,
+            );
+            return pool.supported && pool.candidateIds.includes(targetInstanceId);
+          });
+          if (!targetsCard) {
+            continue;
+          }
+          let value: number;
+          if (action.action === "setBasePower") {
+            value = action.value;
+          } else {
+            const sourcePool = withBasePowerApplicability(state, () =>
+              candidatePoolForTarget(state, source.controller, source.instanceId, action.source),
+            );
+            if (!sourcePool.supported || sourcePool.candidateIds.length !== 1) {
+              continue;
+            }
+            const copiedId = sourcePool.candidateIds[0]!;
+            value = withoutBasePowerApplicability(state, () => getCardBasePower(state, copiedId));
+          }
+          const order = source.playedOnTurn ?? -1;
+          if (!winner || order >= winner.order) {
+            winner = { value, order };
+          }
+        }
+      }
+    }
+    return winner?.value ?? null;
   } finally {
     active.delete(evaluationKey);
     if (active.size === 0) {

@@ -109,7 +109,8 @@ export interface ModifierState {
   id: string;
   sourceInstanceId: string | null;
   targetId: string;
-  type: "power" | "cost" | "keyword" | "flag" | "attackRestriction";
+  type: "power" | "cost" | "keyword" | "flag" | "attackRestriction" | "setBasePower";
+  /** For "power" / "cost": the +/- amount. For "setBasePower": the absolute base power. */
   value?: number;
   keyword?: Keyword;
   flag?:

@@ -5,6 +5,7 @@ import { op15eb04Ohm061 } from "../../../../cards/src/cards/OP15EB04/characters/
 
 import { OnePieceTestEngine } from "../../../src/index.ts";
 import { getKeywords } from "../../../src/shared.ts";
+import { matchesTargetFilter } from "../../../src/effects/targeting.ts";
 
 describe("OP15-071 Holly", () => {
   test("gives itself and every [Ohm] Double Attack", () => {
@@ -50,5 +51,29 @@ describe("OP15-071 Holly", () => {
     engine.endTurn("north");
     expect(powerOf(hollyId)).toBe(4000);
     expect(powerOf(ohmId)).toBe(2000);
+  });
+
+  test("counts as 6000 base power for base-power filters during the opponent's turn", () => {
+    const engine = OnePieceTestEngine.create(
+      { character: [op15eb04Holly071] },
+      { character: [eb01Doma005] },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const hollyId = engine.findCardInZone("south", "character", op15eb04Holly071);
+    const opposingId = engine.findCardInZone("north", "character", eb01Doma005);
+    const basePowerAtMost = (value: number) =>
+      matchesTargetFilter(engine.getState(), opposingId, hollyId, {
+        filter: "basePower",
+        comparison: "lte",
+        value,
+      }).matches;
+
+    // Own turn: printed 4000, so "4000 base power or less" removal can pick it.
+    expect(basePowerAtMost(4000)).toBe(true);
+
+    // Opponent's turn: base power is 6000, out of reach of that removal.
+    engine.endTurn("south");
+    expect(basePowerAtMost(4000)).toBe(false);
+    expect(basePowerAtMost(6000)).toBe(true);
   });
 });

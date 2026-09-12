@@ -1,6 +1,6 @@
-import type { Action, Cost, GroupedPlayAction, PlayAction } from "@tcg/op-types";
+import type { Action, Cost, Duration, GroupedPlayAction, PlayAction } from "@tcg/op-types";
 import {
-  basePower,
+  getCardBasePower,
   cardName,
   cardNames,
   effectBlocksFor,
@@ -38,6 +38,7 @@ import type {
   EffectBlockContinuation,
   MatchSeat,
   MatchState,
+  ModifierState,
   PromptOption,
   ReturnToDeckContinuation,
   ReturnToDeckOwnerGroup,
@@ -66,6 +67,30 @@ type PlayCardCost = Extract<Cost, { cost: "playCard" }>;
 type TrashCardCost = Extract<Cost, { cost: "trashCard" }>;
 type CardCostOption = PlayCardCost | TrashCardCost["options"][number];
 type TrashFromHandCost = Extract<Cost, { cost: "trashFromHand" }>;
+
+/** Modifier for "base power becomes N": stores the absolute value, so several never add up. */
+function setBasePowerModifier(
+  state: MatchState,
+  controller: MatchSeat,
+  duration: Duration,
+  value: number,
+): Omit<ModifierState, "id" | "sourceInstanceId" | "targetId"> {
+  return {
+    type: "setBasePower",
+    value,
+    duration,
+    expiresAtTurn:
+      duration === "thisTurn"
+        ? state.turnNumber
+        : duration === "untilEndOfYourNextTurn" ||
+            duration === "untilEndOfOpponentNextTurn" ||
+            duration === "untilEndOfOpponentNextEndPhase"
+          ? state.turnNumber + 1
+          : null,
+    expiresAtBattleId: duration === "thisBattle" ? (state.battle?.id ?? null) : null,
+    expiresOnTurnStartOfSeat: duration === "untilStartOfNextTurn" ? controller : null,
+  };
+}
 type EffectRemovalAction = Extract<
   Action,
   { action: "returnToHand" | "returnToDeck" | "trashFromField" }
@@ -2120,20 +2145,18 @@ export function processEffectAction(
         return true;
       }
       const [firstId, secondId] = targetIds;
-      const firstPower = basePower(getCardForInstance(state, firstId!));
-      const secondPower = basePower(getCardForInstance(state, secondId!));
+      const firstPower = getCardBasePower(state, firstId!);
+      const secondPower = getCardBasePower(state, secondId!);
       for (const [targetId, value] of [
-        [firstId!, secondPower - firstPower],
-        [secondId!, firstPower - secondPower],
+        [firstId!, secondPower],
+        [secondId!, firstPower],
       ] as const) {
-        addModifier(state, sourceInstanceId, targetId, {
-          type: "power",
-          value,
-          duration: action.duration,
-          expiresAtTurn: action.duration === "thisTurn" ? state.turnNumber : null,
-          expiresAtBattleId: action.duration === "thisBattle" ? (state.battle?.id ?? null) : null,
-          expiresOnTurnStartOfSeat: action.duration === "untilStartOfNextTurn" ? controller : null,
-        });
+        addModifier(
+          state,
+          sourceInstanceId,
+          targetId,
+          setBasePowerModifier(state, controller, action.duration, value),
+        );
       }
       emitLog(
         state,
@@ -2161,15 +2184,12 @@ export function processEffectAction(
         return false;
       }
       for (const targetId of targetIds) {
-        const printedBasePower = basePower(getCardForInstance(state, targetId));
-        addModifier(state, sourceInstanceId, targetId, {
-          type: "power",
-          value: action.value - printedBasePower,
-          duration: action.duration,
-          expiresAtTurn: action.duration === "thisTurn" ? state.turnNumber : null,
-          expiresAtBattleId: action.duration === "thisBattle" ? (state.battle?.id ?? null) : null,
-          expiresOnTurnStartOfSeat: action.duration === "untilStartOfNextTurn" ? controller : null,
-        });
+        addModifier(
+          state,
+          sourceInstanceId,
+          targetId,
+          setBasePowerModifier(state, controller, action.duration, action.value),
+        );
       }
       emitLog(
         state,
@@ -2206,17 +2226,14 @@ export function processEffectAction(
         );
         return false;
       }
-      const copiedBasePower = basePower(getCardForInstance(state, sourceIds[0]!));
+      const copiedBasePower = getCardBasePower(state, sourceIds[0]!);
       for (const targetId of targetIds) {
-        const printedBasePower = basePower(getCardForInstance(state, targetId));
-        addModifier(state, sourceInstanceId, targetId, {
-          type: "power",
-          value: copiedBasePower - printedBasePower,
-          duration: action.duration,
-          expiresAtTurn: action.duration === "thisTurn" ? state.turnNumber : null,
-          expiresAtBattleId: action.duration === "thisBattle" ? (state.battle?.id ?? null) : null,
-          expiresOnTurnStartOfSeat: action.duration === "untilStartOfNextTurn" ? controller : null,
-        });
+        addModifier(
+          state,
+          sourceInstanceId,
+          targetId,
+          setBasePowerModifier(state, controller, action.duration, copiedBasePower),
+        );
       }
       emitLog(
         state,
@@ -2248,15 +2265,12 @@ export function processEffectAction(
         return true;
       }
       const copiedPower = getCardPower(state, copiedFromId);
-      const sourceBasePower = basePower(getCardForInstance(state, sourceInstanceId));
-      addModifier(state, sourceInstanceId, sourceInstanceId, {
-        type: "power",
-        value: copiedPower - sourceBasePower,
-        duration: action.duration,
-        expiresAtTurn: action.duration === "thisTurn" ? state.turnNumber : null,
-        expiresAtBattleId: action.duration === "thisBattle" ? (state.battle?.id ?? null) : null,
-        expiresOnTurnStartOfSeat: action.duration === "untilStartOfNextTurn" ? controller : null,
-      });
+      addModifier(
+        state,
+        sourceInstanceId,
+        sourceInstanceId,
+        setBasePowerModifier(state, controller, action.duration, copiedPower),
+      );
       emitLog(
         state,
         controller,
