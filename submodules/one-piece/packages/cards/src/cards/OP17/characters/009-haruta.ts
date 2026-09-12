@@ -13,7 +13,7 @@ export const op17Haruta009: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "009",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-009_cRtYaCi.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-009.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op17Haruta009: CharacterCard = {
   traits: ["Whitebeard Pirates"],
   attribute: "slash",
   effect:
-    "[Opponent's Turn] This Character gains +3000 power.\n\n[On Play] K.O. up to 1 of your opponent's Characters with 2000 base power or less.",
+    "[Opponent's Turn] This Character gains +3000 power.\n[On Play] K.O. up to 1 of your opponent's Characters with 2000 base power or less.",
   effects: {
     effects: [
       {

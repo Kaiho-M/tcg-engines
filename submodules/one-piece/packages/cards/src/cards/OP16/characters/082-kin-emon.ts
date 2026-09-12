@@ -13,7 +13,7 @@ export const op16KinEmon082: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "082",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-082_ym7wiOG.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-082.png",
     },
     {
       id: "OP16-082_p1",
@@ -21,7 +21,7 @@ export const op16KinEmon082: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "082",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-082_p1_zfvdEUb.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-082_p1.png",
     },
   ],
   cardType: "character",
@@ -30,17 +30,17 @@ export const op16KinEmon082: CharacterCard = {
   setId: "OP16",
   cost: 4,
   power: 6000,
-  traits: ["Land of Wano The Akazaya Nine"],
+  traits: ["Land of Wano", "The Akazaya Nine"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-082_p1_zfvdEUb.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-082_p1.png",
       imageId: "OP16-082_p1",
     },
   ],
   effect:
-    "This Character gains +3 cost. [On Play] If your Leader has the {Land of Wano} type, look at 5 cards from the top of your deck; reveal up to 1 {Land of Wano} type card and add it to your hand. Then, trash the rest.",
+    "This Character gains +3 cost.\n[On Play] If your Leader has the {Land of Wano} type, look at 5 cards from the top of your deck; reveal up to 1 {Land of Wano} type card and add it to your hand. Then, trash the rest.",
   effects: {
     effects: [
       {

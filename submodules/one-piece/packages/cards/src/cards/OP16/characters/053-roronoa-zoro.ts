@@ -13,7 +13,7 @@ export const op16RoronoaZoro053: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "053",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-053_Z44W9PE.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-053.png",
     },
   ],
   cardType: "character",
@@ -22,7 +22,7 @@ export const op16RoronoaZoro053: CharacterCard = {
   setId: "OP16",
   cost: 7,
   power: 9000,
-  traits: ["Straw Hat Crew Supernovas Dressrosa"],
+  traits: ["Dressrosa", "Supernovas", "Straw Hat Crew"],
   attribute: "slash",
   effect: "[When Attacking] If you have 6 or less cards in your hand, draw 1 card.",
   effects: {

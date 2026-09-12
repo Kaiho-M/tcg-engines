@@ -13,7 +13,7 @@ export const op16BoaSandersonia111: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "111",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-111_R5GIKm8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-111.png",
     },
   ],
   cardType: "character",
@@ -22,7 +22,7 @@ export const op16BoaSandersonia111: CharacterCard = {
   setId: "OP16",
   cost: 4,
   power: 5000,
-  trigger: "If you have 2 or less Life cards, play this card.",
+  trigger: "[Trigger] If you have 2 or less Life cards, play this card.",
   traits: ["Kuja Pirates"],
   attribute: "strike",
   effect:
@@ -30,6 +30,22 @@ export const op16BoaSandersonia111: CharacterCard = {
   effects: {
     keywords: ["blocker"],
     effects: [
+      {
+        trigger: "trigger",
+        conditions: [
+          {
+            condition: "lifeCount",
+            player: "self",
+            comparison: "lte",
+            value: 2,
+          },
+        ],
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
+      },
       {
         trigger: "trigger",
         conditions: [

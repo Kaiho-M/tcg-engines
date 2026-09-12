@@ -13,7 +13,7 @@ export const op15eb04Purinpurin031: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "031",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-031_9mLTRez.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-031.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Purinpurin031: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Navy East Blue"],
+  traits: ["East Blue", "Navy"],
   attribute: "wisdom",
   effect:
     "[On Play] Select up to 1 of your opponent's rested Characters. If the chosen Character has a cost equal to the number of DON!! cards given to it, K.O. it.",

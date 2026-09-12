@@ -13,7 +13,7 @@ export const op15eb04Sanji052: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "052",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-052_votpJym.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-052.png",
     },
     {
       id: "EB04-052_p1",
@@ -21,7 +21,7 @@ export const op15eb04Sanji052: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "052",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-052_p1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-052_p1.png",
     },
   ],
   cardType: "character",
@@ -31,17 +31,17 @@ export const op15eb04Sanji052: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 1000,
-  traits: ["Straw Hat Crew Egghead"],
+  traits: ["Egghead", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-052_p1.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-052_p1.png",
       imageId: "EB04-052_p1",
     },
   ],
   effect:
-    "[When Attacking] This Character's base power becomes the same as your opponent's Leader during this turn. [On K.O.] If you have 2 or less Life cards, play up to 1 yellow Character card with 6000 power or less from your hand.",
+    "[When Attacking] This Character's base power becomes the same as your opponent's Leader during this turn.\n[On K.O.] If you have 2 or less Life cards, play up to 1 yellow Character card with 6000 power or less from your hand.",
   effects: {
     effects: [
       {

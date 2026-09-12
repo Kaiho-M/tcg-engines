@@ -13,7 +13,7 @@ export const op15eb04Gin007: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "007",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-007_TUo5WSO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-007.png",
     },
     {
       id: "OP15-007_p1",
@@ -21,7 +21,7 @@ export const op15eb04Gin007: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "007",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-007_p1_3a0c7Wn.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-007_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Gin007: CharacterCard = {
   cost: 6,
   power: 7000,
   counter: 1000,
-  traits: ["Krieg Pirates East Blue"],
+  traits: ["East Blue", "Krieg Pirates"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-007_p1_3a0c7Wn.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-007_p1.png",
       imageId: "OP15-007_p1",
     },
   ],

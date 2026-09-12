@@ -13,7 +13,7 @@ export const op17Jozu008: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "008",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-008_6u3rnUo.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-008.png",
     },
   ],
   cardType: "character",

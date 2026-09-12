@@ -13,15 +13,15 @@ export const op17EdwardNewgate040: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "040",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-040_s3hL0bE.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-040.png",
     },
     {
-      id: "OP17-040",
-      artId: "OP17-040",
+      id: "OP17-040_p1",
+      artId: "OP17-040_p1",
       setCode: "OP17",
       collectorNumber: "040",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-040_M36tFKB.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-040_p1.png",
     },
   ],
   cardType: "character",
@@ -35,8 +35,8 @@ export const op17EdwardNewgate040: CharacterCard = {
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-040_M36tFKB.jpg",
-      imageId: "OP17-040",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-040_p1.png",
+      imageId: "OP17-040_p1",
     },
   ],
   effect:

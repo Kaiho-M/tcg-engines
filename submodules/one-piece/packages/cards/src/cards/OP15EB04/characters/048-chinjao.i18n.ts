@@ -5,6 +5,6 @@ export const op15eb04Chinjao048I18n: OPCardI18n = {
     name: "Chinjao",
     effect:
       "[On Play] You may trash 1 Event from your hand: Draw 2 cards.\n[Opponent's Turn] [On K.O.] Your opponent places 1 card from their hand at the bottom of their deck.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-048_KoKrpp5.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-048.png",
   },
 };

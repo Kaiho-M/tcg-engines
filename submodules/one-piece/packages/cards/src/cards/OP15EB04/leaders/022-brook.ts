@@ -13,7 +13,7 @@ export const op15eb04Brook022: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "022",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-022.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-022.png",
     },
     {
       id: "OP15-022_p1",
@@ -21,7 +21,7 @@ export const op15eb04Brook022: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "022",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-022_p1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-022_p1.png",
     },
   ],
   cardType: "leader",
@@ -34,13 +34,13 @@ export const op15eb04Brook022: LeaderCard = {
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-022_p1.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-022_p1.png",
       imageId: "OP15-022_p1",
     },
   ],
   effect:
-    "Under the rules of this game, you do not lose when your deck has 0 cards. You lose at the end of the turn in which your deck becomes 0 cards. [Activate: Main] [Once Per Turn] Trash 4 cards from the top of your deck. Then, if your deck has 0 cards, set up to 1 of your Characters as active.",
+    "Under the rules of this game, you do not lose when your deck has 0 cards. You lose at the end of the turn in which your deck becomes 0 cards.\n[Activate: Main] [Once Per Turn] Trash 4 cards from the top of your deck. Then, if your deck has 0 cards, set up to 1 of your Characters as active.",
   effects: {
     effects: [
       {

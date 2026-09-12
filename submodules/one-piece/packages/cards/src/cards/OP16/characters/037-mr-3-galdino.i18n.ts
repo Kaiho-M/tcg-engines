@@ -5,6 +5,6 @@ export const op16Mr3Galdino037I18n: OPCardI18n = {
     name: "Mr.3(Galdino)",
     effect:
       "[On Play] If your Leader has the {Impel Down} type, rest up to 1 of your opponent's Characters with a cost of 5 or less.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-037_7SCbkuN.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-037.png",
   },
 };

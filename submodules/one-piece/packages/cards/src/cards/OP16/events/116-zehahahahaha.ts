@@ -13,7 +13,7 @@ export const op16Zehahahahaha116: EventCard = {
       setCode: "OP16",
       collectorNumber: "116",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-116_FVqesp1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-116.png",
     },
     {
       id: "OP16-116_p1",
@@ -21,7 +21,7 @@ export const op16Zehahahahaha116: EventCard = {
       setCode: "OP16",
       collectorNumber: "116",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-116_p1_lLhpYkl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-116_p1.png",
     },
   ],
   cardType: "event",
@@ -29,12 +29,12 @@ export const op16Zehahahahaha116: EventCard = {
   rarity: "R",
   setId: "OP16",
   cost: 8,
-  trigger: "Draw 2 cards and trash 1 card from your hand.",
-  traits: ["Blackbeard Pirates The Seven Warlords of the Sea"],
+  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
+  traits: ["The Seven Warlords of the Sea", "Blackbeard Pirates"],
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-116_p1_lLhpYkl.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-116_p1.png",
       imageId: "OP16-116_p1",
     },
   ],
@@ -78,6 +78,21 @@ export const op16Zehahahahaha116: EventCard = {
               upTo: true,
             },
             destination: "hand",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+          {
+            action: "trashFromHand",
+            player: "self",
+            amount: 1,
           },
         ],
       },

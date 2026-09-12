@@ -13,7 +13,7 @@ export const op17Yasopp031: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "031",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-031_GaiJBWQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-031.png",
     },
     {
       id: "OP17-031_p1",
@@ -21,7 +21,7 @@ export const op17Yasopp031: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "031",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-031_p1_NVOGP7a.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-031_p1.png",
     },
   ],
   cardType: "character",
@@ -35,8 +35,8 @@ export const op17Yasopp031: CharacterCard = {
   attribute: "ranged",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-031_p1_NVOGP7a.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-031_p1.png",
       imageId: "OP17-031_p1",
     },
   ],

@@ -13,7 +13,7 @@ export const op16BoaMarigold113: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "113",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-113_8vbsbG3.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-113.png",
     },
   ],
   cardType: "character",
@@ -23,12 +23,27 @@ export const op16BoaMarigold113: CharacterCard = {
   cost: 5,
   power: 5000,
   counter: 1000,
-  trigger: "If your Leader has the {Kuja Pirates} type, play this card.",
+  trigger: "[Trigger] If your Leader has the {Kuja Pirates} type, play this card.",
   traits: ["Kuja Pirates"],
   attribute: "slash",
   effect: "If you have 2 or less Life cards, this Character gains [Blocker].",
   effects: {
     effects: [
+      {
+        trigger: "trigger",
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "Kuja Pirates",
+            match: "includes",
+          },
+        ],
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
+      },
       {
         trigger: "trigger",
         conditions: [

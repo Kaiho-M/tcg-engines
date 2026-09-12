@@ -13,7 +13,7 @@ export const op16DonquixoteDoflamingo047: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "047",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-047_DRprBdq.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-047.png",
     },
   ],
   cardType: "character",
@@ -21,11 +21,10 @@ export const op16DonquixoteDoflamingo047: CharacterCard = {
   rarity: "C",
   setId: "OP16",
   cost: 3,
-  power: 0,
   counter: 1000,
-  traits: ["Donquixote Pirates Impel Down"],
+  traits: ["Impel Down", "Donquixote Pirates"],
   attribute: "special",
   effect:
-    "[Activate:Main] You may rest this Character: If your opponent has 8 or more cards in their hand, they place 2 cards from their hand at the bottom of their deck in any order.",
+    "[Activate: Main] You may rest this Character: If your opponent has 8 or more cards in their hand, they place 2 cards from their hand at the bottom of their deck in any order.",
   i18n: op16DonquixoteDoflamingo047I18n,
 };

@@ -13,7 +13,7 @@ export const op17Rockstar034: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "034",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-034_GeKuUHN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-034.png",
     },
   ],
   cardType: "character",

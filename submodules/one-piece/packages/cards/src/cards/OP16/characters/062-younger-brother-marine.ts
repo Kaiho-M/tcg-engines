@@ -13,7 +13,7 @@ export const op16YoungerBrotherMarine062: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "062",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-062_dJooxim.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-062.png",
     },
   ],
   cardType: "character",

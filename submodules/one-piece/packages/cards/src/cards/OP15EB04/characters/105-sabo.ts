@@ -12,20 +12,20 @@ export const op15eb04Sabo105: CharacterCard = {
       artId: "P-105_p1",
       setCode: "OP15EB04",
       collectorNumber: "105",
-      rarity: "P",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/P-105_p1.jpg",
+      rarity: "SP",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/P-105_p1.png",
     },
   ],
   cardType: "character",
   color: ["black"],
-  rarity: "P",
+  rarity: "SP",
   setId: "OP15EB04",
   cost: 4,
   power: 6000,
   traits: ["Revolutionary Army"],
   attribute: "special",
   effect:
-    "If your Leader has the {Revolutionary Army} type, this Character gains [Blocker] and +4 cost.[On Play] You may add 1 card from the top or bottom of your Life cards to your hand: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
+    "If your Leader has the {Revolutionary Army} type, this Character gains [Blocker] and +4 cost.\n[On Play] You may add 1 card from the top or bottom of your Life cards to your hand: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
   effects: {
     effects: [
       {

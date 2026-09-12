@@ -13,7 +13,7 @@ export const op17Rodo094: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "094",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-094_vLuXNgL.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-094.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Rodo094: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Giant Elbaph New Giant Pirates"],
+  traits: ["Giant", "Elbaph", "New Giant Pirates"],
   attribute: "slash",
   effect: "If your Leader has the {Elbaph} type, this Character gains +12 cost.",
   effects: {

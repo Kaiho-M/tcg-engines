@@ -13,7 +13,7 @@ export const op15eb04WouldYouLetMeEatTheFlameFlameFruit056: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "056",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-056_CoWMe41.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-056.png",
     },
   ],
   cardType: "event",
@@ -21,14 +21,24 @@ export const op15eb04WouldYouLetMeEatTheFlameFlameFruit056: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 7,
-  trigger: "Draw 2 cards.",
-  traits: ["Revolutionary Army Dressrosa"],
+  trigger: "[Trigger] Draw 2 cards.",
+  traits: ["Dressrosa", "Revolutionary Army"],
   effect:
     "[Main] Draw 2 cards. Then, your [Lucy] Leader gains [Double Attack] and +3000 power during this turn.\n(This card deals 2 damage.)",
   effects: {
     effects: [
       {
         trigger: "main",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
         actions: [
           {
             action: "draw",

@@ -4,7 +4,7 @@ export const op15eb04Varie074I18n: OPCardI18n = {
   en: {
     name: "Varie",
     effect:
-      "[Main] DON!! 1: If your Leader is [Enel], draw 1 card. Then, up to 1 of your Characters gains +2 cost until the end of your opponent's next End Phase. [Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-074.jpg",
+      "[Main] DON!! −1: If your Leader is [Enel], draw 1 card. Then, up to 1 of your Characters gains +2 cost until the end of your opponent's next End Phase.\n[Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-074.png",
   },
 };

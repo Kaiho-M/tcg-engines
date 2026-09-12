@@ -13,7 +13,7 @@ export const op15eb04Koala044: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "044",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-044_vrJat4E.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-044.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Koala044: CharacterCard = {
   cost: 3,
   power: 2000,
   counter: 1000,
-  traits: ["Revolutionary Army Dressrosa"],
+  traits: ["Dressrosa", "Revolutionary Army"],
   attribute: "strike",
   effect:
     "[Blocker]\n[On K.O.] Look at 3 cards from the top of your deck; reveal up to 1 {Dressrosa} type Event and add it to your hand. Then, place the rest at the bottom of your deck in any order.",

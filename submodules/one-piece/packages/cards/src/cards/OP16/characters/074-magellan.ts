@@ -13,7 +13,7 @@ export const op16Magellan074: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "074",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-074_PFe95iK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-074.png",
     },
   ],
   cardType: "character",

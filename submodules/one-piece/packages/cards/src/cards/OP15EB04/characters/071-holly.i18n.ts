@@ -5,6 +5,6 @@ export const op15eb04Holly071I18n: OPCardI18n = {
     name: "Holly",
     effect:
       "All of your [Ohm] cards and this Character gain [Double Attack].\n(This card deals 2 damage.)\n[Opponent's Turn] All of your [Ohm] cards' base power and this Character's base power become 6000.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-071_6gGIXlN.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-071.png",
   },
 };

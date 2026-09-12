@@ -13,7 +13,7 @@ export const op16PortgasDAce049: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "049",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-049_Z4zQnvk.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-049.png",
     },
   ],
   cardType: "character",
@@ -21,11 +21,10 @@ export const op16PortgasDAce049: CharacterCard = {
   rarity: "C",
   setId: "OP16",
   cost: 3,
-  power: 0,
   counter: 1000,
-  traits: ["Whitebeard Pirates Impel Down"],
+  traits: ["Impel Down", "Whitebeard Pirates"],
   attribute: "special",
-  effect: "[Activate:Main] You may rest this Character: Draw 1 card.",
+  effect: "[Activate: Main] You may rest this Character: Draw 1 card.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op15eb04Buggy012: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "012",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-012_NMvHtDd.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-012.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Buggy012: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  traits: ["Buggy Pirates East Blue"],
+  traits: ["East Blue", "Buggy Pirates"],
   attribute: "slash",
   effect:
     "[When Attacking] Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.\n[On K.O.] Draw 1 card.",

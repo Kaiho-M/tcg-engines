@@ -13,7 +13,7 @@ export const op17Caribou101: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "101",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-101_JFEnFaR.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-101.png",
     },
   ],
   cardType: "character",
@@ -24,8 +24,8 @@ export const op17Caribou101: CharacterCard = {
   power: 6000,
   counter: 1000,
   trigger:
-    "You may trash 1 card from your hand: K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
-  traits: ["Supernovas Caribou Pirates"],
+    "[Trigger] You may trash 1 card from your hand: K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
+  traits: ["Supernovas", "Caribou Pirates"],
   attribute: "special",
   effect:
     "[Activate: Main] [Once Per Turn] You may add 1 card from the top of your Life cards to your hand: Give up to 1 of your opponent's Characters −3000 power during this turn.",
@@ -57,6 +57,36 @@ export const op17Caribou101: CharacterCard = {
         ],
         optional: true,
         oncePerTurn: true,
+      },
+      {
+        trigger: "trigger",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "ko",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 5,
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
       },
       {
         trigger: "trigger",

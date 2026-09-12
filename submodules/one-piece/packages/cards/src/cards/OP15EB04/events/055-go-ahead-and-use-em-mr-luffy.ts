@@ -13,7 +13,7 @@ export const op15eb04GoAheadAndUseEmMrLuffy055: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "055",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-055_iMV74yV.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-055.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op15eb04GoAheadAndUseEmMrLuffy055: EventCard = {
   rarity: "R",
   setId: "OP15EB04",
   cost: 3,
-  traits: ["Dressrosa Barto Club"],
+  traits: ["Dressrosa", "Barto Club"],
   effect:
     "[Main] Choose one:\n• Draw 2 cards.\n• Up to 1 of your {Dressrosa} type Characters gains [Blocker] until the end of your opponent's next End Phase.",
   effects: {

@@ -13,7 +13,7 @@ export const op17Brook091: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "091",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-091_oDw2KRk.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-091.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Brook091: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Elbaph Straw Hat Crew"],
+  traits: ["Elbaph", "Straw Hat Crew"],
   attribute: "slash",
   effect:
     "If there is a Character with a cost of 12 or more, this Character gains +3000 power.\n[On Play] If there is a Character with a cost of 12 or more, your opponent trashes 1 card from their hand.",

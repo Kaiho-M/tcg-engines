@@ -13,7 +13,7 @@ export { op17PortgasDAce013 } from "./013-portgas-d-ace.ts";
 export { op17WhiteyBay014 } from "./014-whitey-bay.ts";
 export { op17Marco015 } from "./015-marco.ts";
 export { op17Rakuyo016 } from "./016-rakuyo.ts";
-export { op17CroneOil021 } from "./021-crone-oil.ts";
+export { op17CroneOli021 } from "./021-crone-oli.ts";
 export { op17Shanks022 } from "./022-shanks.ts";
 export { op17Nami023 } from "./023-nami.ts";
 export { op17HowlingGab024 } from "./024-howling-gab.ts";

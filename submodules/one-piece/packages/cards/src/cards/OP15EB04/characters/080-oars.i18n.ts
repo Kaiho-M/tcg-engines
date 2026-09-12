@@ -5,6 +5,6 @@ export const op15eb04Oars080I18n: OPCardI18n = {
     name: "Oars",
     effect:
       "If you have [Gecko Moria] with 10000 power or more on your field and there are no other [Oars] cards, this Character gains +7000 power.\n[On K.O.] You may place 3 cards from your trash at the bottom of your deck in any order: Play this Character card from your trash.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-080_nscc2yr.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-080.png",
   },
 };

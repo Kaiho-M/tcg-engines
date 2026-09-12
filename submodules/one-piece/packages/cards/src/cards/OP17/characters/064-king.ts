@@ -13,7 +13,7 @@ export const op17King064: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "064",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-064.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-064.png",
     },
   ],
   cardType: "character",
@@ -22,10 +22,10 @@ export const op17King064: CharacterCard = {
   setId: "OP17",
   cost: 9,
   power: 10000,
-  traits: ["Lunarian Animal Kingdom Pirates"],
+  traits: ["Lunarian", "Animal Kingdom Pirates"],
   attribute: "special",
   effect:
-    "[Blocker] [On Your Opponent's Attack] [Once Per Turn] You may trash 1 card from your hand: Up to 1 of your Leader or Characters gains +2000 power during this battle.",
+    "[Blocker]\n[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card from your hand: Up to 1 of your Leader or Characters gains +2000 power during this battle.",
   effects: {
     keywords: ["blocker"],
     effects: [

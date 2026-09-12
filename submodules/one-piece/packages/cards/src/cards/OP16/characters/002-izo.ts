@@ -13,7 +13,7 @@ export const op16Izo002: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "002",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-002_kWtIkhz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-002.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Izo002: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Land of Wano Whitebeard Pirates"],
+  traits: ["Land of Wano", "Whitebeard Pirates"],
   attribute: "ranged",
   effect: "[On Play] You may reveal 1 Character card with 8000 power from your hand: Draw 1 card.",
   effects: {

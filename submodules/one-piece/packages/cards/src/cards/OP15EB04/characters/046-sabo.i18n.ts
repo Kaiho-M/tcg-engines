@@ -5,6 +5,6 @@ export const op15eb04Sabo046I18n: OPCardI18n = {
     name: "Sabo",
     effect:
       "[Blocker]\n[On Play] If your Leader has the {Dressrosa} type, activate up to 1 {Dressrosa} type Event from your hand.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-046_hRbLfA6.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-046.png",
   },
 };

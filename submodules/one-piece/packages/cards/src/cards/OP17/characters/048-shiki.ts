@@ -13,7 +13,7 @@ export const op17Shiki048: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "048",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-048_q65awE1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-048.png",
     },
     {
       id: "OP17-048_p1",
@@ -21,7 +21,7 @@ export const op17Shiki048: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "048",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-048_p1_zEYWhz7.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-048_p1.png",
     },
   ],
   cardType: "character",
@@ -34,13 +34,13 @@ export const op17Shiki048: CharacterCard = {
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-048_p1_zEYWhz7.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-048_p1.png",
       imageId: "OP17-048_p1",
     },
   ],
   effect:
-    "[Rush: Character]\n[When Attacking]/[On Your Opponent's Attack] [Once Per Turn] You may trash 1 cards with a type including \"Rocks Pirates\" from your hand: Give up to 1 of your opponent's Characters -3000 power during this turn.",
+    "[Rush: Character]\n[When Attacking]/[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card with a type including \"Rocks Pirates\" from your hand: Give up to 1 of your opponent's Characters −3000 power during this turn.",
   effects: {
     keywords: ["rushCharacter"],
     effects: [
@@ -77,7 +77,7 @@ export const op17Shiki048: CharacterCard = {
         optional: true,
         oncePerTurn: true,
         oncePerTurnKey:
-          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters -3000 power during this turn.",
+          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters −3000 power during this turn.",
       },
       {
         trigger: "onOpponentAttack",
@@ -112,7 +112,7 @@ export const op17Shiki048: CharacterCard = {
         optional: true,
         oncePerTurn: true,
         oncePerTurnKey:
-          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters -3000 power during this turn.",
+          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters −3000 power during this turn.",
       },
     ],
   },

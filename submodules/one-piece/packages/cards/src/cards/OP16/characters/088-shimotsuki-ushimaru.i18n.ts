@@ -5,6 +5,6 @@ export const op16ShimotsukiUshimaru088I18n: OPCardI18n = {
     name: "Shimotsuki Ushimaru",
     effect:
       "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-088_ZjPh991.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-088.png",
   },
 };

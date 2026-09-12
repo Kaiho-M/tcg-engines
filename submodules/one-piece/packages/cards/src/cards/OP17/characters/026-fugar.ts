@@ -13,20 +13,20 @@ export const op17Fugar026: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "026",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-026.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-026.png",
     },
   ],
   cardType: "character",
   color: ["green"],
   rarity: "UC",
   setId: "OP17",
-  cost: 5,
+  cost: 1,
   power: 2000,
   counter: 2000,
   traits: ["Red-Haired Pirates Allies"],
   attribute: "slash",
   effect:
-    "[When Attacking] If your Leader has the {Red-Haired Pirates} type, rest up to 1 of your opponent's Characters with a cost of 2 or less.  [On K.O.] Draw 1 card.",
+    "[When Attacking] If your Leader has the {Red-Haired Pirates} type, rest up to 1 of your opponent's Characters with a cost of 2 or less.\n[On K.O.] Draw 1 card.",
   effects: {
     effects: [
       {

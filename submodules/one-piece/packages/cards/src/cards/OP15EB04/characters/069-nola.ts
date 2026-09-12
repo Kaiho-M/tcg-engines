@@ -13,7 +13,7 @@ export const op15eb04Nola069: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "069",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-069.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-069.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Nola069: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Animal Sky Island"],
+  traits: ["Animal", "Sky Island"],
   attribute: "strike",
   effect:
     "If your Character with 7000 base power or less would be removed from the field by your opponent's effect, you may return 1 DON!! card from your field to your DON!! deck instead.",

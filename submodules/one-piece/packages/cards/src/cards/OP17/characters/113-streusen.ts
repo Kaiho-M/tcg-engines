@@ -13,7 +13,7 @@ export const op17Streusen113: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "113",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-113_YNn2Qyu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-113.png",
     },
   ],
   cardType: "character",

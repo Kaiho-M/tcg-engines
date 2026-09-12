@@ -3,6 +3,6 @@ import type { OPCardI18n } from "@tcg/op-types";
 export const op15eb04CaptainSeamars062I18n: OPCardI18n = {
   en: {
     name: "Captain Seamars",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-062_uz3oxdx.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-062.png",
   },
 };

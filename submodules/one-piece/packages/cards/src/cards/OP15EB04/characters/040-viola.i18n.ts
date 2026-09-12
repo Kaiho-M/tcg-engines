@@ -5,6 +5,6 @@ export const op15eb04Viola040I18n: OPCardI18n = {
     name: "Viola",
     effect:
       "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Dressrosa} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-040_DpSKRqX.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-040.png",
   },
 };

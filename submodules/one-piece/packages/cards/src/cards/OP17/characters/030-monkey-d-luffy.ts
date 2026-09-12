@@ -13,7 +13,7 @@ export const op17MonkeyDLuffy030: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "030",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-030_NhbNY7D.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-030.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op17MonkeyDLuffy030: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  traits: ["East Blue Straw Hat Crew"],
+  traits: ["East Blue", "Straw Hat Crew"],
   attribute: "strike",
   effect:
-    "[On Play] You may rest 1 of your DON!! cards: This Character gains [Rush] during this turn.\n\n[Activate: Main] [Once Per Turn] If you have 5 or less cards in your hand, set up to 1 of your DON!! cards as active.",
+    "[On Play] You may rest 1 of your DON!! cards: This Character gains [Rush] during this turn.\n[Activate: Main] [Once Per Turn] If you have 5 or less cards in your hand, set up to 1 of your DON!! cards as active.",
   effects: {
     effects: [
       {

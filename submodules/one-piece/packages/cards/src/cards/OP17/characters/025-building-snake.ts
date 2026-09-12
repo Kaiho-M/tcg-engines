@@ -13,15 +13,15 @@ export const op17BuildingSnake025: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "025",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-025_Yd4rZca.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-025.png",
     },
     {
-      id: "OP17-025",
-      artId: "OP17-025",
+      id: "OP17-025_p1",
+      artId: "OP17-025_p1",
       setCode: "OP17",
       collectorNumber: "025",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-025_n1mpBVd.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-025_p1.png",
     },
   ],
   cardType: "character",
@@ -36,8 +36,8 @@ export const op17BuildingSnake025: CharacterCard = {
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-025_n1mpBVd.jpg",
-      imageId: "OP17-025",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-025_p1.png",
+      imageId: "OP17-025_p1",
     },
   ],
   effect:

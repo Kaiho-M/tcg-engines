@@ -3,6 +3,6 @@ import type { OPCardI18n } from "@tcg/op-types";
 export const op15eb04Fullbody016I18n: OPCardI18n = {
   en: {
     name: "Fullbody",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-016_DZ6lIoF.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-016.png",
   },
 };

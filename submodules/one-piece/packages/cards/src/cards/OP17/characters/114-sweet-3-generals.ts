@@ -13,7 +13,7 @@ export const op17Sweet3Generals114: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "114",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-114_tWIf95P.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-114.png",
     },
     {
       id: "OP17-114_p1",
@@ -21,7 +21,7 @@ export const op17Sweet3Generals114: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "114",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-114_p1_USqKnVi.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-114_p1.png",
     },
   ],
   cardType: "character",
@@ -31,18 +31,18 @@ export const op17Sweet3Generals114: CharacterCard = {
   cost: 6,
   power: 4000,
   counter: 1000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: ["slash", "strike"],
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-114_p1_USqKnVi.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-114_p1.png",
       imageId: "OP17-114_p1",
     },
   ],
   effect:
-    "[Your Turn] [On Play] You may rest 2 of your DON!! cards: Draw 1 card and add up to 1 card from the top of your deck to the top of your Life cards. Then, give up to 2 of your opponent's Characters -3000 power during this turn.",
+    "[Your Turn] [On Play] You may rest 2 of your DON!! cards: Draw 1 card and add up to 1 card from the top of your deck to the top of your Life cards. Then, give up to 2 of your opponent's Characters −3000 power during this turn.",
   effects: {
     effects: [
       {
@@ -92,6 +92,14 @@ export const op17Sweet3Generals114: CharacterCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
       },
       {
         trigger: "trigger",

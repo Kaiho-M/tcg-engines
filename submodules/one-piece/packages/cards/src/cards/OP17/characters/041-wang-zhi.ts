@@ -13,7 +13,7 @@ export const op17WangZhi041: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "041",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-041_gnId094.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-041.png",
     },
   ],
   cardType: "character",
@@ -25,7 +25,7 @@ export const op17WangZhi041: CharacterCard = {
   traits: ["Rocks Pirates"],
   attribute: "strike",
   effect:
-    "[Blocker]\n\n[On Play] You may trash 1 card from your hand: Place all of your opponent's Characters with a base cost of 1 at the bottom of the owner's deck in any order of the owner's choosing",
+    "[Blocker]\n[On Play] You may trash 1 card from your hand: Place all of your opponent's Characters with a base cost of 1 at the bottom of the owner's deck in any order of the owner's choosing.",
   effects: {
     keywords: ["blocker"],
   },

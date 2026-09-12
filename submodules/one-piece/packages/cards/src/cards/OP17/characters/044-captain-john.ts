@@ -13,7 +13,7 @@ export const op17CaptainJohn044: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "044",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-044_II1at63.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-044.png",
     },
   ],
   cardType: "character",
@@ -25,7 +25,7 @@ export const op17CaptainJohn044: CharacterCard = {
   traits: ["Rocks Pirates"],
   attribute: "special",
   effect:
-    'If your Leader\'s type includes "Rocks Pirates" and this Character is rested, your opponent cannot attack any card other than the Character [Captain John].\n\n[Activate: Main] You may rest this Character: Draw 1 card and trash 1 card from your hand.',
+    'If your Leader\'s type includes "Rocks Pirates" and this Character is rested, your opponent cannot attack any card other than the Character [Captain John].\n[Activate: Main] You may rest this Character: Draw 1 card and trash 1 card from your hand.',
   effects: {
     effects: [
       {

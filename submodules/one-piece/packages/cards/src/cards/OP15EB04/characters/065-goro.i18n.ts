@@ -5,6 +5,6 @@ export const op15eb04Goro065I18n: OPCardI18n = {
     name: "Goro",
     effect:
       "[On Play] Reveal 1 card from the top of your deck. If the revealed card has a cost of 2 or less, add up to 1 DON!! card from your DON!! deck and rest it.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-065_6OiXDZB.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-065.png",
   },
 };

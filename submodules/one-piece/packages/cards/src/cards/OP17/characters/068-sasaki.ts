@@ -13,7 +13,7 @@ export const op17Sasaki068: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "068",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-068_AuVwHbX.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-068.png",
     },
   ],
   cardType: "character",

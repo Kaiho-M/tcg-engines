@@ -13,7 +13,7 @@ export const op17BasilHawkins073: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "073",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-073_4Ll3kY5.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-073.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17BasilHawkins073: CharacterCard = {
   cost: 3,
   power: 1000,
   counter: 2000,
-  traits: ["Animal Kingdom Pirates Hawkins Pirates"],
+  traits: ["Animal Kingdom Pirates", "Hawkins Pirates"],
   attribute: "slash",
   effect:
     "[On Play] You may trash 1 card from your hand: If your Leader has the {Animal Kingdom Pirates} type, add up to 1 DON!! card as active from your DON!! deck.",

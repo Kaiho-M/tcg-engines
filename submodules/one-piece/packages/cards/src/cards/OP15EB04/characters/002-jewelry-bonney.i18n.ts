@@ -5,6 +5,6 @@ export const op15eb04JewelryBonney002I18n: OPCardI18n = {
     name: "Jewelry Bonney",
     effect:
       "[On Play] Look at 4 cards from the top of your deck; reveal up to 1 {Egghead} or {Straw Hat Crew} type card other than [Jewelry Bonney] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-002_RN47PrV.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-002.png",
   },
 };

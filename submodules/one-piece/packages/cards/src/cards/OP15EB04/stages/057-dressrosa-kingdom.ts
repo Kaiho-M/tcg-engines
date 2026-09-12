@@ -13,7 +13,7 @@ export const op15eb04DressrosaKingdom057: StageCard = {
       setCode: "OP15EB04",
       collectorNumber: "057",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-057_GtvhioW.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-057.png",
     },
   ],
   cardType: "stage",

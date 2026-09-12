@@ -13,7 +13,7 @@ export const op15eb04Pincers013: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "013",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-013_zQ7rphD.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-013.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op15eb04Pincers013: CharacterCard = {
   cost: 4,
   power: 2000,
   counter: 2000,
-  traits: ["Animal Alabasta"],
+  traits: ["Animal", "Alabasta"],
   attribute: "strike",
   effect:
-    "If your Leader has 0 power or less, give this card in your hand -2 cost.\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+    "If your Leader has 0 power or less, give this card in your hand −2 cost.\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
   effects: {
     keywords: ["blocker"],
     permanentEffects: [

@@ -13,15 +13,15 @@ export const op17Kyo045: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "045",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-045_jHQDLDk.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-045.png",
     },
     {
-      id: "OP17-045",
-      artId: "OP17-045",
+      id: "OP17-045_p1",
+      artId: "OP17-045_p1",
       setCode: "OP17",
       collectorNumber: "045",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-045_Sfd2qcU.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-045_p1.png",
     },
   ],
   cardType: "character",
@@ -35,12 +35,12 @@ export const op17Kyo045: CharacterCard = {
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-045_Sfd2qcU.jpg",
-      imageId: "OP17-045",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-045_p1.png",
+      imageId: "OP17-045_p1",
     },
   ],
   effect:
-    "If one of your Characters would be removed from the field by your opponent's effect, you may trash 2 cards from your hand instead.\n\n[On Play] Draw 1 card.",
+    "If one of your Characters would be removed from the field by your opponent's effect, you may trash 2 cards from your hand instead.\n[On Play] Draw 1 card.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op16Buggy031: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "031",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-031_fF6LyTW.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-031.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Buggy031: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  traits: ["Buggy Pirates Impel Down"],
+  traits: ["Impel Down", "Buggy Pirates"],
   attribute: "slash",
   effect: "[On K.O.] Play up to 1 [Prisoner of Impel Down] card from your hand.",
   effects: {

@@ -13,7 +13,7 @@ export const op15eb04Conis104: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "104",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-104_0S6SqOF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-104.png",
     },
   ],
   cardType: "character",
@@ -21,9 +21,8 @@ export const op15eb04Conis104: CharacterCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 1,
-  power: 0,
   counter: 2000,
-  trigger: "Draw 2 cards and trash 1 card from your hand.",
+  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
   traits: ["Sky Island"],
   attribute: "wisdom",
   effect:
@@ -48,6 +47,21 @@ export const op15eb04Conis104: CharacterCard = {
             action: "trashFromHand",
             player: "self",
             amount: 2,
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+          {
+            action: "trashFromHand",
+            player: "self",
+            amount: 1,
           },
         ],
       },

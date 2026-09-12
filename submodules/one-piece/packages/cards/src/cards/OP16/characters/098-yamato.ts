@@ -13,7 +13,7 @@ export const op16Yamato098: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "098",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-098_9dRdXcD.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-098.png",
     },
     {
       id: "OP16-098_p1",
@@ -21,7 +21,7 @@ export const op16Yamato098: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "098",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-098_p1_MKyDUP9.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-098_p1.png",
     },
   ],
   cardType: "character",
@@ -35,13 +35,13 @@ export const op16Yamato098: CharacterCard = {
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-098_p1_MKyDUP9.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-098_p1.png",
       imageId: "OP16-098_p1",
     },
   ],
   effect:
-    "[On Play] Draw 1 card and trash 1 card from your hand.\n[Activate:Main] You may trash this Character: Play up to 1 black [Yamato] with a cost of 8 from your trash.",
+    "[On Play] Draw 1 card and trash 1 card from your hand.\n[Activate: Main] You may trash this Character: Play up to 1 black [Yamato] with a cost of 8 from your trash.",
   effects: {
     effects: [
       {

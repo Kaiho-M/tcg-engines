@@ -13,7 +13,7 @@ export const op17Limejuice032: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "032",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-032_5vkDoe8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-032.png",
     },
   ],
   cardType: "character",

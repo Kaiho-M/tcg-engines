@@ -13,15 +13,15 @@ export const op17CharlotteDaifuku107: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "107",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-107_DB546DI.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-107.png",
     },
     {
-      id: "OP17-107",
-      artId: "OP17-107",
+      id: "OP17-107_p1",
+      artId: "OP17-107_p1",
       setCode: "OP17",
       collectorNumber: "107",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-107_CxokFcf.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-107_p1.png",
     },
   ],
   cardType: "character",
@@ -31,19 +31,27 @@ export const op17CharlotteDaifuku107: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 2000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "slash",
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-107_CxokFcf.jpg",
-      imageId: "OP17-107",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-107_p1.png",
+      imageId: "OP17-107_p1",
     },
   ],
-  effect: "[Trigger] Play this card.",
+  effect: "[Trigger] [Trigger] Play this card.",
   effects: {
     effects: [
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
+      },
       {
         trigger: "trigger",
         actions: [

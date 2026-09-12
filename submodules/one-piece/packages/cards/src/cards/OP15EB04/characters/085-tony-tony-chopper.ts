@@ -13,7 +13,7 @@ export const op15eb04TonyTonyChopper085: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "085",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-085_qwwPo2T.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-085.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04TonyTonyChopper085: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Animal Straw Hat Crew"],
+  traits: ["Animal", "Straw Hat Crew"],
   attribute: "strike",
   effect:
     "[On Play] Trash 3 cards from the top of your deck.\n[Activate: Main] You may trash this Character: If your Leader has the {Straw Hat Crew} type, add up to 1 {Straw Hat Crew} type Character card other than [Tony Tony.Chopper] from your trash to your hand.",

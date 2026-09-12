@@ -13,7 +13,7 @@ export const op16EdwardNewgate003: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "003",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-003_e0anQQi.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-003.png",
     },
     {
       id: "OP16-003_p1",
@@ -21,7 +21,7 @@ export const op16EdwardNewgate003: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "003",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-003_p1_cgS2L6U.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-003_p1.png",
     },
   ],
   cardType: "character",
@@ -30,17 +30,17 @@ export const op16EdwardNewgate003: CharacterCard = {
   setId: "OP16",
   cost: 8,
   power: 10000,
-  traits: ["Whitebeard Pirates"],
+  traits: ["The Four Emperors", "Whitebeard Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-003_p1_cgS2L6U.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-003_p1.png",
       imageId: "OP16-003_p1",
     },
   ],
   effect:
-    "[Your Turn] Your Leader gains [Double Attack] and +2000 power. [On Play] You may reveal 2 Character cards with 8000 power from your hand: Give up to 1 of your opponent's Characters -6000 power during this turn.",
+    "[Your Turn] Your Leader gains [Double Attack] and +2000 power.\n[On Play] You may reveal 2 Character cards with 8000 power from your hand: Give up to 1 of your opponent's Characters −6000 power during this turn.",
   effects: {
     effects: [
       {
@@ -78,7 +78,7 @@ export const op16EdwardNewgate003: CharacterCard = {
               player: "self",
               zones: ["leader"],
               count: {
-                amount: 1,
+                amount: "all",
               },
             },
             keyword: "doubleAttack",

@@ -13,7 +13,7 @@ export const op15eb04ItSMyStudentSFarewellIWantItToBeProper009: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "009",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-009_vArQcQJ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-009.png",
     },
   ],
   cardType: "event",
@@ -23,6 +23,6 @@ export const op15eb04ItSMyStudentSFarewellIWantItToBeProper009: EventCard = {
   cost: 0,
   traits: ["Former Roger Pirates"],
   effect:
-    "[Main] You may give 1 active DON!! card to 1 of your [Silvers Rayleigh]: Give up to 1 of your opponent's Characters -2000 power during this turn.[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle.",
+    "[Main] You may give 1 active DON!! card to 1 of your [Silvers Rayleigh]: Give up to 1 of your opponent's Characters −2000 power during this turn.\n[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle.",
   i18n: op15eb04ItSMyStudentSFarewellIWantItToBeProper009I18n,
 };

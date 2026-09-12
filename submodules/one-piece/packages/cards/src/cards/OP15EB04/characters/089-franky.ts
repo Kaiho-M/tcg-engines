@@ -13,7 +13,7 @@ export const op15eb04Franky089: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "089",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-089_Pb9Rr6E.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-089.png",
     },
   ],
   cardType: "character",

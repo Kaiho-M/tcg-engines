@@ -13,7 +13,7 @@ export const op16Namule010: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "010",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-010_Oq0addu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-010.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Namule010: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Fish-Man Whitebeard Pirates"],
+  traits: ["Fish-Man", "Whitebeard Pirates"],
   attribute: "strike",
   effect:
     "[On Play] You may reveal 1 Character card with 8000 power from your hand: K.O. up to 1 of your opponent's Characters with 2000 base power or less.",

@@ -5,6 +5,6 @@ export const op15eb04Nami108I18n: OPCardI18n = {
     name: "Nami",
     effect:
       "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Sky Island} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-108_Sdem4qd.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-108.png",
   },
 };

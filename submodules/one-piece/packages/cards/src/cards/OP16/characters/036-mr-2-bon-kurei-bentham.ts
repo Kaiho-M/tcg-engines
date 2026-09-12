@@ -13,7 +13,7 @@ export const op16Mr2BonKureiBentham036: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "036",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-036_nIfIUSL.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-036.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op16Mr2BonKureiBentham036: CharacterCard = {
   cost: 4,
   power: 1000,
   counter: 1000,
-  traits: ["Impel Down Former Baroque Works"],
+  traits: ["Impel Down", "Former Baroque Works"],
   attribute: "strike",
   effect:
-    "[On Play] Rest up to 1 of your opponent's Characters with a cost of 4 or less.\n\n[When Attacking] This Character's base power becomes the same as your opponent's Leader during this turn.",
+    "[On Play] Rest up to 1 of your opponent's Characters with a cost of 4 or less.\n[When Attacking] This Character's base power becomes the same as your opponent's Leader during this turn.",
   effects: {
     effects: [
       {

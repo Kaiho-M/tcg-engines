@@ -13,7 +13,7 @@ export const op17MissBuckinghamStussy054: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "054",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-054_xFEydIt.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-054.png",
     },
     {
       id: "OP17-054_p1",
@@ -21,7 +21,7 @@ export const op17MissBuckinghamStussy054: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "054",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-054_p1_ybuFotw.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-054_p1.png",
     },
   ],
   cardType: "character",
@@ -34,13 +34,13 @@ export const op17MissBuckinghamStussy054: CharacterCard = {
   attribute: "wisdom",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-054_p1_ybuFotw.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-054_p1.png",
       imageId: "OP17-054_p1",
     },
   ],
   effect:
-    "[On Play] Up to 1 of your opponent's Characters with a base cost of 6 or less cannot attack until the end of your opponent's next End Phase.\n[Activate:Main] You may rest 3 of your DON!! cards and this Character: Up to 1 of your opponent's Characters cannot attack until the end of your opponent's next End Phase.",
+    "[On Play] Up to 1 of your opponent's Characters with a base cost of 6 or less cannot attack until the end of your opponent's next End Phase.\n[Activate: Main] You may rest 3 of your DON!! cards and this Character: Up to 1 of your opponent's Characters cannot attack until the end of your opponent's next End Phase.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op17Marco015: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "015",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-015_gm3pNL8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-015.png",
     },
   ],
   cardType: "character",

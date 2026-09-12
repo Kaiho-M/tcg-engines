@@ -5,6 +5,6 @@ export const op15eb04BartholomewKuma029I18n: OPCardI18n = {
     name: "Bartholomew Kuma",
     effect:
       "[On Play] Up to 1 of your opponent's Characters with a cost of 5 or less cannot be rested until the end of your opponent's next End Phase.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-029_D4Iav9r.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-029.png",
   },
 };

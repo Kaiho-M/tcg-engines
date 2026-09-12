@@ -13,7 +13,7 @@ export const op15eb04Pearl011: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "011",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-011.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-011.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op15eb04Pearl011: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 1000,
-  traits: ["Krieg Pirates East Blue"],
+  traits: ["East Blue", "Krieg Pirates"],
   attribute: "strike",
   effect:
-    "[Opponent's Turn] If your Leader has the {East Blue} type, this Character gains [Blocker] and +2000 power. [On K.O.] If your Leader has the {East Blue} type, K.O. up to 1 of your opponent's Characters with 6000 base power or less.",
+    "[Opponent's Turn] If your Leader has the {East Blue} type, this Character gains [Blocker] and +2000 power.\n[On K.O.] If your Leader has the {East Blue} type, K.O. up to 1 of your opponent's Characters with 6000 base power or less.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op17CharlotteLinlin112: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "112",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-112_agIp1Pt.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-112.png",
     },
     {
       id: "OP17-112_p1",
@@ -21,7 +21,7 @@ export const op17CharlotteLinlin112: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "112",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-112_p1_sluFFqa.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-112_p1.png",
     },
     {
       id: "OP17-112_p2",
@@ -29,7 +29,7 @@ export const op17CharlotteLinlin112: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "112",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-112_p2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-112_p2.png",
     },
   ],
   cardType: "character",
@@ -38,22 +38,22 @@ export const op17CharlotteLinlin112: CharacterCard = {
   setId: "OP17",
   cost: 10,
   power: 12000,
-  traits: ["The Four Emperors Big Mom Pirates"],
+  traits: ["The Four Emperors", "Big Mom Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-112_p1_sluFFqa.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-112_p1.png",
       imageId: "OP17-112_p1",
     },
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-112_p2.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-112_p2.png",
       imageId: "OP17-112_p2",
     },
   ],
   effect:
-    "[Your Turn] The base power of all of your Characters with a [Trigger] and 4000 base power becomes 8000.\n[On Play] Draw 1 card, then choose one:\n•Add up to 1 card from the top of your deck to the top of your Life cards.\n• Add up to 1 card from the top of your opponent's Life cards to the owner's hand.",
+    "[Your Turn] The base power of all of your Characters with a [Trigger] and 4000 base power becomes 8000.\n[On Play] Draw 1 card, then choose one:\n• Add up to 1 card from the top of your deck to the top of your Life cards.\n• Add up to 1 card from the top of your opponent's Life cards to the owner's hand.",
   effects: {
     effects: [
       {

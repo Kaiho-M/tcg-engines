@@ -13,7 +13,7 @@ export const op15eb04CharlotteLola082: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "082",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-082_tXI2sio.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-082.png",
     },
   ],
   cardType: "character",

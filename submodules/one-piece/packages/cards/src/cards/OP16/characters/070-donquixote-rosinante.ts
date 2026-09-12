@@ -13,7 +13,7 @@ export const op16DonquixoteRosinante070: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "070",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-070_gO7qIlN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-070.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16DonquixoteRosinante070: CharacterCard = {
   cost: 2,
   power: 1000,
   counter: 1000,
-  traits: ["Donquixote Pirates Navy"],
+  traits: ["Navy", "Donquixote Pirates"],
   attribute: "special",
   effect:
     "[Blocker]\n[On Play] You may rest 2 of your DON!! cards: If your Leader has the {Navy} type, add up to 1 DON!! card from your DON!! deck and rest it.",

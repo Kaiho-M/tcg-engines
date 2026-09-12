@@ -13,7 +13,7 @@ export const op15eb04BartholomewKuma029: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "029",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-029_D4Iav9r.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-029.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04BartholomewKuma029: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  traits: ["Revolutionary Army The Seven Warlords of the Sea"],
+  traits: ["The Seven Warlords of the Sea", "Revolutionary Army"],
   attribute: "strike",
   effect:
     "[On Play] Up to 1 of your opponent's Characters with a cost of 5 or less cannot be rested until the end of your opponent's next End Phase.",

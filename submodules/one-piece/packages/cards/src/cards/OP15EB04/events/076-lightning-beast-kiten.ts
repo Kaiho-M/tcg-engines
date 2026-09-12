@@ -13,15 +13,7 @@ export const op15eb04LightningBeastKiten076: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "076",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-076_S16zn7C.jpg",
-    },
-    {
-      id: "OP15-076",
-      artId: "OP15-076",
-      setCode: "OP15EB04",
-      collectorNumber: "076",
-      rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-076_SWU4TiL.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-076.png",
     },
   ],
   cardType: "event",
@@ -30,15 +22,8 @@ export const op15eb04LightningBeastKiten076: EventCard = {
   setId: "OP15EB04",
   cost: 0,
   traits: ["Sky Island"],
-  artVariants: [
-    {
-      type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-076_SWU4TiL.jpg",
-      imageId: "OP15-076",
-    },
-  ],
   effect:
-    "[Main] DON!! 1: If your Leader is [Enel], draw 1 card. Then, give up to 1 of your opponent's Characters −1000 power during this turn.\n[Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
+    "[Main] DON!! −1: If your Leader is [Enel], draw 1 card. Then, give up to 1 of your opponent's Characters −1000 power during this turn.\n[Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
   effects: {
     effects: [
       {

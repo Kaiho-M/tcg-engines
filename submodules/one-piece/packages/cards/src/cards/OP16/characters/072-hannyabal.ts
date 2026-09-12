@@ -13,7 +13,7 @@ export const op16Hannyabal072: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "072",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-072_iHlIxeG.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-072.png",
     },
   ],
   cardType: "character",

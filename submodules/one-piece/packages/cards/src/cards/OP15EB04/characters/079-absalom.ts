@@ -13,7 +13,7 @@ export const op15eb04Absalom079: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "079",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-079_Uqa09kR.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-079.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Absalom079: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  trigger: "Activate this card's [On K.O.] effect.",
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
   traits: ["Thriller Bark Pirates"],
   attribute: "ranged",
   effect: "[On K.O.] Add up to 1 {Thriller Bark Pirates} type card from your trash to your hand.",
@@ -49,6 +49,15 @@ export const op15eb04Absalom079: CharacterCard = {
                 },
               ],
             },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

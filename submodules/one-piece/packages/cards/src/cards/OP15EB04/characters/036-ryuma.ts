@@ -13,7 +13,7 @@ export const op15eb04Ryuma036: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "036",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-036_DMwTtiz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-036.png",
     },
   ],
   cardType: "character",
@@ -22,7 +22,7 @@ export const op15eb04Ryuma036: CharacterCard = {
   setId: "OP15EB04",
   cost: 6,
   power: 8000,
-  traits: ["Land of Wano Thriller Bark Pirates"],
+  traits: ["Land of Wano", "Thriller Bark Pirates"],
   attribute: "slash",
   effect:
     "[On Play]/[When Attacking] K.O. up to 1 of your opponent's rested Characters with a cost of 4 or less.",

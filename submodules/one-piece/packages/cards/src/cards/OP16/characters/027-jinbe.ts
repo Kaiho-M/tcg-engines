@@ -13,7 +13,7 @@ export const op16Jinbe027: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "027",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-027_FoA9ykm.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-027.png",
     },
   ],
   cardType: "character",
@@ -23,9 +23,9 @@ export const op16Jinbe027: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 2000,
-  traits: ["Fish-Man The Sun Pirates Impel Down"],
+  traits: ["Fish-Man", "Impel Down", "The Sun Pirates"],
   attribute: "strike",
-  effect: "[DON!! X1] This Character gains +2000 power.",
+  effect: "[DON!! x1] This Character gains +2000 power.",
   effects: {
     permanentEffects: [
       {

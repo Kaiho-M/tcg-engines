@@ -13,7 +13,7 @@ export const op15eb04BarrierBulls019: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "019",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-019_vyb0qon.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-019.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,10 @@ export const op15eb04BarrierBulls019: EventCard = {
   rarity: "UC",
   setId: "OP15EB04",
   cost: 3,
-  traits: ["Dressrosa Barto Club"],
+  trigger: "[Trigger] Give up to 1 of your opponent's Characters −4000 power during this turn.",
+  traits: ["Dressrosa", "Barto Club"],
   effect:
-    "[Main] Draw 1 card and your Leader gains +1000 power until the end of your opponent's next End Phase.[Trigger] Give up to 1 of your opponent's Characters -4000 power during this turn.",
+    "[Main] Draw 1 card and your Leader gains +1000 power until the end of your opponent's next End Phase.",
   effects: {
     effects: [
       {
@@ -45,6 +46,24 @@ export const op15eb04BarrierBulls019: EventCard = {
             },
             value: 1000,
             duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: -4000,
+            duration: "thisTurn",
           },
         ],
       },

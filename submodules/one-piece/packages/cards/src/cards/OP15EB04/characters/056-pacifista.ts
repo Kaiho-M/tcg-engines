@@ -13,7 +13,7 @@ export const op15eb04Pacifista056: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "056",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-056_pwzR2Ns.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-056.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Pacifista056: CharacterCard = {
   cost: 1,
   power: 1000,
   counter: 2000,
-  traits: ["Biological Weapon Navy Egghead"],
+  traits: ["Biological Weapon", "Egghead", "Navy"],
   attribute: "special",
   effect:
     "If you have [Jewelry Bonney] and you have 0 Life cards, this Character gains [Blocker].\n(After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",

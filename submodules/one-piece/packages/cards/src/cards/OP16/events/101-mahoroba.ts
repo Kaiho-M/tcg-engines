@@ -13,7 +13,7 @@ export const op16Mahoroba101: EventCard = {
       setCode: "OP16",
       collectorNumber: "101",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-101_YfEpHnx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-101.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op16Mahoroba101: EventCard = {
   rarity: "C",
   setId: "OP16",
   cost: 2,
-  trigger: "Add up to 1 [Yamato] from your trash to your hand.",
+  trigger: "[Trigger] Add up to 1 [Yamato] from your trash to your hand.",
   traits: ["Land of Wano"],
   effect:
     "[Main] Up to 1 of your Leader or Character cards gains +3000 power during this turn. Then, if you have 10 or more cards in your trash, K.O. up to 1 of your opponent's Characters with a cost of 2 or less.",
@@ -66,6 +66,28 @@ export const op16Mahoroba101: EventCard = {
               zone: "trash",
               comparison: "gte",
               value: 10,
+            },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "returnToHand",
+            target: {
+              player: "self",
+              zones: ["trash"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Yamato",
+                },
+              ],
             },
           },
         ],

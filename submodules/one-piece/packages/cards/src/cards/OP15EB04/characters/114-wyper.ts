@@ -13,7 +13,7 @@ export const op15eb04Wyper114: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "114",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-114_W7W9iZq.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-114.png",
     },
     {
       id: "OP15-114_p1",
@@ -21,7 +21,7 @@ export const op15eb04Wyper114: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "114",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-114_p1_pjA9nX3.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-114_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Wyper114: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["Sky Island Shandian Warrior"],
+  traits: ["Sky Island", "Shandian Warrior"],
   attribute: "ranged",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-114_p1_pjA9nX3.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-114_p1.png",
       imageId: "OP15-114_p1",
     },
   ],

@@ -13,7 +13,7 @@ export const op15eb04Chinjao048: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "048",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-048_KoKrpp5.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-048.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Chinjao048: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  traits: ["Happosui Army Dressrosa"],
+  traits: ["Dressrosa", "Happosui Army"],
   attribute: "strike",
   effect:
     "[On Play] You may trash 1 Event from your hand: Draw 2 cards.\n[Opponent's Turn] [On K.O.] Your opponent places 1 card from their hand at the bottom of their deck.",

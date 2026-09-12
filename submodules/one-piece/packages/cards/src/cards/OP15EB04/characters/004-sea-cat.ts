@@ -13,7 +13,7 @@ export const op15eb04SeaCat004: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "004",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-004_CzUhIqz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-004.png",
     },
   ],
   cardType: "character",
@@ -21,12 +21,11 @@ export const op15eb04SeaCat004: CharacterCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 1,
-  power: 0,
   counter: 1000,
-  traits: ["Animal Alabasta"],
+  traits: ["Animal", "Alabasta"],
   attribute: "wisdom",
   effect:
-    "[On Play] If your Leader has 0 power or less, give up to 1 of your opponent's Characters -3000 power during this turn.",
+    "[On Play] If your Leader has 0 power or less, give up to 1 of your opponent's Characters −3000 power during this turn.",
   effects: {
     effects: [
       {

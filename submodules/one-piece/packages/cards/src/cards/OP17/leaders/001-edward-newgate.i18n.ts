@@ -5,6 +5,6 @@ export const op17EdwardNewgate001I18n: OPCardI18n = {
     name: "Edward.Newgate",
     effect:
       "[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card from your hand: Up to 1 of your Leader or Characters gains +4000 power during this battle.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-001_95Y4V0x.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-001.png",
   },
 };

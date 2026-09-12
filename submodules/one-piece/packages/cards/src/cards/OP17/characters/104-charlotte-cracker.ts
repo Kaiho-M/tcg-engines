@@ -13,7 +13,7 @@ export const op17CharlotteCracker104: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "104",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-104_ZiK1tgx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-104.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,11 @@ export const op17CharlotteCracker104: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "slash",
   effect:
-    "[Your Turn] [On Play] You may rest 2 of your DON!! cards: If your Leader has the {Big Mom Pirates} type, add up to 1 card from the top of your deck to the top of your Life Cards.\nTrigger Play this card.",
+    "[Your Turn] [On Play] You may rest 2 of your DON!! cards: If your Leader has the {Big Mom Pirates} type, add up to 1 card from the top of your deck to the top of your Life cards.",
   effects: {
     effects: [
       {
@@ -63,6 +64,22 @@ export const op17CharlotteCracker104: CharacterCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
       },
     ],
   },

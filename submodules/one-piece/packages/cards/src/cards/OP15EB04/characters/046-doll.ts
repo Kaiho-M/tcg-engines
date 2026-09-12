@@ -13,7 +13,7 @@ export const op15eb04Doll046: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "046",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-046_OkJLsc9.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-046.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Doll046: CharacterCard = {
   cost: 2,
   power: 1000,
   counter: 1000,
-  traits: ["Navy Egghead"],
+  traits: ["Egghead", "Navy"],
   attribute: "strike",
   effect:
     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[Opponent's Turn] All of your {Navy} type Characters gain +2 cost.",

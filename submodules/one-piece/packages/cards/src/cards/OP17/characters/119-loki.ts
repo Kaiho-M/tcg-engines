@@ -13,7 +13,7 @@ export const op17Loki119: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "119",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-119_UhxVfTG.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-119.png",
     },
     {
       id: "OP17-119_p1",
@@ -21,7 +21,7 @@ export const op17Loki119: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "119",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-119_p1_leUYdJN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-119_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op17Loki119: CharacterCard = {
   setId: "OP17",
   cost: 6,
   power: 8000,
-  traits: ["Giant Elbaph"],
+  traits: ["Giant", "Elbaph"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-119_p1_leUYdJN.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-119_p1.png",
       imageId: "OP17-119_p1",
     },
   ],

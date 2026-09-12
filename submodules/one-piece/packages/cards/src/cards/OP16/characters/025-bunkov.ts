@@ -13,7 +13,7 @@ export const op16Bunkov025: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "025",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-025_U0iswOY.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-025.png",
     },
   ],
   cardType: "character",

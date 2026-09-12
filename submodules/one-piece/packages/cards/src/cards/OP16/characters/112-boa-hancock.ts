@@ -13,7 +13,7 @@ export const op16BoaHancock112: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "112",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-112_aHxLsc3.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-112.png",
     },
   ],
   cardType: "character",

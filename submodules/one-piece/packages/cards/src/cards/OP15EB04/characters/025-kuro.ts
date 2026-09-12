@@ -13,7 +13,7 @@ export const op15eb04Kuro025: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "025",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-025_ERyGR2X.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-025.png",
     },
     {
       id: "OP15-025_p1",
@@ -21,7 +21,7 @@ export const op15eb04Kuro025: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "025",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-025_p1_VNRkO3g.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-025_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Kuro025: CharacterCard = {
   cost: 7,
   power: 7000,
   counter: 1000,
-  traits: ["East Blue Black Cat Pirates"],
+  traits: ["East Blue", "Black Cat Pirates"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-025_p1_VNRkO3g.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-025_p1.png",
       imageId: "OP15-025_p1",
     },
   ],

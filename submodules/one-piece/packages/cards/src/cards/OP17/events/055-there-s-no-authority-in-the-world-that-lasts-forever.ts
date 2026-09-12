@@ -13,7 +13,7 @@ export const op17ThereSNoAuthorityInTheWorldThatLastsForever055: EventCard = {
       setCode: "OP17",
       collectorNumber: "055",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-055_gAXVxvh.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-055.png",
     },
   ],
   cardType: "event",
@@ -23,6 +23,6 @@ export const op17ThereSNoAuthorityInTheWorldThatLastsForever055: EventCard = {
   cost: 0,
   traits: ["Rocks Pirates"],
   effect:
-    '[Main] You may rest 1 of your DON!! cards: Up to 1 of your [Rocks.D.Xebec] gains [Unblockable] during this turn.\n\n[Counter] Up to 1 of your Leader with a type including "Rocks Pirates" or up to 1 of your Character with a type including "Rocks Pirates" gains +2000 power during this battle.',
+    '[Main] You may rest 1 of your DON!! cards: Up to 1 of your [Rocks.D.Xebec] gains [Unblockable] during this turn.\n[Counter] Up to 1 of your Leader with a type including "Rocks Pirates" or up to 1 of your Character with a type including "Rocks Pirates" gains +2000 power during this battle.',
   i18n: op17ThereSNoAuthorityInTheWorldThatLastsForever055I18n,
 };

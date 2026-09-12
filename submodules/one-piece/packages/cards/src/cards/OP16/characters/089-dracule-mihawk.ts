@@ -13,7 +13,7 @@ export const op16DraculeMihawk089: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "089",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-089_YGozAl4.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-089.png",
     },
   ],
   cardType: "character",

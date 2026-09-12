@@ -13,7 +13,7 @@ export const op15eb04KellyFunk043: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "043",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-043_OOqOx5V.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-043.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04KellyFunk043: CharacterCard = {
   cost: 3,
   power: 3000,
   counter: 1000,
-  traits: ["Dressrosa Mogaro Kingdom"],
+  traits: ["Dressrosa", "Mogaro Kingdom"],
   attribute: "strike",
   effect: "[On Play] Play up to 1 [Bobby Funk] from your hand.",
   effects: {

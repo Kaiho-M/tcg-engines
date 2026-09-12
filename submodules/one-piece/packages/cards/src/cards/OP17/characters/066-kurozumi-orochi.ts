@@ -13,7 +13,7 @@ export const op17KurozumiOrochi066: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "066",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-066_2GBugGE.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-066.png",
     },
   ],
   cardType: "character",
@@ -21,12 +21,11 @@ export const op17KurozumiOrochi066: CharacterCard = {
   rarity: "C",
   setId: "OP17",
   cost: 1,
-  power: 0,
   counter: 1000,
-  traits: ["Land of Wano Kurozumi Clan"],
+  traits: ["Land of Wano", "Kurozumi Clan"],
   attribute: "wisdom",
   effect:
-    "[On Play] DON!! 1: If you have a Character with a cost of 10 or more, draw 2 cards and trash 1 card from your hand.",
+    "[On Play] DON!! −1: If you have a Character with a cost of 10 or more, draw 2 cards and trash 1 card from your hand.",
   effects: {
     effects: [
       {

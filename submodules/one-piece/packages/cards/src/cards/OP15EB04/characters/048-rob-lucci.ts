@@ -13,7 +13,7 @@ export const op15eb04RobLucci048: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "048",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-048_kr3745G.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-048.png",
     },
     {
       id: "EB04-048_p1",
@@ -21,7 +21,7 @@ export const op15eb04RobLucci048: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "048",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-048_p1_f9OEOVs.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-048_p1.png",
     },
   ],
   cardType: "character",
@@ -30,17 +30,17 @@ export const op15eb04RobLucci048: CharacterCard = {
   setId: "OP15EB04",
   cost: 4,
   power: 6000,
-  traits: ["CP0 Egghead"],
+  traits: ["Egghead", "CP0"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-048_p1_f9OEOVs.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-048_p1.png",
       imageId: "EB04-048_p1",
     },
   ],
   effect:
-    'If your Leader\'s type includes "CP", this Character gains +1000 power and -2 cost for every 5 cards in your trash.\n[On Play] You may trash 1 of your Characters: Draw 1 card.',
+    'If your Leader\'s type includes "CP", this Character gains +1000 power and +2 cost for every 5 cards in your trash.\n[On Play] You may trash 1 of your Characters: Draw 1 card.',
   effects: {
     effects: [
       {

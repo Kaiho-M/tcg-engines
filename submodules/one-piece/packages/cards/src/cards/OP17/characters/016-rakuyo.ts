@@ -13,7 +13,7 @@ export const op17Rakuyo016: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "016",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-016_hB49Y7j.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-016.png",
     },
   ],
   cardType: "character",

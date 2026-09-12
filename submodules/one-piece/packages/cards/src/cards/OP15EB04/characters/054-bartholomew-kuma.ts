@@ -13,7 +13,7 @@ export const op15eb04BartholomewKuma054: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "054",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-054_wmLW4Xl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-054.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04BartholomewKuma054: CharacterCard = {
   cost: 7,
   power: 7000,
   counter: 1000,
-  traits: ["Revolutionary Army Egghead"],
+  traits: ["Egghead", "Revolutionary Army"],
   attribute: "strike",
   effect:
     "[On Play] If you have 2 or less Life cards, add up to 1 card from the top of your deck to the top of your Life cards.\n[On K.O.] Add up to 1 card from the top of your opponent's Life cards to the owner's hand.",

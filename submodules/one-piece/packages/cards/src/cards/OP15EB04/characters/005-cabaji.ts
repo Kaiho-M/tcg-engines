@@ -13,7 +13,7 @@ export const op15eb04Cabaji005: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "005",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-005_ycH14Fr.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-005.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Cabaji005: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  traits: ["Buggy Pirates East Blue"],
+  traits: ["East Blue", "Buggy Pirates"],
   attribute: "slash",
   effect:
     "[When Attacking] If your opponent has any DON!! cards given, this Character gains +2000 power during this turn.",

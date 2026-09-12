@@ -13,7 +13,7 @@ export const op17MonkeyDLuffy093: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "093",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-093_T4GXCoG.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-093.png",
     },
     {
       id: "OP17-093_p1",
@@ -21,7 +21,7 @@ export const op17MonkeyDLuffy093: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "093",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-093_p1_A6JR5AM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-093_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op17MonkeyDLuffy093: CharacterCard = {
   setId: "OP17",
   cost: 8,
   power: 8000,
-  traits: ["Straw Hat Crew The Four Emperors Elbaph"],
+  traits: ["Elbaph", "The Four Emperors", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-093_p1_A6JR5AM.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-093_p1.png",
       imageId: "OP17-093_p1",
     },
   ],

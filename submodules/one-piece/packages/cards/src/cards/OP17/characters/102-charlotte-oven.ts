@@ -13,7 +13,7 @@ export const op17CharlotteOven102: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "102",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-102_CGNBSdn.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-102.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17CharlotteOven102: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 1000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -58,6 +58,14 @@ export const op17CharlotteOven102: CharacterCard = {
                 value: "character",
               },
             ],
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
           },
         ],
       },

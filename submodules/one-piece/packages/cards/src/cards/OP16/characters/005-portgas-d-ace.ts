@@ -12,13 +12,13 @@ export const op16PortgasDAce005: CharacterCard = {
       artId: "ST15-005_p5",
       setCode: "OP16",
       collectorNumber: "005",
-      rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/ST15-005_p5_aT6zwMj.jpg",
+      rarity: "SP",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/ST15-005_p5.png",
     },
   ],
   cardType: "character",
   color: ["red"],
-  rarity: "SR",
+  rarity: "SP",
   setId: "OP16",
   cost: 5,
   power: 6000,
@@ -26,12 +26,41 @@ export const op16PortgasDAce005: CharacterCard = {
   traits: ["Whitebeard Pirates"],
   attribute: "special",
   effect:
-    "If your Leader's type includes \"Whitebeard Pirates\", this Character gains [Rush](This card can attack on the turn in which it is played.)[Once Per Turn] If this Character would be removed from the field by your opponent's effect, you may give this Character -2000 power during this turn instead.",
+    "If your Leader's type includes \"Whitebeard Pirates\", this Character gains [Rush].\n(This card can attack on the turn in which it is played.)\n[Once Per Turn] If this Character would be removed from the field by your opponent's effect, you may give this Character −2000 power during this turn instead.",
   effects: {
+    permanentEffects: [
+      {
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "Whitebeard Pirates",
+            match: "includes",
+          },
+        ],
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            keyword: "rush",
+            duration: "permanent",
+          },
+        ],
+      },
+    ],
     replacementEffects: [
       {
         replacedEvent: "removeFromField",
         source: "opponentEffect",
+        eventFilter: {
+          targetSelf: true,
+        },
         replacementAction: {
           action: "modifyPower",
           target: {
@@ -45,6 +74,7 @@ export const op16PortgasDAce005: CharacterCard = {
           value: -2000,
           duration: "thisTurn",
         },
+        oncePerTurn: true,
       },
     ],
   },

@@ -5,6 +5,6 @@ export const op16Antlerkov029I18n: OPCardI18n = {
     name: "Antlerkov",
     effect:
       "[When Attacking] If you have [Bunkov], play up to 1 Character card with a cost of 2 or less from your hand.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-029_zf65lRM.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-029.png",
   },
 };

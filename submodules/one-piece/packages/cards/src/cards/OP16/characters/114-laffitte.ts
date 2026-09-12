@@ -13,7 +13,7 @@ export const op16Laffitte114: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "114",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-114_L7LmU31.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-114.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Laffitte114: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  trigger: "Activate this card's [On K.O.] effect.",
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
   traits: ["Blackbeard Pirates"],
   attribute: "strike",
   effect: "[On K.O.] K.O. up to 1 of your opponent's Characters with a cost of 4 or less.",
@@ -49,6 +49,15 @@ export const op16Laffitte114: CharacterCard = {
                 },
               ],
             },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

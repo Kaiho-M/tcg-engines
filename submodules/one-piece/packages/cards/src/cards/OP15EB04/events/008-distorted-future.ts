@@ -13,7 +13,7 @@ export const op15eb04DistortedFuture008: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "008",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-008_1Lv4qfb.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-008.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op15eb04DistortedFuture008: EventCard = {
   rarity: "R",
   setId: "OP15EB04",
   cost: 1,
-  traits: ["Bonney Pirates Egghead"],
+  traits: ["Egghead", "Bonney Pirates"],
   effect:
-    "[Main] If you have 2 or less Life cards, give up to 1 of your opponent's Characters -3000 power during this turn.[Counter] Your Leader gains +3000 power during this battle.",
+    "[Main] If you have 2 or less Life cards, give up to 1 of your opponent's Characters −3000 power during this turn.\n[Counter] Your Leader gains +3000 power during this battle.",
   effects: {
     effects: [
       {

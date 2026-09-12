@@ -13,7 +13,7 @@ export const op15eb04NicoRobin087: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "087",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-087_1iKSKyD.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-087.png",
     },
   ],
   cardType: "character",

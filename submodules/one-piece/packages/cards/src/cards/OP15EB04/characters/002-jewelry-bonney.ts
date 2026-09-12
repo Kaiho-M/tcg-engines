@@ -13,7 +13,7 @@ export const op15eb04JewelryBonney002: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "002",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-002_RN47PrV.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-002.png",
     },
     {
       id: "EB04-002_p1",
@@ -21,7 +21,7 @@ export const op15eb04JewelryBonney002: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "002",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-002_p1_8j7Zw4U.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-002_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04JewelryBonney002: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Bonney Pirates Egghead"],
+  traits: ["Egghead", "Bonney Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-002_p1_8j7Zw4U.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-002_p1.png",
       imageId: "EB04-002_p1",
     },
   ],

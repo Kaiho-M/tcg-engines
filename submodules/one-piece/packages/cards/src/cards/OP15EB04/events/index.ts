@@ -2,7 +2,7 @@ export { op15eb04DistortedFuture008 } from "./008-distorted-future.ts";
 export { op15eb04ItSMyStudentSFarewellIWantItToBeProper009 } from "./009-it-s-my-student-s-farewell-i-want-it-to-be-proper.ts";
 export { op15eb04FingerPistolYellowLotus049 } from "./049-finger-pistol-yellow-lotus.ts";
 export { op15eb04ILlWhipYouIntoShape050 } from "./050-i-ll-whip-you-into-shape.ts";
-export { op15eb04BlackRopeDragonTwiste059 } from "./059-black-rope-dragon-twiste.ts";
+export { op15eb04BlackRopeDragonTwister059 } from "./059-black-rope-dragon-twister.ts";
 export { op15eb04GumGumHawkGatling060 } from "./060-gum-gum-hawk-gatling.ts";
 export { op15eb04BarrierBulls019 } from "./019-barrier-bulls.ts";
 export { op15eb04FireFist020 } from "./020-fire-fist.ts";

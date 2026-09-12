@@ -13,7 +13,7 @@ export const op17Kaido058: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "058",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-058_k1KlLgx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-058.png",
     },
     {
       id: "OP17-058_p1",
@@ -21,7 +21,7 @@ export const op17Kaido058: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "058",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-058_p1_k8aXX6o.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-058_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,17 +30,17 @@ export const op17Kaido058: LeaderCard = {
   setId: "OP17",
   power: 5000,
   life: 5,
-  traits: ["Animal Kingdom Pirates The Four Emperors"],
+  traits: ["The Four Emperors", "Animal Kingdom Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-058_p1_k8aXX6o.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-058_p1.png",
       imageId: "OP17-058_p1",
     },
   ],
   effect:
-    "[When Attacking]/ [On Your Opponent's Attack] [Once Per Turn] DON!! -1: Give up to 1 of your opponent's Characters -2000 power during this turn.",
+    "[When Attacking]/[On Your Opponent's Attack] [Once Per Turn] DON!! −1: Give up to 1 of your opponent's Characters −2000 power during this turn.",
   effects: {
     effects: [
       {
@@ -69,7 +69,7 @@ export const op17Kaido058: LeaderCard = {
         optional: true,
         oncePerTurn: true,
         oncePerTurnKey:
-          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters -2000 power during this turn.",
+          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters −2000 power during this turn.",
       },
       {
         trigger: "onOpponentAttack",
@@ -97,7 +97,7 @@ export const op17Kaido058: LeaderCard = {
         optional: true,
         oncePerTurn: true,
         oncePerTurnKey:
-          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters -2000 power during this turn.",
+          "shared:whenAttacking|onOpponentAttack:give up to 1 of your opponent's characters −2000 power during this turn.",
       },
     ],
   },

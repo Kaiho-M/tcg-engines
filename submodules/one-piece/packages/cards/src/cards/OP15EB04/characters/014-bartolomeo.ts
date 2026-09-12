@@ -13,15 +13,7 @@ export const op15eb04Bartolomeo014: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "014",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-014_fA1RUHw.jpg",
-    },
-    {
-      id: "OP15-014",
-      artId: "OP15-014",
-      setCode: "OP15EB04",
-      collectorNumber: "014",
-      rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-014_hYyADKn.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-014.png",
     },
   ],
   cardType: "character",
@@ -30,15 +22,8 @@ export const op15eb04Bartolomeo014: CharacterCard = {
   setId: "OP15EB04",
   cost: 4,
   power: 6000,
-  traits: ["Dressrosa Barto Club"],
+  traits: ["Dressrosa", "Barto Club"],
   attribute: "special",
-  artVariants: [
-    {
-      type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-014_hYyADKn.jpg",
-      imageId: "OP15-014",
-    },
-  ],
   effect:
     "If this Character would be K.O.'d, you may trash 1 Event from your hand instead.\n[On Play] Activate up to 1 {Dressrosa} type Event with a base cost of 3 or less from your hand.",
   effects: {

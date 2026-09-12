@@ -13,7 +13,7 @@ export const op15eb04Yama073: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "073",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-073_A4zP3BK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-073.png",
     },
   ],
   cardType: "character",

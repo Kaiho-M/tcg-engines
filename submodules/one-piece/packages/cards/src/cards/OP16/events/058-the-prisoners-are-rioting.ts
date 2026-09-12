@@ -13,7 +13,7 @@ export const op16ThePrisonersAreRioting058: EventCard = {
       setCode: "OP16",
       collectorNumber: "058",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-058_vdZ9ufh.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-058.png",
     },
   ],
   cardType: "event",

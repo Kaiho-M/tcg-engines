@@ -13,7 +13,7 @@ export const op15eb04MonkeyDLuffy119: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "119",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-119_Bs2LYY4.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-119.png",
     },
     {
       id: "OP15-119_p1",
@@ -21,7 +21,7 @@ export const op15eb04MonkeyDLuffy119: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "119",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-119_p1_2faHRBb.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-119_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op15eb04MonkeyDLuffy119: CharacterCard = {
   setId: "OP15EB04",
   cost: 5,
   power: 7000,
-  traits: ["Straw Hat Crew Sky Island"],
+  traits: ["Sky Island", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-119_p1_2faHRBb.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-119_p1.png",
       imageId: "OP15-119_p1",
     },
   ],

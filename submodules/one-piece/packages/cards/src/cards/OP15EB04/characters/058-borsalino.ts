@@ -13,7 +13,7 @@ export const op15eb04Borsalino058: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "058",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-058_LxNnvX2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-058.png",
     },
     {
       id: "EB04-058_p1",
@@ -21,7 +21,7 @@ export const op15eb04Borsalino058: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "058",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-058_p1_a850zQT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-058_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Borsalino058: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["Navy Egghead"],
+  traits: ["Egghead", "Navy"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-058_p1_a850zQT.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-058_p1.png",
       imageId: "EB04-058_p1",
     },
   ],

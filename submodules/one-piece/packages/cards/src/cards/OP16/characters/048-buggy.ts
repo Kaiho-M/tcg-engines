@@ -13,7 +13,7 @@ export const op16Buggy048: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "048",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-048_a9oGJRL.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-048.png",
     },
     {
       id: "OP16-048_p1",
@@ -21,7 +21,7 @@ export const op16Buggy048: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "048",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-048_p1_XrgdosL.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-048_p1.png",
     },
   ],
   cardType: "character",
@@ -31,17 +31,17 @@ export const op16Buggy048: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["Buggy Pirates Impel Down"],
+  traits: ["Impel Down", "Buggy Pirates"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-048_p1_XrgdosL.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-048_p1.png",
       imageId: "OP16-048_p1",
     },
   ],
   effect:
-    "[On Play] If your Leader has the {Impel Down} type, draw 1 card and play up to 1 [Prisoner of Impel Down] card from your hand. [Once Per Turn] This effect can be activated when your opponent attacks. Up to 1 of your [Prisoner of Impel Down] cards gains [Blocker] during this turn.",
+    "[On Play] If your Leader has the {Impel Down} type, draw 1 card and play up to 1 [Prisoner of Impel Down] card from your hand.\n[Once Per Turn] This effect can be activated when your opponent attacks. Up to 1 of your [Prisoner of Impel Down] cards gains [Blocker] during this turn.",
   effects: {
     effects: [
       {

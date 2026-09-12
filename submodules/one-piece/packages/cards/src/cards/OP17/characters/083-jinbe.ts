@@ -13,7 +13,7 @@ export const op17Jinbe083: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "083",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-083_8PyfqVM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-083.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Jinbe083: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Fish-Man Straw Hat Crew Elbaph"],
+  traits: ["Fish-Man", "Elbaph", "Straw Hat Crew"],
   attribute: "strike",
   effect:
     "If there is a Character with a cost of 12 or more, this Character gains [Blocker] and +3000 power.\n(After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",

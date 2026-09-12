@@ -13,15 +13,7 @@ export const op15eb04Nami108: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "108",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-108_Sdem4qd.jpg",
-    },
-    {
-      id: "OP15-108",
-      artId: "OP15-108",
-      setCode: "OP15EB04",
-      collectorNumber: "108",
-      rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-108_3uuMAJI.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-108.png",
     },
   ],
   cardType: "character",
@@ -31,15 +23,8 @@ export const op15eb04Nami108: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Straw Hat Crew Sky Island"],
+  traits: ["Sky Island", "Straw Hat Crew"],
   attribute: "special",
-  artVariants: [
-    {
-      type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-108_3uuMAJI.jpg",
-      imageId: "OP15-108",
-    },
-  ],
   effect:
     "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Sky Island} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
   effects: {

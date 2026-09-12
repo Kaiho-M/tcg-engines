@@ -12,17 +12,73 @@ export const op17Buggy084: CharacterCard = {
       artId: "P-084_p1",
       setCode: "OP17",
       collectorNumber: "084",
-      rarity: "P",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/P-084_p1.jpg",
+      rarity: "SP",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/P-084_p1.png",
     },
   ],
   cardType: "character",
   color: ["blue"],
-  rarity: "P",
+  rarity: "SP",
   setId: "OP17",
   cost: 7,
   power: 8000,
+  traits: ["The Four Emperors", "Cross Guild"],
+  attribute: "slash",
   effect:
-    'This Character cannot attack.If your Leader is [Buggy], all Characters with a cost of 3 or 4 cannot attack.[On Play] Play up to 1 "Cross Guild" type Character card with a cost of 6 or less from your hand.DISCLAIMER: This card is a reprint of the pre-existing card in the OP09 set. The main difference between this card and the original print is the exclusion of "NOT FOR SALE" on the right side, by the copyright information, and the missing gold winner stamp.',
+    "This Character cannot attack.\nIf your Leader is [Buggy], all Characters with a cost of 3 or 4 cannot attack.\n[On Play] Play up to 1 {Cross Guild} type Character card with a cost of 6 or less from your hand.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "play",
+            source: {
+              player: "self",
+              zone: "hand",
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            filters: [
+              {
+                filter: "cost",
+                comparison: "lte",
+                value: 6,
+              },
+              {
+                filter: "trait",
+                value: "Cross Guild",
+                match: "includes",
+              },
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    permanentEffects: [
+      {
+        actions: [
+          {
+            action: "cannotAttack",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            duration: "permanent",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op17Buggy084I18n,
 };

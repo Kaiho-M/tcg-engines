@@ -13,7 +13,7 @@ export const op15eb04Hotori072: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "072",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-072_XRudesu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-072.png",
     },
   ],
   cardType: "character",
@@ -26,6 +26,6 @@ export const op15eb04Hotori072: CharacterCard = {
   traits: ["Sky Island"],
   attribute: "special",
   effect:
-    "[Activate: Main] DON!! 2, You may rest this Character: If you have [Kotori] and [Satori], give up to 1 of your opponent's Characters −3000 power during this turn.",
+    "[Activate: Main] DON!! −2, You may rest this Character: If you have [Kotori] and [Satori], give up to 1 of your opponent's Characters −3000 power during this turn.",
   i18n: op15eb04Hotori072I18n,
 };

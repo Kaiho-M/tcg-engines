@@ -13,15 +13,7 @@ export const op17RocksDXebec118: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-118_IQdoNTD.jpg",
-    },
-    {
-      id: "OP17-118_p2",
-      artId: "OP17-118_p2",
-      setCode: "OP17",
-      collectorNumber: "118",
-      rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-118_p2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-118.png",
     },
     {
       id: "OP17-118_p1",
@@ -29,7 +21,15 @@ export const op17RocksDXebec118: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-118_p1_cGbVBNy.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-118_p1.png",
+    },
+    {
+      id: "OP17-118_p2",
+      artId: "OP17-118_p2",
+      setCode: "OP17",
+      collectorNumber: "118",
+      rarity: "SEC",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-118_p2.png",
     },
   ],
   cardType: "character",
@@ -43,13 +43,13 @@ export const op17RocksDXebec118: CharacterCard = {
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-118_p2.jpg",
-      imageId: "OP17-118_p2",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-118_p1.png",
+      imageId: "OP17-118_p1",
     },
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-118_p1_cGbVBNy.jpg",
-      imageId: "OP17-118_p1",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-118_p2.png",
+      imageId: "OP17-118_p2",
     },
   ],
   effect:

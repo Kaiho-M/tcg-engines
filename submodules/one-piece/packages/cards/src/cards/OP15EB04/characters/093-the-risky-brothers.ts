@@ -13,7 +13,7 @@ export const op15eb04TheRiskyBrothers093: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "093",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-093_XWHW3gZ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-093.png",
     },
   ],
   cardType: "character",
@@ -26,6 +26,6 @@ export const op15eb04TheRiskyBrothers093: CharacterCard = {
   traits: ["Rolling Pirates"],
   attribute: "slash",
   effect:
-    '[Activate: Main] You may trash this Character: If you have 15 or more cards in your trash, up to 1 of your [Monkey.D.Luffy] Characters gains [Rush: Character] and the "Slash" attribute during this turn.',
+    "[Activate: Main] You may trash this Character: If you have 15 or more cards in your trash, up to 1 of your [Monkey.D.Luffy] Characters gains [Rush: Character] and the <Slash> attribute during this turn.",
   i18n: op15eb04TheRiskyBrothers093I18n,
 };

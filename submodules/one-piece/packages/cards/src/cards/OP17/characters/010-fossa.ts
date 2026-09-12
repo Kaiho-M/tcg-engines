@@ -13,7 +13,7 @@ export const op17Fossa010: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "010",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-010_NccB7HH.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-010.png",
     },
   ],
   cardType: "character",

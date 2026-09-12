@@ -13,7 +13,7 @@ export const op17Ganzui043: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "043",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-043.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-043.png",
     },
   ],
   cardType: "character",
@@ -25,7 +25,7 @@ export const op17Ganzui043: CharacterCard = {
   traits: ["Rocks Pirates"],
   attribute: "special",
   effect:
-    "If this Character would be removed from the field, you may trash 2 cards from your hand instead.  [On Play] Your Leader's base power becomes 6000 until the end of your opponent's next End Phase.",
+    "If this Character would be removed from the field, you may trash 2 cards from your hand instead.\n[On Play] Your Leader's base power becomes 6000 until the end of your opponent's next End Phase.",
   effects: {
     replacementEffects: [
       {

@@ -13,7 +13,7 @@ export const op16MonkeyDLuffy022: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "022",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-022_bCG0wyv.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-022.png",
     },
     {
       id: "OP16-022_p1",
@@ -21,26 +21,26 @@ export const op16MonkeyDLuffy022: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "022",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-022_p1_NLeZnzz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-022_p1.png",
     },
   ],
   cardType: "leader",
-  color: ["blue", "green"],
+  color: ["green", "blue"],
   rarity: "L",
   setId: "OP16",
   power: 5000,
   life: 4,
-  traits: ["Straw Hat Crew Impel Down"],
+  traits: ["Impel Down", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-022_p1_NLeZnzz.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-022_p1.png",
       imageId: "OP16-022_p1",
     },
   ],
   effect:
-    "[Activate:Main] [Once Per Turn] If the only Characters on your field are {Impel Down} type Characters, set up to 2 of your DON!! cards as active.",
+    "[Activate: Main] [Once Per Turn] If the only Characters on your field are {Impel Down} type Characters, set up to 2 of your DON!! cards as active.",
   effects: {
     effects: [
       {

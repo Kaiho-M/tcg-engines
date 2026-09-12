@@ -13,7 +13,7 @@ export const op15eb04Nami086: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "086",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-086_vHGEGK0.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-086.png",
     },
     {
       id: "OP15-086_p1",
@@ -21,7 +21,7 @@ export const op15eb04Nami086: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "086",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-086_p1_QKCr0Th.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-086_p1.png",
     },
   ],
   cardType: "character",
@@ -34,8 +34,8 @@ export const op15eb04Nami086: CharacterCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-086_p1_QKCr0Th.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-086_p1.png",
       imageId: "OP15-086_p1",
     },
   ],

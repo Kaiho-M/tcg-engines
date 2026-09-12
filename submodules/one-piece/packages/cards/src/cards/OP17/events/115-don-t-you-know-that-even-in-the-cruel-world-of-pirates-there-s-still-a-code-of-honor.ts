@@ -14,7 +14,7 @@ export const op17DonTYouKnowThatEvenInTheCruelWorldOfPiratesThereSStillACodeOfHo
         setCode: "OP17",
         collectorNumber: "115",
         rarity: "R",
-        imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-115_ODSETVl.jpg",
+        imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-115.png",
       },
     ],
     cardType: "event",
@@ -22,7 +22,7 @@ export const op17DonTYouKnowThatEvenInTheCruelWorldOfPiratesThereSStillACodeOfHo
     rarity: "R",
     setId: "OP17",
     cost: 1,
-    traits: ["The Four Emperors Big Mom Pirates"],
+    traits: ["The Four Emperors", "Big Mom Pirates"],
     effect:
       "[Main] Your [Charlotte Linlin] Leader gains [Unblockable] during this turn.\n[Counter] Up to 1 of your [Charlotte Linlin] gains +4000 power during this battle.",
     i18n: op17DonTYouKnowThatEvenInTheCruelWorldOfPiratesThereSStillACodeOfHonor115I18n,

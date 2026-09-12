@@ -13,7 +13,7 @@ export const op15eb04SmokerTashigi003: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "003",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-003_wJsToTH.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-003.png",
     },
     {
       id: "EB04-003_p1",
@@ -21,7 +21,7 @@ export const op15eb04SmokerTashigi003: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "003",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-003_p1_s3bTHgp.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-003_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op15eb04SmokerTashigi003: CharacterCard = {
   setId: "OP15EB04",
   cost: 8,
   power: 8000,
-  traits: ["Navy Punk Hazard"],
+  traits: ["Punk Hazard", "Navy"],
   attribute: ["slash", "special"],
   artVariants: [
     {
-      type: "spr",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-003_p1_s3bTHgp.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-003_p1.png",
       imageId: "EB04-003_p1",
     },
   ],

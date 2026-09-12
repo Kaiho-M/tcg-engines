@@ -13,7 +13,7 @@ export const op15eb04HodyJones033: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "033",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-033_WxHehHq.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-033.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04HodyJones033: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  traits: ["Fish-Man New Fish-Man Pirates Fish-Man Island"],
+  traits: ["Fish-Man", "Fish-Man Island", "New Fish-Man Pirates"],
   attribute: "strike",
   effect:
     "[On Play] Set your {Fish-Man} type Leader as active. Then, add 1 card from the top of your Life cards to your hand.",

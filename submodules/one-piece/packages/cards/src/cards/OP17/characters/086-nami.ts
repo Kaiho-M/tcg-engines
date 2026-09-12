@@ -13,7 +13,7 @@ export const op17Nami086: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "086",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-086_9eAWPvO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-086.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Nami086: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Elbaph Straw Hat Crew"],
+  traits: ["Elbaph", "Straw Hat Crew"],
   attribute: "special",
   effect: "[On Play] You may trash 1 {Elbaph} type card from your hand: Draw 2 cards.",
   effects: {

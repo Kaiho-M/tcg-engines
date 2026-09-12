@@ -13,7 +13,7 @@ export const op17EdwardNewgate001: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "001",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-001_95Y4V0x.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-001.png",
     },
     {
       id: "OP17-001_p1",
@@ -21,7 +21,7 @@ export const op17EdwardNewgate001: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "001",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-001_p1_hXzWANA.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-001_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,12 +30,12 @@ export const op17EdwardNewgate001: LeaderCard = {
   setId: "OP17",
   power: 5000,
   life: 5,
-  traits: ["The Four Emperors Whitebeard Pirates"],
+  traits: ["The Four Emperors", "Whitebeard Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-001_p1_hXzWANA.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-001_p1.png",
       imageId: "OP17-001_p1",
     },
   ],

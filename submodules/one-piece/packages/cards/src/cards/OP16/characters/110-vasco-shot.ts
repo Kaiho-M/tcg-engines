@@ -13,7 +13,7 @@ export const op16VascoShot110: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "110",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-110_wWgHWkl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-110.png",
     },
   ],
   cardType: "character",
@@ -23,8 +23,8 @@ export const op16VascoShot110: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  trigger: "Activate this card's [On K.O.] effect.",
-  traits: ["Blackbeard Pirates Impel Down"],
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  traits: ["Impel Down", "Blackbeard Pirates"],
   attribute: "special",
   effect:
     "[On K.O.] Draw 1 card and rest up to 1 of your opponent's Characters with a cost of 6 or less.",
@@ -55,6 +55,15 @@ export const op16VascoShot110: CharacterCard = {
                 },
               ],
             },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

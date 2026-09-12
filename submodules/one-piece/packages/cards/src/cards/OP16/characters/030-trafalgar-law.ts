@@ -13,7 +13,7 @@ export const op16TrafalgarLaw030: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "030",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-030_mRoxqQ7.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-030.png",
     },
   ],
   cardType: "character",
@@ -22,10 +22,10 @@ export const op16TrafalgarLaw030: CharacterCard = {
   setId: "OP16",
   cost: 8,
   power: 9000,
-  traits: ["Heart Pirates Supernovas"],
+  traits: ["Supernovas", "Heart Pirates"],
   attribute: "slash",
   effect:
-    "[On Play] Up to 1 of your opponent's rested Characters will not become active in your opponent's next Refresh Phase.\n\n[End of Your Turn] Set all of your green Characters with a cost of 5 or less as active.",
+    "[On Play] Up to 1 of your opponent's rested Characters will not become active in your opponent's next Refresh Phase.\n[End of Your Turn] Set all of your green Characters with a cost of 5 or less as active.",
   effects: {
     effects: [
       {

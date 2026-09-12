@@ -13,7 +13,7 @@ export const op17NicoRobin087: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "087",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-087_SEvUdS3.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-087.png",
     },
     {
       id: "OP17-087_p1",
@@ -21,7 +21,7 @@ export const op17NicoRobin087: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "087",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-087_p1_OMnxKwP.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-087_p1.png",
     },
   ],
   cardType: "character",
@@ -31,18 +31,51 @@ export const op17NicoRobin087: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Straw Hat Crew Elbaph"],
+  traits: ["Elbaph", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-087_p1_OMnxKwP.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-087_p1.png",
       imageId: "OP17-087_p1",
     },
   ],
   effect:
-    "If there is a Character with a cost of 12 or more, this Character gains +3000 power. [On Play] If there is a Character with a cost of 12 or more, give up to 1 of your opponent's Characters -3000 poser during this turn.",
+    "If there is a Character with a cost of 12 or more, this Character gains +3000 power.\n[On Play] If there is a Character with a cost of 12 or more, give up to 1 of your opponent's Characters −3000 power during this turn.",
   effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        conditions: [
+          {
+            condition: "existsOnField",
+            zone: "character",
+            filters: [
+              {
+                filter: "cost",
+                comparison: "gte",
+                value: 12,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: -3000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
     permanentEffects: [
       {
         conditions: [

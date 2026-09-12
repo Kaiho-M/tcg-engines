@@ -5,6 +5,6 @@ export const op16Mr3Galdino056I18n: OPCardI18n = {
     name: "Mr.3(Galdino)",
     effect:
       "[Activate: Main] You may trash this Character: Draw 2 cards, and up to 1 of your opponent's Characters with a cost of 9 or less cannot attack until the end of your opponent's next End Phase.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-056_eJ8kOw4.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-056.png",
   },
 };

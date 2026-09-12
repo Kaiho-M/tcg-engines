@@ -13,7 +13,7 @@ export const op15eb04Koby044: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "044",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-044_evnJnB8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-044.png",
     },
     {
       id: "EB04-044_p1",
@@ -21,7 +21,7 @@ export const op15eb04Koby044: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "044",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-044_p1_VWzlrOD.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-044_p1.png",
     },
     {
       id: "EB04-044_p2",
@@ -29,7 +29,7 @@ export const op15eb04Koby044: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "044",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-044_p2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-044_p2.png",
     },
   ],
   cardType: "character",
@@ -39,21 +39,63 @@ export const op15eb04Koby044: CharacterCard = {
   cost: 6,
   power: 7000,
   counter: 1000,
-  traits: ["Navy SWORD"],
+  traits: ["Navy", "SWORD"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-044_p1_VWzlrOD.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-044_p1.png",
       imageId: "EB04-044_p1",
     },
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-044_p2.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-044_p2.png",
       imageId: "EB04-044_p2",
     },
   ],
   effect:
-    '[Once Per Turn] If your Leader has the "Navy" type and this Character would be removed from the field, you can discard 1 card from your hand instead.\n[Your Turn] [Once Per Turn] When one of your opponent’s Characters is KO’d, draw 1 card.',
+    "[Once Per Turn] If your Leader's type includes \"Navy\" and this Character would be removed from the field, you may trash 1 card from your hand instead.\n[Your Turn] [Once Per Turn] When your opponent's Character is K.O.'d, draw 1 card.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenCharacterKod",
+        conditions: [
+          {
+            condition: "turn",
+            value: "your",
+          },
+        ],
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 1,
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
+    replacementEffects: [
+      {
+        replacedEvent: "removeFromField",
+        eventFilter: {
+          targetSelf: true,
+        },
+        replacementAction: {
+          action: "trashFromHand",
+          player: "self",
+          amount: 1,
+        },
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "Navy",
+            match: "includes",
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
+  },
   i18n: op15eb04Koby044I18n,
 };

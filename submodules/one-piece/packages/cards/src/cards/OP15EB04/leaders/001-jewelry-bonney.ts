@@ -13,7 +13,7 @@ export const op15eb04JewelryBonney001: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "001",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-001.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-001.png",
     },
     {
       id: "EB04-001_p1",
@@ -21,7 +21,7 @@ export const op15eb04JewelryBonney001: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "001",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-001_p1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-001_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,17 +30,17 @@ export const op15eb04JewelryBonney001: LeaderCard = {
   setId: "OP15EB04",
   power: 5000,
   life: 4,
-  traits: ["Bonney Pirates Egghead"],
+  traits: ["Egghead", "Bonney Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-001_p1.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-001_p1.png",
       imageId: "EB04-001_p1",
     },
   ],
   effect:
-    "[Opponent's Turn] If you have 1 or less Life cards, this Leader gains +2000 power. [Activate: Main] [Once Per Turn] Give up to 1 of your opponent's Characters -1000 power during this turn. Then, if you have 2 or more Life cards, you may add 1 card from the top of your Life cards to your hand.",
+    "[Opponent's Turn] If you have 1 or less Life cards, this Leader gains +2000 power.\n[Activate: Main] [Once Per Turn] Give up to 1 of your opponent's Characters −1000 power during this turn. Then, if you have 2 or more Life cards, you may add 1 card from the top of your Life cards to your hand.",
   effects: {
     effects: [
       {

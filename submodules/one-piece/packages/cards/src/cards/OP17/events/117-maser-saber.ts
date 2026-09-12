@@ -13,7 +13,7 @@ export const op17MaserSaber117: EventCard = {
       setCode: "OP17",
       collectorNumber: "117",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-117_mzAwgkO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-117.png",
     },
   ],
   cardType: "event",
@@ -22,8 +22,8 @@ export const op17MaserSaber117: EventCard = {
   setId: "OP17",
   cost: 1,
   trigger:
-    "Your opponent may trash 3 cards from their hand. If they do not, K.O. up to 1 of your opponent's Characters with a cost of 6 or less.",
-  traits: ["The Four Emperors Big Mom Pirates"],
+    "[Trigger] Your opponent may trash 3 cards from their hand. If they do not, K.O. up to 1 of your opponent's Characters with a cost of 6 or less.",
+  traits: ["The Four Emperors", "Big Mom Pirates"],
   effect: "[Counter] Up to 1 of your [Charlotte Linlin] gains +3000 power during this battle.",
   i18n: op17MaserSaber117I18n,
 };

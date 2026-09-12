@@ -1,11 +1,11 @@
 import type { CharacterCard } from "@tcg/op-types";
-import { op16ShiryuFullArt108I18n } from "./108-shiryu-full-art.i18n.ts";
+import { op16Shiryu108I18n } from "./108-shiryu.i18n.ts";
 
-export const op16ShiryuFullArt108: CharacterCard = {
+export const op16Shiryu108: CharacterCard = {
   id: "OP16-108",
   canonicalId: "OP16-108",
-  slug: "shiryu-full-art",
-  name: "Shiryu (Full Art)",
+  slug: "shiryu/op16-108",
+  name: "Shiryu",
   printings: [
     {
       id: "OP16-108",
@@ -13,15 +13,15 @@ export const op16ShiryuFullArt108: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "108",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-108_iwCfr1w.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-108.png",
     },
     {
-      id: "OP16-108",
-      artId: "OP16-108",
+      id: "OP16-108_p1",
+      artId: "OP16-108_p1",
       setCode: "OP16",
       collectorNumber: "108",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-108_FG2rNuo.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-108_p1.png",
     },
   ],
   cardType: "character",
@@ -30,14 +30,14 @@ export const op16ShiryuFullArt108: CharacterCard = {
   setId: "OP16",
   cost: 6,
   power: 8000,
-  trigger: "Draw 2 cards.",
-  traits: ["Blackbeard Pirates Impel Down"],
+  trigger: "[Trigger] Draw 2 cards.",
+  traits: ["Impel Down", "Blackbeard Pirates"],
   attribute: "slash",
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-108_FG2rNuo.jpg",
-      imageId: "OP16-108",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-108_p1.png",
+      imageId: "OP16-108_p1",
     },
   ],
   effect:
@@ -54,7 +54,17 @@ export const op16ShiryuFullArt108: CharacterCard = {
           },
         ],
       },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+        ],
+      },
     ],
   },
-  i18n: op16ShiryuFullArt108I18n,
+  i18n: op16Shiryu108I18n,
 };

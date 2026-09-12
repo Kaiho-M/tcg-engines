@@ -13,7 +13,7 @@ export const op16MonkeyDGarp075: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "075",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-075_mB8Qz3U.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-075.png",
     },
   ],
   cardType: "character",

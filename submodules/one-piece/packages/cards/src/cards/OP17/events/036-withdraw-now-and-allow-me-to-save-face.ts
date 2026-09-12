@@ -13,7 +13,7 @@ export const op17WithdrawNowAndAllowMeToSaveFace036: EventCard = {
       setCode: "OP17",
       collectorNumber: "036",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-036_sck9Dv5.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-036.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op17WithdrawNowAndAllowMeToSaveFace036: EventCard = {
   rarity: "UC",
   setId: "OP17",
   cost: 1,
-  traits: ["The Four Emperors Red-Haired Pirates"],
+  traits: ["The Four Emperors", "Red-Haired Pirates"],
   effect:
-    "[Main] You may rest 6 of your DON!! cards: Rest up to 1 of your opponent's Characters. Then, K.O. up to 2 of your opponent's rested Characters with a cost of 6 or less.\n\n[Counter] Up to 1 of your [Shanks] gains +4000 power during this battle.",
+    "[Main] You may rest 6 of your DON!! cards: Rest up to 1 of your opponent's Characters. Then, K.O. up to 2 of your opponent's rested Characters with a cost of 6 or less.\n[Counter] Up to 1 of your [Shanks] gains +4000 power during this battle.",
   effects: {
     effects: [
       {

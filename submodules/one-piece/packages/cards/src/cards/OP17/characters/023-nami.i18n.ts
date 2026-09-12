@@ -5,6 +5,6 @@ export const op17Nami023I18n: OPCardI18n = {
     name: "Nami",
     effect:
       "If one of your {East Blue} or {Straw Hat Crew} type Characters would be K.O.'d, you may rest this Character instead.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-023_LyVnUXp.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-023.png",
   },
 };

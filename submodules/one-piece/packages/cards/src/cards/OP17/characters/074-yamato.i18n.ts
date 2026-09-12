@@ -5,6 +5,6 @@ export const op17Yamato074I18n: OPCardI18n = {
     name: "Yamato",
     effect:
       "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] Add up to 1 DON!! card as rested from your DON!! deck.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-074_sugpufI.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-074.png",
   },
 };

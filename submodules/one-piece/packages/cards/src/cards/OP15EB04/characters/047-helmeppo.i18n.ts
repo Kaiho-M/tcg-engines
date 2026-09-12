@@ -5,6 +5,6 @@ export const op15eb04Helmeppo047I18n: OPCardI18n = {
     name: "Helmeppo",
     effect:
       "[Activate: Main] You may trash this Character: Play up to 1 {SWORD} type Character card with a cost of 3 or less other than [Helmeppo] from your hand or trash.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-047_4GHhyeo.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-047.png",
   },
 };

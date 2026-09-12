@@ -13,7 +13,7 @@ export const op16Borsalino073: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "073",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-073_qzFOeIQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-073.png",
     },
     {
       id: "OP16-073_p1",
@@ -21,7 +21,7 @@ export const op16Borsalino073: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "073",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-073_p1_qE7khhF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-073_p1.png",
     },
     {
       id: "OP16-073_p2",
@@ -29,7 +29,7 @@ export const op16Borsalino073: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "073",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-073_p2_u1nqU66.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-073_p2.png",
     },
   ],
   cardType: "character",
@@ -38,22 +38,22 @@ export const op16Borsalino073: CharacterCard = {
   setId: "OP16",
   cost: 7,
   power: 8000,
-  traits: ["Navy Admiral"],
+  traits: ["Admiral", "Navy"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-073_p1_qE7khhF.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-073_p1.png",
       imageId: "OP16-073_p1",
     },
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-073_p2_u1nqU66.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-073_p2.png",
       imageId: "OP16-073_p2",
     },
   ],
   effect:
-    "[On Play] Add up to 1 DON!! card from your DON!! deck and set it as active, and add up to 1 additional DON!! card and rest it.\n[End of Your Turn] DON!! -2: Set this Character as active. Then, this Character gains [Blocker] until the end of your opponent's next End Phase.",
+    "[On Play] Add up to 1 DON!! card from your DON!! deck and set it as active, and add up to 1 additional DON!! card and rest it.\n[End of Your Turn] DON!! −2: Set this Character as active. Then, this Character gains [Blocker] until the end of your opponent's next End Phase.",
   effects: {
     effects: [
       {

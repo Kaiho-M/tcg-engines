@@ -1,11 +1,11 @@
 import type { CharacterCard } from "@tcg/op-types";
-import { op16Sakazuk065I18n } from "./065-sakazuk.i18n.ts";
+import { op16Sakazuki065I18n } from "./065-sakazuki.i18n.ts";
 
-export const op16Sakazuk065: CharacterCard = {
+export const op16Sakazuki065: CharacterCard = {
   id: "OP16-065",
   canonicalId: "OP16-065",
-  slug: "sakazuk",
-  name: "Sakazuk",
+  slug: "sakazuki/op16-065",
+  name: "Sakazuki",
   printings: [
     {
       id: "OP16-065",
@@ -13,7 +13,7 @@ export const op16Sakazuk065: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "065",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-065_9MZHftQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-065.png",
     },
     {
       id: "OP16-065_p1",
@@ -21,7 +21,7 @@ export const op16Sakazuk065: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "065",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-065_p1_WITXouO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-065_p1.png",
     },
     {
       id: "OP16-065_p2",
@@ -29,7 +29,7 @@ export const op16Sakazuk065: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "065",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-065_p2_5xfdpdu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-065_p2.png",
     },
   ],
   cardType: "character",
@@ -38,22 +38,22 @@ export const op16Sakazuk065: CharacterCard = {
   setId: "OP16",
   cost: 7,
   power: 8000,
-  traits: ["Navy Admiral"],
+  traits: ["Admiral", "Navy"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-065_p1_WITXouO.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-065_p1.png",
       imageId: "OP16-065_p1",
     },
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-065_p2_5xfdpdu.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-065_p2.png",
       imageId: "OP16-065_p2",
     },
   ],
   effect:
-    "[On Play] DON!! -1: Give up to 1 of your opponent's Characters -6000 power until the end of your opponent's next End Phase. [Activate:Main] [Once Per Turn] You may rest 1 of your DON!! cards: If your Leader has the {Navy} type, add up to 2 DON!! cards from your DON!! deck and set them as active.",
+    "[On Play] DON!! −1: Give up to 1 of your opponent's Characters −6000 power until the end of your opponent's next End Phase.\n[Activate: Main] [Once Per Turn] You may rest 1 of your DON!! cards: If your Leader has the {Navy} type, add up to 2 DON!! cards from your DON!! deck and set them as active.",
   effects: {
     effects: [
       {
@@ -109,5 +109,5 @@ export const op16Sakazuk065: CharacterCard = {
       },
     ],
   },
-  i18n: op16Sakazuk065I18n,
+  i18n: op16Sakazuki065I18n,
 };

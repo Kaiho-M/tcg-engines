@@ -13,7 +13,7 @@ export const op15eb04Kaku043: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "043",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-043_F5TMqyO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-043.png",
     },
     {
       id: "EB04-043_p1",
@@ -21,7 +21,7 @@ export const op15eb04Kaku043: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "043",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-043_p1_dzUFugk.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-043_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Kaku043: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 2000,
-  traits: ["CP0 Egghead"],
+  traits: ["Egghead", "CP0"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-043_p1_dzUFugk.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-043_p1.png",
       imageId: "EB04-043_p1",
     },
   ],

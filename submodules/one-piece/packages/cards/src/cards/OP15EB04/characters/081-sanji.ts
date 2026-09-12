@@ -13,7 +13,7 @@ export const op15eb04Sanji081: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "081",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-081_ujtyt4m.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-081.png",
     },
   ],
   cardType: "character",

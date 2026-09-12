@@ -13,7 +13,7 @@ export const op15eb04Alpha042: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "042",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-042_jQrxPol.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-042.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op15eb04Alpha042: CharacterCard = {
   traits: ["CP8"],
   attribute: "strike",
   effect:
-    "[On Play] You may trash 3 cards from the top of your deck: Give up to 1 of your opponent's Characters +1 cost during this turn.",
+    "[On Play] You may trash 3 cards from the top of your deck: Give up to 1 of your opponent's Characters −1 cost during this turn.",
   effects: {
     effects: [
       {
@@ -56,7 +56,7 @@ export const op15eb04Alpha042: CharacterCard = {
                 upTo: true,
               },
             },
-            value: 1,
+            value: -1,
             duration: "thisTurn",
           },
         ],

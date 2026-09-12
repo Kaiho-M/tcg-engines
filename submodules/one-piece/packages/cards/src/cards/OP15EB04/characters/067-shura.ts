@@ -13,7 +13,7 @@ export const op15eb04Shura067: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "067",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-067_JazvZKF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-067.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op15eb04Shura067: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Sky Island Vassals"],
+  traits: ["Sky Island", "Vassals"],
   attribute: "slash",
   effect:
-    "If you have 6 or less DON!! cards on your field, this Character gains [Rush].\n(This card can attack on the turn in which it is played.)\n[On Play] DON!! 1: Draw 1 card.",
+    "If you have 6 or less DON!! cards on your field, this Character gains [Rush].\n(This card can attack on the turn in which it is played.)\n[On Play] DON!! −1: Draw 1 card.",
   effects: {
     effects: [
       {

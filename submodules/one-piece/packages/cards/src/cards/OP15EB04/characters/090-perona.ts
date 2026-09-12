@@ -13,7 +13,7 @@ export const op15eb04Perona090: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "090",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-090_gC0C5OP.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-090.png",
     },
   ],
   cardType: "character",

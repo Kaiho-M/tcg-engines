@@ -13,7 +13,7 @@ export const op15eb04DrHogback084: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "084",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-084_NsxRq49.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-084.png",
     },
   ],
   cardType: "character",

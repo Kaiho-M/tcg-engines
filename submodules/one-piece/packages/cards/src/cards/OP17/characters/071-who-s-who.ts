@@ -13,7 +13,7 @@ export const op17WhoSWho071: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "071",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-071_zQ4nkXT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-071.png",
     },
   ],
   cardType: "character",
@@ -23,11 +23,11 @@ export const op17WhoSWho071: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  trigger: "Play this card.",
-  traits: ["Animal Kingdom Pirates Former CP9"],
+  trigger: "[Trigger] Play this card.",
+  traits: ["Animal Kingdom Pirates", "Former CP9"],
   attribute: "slash",
   effect:
-    "[On Play] DON!! -1: K.O. up to 2 of your opponent's Characters with a cost of 2 or less.",
+    "[On Play] DON!! −1: K.O. up to 2 of your opponent's Characters with a cost of 2 or less.",
   effects: {
     effects: [
       {
@@ -59,6 +59,14 @@ export const op17WhoSWho071: CharacterCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
       },
       {
         trigger: "trigger",

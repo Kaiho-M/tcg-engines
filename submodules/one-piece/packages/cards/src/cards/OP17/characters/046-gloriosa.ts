@@ -13,7 +13,7 @@ export const op17Gloriosa046: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "046",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-046_lp8fYOT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-046.png",
     },
     {
       id: "OP17-046_p1",
@@ -21,7 +21,7 @@ export const op17Gloriosa046: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "046",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-046_p1_PEPU2kF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-046_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op17Gloriosa046: CharacterCard = {
   setId: "OP17",
   cost: 4,
   power: 1000,
-  traits: ["Amazon Lily Rocks Pirates"],
+  traits: ["Amazon Lily", "Rocks Pirates"],
   attribute: "wisdom",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-046_p1_PEPU2kF.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-046_p1.png",
       imageId: "OP17-046_p1",
     },
   ],

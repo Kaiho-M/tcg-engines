@@ -13,7 +13,7 @@ export const op17Blamenco011: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "011",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-011_AwQEWhK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-011.png",
     },
   ],
   cardType: "character",

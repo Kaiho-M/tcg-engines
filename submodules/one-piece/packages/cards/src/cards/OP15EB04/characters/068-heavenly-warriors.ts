@@ -13,7 +13,7 @@ export const op15eb04HeavenlyWarriors068: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "068",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-068_Bu4y0Yz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-068.png",
     },
   ],
   cardType: "character",

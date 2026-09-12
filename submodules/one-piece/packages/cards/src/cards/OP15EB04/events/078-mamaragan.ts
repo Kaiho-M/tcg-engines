@@ -13,7 +13,7 @@ export const op15eb04Mamaragan078: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "078",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-078_Mxy2D9w.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-078.png",
     },
     {
       id: "OP15-078_p1",
@@ -21,7 +21,7 @@ export const op15eb04Mamaragan078: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "078",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-078_p1_7BksWoF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-078_p1.png",
     },
   ],
   cardType: "event",
@@ -32,13 +32,13 @@ export const op15eb04Mamaragan078: EventCard = {
   traits: ["Sky Island"],
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-078_p1_7BksWoF.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-078_p1.png",
       imageId: "OP15-078_p1",
     },
   ],
   effect:
-    "[Main] DON!! 2: Draw 1 card. Then, rest up to 1 of your opponent's Characters with 5000 power or less.\n[Counter] Up to 1 of your Leader or Character cards gains +1000 power during this battle. Then, if you have 6 or less DON!! cards on your field, draw 1 card.",
+    "[Main] DON!! −2: Draw 1 card. Then, rest up to 1 of your opponent's Characters with 5000 power or less.\n[Counter] Up to 1 of your Leader or Character cards gains +1000 power during this battle. Then, if you have 6 or less DON!! cards on your field, draw 1 card.",
   effects: {
     effects: [
       {

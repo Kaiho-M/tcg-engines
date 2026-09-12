@@ -13,7 +13,7 @@ export const op16Curiel004: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "004",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-004_Ai1HHLt.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-004.png",
     },
   ],
   cardType: "character",

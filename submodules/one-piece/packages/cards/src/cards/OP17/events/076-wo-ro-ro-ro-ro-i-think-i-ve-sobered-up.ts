@@ -13,7 +13,7 @@ export const op17WoRoRoRoRoIThinkIVeSoberedUp076: EventCard = {
       setCode: "OP17",
       collectorNumber: "076",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-076_Nqb1qKD.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-076.png",
     },
   ],
   cardType: "event",
@@ -21,12 +21,28 @@ export const op17WoRoRoRoRoIThinkIVeSoberedUp076: EventCard = {
   rarity: "R",
   setId: "OP17",
   cost: 0,
-  trigger: "DON!! 1: Draw 2 cards.",
-  traits: ["The Four Emperors Animal Kingdom Pirates"],
+  trigger: "[Trigger] DON!! −1: Draw 2 cards.",
+  traits: ["The Four Emperors", "Animal Kingdom Pirates"],
   effect:
     "[Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Charactes gains +3000 power during this battle.",
   effects: {
     effects: [
+      {
+        trigger: "trigger",
+        costs: [
+          {
+            cost: "returnDon",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+        ],
+      },
       {
         trigger: "trigger",
         costs: [

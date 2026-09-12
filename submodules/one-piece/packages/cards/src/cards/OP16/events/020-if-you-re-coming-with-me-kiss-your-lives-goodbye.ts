@@ -5,7 +5,7 @@ export const op16IfYouReComingWithMeKissYourLivesGoodbye020: EventCard = {
   id: "OP16-020",
   canonicalId: "OP16-020",
   slug: "if-you-re-coming-with-me-kiss-your-lives-goodbye",
-  name: "If You're Coming with Me...Kiss Your Lives Goodbye!!",
+  name: "If You're Coming with Me... Kiss Your Lives Goodbye!!",
   printings: [
     {
       id: "OP16-020",
@@ -13,7 +13,7 @@ export const op16IfYouReComingWithMeKissYourLivesGoodbye020: EventCard = {
       setCode: "OP16",
       collectorNumber: "020",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-020_ukCpvBl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-020.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op16IfYouReComingWithMeKissYourLivesGoodbye020: EventCard = {
   rarity: "UC",
   setId: "OP16",
   cost: 0,
-  traits: ["The Four Emperors Whitebeard Pirates"],
+  traits: ["The Four Emperors", "Whitebeard Pirates"],
   effect:
-    "[Main] You may rest 1 of your DON!! cards and reveal 1 Character card with 8000 power from your hand: Draw 1 card.  [Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Character cards gains +3000 power during this battle.",
+    "[Main] You may rest 1 of your DON!! cards and reveal 1 Character card with 8000 power from your hand: Draw 1 card.\n[Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Character cards gains +3000 power during this battle.",
   effects: {
     effects: [
       {

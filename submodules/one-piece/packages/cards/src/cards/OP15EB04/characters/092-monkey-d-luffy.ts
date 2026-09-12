@@ -13,7 +13,7 @@ export const op15eb04MonkeyDLuffy092: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "092",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-092_wfsrbT6.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-092.png",
     },
     {
       id: "OP15-092_p1",
@@ -21,7 +21,7 @@ export const op15eb04MonkeyDLuffy092: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "092",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-092_p1_wvjuF0D.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-092_p1.png",
     },
   ],
   cardType: "character",
@@ -32,10 +32,11 @@ export const op15eb04MonkeyDLuffy092: CharacterCard = {
   power: 7000,
   counter: 1000,
   traits: ["Straw Hat Crew"],
+  attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-092_p1_wvjuF0D.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-092_p1.png",
       imageId: "OP15-092_p1",
     },
   ],

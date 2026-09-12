@@ -13,7 +13,7 @@ export const op17CaponeGangBege100: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "100",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-100_r5AVN6J.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-100.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17CaponeGangBege100: CharacterCard = {
   cost: 7,
   power: 8000,
   counter: 2000,
-  traits: ["Supernovas Firetank Pirates"],
+  traits: ["Supernovas", "Firetank Pirates"],
   attribute: "ranged",
   i18n: op17CaponeGangBege100I18n,
 };

@@ -13,7 +13,7 @@ export const op17Atmos002: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "002",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-002_vdHKvw7.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-002.png",
     },
   ],
   cardType: "character",

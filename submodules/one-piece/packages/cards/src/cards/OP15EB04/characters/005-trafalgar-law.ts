@@ -13,7 +13,7 @@ export const op15eb04TrafalgarLaw005: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "005",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-005_3PAWn8I.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-005.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04TrafalgarLaw005: CharacterCard = {
   cost: 3,
   power: 5000,
   counter: 2000,
-  traits: ["Heart Pirates Supernovas The Seven Warlords of the Sea"],
+  traits: ["The Seven Warlords of the Sea", "Supernovas", "Heart Pirates"],
   attribute: "slash",
   effect:
     "This Character cannot attack unless your opponent has 2 or more Characters with a base power of 5000 or more.",

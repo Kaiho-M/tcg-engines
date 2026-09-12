@@ -13,7 +13,7 @@ export const op15eb04BartholomewKuma055: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "055",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-055_l4zmFkO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-055.png",
     },
   ],
   cardType: "character",
@@ -24,8 +24,8 @@ export const op15eb04BartholomewKuma055: CharacterCard = {
   power: 5000,
   counter: 1000,
   trigger:
-    "If your Leader has the {Revolutionary Army} type and you and your opponent have a total of 5 or less Life cards, play this card.",
-  traits: ["Revolutionary Army The Seven Warlords of the Sea"],
+    "[Trigger] If your Leader has the {Revolutionary Army} type and you and your opponent have a total of 5 or less Life cards, play this card.",
+  traits: ["The Seven Warlords of the Sea", "Revolutionary Army"],
   attribute: "strike",
   effect:
     "[On K.O.] Play up to 1 {Revolutionary Army} type Character card with a cost of 4 or less from your hand.",
@@ -60,6 +60,32 @@ export const op15eb04BartholomewKuma055: CharacterCard = {
                 value: "character",
               },
             ],
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        conditions: [
+          {
+            condition: "compound",
+            operator: "and",
+            conditions: [
+              {
+                condition: "leaderTrait",
+                trait: "Revolutionary Army",
+                match: "includes",
+              },
+              {
+                condition: "totalLifeCount",
+                comparison: "lte",
+                value: 5,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "playThisCard",
           },
         ],
       },

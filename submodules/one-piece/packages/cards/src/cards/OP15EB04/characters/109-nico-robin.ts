@@ -13,7 +13,7 @@ export const op15eb04NicoRobin109: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "109",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-109_4HJxA9I.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-109.png",
     },
     {
       id: "OP15-109_p1",
@@ -21,7 +21,7 @@ export const op15eb04NicoRobin109: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "109",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-109_p1_9JCAmRw.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-109_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04NicoRobin109: CharacterCard = {
   cost: 7,
   power: 7000,
   counter: 1000,
-  traits: ["Straw Hat Crew Sky Island"],
+  traits: ["Sky Island", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-109_p1_9JCAmRw.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-109_p1.png",
       imageId: "OP15-109_p1",
     },
   ],

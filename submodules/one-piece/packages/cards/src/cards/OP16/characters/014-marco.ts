@@ -13,7 +13,7 @@ export const op16Marco014: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "014",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-014_g0EgQrF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-014.png",
     },
     {
       id: "OP16-014_p1",
@@ -21,7 +21,7 @@ export const op16Marco014: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "014",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-014_p1_W6pXmYz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-014_p1.png",
     },
   ],
   cardType: "character",
@@ -34,13 +34,13 @@ export const op16Marco014: CharacterCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-014_p1_W6pXmYz.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-014_p1.png",
       imageId: "OP16-014_p1",
     },
   ],
   effect:
-    "If one of your Characters would be removed from the field by your opponent's effect, you may K.O. this character instead.\n[On K.O.] You may trash 1 Character card with 8000 power from your hand: Play this Character card from your trash.",
+    "If one of your Characters would be removed from the field by your opponent's effect, you may K.O. this Character instead.\n[On K.O.] You may trash 1 Character card with 8000 power from your hand: Play this Character card from your trash.",
   effects: {
     effects: [
       {

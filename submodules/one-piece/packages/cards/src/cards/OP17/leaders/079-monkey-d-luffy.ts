@@ -13,15 +13,7 @@ export const op17MonkeyDLuffy079: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "079",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-079_NMMHO3F.jpg",
-    },
-    {
-      id: "OP17-079_p2",
-      artId: "OP17-079_p2",
-      setCode: "OP17",
-      collectorNumber: "079",
-      rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-079_p2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-079.png",
     },
     {
       id: "OP17-079_p1",
@@ -29,7 +21,15 @@ export const op17MonkeyDLuffy079: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "079",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-079_p1_DB0IOsB.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-079_p1.png",
+    },
+    {
+      id: "OP17-079_p2",
+      artId: "OP17-079_p2",
+      setCode: "OP17",
+      collectorNumber: "079",
+      rarity: "L",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-079_p2.png",
     },
   ],
   cardType: "leader",
@@ -38,22 +38,22 @@ export const op17MonkeyDLuffy079: LeaderCard = {
   setId: "OP17",
   power: 5000,
   life: 5,
-  traits: ["Straw Hat Crew The Four Emperors Elbaph"],
+  traits: ["Elbaph", "The Four Emperors", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-079_p2.jpg",
-      imageId: "OP17-079_p2",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-079_p1.png",
+      imageId: "OP17-079_p1",
     },
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-079_p1_DB0IOsB.jpg",
-      imageId: "OP17-079_p1",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-079_p2.png",
+      imageId: "OP17-079_p2",
     },
   ],
   effect:
-    "All of your Characters with a cost of 12 or more gain [Blocker].(After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+    "All of your Characters with a cost of 12 or more gain [Blocker].\n(After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
   effects: {
     permanentEffects: [
       {

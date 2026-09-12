@@ -13,7 +13,7 @@ export const op16Kuzan063: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "063",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-063_0lnMo2V.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-063.png",
     },
     {
       id: "OP16-063_p1",
@@ -21,7 +21,7 @@ export const op16Kuzan063: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "063",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-063_p1_oMZNYki.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-063_p1.png",
     },
     {
       id: "OP16-063_p2",
@@ -29,7 +29,7 @@ export const op16Kuzan063: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "063",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-063_p2_t7zoqfj.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-063_p2.png",
     },
   ],
   cardType: "character",
@@ -38,22 +38,22 @@ export const op16Kuzan063: CharacterCard = {
   setId: "OP16",
   cost: 7,
   power: 8000,
-  traits: ["Navy Admiral"],
+  traits: ["Admiral", "Navy"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-063_p1_oMZNYki.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-063_p1.png",
       imageId: "OP16-063_p1",
     },
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-063_p2_t7zoqfj.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-063_p2.png",
       imageId: "OP16-063_p2",
     },
   ],
   effect:
-    "[On Play] Add up to 2 DON!! cards from your DON!! deck and rest them.\n[Activate: Main] [Once Per Turn] DON!! 1: Up to 1 of your opponent's Characters cannot activate [Blocker] during this turn.",
+    "[On Play] Add up to 2 DON!! cards from your DON!! deck and rest them.\n[Activate: Main] [Once Per Turn] DON!! −1: Up to 1 of your opponent's Characters cannot activate [Blocker] during this turn.",
   effects: {
     effects: [
       {

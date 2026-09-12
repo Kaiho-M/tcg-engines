@@ -13,7 +13,7 @@ export const op17JaguarDSaul089: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "089",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-089_C3MyMVa.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-089.png",
     },
   ],
   cardType: "character",
@@ -22,7 +22,7 @@ export const op17JaguarDSaul089: CharacterCard = {
   setId: "OP17",
   cost: 4,
   power: 6000,
-  traits: ["Giant Former Navy Elbaph"],
+  traits: ["Giant", "Elbaph", "Former Navy"],
   attribute: "strike",
   effect:
     "This Character gains +12 cost.\n[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Elbaph} type card and add it to your hand. Then, trash the rest.",

@@ -13,7 +13,7 @@ export const op17Jinbe051: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "051",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-051_Ym2spb8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-051.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Jinbe051: CharacterCard = {
   cost: 7,
   power: 8000,
   counter: 2000,
-  traits: ["Fish-Man Impel Down The Sun Pirates"],
+  traits: ["Fish-Man", "Impel Down", "The Sun Pirates"],
   attribute: "strike",
   i18n: op17Jinbe051I18n,
 };

@@ -13,7 +13,7 @@ export const op17Blenheim012: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "012",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-012_SE1tslP.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-012.png",
     },
   ],
   cardType: "character",

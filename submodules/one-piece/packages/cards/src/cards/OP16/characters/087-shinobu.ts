@@ -13,7 +13,7 @@ export const op16Shinobu087: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "087",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-087_imE9hNZ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-087.png",
     },
   ],
   cardType: "character",

@@ -13,7 +13,7 @@ export const op16MarshallDTeach080: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "080",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-080_00GcFmm.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-080.png",
     },
     {
       id: "OP16-080_p1",
@@ -21,7 +21,7 @@ export const op16MarshallDTeach080: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "080",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-080_p1_bQAsMJg.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-080_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,17 +30,17 @@ export const op16MarshallDTeach080: LeaderCard = {
   setId: "OP16",
   power: 5000,
   life: 4,
-  traits: ["Blackbeard Pirates The Seven Warlords of the Sea"],
+  traits: ["The Seven Warlords of the Sea", "Blackbeard Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-080_p1_bQAsMJg.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-080_p1.png",
       imageId: "OP16-080_p1",
     },
   ],
   effect:
-    "[Opponent's Turn] All of your Characters gain +1 cost. [On your Opponent's Attack] [Once Per Turn] You may trash 1 card with a [Trigger] from your hand: Change the target of that attack to this Leader or to one of your {Blackbeard Pirates} type Character cards.",
+    "[Opponent's Turn] All of your Characters gain +1 cost.\n[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card with a [Trigger] from your hand: Change the target of that attack to this Leader or to one of your {Blackbeard Pirates} type Character cards.",
   effects: {
     permanentEffects: [
       {

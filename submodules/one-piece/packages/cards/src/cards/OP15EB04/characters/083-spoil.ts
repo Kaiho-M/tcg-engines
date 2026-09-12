@@ -13,7 +13,7 @@ export const op15eb04Spoil083: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "083",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-083.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-083.png",
     },
   ],
   cardType: "character",
@@ -21,12 +21,11 @@ export const op15eb04Spoil083: CharacterCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 1,
-  power: 0,
   counter: 2000,
   traits: ["The Victims' Club"],
   attribute: "wisdom",
   effect:
-    "[On Play] Trash 3 cards from the top of your deck. [Activate: Main] You may trash this Character: If you have 15 or more cards in your trash, give up to 1 rested DON!! card to 1 of your Leader or Character cards.",
+    "[On Play] Trash 3 cards from the top of your deck.\n[Activate: Main] You may trash this Character: If you have 15 or more cards in your trash, give up to 1 rested DON!! card to 1 of your Leader or Character cards.",
   effects: {
     effects: [
       {

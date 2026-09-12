@@ -13,7 +13,7 @@ export const op15eb04JustWatchMeAce021: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "021",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-021_leGaEox.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-021.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op15eb04JustWatchMeAce021: EventCard = {
   rarity: "UC",
   setId: "OP15EB04",
   cost: 4,
-  traits: ["Revolutionary Army Dressrosa"],
+  traits: ["Dressrosa", "Revolutionary Army"],
   effect:
-    "If you have 4 or more Events in your trash, give this card in your hand -3 cost.[Main]/[Counter] Give up to 1 of your opponent's Characters -3000 power during this turn.",
+    "If you have 4 or more Events in your trash, give this card in your hand −3 cost.\n[Main]/[Counter] Give up to 1 of your opponent's Characters −3000 power during this turn.",
   effects: {
     effects: [
       {

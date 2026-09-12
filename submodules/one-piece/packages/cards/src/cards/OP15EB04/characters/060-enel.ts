@@ -13,7 +13,7 @@ export const op15eb04Enel060: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "060",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-060_sR1j434.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-060.png",
     },
     {
       id: "OP15-060_p1",
@@ -21,7 +21,7 @@ export const op15eb04Enel060: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "060",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-060_p1_gZ1XXGE.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-060_p1.png",
     },
   ],
   cardType: "character",
@@ -34,13 +34,13 @@ export const op15eb04Enel060: CharacterCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-060_p1_gZ1XXGE.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-060_p1.png",
       imageId: "OP15-060_p1",
     },
   ],
   effect:
-    "If you have 6 or less DON!! cards on your field, this Character cannot be removed from the field by your opponent's effects and gains +2000 power.\n[Activate: Main] DON!! 1: This Character gains [Blocker] until the end of your opponent's next End Phase. Then, trash 1 card from your hand.",
+    "If you have 6 or less DON!! cards on your field, this Character cannot be removed from the field by your opponent's effects and gains +2000 power.\n[Activate: Main] DON!! −1: This Character gains [Blocker] until the end of your opponent's next End Phase. Then, trash 1 card from your hand.",
   effects: {
     effects: [
       {

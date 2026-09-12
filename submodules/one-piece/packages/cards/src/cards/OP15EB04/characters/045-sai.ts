@@ -13,7 +13,7 @@ export const op15eb04Sai045: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "045",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-045_aPNUUlO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-045.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Sai045: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["Happosui Army Dressrosa"],
+  traits: ["Dressrosa", "Happosui Army"],
   attribute: "slash",
   effect:
     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] You may trash 1 Event from your hand: Draw 2 cards.",

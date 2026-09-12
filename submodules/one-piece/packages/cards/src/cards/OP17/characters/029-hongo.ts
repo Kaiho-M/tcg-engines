@@ -13,7 +13,7 @@ export const op17Hongo029: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "029",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-029_RmvOBJR.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-029.png",
     },
   ],
   cardType: "character",

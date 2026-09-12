@@ -13,7 +13,7 @@ export const op16HallowedGlacierSlash100: EventCard = {
       setCode: "OP16",
       collectorNumber: "100",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-100_8tEoAoQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-100.png",
     },
   ],
   cardType: "event",

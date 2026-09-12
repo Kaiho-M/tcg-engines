@@ -13,7 +13,7 @@ export const op17Queen065: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "065",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-065_XglczsT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-065.png",
     },
   ],
   cardType: "character",
@@ -25,7 +25,7 @@ export const op17Queen065: CharacterCard = {
   traits: ["Animal Kingdom Pirates"],
   attribute: "strike",
   effect:
-    "[Banish]\n[On Play] DON!! -1: Draw 1 card, and up to 2 of your opponent's Characters with a cost of 5 or less cannot attack until the end of your opponent's next End Phase.",
+    "[Banish]\n[On Play] DON!! −1: Draw 1 card, and up to 2 of your opponent's Characters with a cost of 5 or less cannot attack until the end of your opponent's next End Phase.",
   effects: {
     keywords: ["banish"],
     effects: [

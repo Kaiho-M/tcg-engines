@@ -5,6 +5,6 @@ export const op15eb04Leo052I18n: OPCardI18n = {
     name: "Leo",
     effect:
       "If your Character with 7000 base power or less would be removed from the field by your opponent's effect, you may place 1 of your Characters at the bottom of the owner's deck instead.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-052_TUaVQIk.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-052.png",
   },
 };

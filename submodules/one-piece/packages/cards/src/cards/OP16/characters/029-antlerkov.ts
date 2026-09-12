@@ -13,7 +13,7 @@ export const op16Antlerkov029: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "029",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-029_zf65lRM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-029.png",
     },
   ],
   cardType: "character",

@@ -5,6 +5,6 @@ export const op15eb04Koala044I18n: OPCardI18n = {
     name: "Koala",
     effect:
       "[Blocker]\n[On K.O.] Look at 3 cards from the top of your deck; reveal up to 1 {Dressrosa} type Event and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-044_vrJat4E.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-044.png",
   },
 };

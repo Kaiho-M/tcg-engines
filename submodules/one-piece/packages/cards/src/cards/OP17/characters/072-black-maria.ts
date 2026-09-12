@@ -13,7 +13,7 @@ export const op17BlackMaria072: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "072",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-072_p6wvPeZ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-072.png",
     },
   ],
   cardType: "character",

@@ -13,7 +13,7 @@ export const op17CharlotteLinlin049: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "049",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-049_r2FuHxT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-049.png",
     },
     {
       id: "OP17-049_p1",
@@ -21,7 +21,7 @@ export const op17CharlotteLinlin049: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "049",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-049_p1_aPY9o8c.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-049_p1.png",
     },
   ],
   cardType: "character",
@@ -34,8 +34,8 @@ export const op17CharlotteLinlin049: CharacterCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-049_p1_aPY9o8c.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-049_p1.png",
       imageId: "OP17-049_p1",
     },
   ],

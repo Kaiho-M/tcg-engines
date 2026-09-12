@@ -13,7 +13,7 @@ export const op16KouzukiMomonosuke085: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "085",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-085_Mq3HpaM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-085.png",
     },
     {
       id: "OP16-085_p1",
@@ -21,7 +21,7 @@ export const op16KouzukiMomonosuke085: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "085",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-085_p1_GF8c8fm.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-085_p1.png",
     },
   ],
   cardType: "character",
@@ -31,17 +31,17 @@ export const op16KouzukiMomonosuke085: CharacterCard = {
   cost: 9,
   power: 6000,
   counter: 1000,
-  traits: ["Land of Wano Kouzuki Clan"],
+  traits: ["Land of Wano", "Kouzuki Clan"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-085_p1_GF8c8fm.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-085_p1.png",
       imageId: "OP16-085_p1",
     },
   ],
   effect:
-    "[Blocker] [On Play] Play up to 1 {Land of Wano} type Character card with a cost of 6 or less other than [Kouzuki Momonosuke] from your trash.",
+    "[Blocker]\n[On Play] Play up to 1 {Land of Wano} type Character card with a cost of 6 or less other than [Kouzuki Momonosuke] from your trash.",
   effects: {
     keywords: ["blocker"],
     effects: [

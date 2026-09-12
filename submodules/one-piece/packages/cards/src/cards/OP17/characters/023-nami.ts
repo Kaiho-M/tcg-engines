@@ -13,7 +13,7 @@ export const op17Nami023: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "023",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-023_LyVnUXp.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-023.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Nami023: CharacterCard = {
   cost: 1,
   power: 1000,
   counter: 2000,
-  traits: ["East Blue Straw Hat Crew"],
+  traits: ["East Blue", "Straw Hat Crew"],
   attribute: "wisdom",
   effect:
     "If one of your {East Blue} or {Straw Hat Crew} type Characters would be K.O.'d, you may rest this Character instead.",

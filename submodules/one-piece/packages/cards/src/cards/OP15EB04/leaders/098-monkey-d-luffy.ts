@@ -13,7 +13,7 @@ export const op15eb04MonkeyDLuffy098: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "098",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-098_JhOEeQ0.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-098.png",
     },
     {
       id: "OP15-098_p1",
@@ -21,7 +21,7 @@ export const op15eb04MonkeyDLuffy098: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "098",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-098_p1_vHsa8gH.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-098_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,12 +30,12 @@ export const op15eb04MonkeyDLuffy098: LeaderCard = {
   setId: "OP15EB04",
   power: 5000,
   life: 5,
-  traits: ["Straw Hat Crew Sky Island"],
+  traits: ["Sky Island", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-098_p1_vHsa8gH.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-098_p1.png",
       imageId: "OP15-098_p1",
     },
   ],

@@ -13,15 +13,7 @@ export const op17EdwardNewgate005: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "005",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-005_utvcUbv.jpg",
-    },
-    {
-      id: "OP17-005_p2",
-      artId: "OP17-005_p2",
-      setCode: "OP17",
-      collectorNumber: "005",
-      rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-005_p2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-005.png",
     },
     {
       id: "OP17-005_p1",
@@ -29,7 +21,15 @@ export const op17EdwardNewgate005: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "005",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-005_p1_ieXdr61.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-005_p1.png",
+    },
+    {
+      id: "OP17-005_p2",
+      artId: "OP17-005_p2",
+      setCode: "OP17",
+      collectorNumber: "005",
+      rarity: "SR",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-005_p2.png",
     },
   ],
   cardType: "character",
@@ -38,22 +38,22 @@ export const op17EdwardNewgate005: CharacterCard = {
   setId: "OP17",
   cost: 10,
   power: 12000,
-  traits: ["The Four Emperors Whitebeard Pirates"],
+  traits: ["The Four Emperors", "Whitebeard Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-005_p2.jpg",
-      imageId: "OP17-005_p2",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-005_p1.png",
+      imageId: "OP17-005_p1",
     },
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-005_p1_ieXdr61.jpg",
-      imageId: "OP17-005_p1",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-005_p2.png",
+      imageId: "OP17-005_p2",
     },
   ],
   effect:
-    "If your opponent has a Character with 10000 power or more, give this card in your hand -4 cost.\n[On Play] Your monocolored Leader's base power becomes 8000 until the end of your opponent's next End Phase.",
+    "If your opponent has a Character with 10000 power or more, give this card in your hand −4 cost.\n[On Play] Your monocolored Leader's base power becomes 8000 until the end of your opponent's next End Phase.",
   effects: {
     permanentEffects: [
       {

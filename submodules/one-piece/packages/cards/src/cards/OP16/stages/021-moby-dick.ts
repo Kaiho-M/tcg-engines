@@ -13,7 +13,7 @@ export const op16MobyDick021: StageCard = {
       setCode: "OP16",
       collectorNumber: "021",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-021_N1g78JS.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-021.png",
     },
     {
       id: "OP16-021_p1",
@@ -21,7 +21,7 @@ export const op16MobyDick021: StageCard = {
       setCode: "OP16",
       collectorNumber: "021",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-021_p1_siWi8dK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-021_p1.png",
     },
   ],
   cardType: "stage",
@@ -32,13 +32,13 @@ export const op16MobyDick021: StageCard = {
   traits: ["Whitebeard Pirates"],
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-021_p1_siWi8dK.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-021_p1.png",
       imageId: "OP16-021_p1",
     },
   ],
   effect:
-    "[On Play] If your Leader has the {Whitebeard Pirates} type, look at 3 cards from the top of your deck and add up to 1 card to your hand. Then, place the rest at the bottom of your deck in any order.  [Activate:Main] You may trash this Stage: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
+    "[On Play] If your Leader has the {Whitebeard Pirates} type, look at 3 cards from the top of your deck and add up to 1 card to your hand. Then, place the rest at the bottom of your deck in any order.\n[Activate: Main] You may trash this Stage: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
   effects: {
     effects: [
       {

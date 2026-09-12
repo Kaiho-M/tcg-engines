@@ -13,7 +13,7 @@ export const op15eb04Gedatsu063: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "063",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-063_jiHtvL7.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-063.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op15eb04Gedatsu063: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Sky Island Vassals"],
+  traits: ["Sky Island", "Vassals"],
   attribute: "strike",
   effect:
-    "[On Play] DON!! 1: Draw 1 card.\n[On K.O.] If you have 6 or less DON!! cards on your field, K.O. up to 1 of your opponent's Characters with 2000 power or less.",
+    "[On Play] DON!! −1: Draw 1 card.\n[On K.O.] If you have 6 or less DON!! cards on your field, K.O. up to 1 of your opponent's Characters with 2000 power or less.",
   effects: {
     effects: [
       {

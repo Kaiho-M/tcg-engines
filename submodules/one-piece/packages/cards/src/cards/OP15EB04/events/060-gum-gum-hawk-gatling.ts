@@ -13,7 +13,7 @@ export const op15eb04GumGumHawkGatling060: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "060",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-060_HhzAaHv.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-060.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,10 @@ export const op15eb04GumGumHawkGatling060: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 2,
-  traits: ["Straw Hat Crew The Four Emperors Egghead"],
+  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
+  traits: ["Egghead", "The Four Emperors", "Straw Hat Crew"],
   effect:
-    "[Main] You may add 1 card from the top or bottom of your Life cards to your hand: Add up to 1 {Egghead} type Character card from your hand to the top of your Life cards face-up. Then, give up to 1 of your opponent's Characters -1000 power during this turn.[Trigger] Draw 2 cards and trash 1 card from your hand.",
+    "[Main] You may add 1 card from the top or bottom of your Life cards to your hand: Add up to 1 {Egghead} type Character card from your hand to the top of your Life cards face-up. Then, give up to 1 of your opponent's Characters −1000 power during this turn.",
   effects: {
     effects: [
       {
@@ -75,6 +76,21 @@ export const op15eb04GumGumHawkGatling060: EventCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+          {
+            action: "trashFromHand",
+            player: "self",
+            amount: 1,
+          },
+        ],
       },
       {
         trigger: "trigger",

@@ -13,7 +13,7 @@ export const op15eb04ImpactDial115: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "115",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-115_yPqMKM2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-115.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,8 @@ export const op15eb04ImpactDial115: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 2,
-  traits: ["Straw Hat Crew Sky Island"],
+  trigger: "[Trigger] K.O. up to 1 of your opponent's Characters with a cost of 4 or less.",
+  traits: ["Sky Island", "Straw Hat Crew"],
   effect:
     "[Main] K.O. up to 1 of your opponent's Characters with a cost of 4 or less. Then, add 1 card from the top of your Life cards to your hand.",
   effects: {
@@ -55,6 +56,52 @@ export const op15eb04ImpactDial115: EventCard = {
             },
             destination: "hand",
             position: "top",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "ko",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 4,
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "ko",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 4,
+                },
+              ],
+            },
           },
         ],
       },

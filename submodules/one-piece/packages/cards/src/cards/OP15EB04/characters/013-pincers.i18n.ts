@@ -4,7 +4,7 @@ export const op15eb04Pincers013I18n: OPCardI18n = {
   en: {
     name: "Pincers",
     effect:
-      "If your Leader has 0 power or less, give this card in your hand -2 cost.\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-013_zQ7rphD.jpg",
+      "If your Leader has 0 power or less, give this card in your hand −2 cost.\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-013.png",
   },
 };

@@ -13,7 +13,7 @@ export const op17Franky090: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "090",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-090_eKUc87Z.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-090.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Franky090: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Elbaph Straw Hat Crew"],
+  traits: ["Elbaph", "Straw Hat Crew"],
   attribute: "strike",
   effect:
     "If there is a Character with a cost of 12 or more, this Character gains +3000 power.\n[On Play] If there is a Character with a cost of 12 or more, K.O. up to 1 of your opponent's Characters with a cost of 2 or less.",

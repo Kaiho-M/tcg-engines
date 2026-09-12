@@ -13,7 +13,7 @@ export const op15eb04Octoballoon106: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "106",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-106_OMRP1T5.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-106.png",
     },
   ],
   cardType: "character",
@@ -21,16 +21,47 @@ export const op15eb04Octoballoon106: CharacterCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 2,
-  power: 0,
   counter: 1000,
   trigger:
-    "Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
-  traits: ["Animal Sky Island"],
+    "[Trigger] Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
+  traits: ["Animal", "Sky Island"],
   attribute: "wisdom",
   effect:
-    "[Trigger] Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
+    "[Trigger] [Trigger] Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
   effects: {
     effects: [
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 1,
+          },
+          {
+            action: "play",
+            source: {
+              player: "self",
+              zone: "hand",
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            filters: [
+              {
+                filter: "cost",
+                comparison: "lte",
+                value: 2,
+              },
+              {
+                filter: "color",
+                value: "yellow",
+              },
+            ],
+          },
+        ],
+      },
       {
         trigger: "trigger",
         actions: [

@@ -5,6 +5,6 @@ export const op16CatarinaDevon104I18n: OPCardI18n = {
     name: "Catarina Devon",
     effect:
       "[When Attacking] Select up to 1 of your opponent's Characters. This Character's base power becomes the same as the selected Character's power during this turn.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-104_c2RAjOp.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-104.png",
   },
 };

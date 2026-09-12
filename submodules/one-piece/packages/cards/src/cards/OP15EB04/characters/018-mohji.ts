@@ -13,7 +13,7 @@ export const op15eb04Mohji018: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "018",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-018_t0U0JAx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-018.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Mohji018: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  traits: ["Buggy Pirates East Blue"],
+  traits: ["East Blue", "Buggy Pirates"],
   attribute: "wisdom",
   effect:
     "[When Attacking] K.O. up to 1 of your opponent's Characters with 3000 power or less with a DON!! card given.",

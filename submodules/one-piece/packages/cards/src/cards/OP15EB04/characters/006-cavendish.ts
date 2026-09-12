@@ -13,7 +13,7 @@ export const op15eb04Cavendish006: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "006",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-006_9i9slYu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-006.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Cavendish006: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 2000,
-  traits: ["Beautiful Pirates Dressrosa"],
+  traits: ["Dressrosa", "Beautiful Pirates"],
   attribute: "slash",
   effect: "If you have 4 or more Events in your trash, this Character gains +2000 power.",
   effects: {

@@ -13,7 +13,7 @@ export const op16JesusBurgess107: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "107",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-107_aEqkSZ6.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-107.png",
     },
   ],
   cardType: "character",
@@ -22,7 +22,7 @@ export const op16JesusBurgess107: CharacterCard = {
   setId: "OP16",
   cost: 3,
   power: 5000,
-  trigger: "You may trash 1 card from your hand: Play this card.",
+  trigger: "[Trigger] You may trash 1 card from your hand: Play this card.",
   traits: ["Blackbeard Pirates"],
   attribute: "strike",
   effect:
@@ -42,6 +42,21 @@ export const op16JesusBurgess107: CharacterCard = {
             destination: "hand",
           },
         ],
+      },
+      {
+        trigger: "trigger",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
+        optional: true,
       },
       {
         trigger: "trigger",

@@ -13,7 +13,7 @@ export const op15eb04Krieg008: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "008",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-008_FODS7An.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-008.png",
     },
     {
       id: "OP15-008_p1",
@@ -21,7 +21,7 @@ export const op15eb04Krieg008: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "008",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-008_p1_1nGVM5V.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-008_p1.png",
     },
   ],
   cardType: "character",
@@ -30,17 +30,17 @@ export const op15eb04Krieg008: CharacterCard = {
   setId: "OP15EB04",
   cost: 8,
   power: 9000,
-  traits: ["Krieg Pirates East Blue"],
+  traits: ["East Blue", "Krieg Pirates"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-008_p1_1nGVM5V.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-008_p1.png",
       imageId: "OP15-008_p1",
     },
   ],
   effect:
-    "[On Play] Give up to 3 of your opponent's rested DON!! cards to 1 of your opponent's Characters. Then, this Character gains [Rush] during this turn.\n[Activate: Main] [Once Per Turn] If this Character was played on this turn, give all of your opponent's Characters -1000 power during this turn for every DON!! card given to that Character.",
+    "[On Play] Give up to 3 of your opponent's rested DON!! cards to 1 of your opponent's Characters. Then, this Character gains [Rush] during this turn.\n[Activate: Main] [Once Per Turn] If this Character was played on this turn, give all of your opponent's Characters −1000 power during this turn for every DON!! card given to that Character.",
   effects: {
     effects: [
       {

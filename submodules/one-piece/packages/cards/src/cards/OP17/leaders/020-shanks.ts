@@ -13,7 +13,7 @@ export const op17Shanks020: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "020",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-020_C3FdLNk.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-020.png",
     },
     {
       id: "OP17-020_p1",
@@ -21,7 +21,7 @@ export const op17Shanks020: LeaderCard = {
       setCode: "OP17",
       collectorNumber: "020",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-020_p1_GddFLIb.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-020_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,12 +30,12 @@ export const op17Shanks020: LeaderCard = {
   setId: "OP17",
   power: 5000,
   life: 5,
-  traits: ["The Four Emperors Red-Haired Pirates"],
+  traits: ["The Four Emperors", "Red-Haired Pirates"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-020_p1_GddFLIb.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-020_p1.png",
       imageId: "OP17-020_p1",
     },
   ],

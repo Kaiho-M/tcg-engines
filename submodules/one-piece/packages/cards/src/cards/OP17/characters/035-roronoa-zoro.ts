@@ -13,7 +13,7 @@ export const op17RoronoaZoro035: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "035",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-035_8YkCFTv.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-035.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17RoronoaZoro035: CharacterCard = {
   cost: 7,
   power: 8000,
   counter: 2000,
-  traits: ["East Blue Straw Hat Crew"],
+  traits: ["East Blue", "Straw Hat Crew"],
   attribute: "slash",
   i18n: op17RoronoaZoro035I18n,
 };

@@ -13,7 +13,7 @@ export const op17Usopp080: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "080",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-080_x0kiaW9.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-080.png",
     },
     {
       id: "OP17-080_p1",
@@ -21,7 +21,7 @@ export const op17Usopp080: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "080",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-080_p1_xOpBgGZ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-080_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op17Usopp080: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Straw Hat Crew Elbaph"],
+  traits: ["Elbaph", "Straw Hat Crew"],
   attribute: "ranged",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-080_p1_xOpBgGZ.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-080_p1.png",
       imageId: "OP17-080_p1",
     },
   ],

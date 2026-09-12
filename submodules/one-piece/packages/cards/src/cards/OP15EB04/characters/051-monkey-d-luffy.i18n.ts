@@ -4,7 +4,7 @@ export const op15eb04MonkeyDLuffy051I18n: OPCardI18n = {
   en: {
     name: "Monkey.D.Luffy",
     effect:
-      '[Opponent\'s Turn] If your Leader has the "Dressrosa" type, this Character gains +3000 power.',
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-051_PLRuTd8.jpg",
+      "[Opponent's Turn] If your Leader has the {Dressrosa} type, this Character gains +3000 power.",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-051.png",
   },
 };

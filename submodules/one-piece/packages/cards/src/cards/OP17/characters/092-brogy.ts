@@ -13,7 +13,7 @@ export const op17Brogy092: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "092",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-092.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-092.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op17Brogy092: CharacterCard = {
   cost: 5,
   power: 5000,
   counter: 1000,
-  traits: ["Giant Elbaph Giant Pirates"],
+  traits: ["Giant", "Elbaph", "Giant Pirates"],
   attribute: "slash",
   effect:
-    "This Character gains +12 cost. [On Play] If your Leader has the {Elbaph} type, play up to 1 [Dorry] with a cost of 5 or less from your hand or trash. Then, you cannot play Character cards during this turn.",
+    "This Character gains +12 cost.\n[On Play] If your Leader has the {Elbaph} type, play up to 1 [Dorry] with a cost of 5 or less from your hand or trash. Then, you cannot play Character cards during this turn.",
   effects: {
     effects: [
       {

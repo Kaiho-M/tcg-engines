@@ -13,7 +13,7 @@ export const op16Sengoku060: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "060",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-060_VSwFbaU.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-060.png",
     },
     {
       id: "OP16-060_p1",
@@ -21,7 +21,7 @@ export const op16Sengoku060: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "060",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-060_p1_p1nmfF3.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-060_p1.png",
     },
   ],
   cardType: "leader",
@@ -34,8 +34,8 @@ export const op16Sengoku060: LeaderCard = {
   attribute: "wisdom",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-060_p1_p1nmfF3.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-060_p1.png",
       imageId: "OP16-060_p1",
     },
   ],

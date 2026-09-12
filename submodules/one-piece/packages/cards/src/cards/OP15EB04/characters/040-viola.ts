@@ -13,7 +13,7 @@ export const op15eb04Viola040: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "040",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-040_DpSKRqX.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-040.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Viola040: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Donquixote Pirates Dressrosa"],
+  traits: ["Dressrosa", "Donquixote Pirates"],
   attribute: "special",
   effect:
     "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Dressrosa} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",

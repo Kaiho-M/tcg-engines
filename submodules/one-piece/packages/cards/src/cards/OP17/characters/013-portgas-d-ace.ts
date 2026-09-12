@@ -13,7 +13,7 @@ export const op17PortgasDAce013: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "013",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-013.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-013.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op17PortgasDAce013: CharacterCard = {
   traits: ["Whitebeard Pirates"],
   attribute: "special",
   effect:
-    "If your opponent has a Character with 10000 power or more, give this card in your hand -2 cost. [On Play] If your Leader is [Edward.Newgate], give up to 1 of your opponent's rested Characters -6000 power during this turn.",
+    "If your opponent has a Character with 10000 power or more, give this card in your hand −2 cost.\n[On Play] If your Leader is [Edward.Newgate], give up to 1 of your opponent's rested Characters −6000 power during this turn.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op15eb04JewelryBonney105: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "105",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-105_yt4eqp4.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-105.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04JewelryBonney105: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Bonney Pirates Supernovas"],
+  traits: ["Supernovas", "Bonney Pirates"],
   attribute: "special",
   effect:
     "If your Character with 7000 base power or less would be removed from the field by your opponent's effect, you may add 1 card from the top of your Life cards to your hand instead.",

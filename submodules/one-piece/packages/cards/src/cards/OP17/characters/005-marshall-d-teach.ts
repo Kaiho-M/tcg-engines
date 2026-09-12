@@ -12,20 +12,20 @@ export const op17MarshallDTeach005: CharacterCard = {
       artId: "ST27-005_p1",
       setCode: "OP17",
       collectorNumber: "005",
-      rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/ST27-005_p1.jpg",
+      rarity: "SP",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/ST27-005_p1.png",
     },
   ],
   cardType: "character",
   color: ["black"],
-  rarity: "SR",
+  rarity: "SP",
   setId: "OP17",
   cost: 7,
   power: 8000,
-  traits: ["Blackbeard Pirates The Four Emperors"],
+  traits: ["The Four Emperors", "Blackbeard Pirates"],
   attribute: "special",
   effect:
-    "[Activate:Main] You may rest this Character: K.O. up to 1 Character with a cost of 3 or less.[On K.O.] Add up to 1 black card from your trash to your hand.",
+    "[Activate: Main] You may rest this Character: K.O. up to 1 Character with a cost of 3 or less.\n[On K.O.] Add up to 1 black card from your trash to your hand.",
   effects: {
     effects: [
       {

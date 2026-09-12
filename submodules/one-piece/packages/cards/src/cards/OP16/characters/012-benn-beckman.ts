@@ -13,7 +13,7 @@ export const op16BennBeckman012: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "012",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-012_SflylJE.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-012.png",
     },
   ],
   cardType: "character",
@@ -26,9 +26,57 @@ export const op16BennBeckman012: CharacterCard = {
   traits: ["Red-Haired Pirates"],
   attribute: "ranged",
   effect:
-    "[Blocker] [On Play] You may rest 1 of your DON!! cards: If your Leader has the {Red-Haired Pirates} type and have 10 DON!! cards on your field, play up to 1 [Shanks] from your hand.",
+    "[Blocker]\n[On Play] You may rest 1 of your DON!! cards: If your Leader has the {Red-Haired Pirates} type and you have 10 DON!! cards on your field, play up to 1 [Shanks] from your hand.",
   effects: {
     keywords: ["blocker"],
+    effects: [
+      {
+        trigger: "onPlay",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "play",
+            source: {
+              player: "self",
+              zone: "hand",
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            filters: [
+              {
+                filter: "name",
+                value: "Shanks",
+              },
+            ],
+            condition: {
+              condition: "compound",
+              operator: "and",
+              conditions: [
+                {
+                  condition: "leaderTrait",
+                  trait: "Red-Haired Pirates",
+                  match: "includes",
+                },
+                {
+                  condition: "donFieldCount",
+                  player: "self",
+                  comparison: "eq",
+                  value: 10,
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
+      },
+    ],
   },
   i18n: op16BennBeckman012I18n,
 };

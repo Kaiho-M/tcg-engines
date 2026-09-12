@@ -13,7 +13,7 @@ export const op16PortgasDAce118: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-118_X6FmLLp.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-118.png",
     },
     {
       id: "OP16-118_p1",
@@ -21,7 +21,7 @@ export const op16PortgasDAce118: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-118_p1_zKFreVA.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-118_p1.png",
     },
   ],
   cardType: "character",
@@ -35,13 +35,13 @@ export const op16PortgasDAce118: CharacterCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-118_p1_zKFreVA.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-118_p1.png",
       imageId: "OP16-118_p1",
     },
   ],
   effect:
-    'The counter of all of your Character cards with 8000 power in your hand becomes +2000.\n[On Play]/[On K.O.] Look at 5 cards from the top of your deck; reveal up to 1 [Monkey.D.Luffy] or up to 1 card with a type including "Whitebeard Pirates" and add it to your hand. Then, place the rest a the bottom of your deck in any order.',
+    'The counter of all of your Character cards with 8000 power in your hand becomes +2000.\n[On Play]/[On K.O.] Look at 5 cards from the top of your deck; reveal up to 1 [Monkey.D.Luffy] or up to 1 card with a type including "Whitebeard Pirates" and add it to your hand. Then, place the rest at the bottom of your deck in any order.',
   effects: {
     effects: [
       {

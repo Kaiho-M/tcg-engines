@@ -13,7 +13,7 @@ export const op17CharlotteKatakuri103: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "103",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-103_lL7kUAx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-103.png",
     },
   ],
   cardType: "character",
@@ -23,11 +23,11 @@ export const op17CharlotteKatakuri103: CharacterCard = {
   cost: 6,
   power: 4000,
   counter: 1000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "strike",
   effect:
-    "[Your Turn] [On Play] If your Leader has the {Big Mom Pirates} type, add up to 1 card from the top of your deck to the top of your Life cards. Then, give up to 1 of your opponent's Characters -3000 power during this turn.",
+    "[Your Turn] [On Play] If your Leader has the {Big Mom Pirates} type, add up to 1 card from the top of your deck to the top of your Life cards. Then, give up to 1 of your opponent's Characters −3000 power during this turn.",
   effects: {
     effects: [
       {
@@ -68,6 +68,14 @@ export const op17CharlotteKatakuri103: CharacterCard = {
             },
             value: -3000,
             duration: "thisTurn",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
           },
         ],
       },

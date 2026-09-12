@@ -13,7 +13,7 @@ export const op15eb04RoronoaZoro094: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "094",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-094_AGSmVMl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-094.png",
     },
   ],
   cardType: "character",

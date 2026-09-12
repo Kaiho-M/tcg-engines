@@ -13,7 +13,7 @@ export const op17CharlotteMontDOr111: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "111",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-111_Ry9r07H.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-111.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17CharlotteMontDOr111: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:

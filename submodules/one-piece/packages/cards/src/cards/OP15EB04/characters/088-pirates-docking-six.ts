@@ -13,7 +13,7 @@ export const op15eb04PiratesDockingSix088: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "088",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-088_Y6huCMS.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-088.png",
     },
   ],
   cardType: "character",

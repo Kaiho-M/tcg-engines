@@ -12,20 +12,20 @@ export const op17MonkeyDLuffy004: CharacterCard = {
       artId: "ST31-004_p1",
       setCode: "OP17",
       collectorNumber: "004",
-      rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/ST31-004_p1.jpg",
+      rarity: "SP",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/ST31-004_p1.png",
     },
   ],
   cardType: "character",
   color: ["red"],
-  rarity: "SR",
+  rarity: "SP",
   setId: "OP17",
   cost: 7,
   power: 9000,
-  traits: ["Straw Hat Crew The Four Emperors"],
+  traits: ["The Four Emperors", "Straw Hat Crew"],
   attribute: "strike",
   effect:
-    "If you have a total of 3 or more given DON!! cards, this Character gains [Rush]. (This card can attack on the turn in which it is played.)[On Play] For every {Straw Hat Crew} type card on your field, give up to 1 of your opponent's Characters −1000 power during this turn.",
+    "If you have a total of 3 or more given DON!! cards, this Character gains [Rush].\n(This card can attack on the turn in which it is played.)\n[On Play] For every {Straw Hat Crew} type card on your field, give up to 1 of your opponent's Characters −1000 power during this turn.",
   effects: {
     permanentEffects: [
       {

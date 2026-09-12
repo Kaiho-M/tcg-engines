@@ -13,7 +13,7 @@ export const op16NicoRobin092: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "092",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-092_sgaCnPy.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-092.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16NicoRobin092: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Land of Wano Straw Hat Crew"],
+  traits: ["Land of Wano", "Straw Hat Crew"],
   attribute: "strike",
   effect:
     "[On Play] You may trash 1 Character card with a cost of 8 or more from your hand: Draw 2 cards.",

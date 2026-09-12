@@ -13,15 +13,15 @@ export const op16Vista011: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "011",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-011_67MW6R6.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-011.png",
     },
     {
-      id: "OP16-011",
-      artId: "OP16-011",
+      id: "OP16-011_p1",
+      artId: "OP16-011_p1",
       setCode: "OP16",
       collectorNumber: "011",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-011_l76oKss.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-011_p1.png",
     },
   ],
   cardType: "character",
@@ -35,12 +35,12 @@ export const op16Vista011: CharacterCard = {
   artVariants: [
     {
       type: "other",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-011_l76oKss.jpg",
-      imageId: "OP16-011",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-011_p1.png",
+      imageId: "OP16-011_p1",
     },
   ],
   effect:
-    "[On Play] You may reveal 1 Character card with 8000 power from your hand: Draw 1 card.\n\n[DON!! x1] [When Attacking] K.O. Up to 2 of your opponent's Characters with 2000 base power or less.",
+    "[On Play] You may reveal 1 Character card with 8000 power from your hand: Draw 1 card.\n[DON!! x1] [When Attacking] K.O. up to 2 of your opponent's Characters with 2000 base power or less.",
   effects: {
     effects: [
       {

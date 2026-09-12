@@ -13,7 +13,7 @@ export const op15eb04Heso117: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "117",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-117_VaI6rE3.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-117.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op15eb04Heso117: EventCard = {
   rarity: "UC",
   setId: "OP15EB04",
   cost: 1,
-  trigger: "If your Leader has the {Sky Island} type, draw 2 cards.",
+  trigger: "[Trigger] If your Leader has the {Sky Island} type, draw 2 cards.",
   traits: ["Sky Island"],
   effect:
     "[Main] Draw 1 card. Then, give up to 1 rested DON!! card to 1 of your {Sky Island} type Leader or Character cards.",
@@ -56,6 +56,23 @@ export const op15eb04Heso117: EventCard = {
               upTo: true,
             },
             donState: "rested",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "Sky Island",
+            match: "includes",
+          },
+        ],
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
           },
         ],
       },

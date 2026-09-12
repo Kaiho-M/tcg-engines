@@ -13,7 +13,7 @@ export const op16TrafalgarLaw068: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "068",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-068_hzWatDT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-068.png",
     },
   ],
   cardType: "character",

@@ -13,7 +13,7 @@ export const op17ILlFeedOnThisRageAndUseItToBringTheWorldToRuin097: EventCard = 
       setCode: "OP17",
       collectorNumber: "097",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-097_8Ev7B5Q.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-097.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op17ILlFeedOnThisRageAndUseItToBringTheWorldToRuin097: EventCard = 
   rarity: "C",
   setId: "OP17",
   cost: 1,
-  traits: ["Giant Elbaph"],
+  traits: ["Giant", "Elbaph"],
   effect:
     "[Main] Give all of your opponent's Characters −1 cost during this turn.\n[Counter] Your Leader gains +3000 power during this battle.",
   effects: {

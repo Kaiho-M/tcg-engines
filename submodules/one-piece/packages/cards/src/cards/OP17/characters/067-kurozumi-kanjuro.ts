@@ -13,7 +13,7 @@ export const op17KurozumiKanjuro067: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "067",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-067_rJxiZQl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-067.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op17KurozumiKanjuro067: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  traits: ["Land of Wano Kurozumi Clan"],
+  traits: ["Land of Wano", "Kurozumi Clan"],
   attribute: "slash",
   effect:
-    "[On Play] DON!! 1: If you have a Character with a cost of 10 or more, rest up to 1 of your opponent's Characters.",
+    "[On Play] DON!! −1: If you have a Character with a cost of 10 or more, rest up to 1 of your opponent's Characters.",
   effects: {
     effects: [
       {

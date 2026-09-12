@@ -13,7 +13,7 @@ export const op15eb04AndNoOneElseCanHaveItItSOurMementoOfHim054: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "054",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-054_i7afLoR.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-054.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op15eb04AndNoOneElseCanHaveItItSOurMementoOfHim054: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 4,
-  traits: ["Revolutionary Army Dressrosa"],
+  traits: ["Dressrosa", "Revolutionary Army"],
   effect:
     "[Main] If your Leader is [Lucy], choose one:\n• Draw 2 cards and trash 1 card from your hand. Then, play up to 1 {Dressrosa} type Character card with a cost of 4 or less from your hand.\n• Return up to 1 Stage to the owner's hand.",
   effects: {

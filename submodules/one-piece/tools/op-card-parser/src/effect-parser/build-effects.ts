@@ -1345,8 +1345,11 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
       });
     } else if (seg.triggers.length === 0) {
       const permanentActions = actionsResult.parsed.map((action) => {
+        // A permanent effect on "your Leader" applies to the one leader in play.
+        // The engine only reads permanent actions whose target counts "all" (or is
+        // the source itself), so a parsed count of 1 would make the effect inert.
         if (
-          action.action === "modifyPower" &&
+          (action.action === "modifyPower" || action.action === "grantKeyword") &&
           action.target.player === "self" &&
           action.target.zones.length === 1 &&
           action.target.zones[0] === "leader" &&

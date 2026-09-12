@@ -13,7 +13,7 @@ export const op15eb04FingerPistolYellowLotus049: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "049",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-049_jWXZUjQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-049.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op15eb04FingerPistolYellowLotus049: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 4,
-  trigger: "Activate this card's [Main] effect.",
+  trigger: "[Trigger] Activate this card's [Main] effect.",
   traits: ["CP9"],
   effect:
     "[Main] You may trash 2 cards from the top of your deck: K.O. up to 1 of your opponent's Characters with a base cost of 5 or less.",
@@ -64,6 +64,15 @@ export const op15eb04FingerPistolYellowLotus049: EventCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "main",
+          },
+        ],
       },
       {
         trigger: "trigger",

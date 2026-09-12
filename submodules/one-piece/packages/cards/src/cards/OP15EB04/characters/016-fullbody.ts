@@ -13,7 +13,7 @@ export const op15eb04Fullbody016: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "016",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-016_DZ6lIoF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-016.png",
     },
   ],
   cardType: "character",

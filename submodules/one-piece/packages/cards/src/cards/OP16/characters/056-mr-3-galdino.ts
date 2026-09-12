@@ -13,7 +13,7 @@ export const op16Mr3Galdino056: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "056",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-056_eJ8kOw4.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-056.png",
     },
     {
       id: "OP16-056_p1",
@@ -21,7 +21,7 @@ export const op16Mr3Galdino056: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "056",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-056_p1_lCCqPWh.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-056_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op16Mr3Galdino056: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  traits: ["Impel Down Former Baroque Works"],
+  traits: ["Impel Down", "Former Baroque Works"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-056_p1_lCCqPWh.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-056_p1.png",
       imageId: "OP16-056_p1",
     },
   ],

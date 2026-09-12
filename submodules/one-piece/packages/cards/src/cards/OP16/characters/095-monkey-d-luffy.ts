@@ -13,7 +13,7 @@ export const op16MonkeyDLuffy095: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "095",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-095_Mm1tbwN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-095.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op16MonkeyDLuffy095: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 2000,
-  traits: ["Land of Wano Straw Hat Crew"],
+  traits: ["Land of Wano", "Straw Hat Crew"],
   attribute: "strike",
   effect:
-    "[On Play] Up to 1 of your black {Land of Wano} type Characters gains [Unblockable] during this turn. (This card cannot be blocked.)",
+    "[On Play] Up to 1 of your black {Land of Wano} type Characters gains [Unblockable] during this turn.\n(This card cannot be blocked.)",
   effects: {
     effects: [
       {

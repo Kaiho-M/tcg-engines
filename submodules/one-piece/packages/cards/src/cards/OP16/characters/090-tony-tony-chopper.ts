@@ -13,7 +13,7 @@ export const op16TonyTonyChopper090: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "090",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-090_z6lRinU.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-090.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16TonyTonyChopper090: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  traits: ["Animal Land of Wano Straw Hat Crew"],
+  traits: ["Animal", "Land of Wano", "Straw Hat Crew"],
   attribute: "strike",
   effect:
     "[On Play] Draw 2 cards and trash 2 cards from your hand. Then, K.O. up to 1 of your opponent's Characters with a cost of 1 or less.",

@@ -13,7 +13,7 @@ export const op16EmporioIvankov026: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "026",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-026_kEu4Cls.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-026.png",
     },
     {
       id: "OP16-026_p1",
@@ -21,7 +21,7 @@ export const op16EmporioIvankov026: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "026",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-026_p1_CFyAuoY.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-026_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op16EmporioIvankov026: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 1000,
-  traits: ["Revolutionary Army Impel Down"],
+  traits: ["Impel Down", "Revolutionary Army"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-026_p1_CFyAuoY.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-026_p1.png",
       imageId: "OP16-026_p1",
     },
   ],

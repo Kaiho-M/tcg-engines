@@ -13,7 +13,7 @@ export const op17CharlotteSmoothie106: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "106",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-106_sZf6dmu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-106.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17CharlotteSmoothie106: CharacterCard = {
   cost: 5,
   power: 4000,
   counter: 1000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -64,6 +64,14 @@ export const op17CharlotteSmoothie106: CharacterCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
       },
       {
         trigger: "trigger",

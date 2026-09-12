@@ -13,7 +13,7 @@ export const op17CharlotteBrulee108: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "108",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-108_xysGbOb.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-108.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17CharlotteBrulee108: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  trigger: "Rest up to 1 of your opponent's Characters with a cost of 6 or less.",
+  trigger: "[Trigger] Rest up to 1 of your opponent's Characters with a cost of 6 or less.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -31,6 +31,29 @@ export const op17CharlotteBrulee108: CharacterCard = {
   effects: {
     keywords: ["blocker"],
     effects: [
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "rest",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 6,
+                },
+              ],
+            },
+          },
+        ],
+      },
       {
         trigger: "trigger",
         actions: [

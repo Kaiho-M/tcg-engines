@@ -13,7 +13,7 @@ export const op15eb04Ginny045: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "045",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-045_9Ru6CYe.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-045.png",
     },
   ],
   cardType: "character",

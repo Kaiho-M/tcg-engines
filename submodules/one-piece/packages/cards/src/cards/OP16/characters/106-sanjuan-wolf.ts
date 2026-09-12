@@ -13,7 +13,7 @@ export const op16SanjuanWolf106: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "106",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-106_xJucH9N.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-106.png",
     },
   ],
   cardType: "character",
@@ -23,8 +23,8 @@ export const op16SanjuanWolf106: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  trigger: "Activate this card's [On K.O.] effect.",
-  traits: ["Blackbeard Pirates Giant Impel Down"],
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  traits: ["Giant", "Impel Down", "Blackbeard Pirates"],
   attribute: "strike",
   effect:
     "[On K.O.] If your Leader has the {Blackbeard Pirates} type, draw 1 card, then up to 1 of your Leader or Character cards' base power becomes 7000 during this turn.",
@@ -44,6 +44,15 @@ export const op16SanjuanWolf106: CharacterCard = {
             action: "draw",
             player: "self",
             amount: 1,
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

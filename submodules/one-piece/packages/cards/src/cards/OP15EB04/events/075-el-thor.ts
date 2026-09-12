@@ -13,7 +13,7 @@ export const op15eb04ElThor075: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "075",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-075_59TqCZv.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-075.png",
     },
   ],
   cardType: "event",
@@ -23,7 +23,7 @@ export const op15eb04ElThor075: EventCard = {
   cost: 0,
   traits: ["Sky Island"],
   effect:
-    "[Main] DON!! 1: If your Leader is [Enel], up to 1 of your Leader or Character cards gains +1000 power during this turn. Then, K.O. up to 1 of your opponent's Characters with 3000 power or less.\n[Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
+    "[Main] DON!! −1: If your Leader is [Enel], up to 1 of your Leader or Character cards gains +1000 power during this turn. Then, K.O. up to 1 of your opponent's Characters with 3000 power or less.\n[Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
   effects: {
     effects: [
       {

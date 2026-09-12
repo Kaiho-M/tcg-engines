@@ -13,7 +13,7 @@ export const op15eb04Braham110: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "110",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-110_uhzDnBM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-110.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Braham110: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 2000,
-  traits: ["Sky Island Shandian Warrior"],
+  traits: ["Sky Island", "Shandian Warrior"],
   attribute: "ranged",
   effect:
     "[On K.O.] If your Leader has the {Shandian Warrior} type, add up to 1 card from the top of your deck to the top of your Life cards.",

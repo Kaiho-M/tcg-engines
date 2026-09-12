@@ -13,7 +13,7 @@ export const op15eb04Hajrudin049: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "049",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-049_pUuHIcL.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-049.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Hajrudin049: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 2000,
-  traits: ["Giant Dressrosa New Giant Pirates"],
+  traits: ["Giant", "Dressrosa", "New Giant Pirates"],
   attribute: "strike",
   i18n: op15eb04Hajrudin049I18n,
 };

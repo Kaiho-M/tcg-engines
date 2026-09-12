@@ -13,7 +13,7 @@ export const op16DonquixoteDoflamingo069: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "069",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-069_CB1XDOt.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-069.png",
     },
   ],
   cardType: "character",

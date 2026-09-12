@@ -13,7 +13,7 @@ export const op16AvaloPizarro102: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "102",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-102_ABhjlSm.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-102.png",
     },
   ],
   cardType: "character",
@@ -23,8 +23,8 @@ export const op16AvaloPizarro102: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  trigger: "Activate this card's [On K.O.] effect.",
-  traits: ["Blackbeard Pirates Impel Down"],
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  traits: ["Impel Down", "Blackbeard Pirates"],
   attribute: "special",
   effect: "[On K.O.] Draw 1 card, then play up to 1 [Fullalead] from your hand or trash.",
   effects: {
@@ -53,6 +53,15 @@ export const op16AvaloPizarro102: CharacterCard = {
                 value: "Fullalead",
               },
             ],
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

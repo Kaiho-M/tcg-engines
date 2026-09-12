@@ -13,7 +13,7 @@ export const op16Mcguy013: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "013",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-013_tn9slyz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-013.png",
     },
   ],
   cardType: "character",
@@ -24,7 +24,7 @@ export const op16Mcguy013: CharacterCard = {
   power: 8000,
   traits: ["Whitebeard Pirates Allies"],
   attribute: "slash",
-  effect: "[On K.O.] K.O. Up to 1 of your opponent's Characters with 8000 base power or less.",
+  effect: "[On K.O.] K.O. up to 1 of your opponent's Characters with 8000 base power or less.",
   effects: {
     effects: [
       {

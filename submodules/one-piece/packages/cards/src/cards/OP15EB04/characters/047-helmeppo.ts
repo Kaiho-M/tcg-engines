@@ -13,7 +13,7 @@ export const op15eb04Helmeppo047: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "047",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-047_4GHhyeo.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-047.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Helmeppo047: CharacterCard = {
   cost: 3,
   power: 3000,
   counter: 2000,
-  traits: ["Navy SWORD"],
+  traits: ["Navy", "SWORD"],
   attribute: "slash",
   effect:
     "[Activate: Main] You may trash this Character: Play up to 1 {SWORD} type Character card with a cost of 3 or less other than [Helmeppo] from your hand or trash.",

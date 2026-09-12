@@ -13,7 +13,7 @@ export const op15eb04Enel058: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "058",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-058_xCLoZVA.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-058.png",
     },
     {
       id: "OP15-058_p1",
@@ -21,7 +21,7 @@ export const op15eb04Enel058: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "058",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-058_p1_LSBUdxM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-058_p1.png",
     },
   ],
   cardType: "leader",
@@ -34,8 +34,8 @@ export const op15eb04Enel058: LeaderCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-058_p1_LSBUdxM.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-058_p1.png",
       imageId: "OP15-058_p1",
     },
   ],

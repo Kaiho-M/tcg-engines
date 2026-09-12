@@ -13,7 +13,7 @@ export const op16LittleoarsJr017: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "017",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-017_btMadr9.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-017.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op16LittleoarsJr017: CharacterCard = {
   cost: 4,
   power: 8000,
   counter: 1000,
-  traits: ["Giant Whitebeard Pirates Allies"],
+  traits: ["Giant", "Whitebeard Pirates Allies"],
   attribute: "strike",
   effect:
-    'If you have no Characters with a type including "Whitebeard Pirates" and a cost of 8 or more give this Character -4000 power.\n\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)',
+    'If you have no Characters with a type including "Whitebeard Pirates" and a cost of 8 or more, give this Character −4000 power.\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)',
   effects: {
     keywords: ["blocker"],
   },

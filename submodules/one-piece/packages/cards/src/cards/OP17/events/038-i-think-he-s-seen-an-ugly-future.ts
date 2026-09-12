@@ -13,7 +13,7 @@ export const op17IThinkHeSSeenAnUglyFuture038: EventCard = {
       setCode: "OP17",
       collectorNumber: "038",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-038_t90i9Mt.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-038.png",
     },
   ],
   cardType: "event",

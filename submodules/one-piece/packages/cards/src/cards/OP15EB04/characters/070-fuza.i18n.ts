@@ -5,6 +5,6 @@ export const op15eb04Fuza070I18n: OPCardI18n = {
     name: "Fuza",
     effect:
       "All of your [Shura] cards and this Character gain [Unblockable].\n(This card cannot be blocked.)\n[Opponent's Turn] All of your [Shura] cards' base power and this Character's base power become 6000.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-070_qB1w3q6.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-070.png",
   },
 };

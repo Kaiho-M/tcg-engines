@@ -13,7 +13,7 @@ export const op16Nami091: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "091",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-091_lonYd1j.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-091.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Nami091: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Land of Wano Straw Hat Crew"],
+  traits: ["Land of Wano", "Straw Hat Crew"],
   attribute: "special",
   effect:
     "[On Play] If your Leader has the {Land of Wano} type, look at 4 cards from the top of your deck; reveal up to 1 {Land of Wano} type card other than [Nami] and add it to your hand. Then, trash the rest.",

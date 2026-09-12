@@ -13,7 +13,7 @@ export const op17CharlottePerospero110: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "110",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-110_ZltrBel.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-110.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17CharlottePerospero110: CharacterCard = {
   cost: 7,
   power: 4000,
   counter: 1000,
-  trigger: "Play this card.",
+  trigger: "[Trigger] Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -78,6 +78,14 @@ export const op17CharlottePerospero110: CharacterCard = {
             },
             keyword: "rush",
             duration: "thisTurn",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "playThisCard",
           },
         ],
       },

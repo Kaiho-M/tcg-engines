@@ -6,6 +6,6 @@ export const op17DonTYouKnowThatEvenInTheCruelWorldOfPiratesThereSStillACodeOfHo
       name: "Don't you know that even in the cruel world of pirates there's still a code of honor?!!",
       effect:
         "[Main] Your [Charlotte Linlin] Leader gains [Unblockable] during this turn.\n[Counter] Up to 1 of your [Charlotte Linlin] gains +4000 power during this battle.",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-115_ODSETVl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-115.png",
     },
   };

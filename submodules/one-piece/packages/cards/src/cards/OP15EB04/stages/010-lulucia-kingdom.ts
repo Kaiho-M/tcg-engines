@@ -13,7 +13,7 @@ export const op15eb04LuluciaKingdom010: StageCard = {
       setCode: "OP15EB04",
       collectorNumber: "010",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-010_jBjnlAt.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-010.png",
     },
   ],
   cardType: "stage",
@@ -23,7 +23,7 @@ export const op15eb04LuluciaKingdom010: StageCard = {
   cost: 7,
   traits: ["Lulucia Kingdom"],
   effect:
-    "[Opponent's Turn] All of your Characters with a base cost of 1 gain +5000 power.[On Play] Set the power of up to 1 of your opponent's Characters to 0 during this turn.",
+    "[Opponent's Turn] All of your Characters with a base cost of 1 gain +5000 power.\n[On Play] Set the power of up to 1 of your opponent's Characters to 0 during this turn.",
   effects: {
     effects: [
       {

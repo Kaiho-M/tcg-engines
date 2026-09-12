@@ -57,6 +57,8 @@ const RARITY_MAP: Record<string, OPRarity> = {
   P: "P",
   // API uses "PR" for promos
   PR: "P",
+  // The official card list spells the special-art rarity "SP CARD"
+  "SP CARD": "SP",
 };
 
 /** The API sometimes returns "NULL" as a literal string for missing values. */

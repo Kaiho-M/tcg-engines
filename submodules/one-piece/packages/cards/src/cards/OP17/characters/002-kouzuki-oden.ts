@@ -12,21 +12,21 @@ export const op17KouzukiOden002: CharacterCard = {
       artId: "ST32-002_p1",
       setCode: "OP17",
       collectorNumber: "002",
-      rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/ST32-002_p1.jpg",
+      rarity: "SP",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/ST32-002_p1.png",
     },
   ],
   cardType: "character",
   color: ["green"],
-  rarity: "SR",
+  rarity: "SP",
   setId: "OP17",
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["Land of Wano Kouzuki Clan"],
+  traits: ["Land of Wano", "Kouzuki Clan"],
   attribute: "slash",
   effect:
-    "[On Play] Draw 1 card and up to 1 of your opponent's Characters with a base cost of 6 or less cannot be rested until the end of your opponent's next End Phase.",
+    "[On Play] Draw 1 card, and up to 1 of your opponent's Characters with a base cost of 6 or less cannot be rested until the end of your opponent's next End Phase.",
   effects: {
     effects: [
       {

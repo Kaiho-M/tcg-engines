@@ -13,7 +13,7 @@ export const op16Usopp043: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "043",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-043_Q3Lbfck.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-043.png",
     },
   ],
   cardType: "character",
@@ -23,12 +23,68 @@ export const op16Usopp043: CharacterCard = {
   cost: 2,
   power: 1000,
   counter: 1000,
-  traits: ["Straw Hat Crew Dressrosa"],
+  traits: ["Dressrosa", "Straw Hat Crew"],
   attribute: "ranged",
   effect:
-    "[Blocker]\n\n[On K.O.] Return up to 1 of tour opponent's Characters with a cost of 5 or less to the owner's hand.",
+    "[Blocker]\n[On K.O.] You may rest 1 of your {Dressrosa} type Leader or Stage cards: Return up to 1 of your opponent's Characters with a cost of 5 or less to the owner's hand.",
   effects: {
     keywords: ["blocker"],
+    effects: [
+      {
+        trigger: "onKo",
+        costs: [
+          {
+            cost: "restCards",
+            amount: 1,
+            filters: [
+              {
+                filter: "trait",
+                value: "Dressrosa",
+                match: "includes",
+              },
+              {
+                filter: "anyOf",
+                groups: [
+                  [
+                    {
+                      filter: "cardCategory",
+                      value: "leader",
+                    },
+                  ],
+                  [
+                    {
+                      filter: "cardCategory",
+                      value: "stage",
+                    },
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "returnToHand",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 5,
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
+      },
+    ],
   },
   i18n: op16Usopp043I18n,
 };

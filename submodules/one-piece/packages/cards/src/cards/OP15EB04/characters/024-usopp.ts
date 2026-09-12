@@ -13,7 +13,7 @@ export const op15eb04Usopp024: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "024",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-024_HKiRRrK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-024.png",
     },
   ],
   cardType: "character",

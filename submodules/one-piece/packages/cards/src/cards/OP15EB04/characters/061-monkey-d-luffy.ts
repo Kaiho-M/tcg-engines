@@ -13,7 +13,7 @@ export const op15eb04MonkeyDLuffy061: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "061",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-061_I3Eac0j.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-061.png",
     },
     {
       id: "EB04-061_p1",
@@ -21,7 +21,7 @@ export const op15eb04MonkeyDLuffy061: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "061",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-061_p1_LGDNc70.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-061_p1.png",
     },
   ],
   cardType: "character",
@@ -30,17 +30,17 @@ export const op15eb04MonkeyDLuffy061: CharacterCard = {
   setId: "OP15EB04",
   cost: 10,
   power: 12000,
-  traits: ["Straw Hat Crew The Four Emperors Egghead"],
+  traits: ["Egghead", "The Four Emperors", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/EB04-061_p1_LGDNc70.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-061_p1.png",
       imageId: "EB04-061_p1",
     },
   ],
   effect:
-    "If you have 1 or less Life cards, give this card in your hand -1 cost.\n[On Play] You may trash 1 card from your hand: Your Leader gains +2000 power until the end of your opponent's next End Phase. Then, this Character gains [Blocker] until the end of your opponent's next End Phase.",
+    "If you have 1 or less Life cards, give this card in your hand −1 cost.\n[On Play] You may trash 1 card from your hand: Your Leader gains +2000 power until the end of your opponent's next End Phase. Then, this Character gains [Blocker] until the end of your opponent's next End Phase.",
   effects: {
     effects: [
       {

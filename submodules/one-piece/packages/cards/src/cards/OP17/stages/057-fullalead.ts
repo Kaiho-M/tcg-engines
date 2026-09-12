@@ -13,7 +13,7 @@ export const op17Fullalead057: StageCard = {
       setCode: "OP17",
       collectorNumber: "057",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-057_oyCKHiG.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-057.png",
     },
   ],
   cardType: "stage",

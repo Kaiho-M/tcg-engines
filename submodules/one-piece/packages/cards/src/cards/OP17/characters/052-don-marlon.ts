@@ -13,7 +13,7 @@ export const op17DonMarlon052: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "052",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-052_2a1BRJl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-052.png",
     },
   ],
   cardType: "character",

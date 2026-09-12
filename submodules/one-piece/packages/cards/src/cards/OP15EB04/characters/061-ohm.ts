@@ -13,7 +13,7 @@ export const op15eb04Ohm061: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "061",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-061_NMfOXtx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-061.png",
     },
     {
       id: "OP15-061_p1",
@@ -21,7 +21,7 @@ export const op15eb04Ohm061: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "061",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-061_p1_NbJVL96.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-061_p1.png",
     },
   ],
   cardType: "character",
@@ -31,17 +31,17 @@ export const op15eb04Ohm061: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["Sky Island Vassals"],
+  traits: ["Sky Island", "Vassals"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-061_p1_NbJVL96.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-061_p1.png",
       imageId: "OP15-061_p1",
     },
   ],
   effect:
-    "[On Play] DON!! 1: Draw 1 card.\n[When Attacking] If you have 6 or less DON!! cards on your field, give up to 1 of your opponent's Characters −1000 power during this turn.",
+    "[On Play] DON!! −1: Draw 1 card.\n[When Attacking] If you have 6 or less DON!! cards on your field, give up to 1 of your opponent's Characters −1000 power during this turn.",
   effects: {
     effects: [
       {

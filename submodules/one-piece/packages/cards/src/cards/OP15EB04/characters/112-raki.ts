@@ -13,7 +13,7 @@ export const op15eb04Raki112: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "112",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-112_CpMT0lr.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-112.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Raki112: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 1000,
-  traits: ["Sky Island Shandian Warrior"],
+  traits: ["Sky Island", "Shandian Warrior"],
   attribute: "ranged",
   effect:
     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] Play up to 1 {Shandian Warrior} type Character card with a cost of 3 or less from your hand.",

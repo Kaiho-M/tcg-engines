@@ -13,7 +13,7 @@ export const op16Sanji086: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "086",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-086_xLwhNwW.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-086.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Sanji086: CharacterCard = {
   cost: 8,
   power: 9000,
   counter: 2000,
-  traits: ["Land of Wano Straw Hat Crew"],
+  traits: ["Land of Wano", "Straw Hat Crew"],
   attribute: "strike",
   i18n: op16Sanji086I18n,
 };

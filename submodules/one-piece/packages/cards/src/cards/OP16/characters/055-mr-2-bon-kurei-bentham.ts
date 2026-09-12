@@ -13,7 +13,7 @@ export const op16Mr2BonKureiBentham055: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "055",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-055_ZXMaohf.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-055.png",
     },
     {
       id: "OP16-055_p1",
@@ -21,7 +21,7 @@ export const op16Mr2BonKureiBentham055: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "055",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-055_p1_zbCLyxp.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-055_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op16Mr2BonKureiBentham055: CharacterCard = {
   setId: "OP16",
   cost: 2,
   power: 1000,
-  traits: ["Impel Down Former Baroque Works"],
+  traits: ["Impel Down", "Former Baroque Works"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-055_p1_zbCLyxp.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-055_p1.png",
       imageId: "OP16-055_p1",
     },
   ],

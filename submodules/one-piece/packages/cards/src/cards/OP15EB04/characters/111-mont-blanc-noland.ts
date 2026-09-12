@@ -13,7 +13,7 @@ export const op15eb04MontBlancNoland111: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "111",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-111_22YjquQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-111.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04MontBlancNoland111: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 2000,
-  traits: ["Jaya Botanist"],
+  traits: ["Jaya", "Botanist"],
   attribute: "slash",
   effect:
     "[DON!! x1] [When Attacking] Up to 1 of your [Kalgara] cards gains [Rush] during this turn.\n(This card can attack on the turn in which it is played.)",

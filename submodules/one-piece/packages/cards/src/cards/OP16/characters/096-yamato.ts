@@ -13,7 +13,7 @@ export const op16Yamato096: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "096",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-096_rU3xjhR.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-096.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op16Yamato096: CharacterCard = {
   traits: ["Land of Wano"],
   attribute: "special",
   effect:
-    "[Unblockable] (This card cannot be blocked.) [On K.O.] Play up to 1 [Yamato] with a cost of 6 or less from your trash.",
+    "[Unblockable] (This card cannot be blocked.)\n[On K.O.] Play up to 1 [Yamato] with a cost of 6 or less from your trash.",
   effects: {
     keywords: ["unblockable"],
     effects: [

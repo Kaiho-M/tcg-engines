@@ -5,6 +5,6 @@ export const op15eb04Cabaji005I18n: OPCardI18n = {
     name: "Cabaji",
     effect:
       "[When Attacking] If your opponent has any DON!! cards given, this Character gains +2000 power during this turn.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-005_ycH14Fr.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-005.png",
   },
 };

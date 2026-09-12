@@ -13,7 +13,7 @@ export const op16VanAugur103: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "103",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-103_o1kroCA.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-103.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16VanAugur103: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  trigger: "Activate this card's [On K.O.] effect.",
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
   traits: ["Blackbeard Pirates"],
   attribute: "ranged",
   effect:
@@ -61,6 +61,15 @@ export const op16VanAugur103: CharacterCard = {
             },
             value: -3000,
             duration: "thisTurn",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

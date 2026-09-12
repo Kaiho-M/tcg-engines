@@ -1,11 +1,11 @@
 import type { CharacterCard } from "@tcg/op-types";
-import { op17CroneOil021I18n } from "./021-crone-oil.i18n.ts";
+import { op17CroneOli021I18n } from "./021-crone-oli.i18n.ts";
 
-export const op17CroneOil021: CharacterCard = {
+export const op17CroneOli021: CharacterCard = {
   id: "OP17-021",
   canonicalId: "OP17-021",
-  slug: "crone-oil",
-  name: "Crone Oil",
+  slug: "crone-oli",
+  name: "Crone Oli",
   printings: [
     {
       id: "OP17-021",
@@ -13,7 +13,7 @@ export const op17CroneOil021: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "021",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-021_WkA32g8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-021.png",
     },
   ],
   cardType: "character",
@@ -21,7 +21,6 @@ export const op17CroneOil021: CharacterCard = {
   rarity: "UC",
   setId: "OP17",
   cost: 1,
-  power: 0,
   counter: 2000,
   traits: ["Red-Haired Pirates Allies"],
   attribute: "slash",
@@ -59,5 +58,5 @@ export const op17CroneOil021: CharacterCard = {
       },
     ],
   },
-  i18n: op17CroneOil021I18n,
+  i18n: op17CroneOli021I18n,
 };

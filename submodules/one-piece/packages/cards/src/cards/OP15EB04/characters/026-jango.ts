@@ -13,7 +13,7 @@ export const op15eb04Jango026: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "026",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-026_WPmtrE8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-026.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Jango026: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  traits: ["East Blue Black Cat Pirates"],
+  traits: ["East Blue", "Black Cat Pirates"],
   attribute: "slash",
   effect:
     "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {East Blue} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.\n[Activate: Main] You may trash this Character: Give up to 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters.",

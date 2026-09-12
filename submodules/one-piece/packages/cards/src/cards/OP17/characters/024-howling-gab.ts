@@ -13,7 +13,7 @@ export const op17HowlingGab024: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "024",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-024.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-024.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op17HowlingGab024: CharacterCard = {
   traits: ["Red-Haired Pirates"],
   attribute: "special",
   effect:
-    "[Banish] (When this card deals damage, the target card is trashed without activating its Trigger.) [On Play] Rest up to 1 of your opponent's Characters.",
+    "[Banish] (When this card deals damage, the target card is trashed without activating its Trigger.)\n[On Play] Rest up to 1 of your opponent's Characters.",
   effects: {
     keywords: ["banish"],
     effects: [

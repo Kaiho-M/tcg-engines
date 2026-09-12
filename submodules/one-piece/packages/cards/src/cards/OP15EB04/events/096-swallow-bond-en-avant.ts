@@ -13,7 +13,7 @@ export const op15eb04SwallowBondEnAvant096: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "096",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-096_AlG6gfK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-096.png",
     },
   ],
   cardType: "event",

@@ -13,7 +13,7 @@ export const op15eb04TonyTonyChopper107: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "107",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-107_qA62dB5.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-107.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04TonyTonyChopper107: CharacterCard = {
   cost: 4,
   power: 6000,
   counter: 1000,
-  traits: ["Animal Straw Hat Crew Sky Island"],
+  traits: ["Animal", "Sky Island", "Straw Hat Crew"],
   attribute: "strike",
   i18n: op15eb04TonyTonyChopper107I18n,
 };

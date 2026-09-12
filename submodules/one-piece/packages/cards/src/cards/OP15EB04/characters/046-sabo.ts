@@ -13,7 +13,7 @@ export const op15eb04Sabo046: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "046",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-046_hRbLfA6.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-046.png",
     },
     {
       id: "OP15-046_p1",
@@ -21,7 +21,7 @@ export const op15eb04Sabo046: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "046",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-046_p1_Zpqnbqv.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-046_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op15eb04Sabo046: CharacterCard = {
   setId: "OP15EB04",
   cost: 7,
   power: 9000,
-  traits: ["Revolutionary Army Dressrosa"],
+  traits: ["Dressrosa", "Revolutionary Army"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-046_p1_Zpqnbqv.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-046_p1.png",
       imageId: "OP15-046_p1",
     },
   ],

@@ -13,7 +13,7 @@ export const op17UltiPageOne060: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "060",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-060_IaCz1jQ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-060.png",
     },
   ],
   cardType: "character",

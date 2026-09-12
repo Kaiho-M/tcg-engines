@@ -5,6 +5,6 @@ export const op16Squard008I18n: OPCardI18n = {
     name: "Squard",
     effect:
       "[On Play] You may trash 1 of your Characters with 10000 base power: K.O. up to 1 of your opponent's Characters with 8000 power or less.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-008_S78XlEt.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-008.png",
   },
 };

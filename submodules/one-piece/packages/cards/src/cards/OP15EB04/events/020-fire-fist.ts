@@ -13,7 +13,7 @@ export const op15eb04FireFist020: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "020",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-020_gnZjvrN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-020.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op15eb04FireFist020: EventCard = {
   rarity: "R",
   setId: "OP15EB04",
   cost: 7,
-  traits: ["Revolutionary Army Dressrosa"],
+  traits: ["Dressrosa", "Revolutionary Army"],
   effect:
-    "[Main] Your Leader gains +3000 power during this turn and give up to 1 of your opponent's Characters -8000 power until the end of your opponent's next End Phase. Then, you may trash 2 cards from your hand. If you do, K.O. up to 1 of your opponent's Characters with 0 power or less.",
+    "[Main] Your Leader gains +3000 power during this turn and give up to 1 of your opponent's Characters −8000 power until the end of your opponent's next End Phase. Then, you may trash 2 cards from your hand. If you do, K.O. up to 1 of your opponent's Characters with 0 power or less.",
   effects: {
     effects: [
       {

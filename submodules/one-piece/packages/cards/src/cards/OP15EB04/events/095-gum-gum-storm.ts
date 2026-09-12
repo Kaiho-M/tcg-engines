@@ -13,7 +13,7 @@ export const op15eb04GumGumStorm095: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "095",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-095_vhlwIFk.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-095.png",
     },
   ],
   cardType: "event",

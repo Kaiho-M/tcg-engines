@@ -13,7 +13,7 @@ export const op15eb04IFindItEmbarrassingAsAHumanBeing097: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "097",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-097_Ry6RptY.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-097.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op15eb04IFindItEmbarrassingAsAHumanBeing097: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 1,
-  trigger: "Activate this card's [Main] effect.",
+  trigger: "[Trigger] Activate this card's [Main] effect.",
   traits: ["Straw Hat Crew"],
   effect:
     "[Main] If you have 10 or more cards in your trash, up to 1 of your opponent's Characters with a base cost of 5 or less cannot attack until the end of your opponent's next End Phase.",
@@ -57,6 +57,15 @@ export const op15eb04IFindItEmbarrassingAsAHumanBeing097: EventCard = {
               ],
             },
             duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "main",
           },
         ],
       },

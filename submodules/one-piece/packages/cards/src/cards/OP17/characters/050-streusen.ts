@@ -13,7 +13,7 @@ export const op17Streusen050: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "050",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-050_tL3Nmmf.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-050.png",
     },
   ],
   cardType: "character",

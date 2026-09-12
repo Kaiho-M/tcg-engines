@@ -1,22 +1,30 @@
 /**
- * Generate card definition files for a single optcgapi set.
+ * Generate card definition files for a single set.
  *
- *   vp run generate:set -- --set OP15-EB04
- *   vp run generate:set -- --set OP-16 --input ./OP-16.json
- *   vp run generate:set -- --set OP-16 --type character
+ *   vp run generate:set -- --set OP17                     # official card list
+ *   vp run generate:set -- --set OP17 --input ./OP17.html
+ *   vp run generate:set -- --set OP-16 --source optcgapi
+ *   vp run generate:set -- --set OP17 --type character
+ *
+ * The default source is Bandai's official English card list, which is
+ * authoritative for printed text (see `src/scrapers/official-cardlist.ts`);
+ * `--source optcgapi` uses the older API instead. `--set` takes the set code for
+ * the official list (`OP17`, `OP15EB04`, `ST32`, `P`) and the API's set id for
+ * optcgapi (`OP-16`, `OP15-EB04`).
  *
  * Unlike the older `generate-*-files.ts` scripts this writes to
  * `packages/cards/src/cards/<SET>/{leaders,characters,events,stages}/`, handles
- * every card type in one pass (one API request per run), and never overwrites a
+ * every card type in one pass (one request per run), and never overwrites a
  * definition that already exists anywhere in the catalog. Cards whose `id` is
  * already checked in are reported and skipped, so re-running after hand edits is
- * safe. `--input` reads a saved `sets/<id>/` response instead of hitting the API.
+ * safe. `--input` reads a saved response (HTML or JSON) instead of fetching.
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { OptcgApiScraper } from "../src/scrapers/optcg-api.ts";
+import { OfficialCardlistScraper, parseSeriesPage } from "../src/scrapers/official-cardlist.ts";
 import { normalize } from "../src/normalizer.ts";
 import { buildCardEffects } from "../src/effect-parser/index.ts";
 import type {
@@ -57,20 +65,22 @@ const TYPE_NAME_OF: Record<GeneratedCard["cardType"], string> = {
 interface CliOptions {
   set: string;
   input?: string;
+  source: "official" | "optcgapi";
   types: Set<GeneratedCard["cardType"]>;
 }
 
 function usage(): never {
   console.error(
-    "Usage: vp run generate:set -- --set <API_SET_ID> [--input <saved-response.json>] [--type leader|character|event|stage]...",
+    "Usage: vp run generate:set -- --set <SET> [--source official|optcgapi] [--input <saved-response>] [--type leader|character|event|stage]...",
   );
-  console.error("Example: vp run generate:set -- --set OP15-EB04");
+  console.error("Example: vp run generate:set -- --set OP17");
   process.exit(2);
 }
 
 function parseArgs(args: string[]): CliOptions {
   let set: string | undefined;
   let input: string | undefined;
+  let source: CliOptions["source"] = "official";
   const types = new Set<GeneratedCard["cardType"]>();
 
   for (let index = 0; index < args.length; index += 1) {
@@ -87,6 +97,11 @@ function parseArgs(args: string[]): CliOptions {
       index += 1;
       continue;
     }
+    if (argument === "--source" && (value === "official" || value === "optcgapi")) {
+      source = value;
+      index += 1;
+      continue;
+    }
     if (argument === "--type" && value && value in SUBDIR_OF) {
       types.add(value as GeneratedCard["cardType"]);
       index += 1;
@@ -99,7 +114,7 @@ function parseArgs(args: string[]): CliOptions {
   if (types.size === 0) {
     for (const type of Object.keys(SUBDIR_OF) as GeneratedCard["cardType"][]) types.add(type);
   }
-  return { set, input, types };
+  return { set, input, source, types };
 }
 
 // --- Variant detection (same table as generate-character-files.ts) ---
@@ -127,7 +142,12 @@ function detectVariantType(name: string): ArtVariantType | null {
 }
 
 function isVariant(raw: RawOPCard): boolean {
-  return detectVariantType(raw.card_name) !== null;
+  // optcgapi marks variants in the name ("(Parallel)"); the official list gives
+  // them an id suffix instead ("OP17-112_p1" against card_set_id "OP17-112").
+  return (
+    detectVariantType(raw.card_name) !== null ||
+    (raw.card_image_id !== null && raw.card_image_id !== raw.card_set_id)
+  );
 }
 
 // --- Name / identifier helpers ---
@@ -433,12 +453,15 @@ const options = parseArgs(process.argv.slice(2));
 
 let rawCards: RawOPCard[];
 if (options.input) {
-  rawCards = JSON.parse(readFileSync(options.input, "utf8")) as RawOPCard[];
+  const saved = readFileSync(options.input, "utf8");
+  rawCards =
+    options.source === "official" ? parseSeriesPage(saved) : (JSON.parse(saved) as RawOPCard[]);
   console.log(`Read ${rawCards.length} entries for ${options.set} from ${options.input}`);
 } else {
-  const scraper = new OptcgApiScraper();
+  const scraper =
+    options.source === "official" ? new OfficialCardlistScraper() : new OptcgApiScraper();
   rawCards = await scraper.scrapeCards(options.set);
-  console.log(`Fetched ${rawCards.length} entries for ${options.set}`);
+  console.log(`Fetched ${rawCards.length} entries for ${options.set} (${options.source})`);
 }
 
 const existing = scanExistingCatalog();
@@ -462,8 +485,9 @@ for (const { bases, variants } of grouped.values()) {
 const sharedNames = new Set([...nameCounts].filter(([, n]) => n > 1).map(([name]) => name));
 
 const skipped: string[] = [];
-const written = new Map<CardSubdir, string[]>();
-let setDirName: string | undefined;
+// "<setId>/<subdir>" → export lines. A page can carry reprints whose set differs
+// from the page's own set, so the index is grouped by the card's own setId.
+const written = new Map<string, string[]>();
 const takenSlugs = new Set(existing.slugs);
 
 for (const cardId of [...grouped.keys()].sort()) {
@@ -484,7 +508,6 @@ for (const cardId of [...grouped.keys()].sort()) {
   if (!card) continue;
   takenSlugs.add(slug);
 
-  setDirName ??= card.setId;
   const subdir = SUBDIR_OF[card.cardType];
   const setDir = join(CARDS_DIR, card.setId, subdir);
   mkdirSync(setDir, { recursive: true });
@@ -496,9 +519,10 @@ for (const cardId of [...grouped.keys()].sort()) {
 
   writeFileSync(join(setDir, `${fileStem}.i18n.ts`), renderI18n(card, constName));
   writeFileSync(join(setDir, `${fileStem}.ts`), renderCard(card, constName, fileSlug, num));
-  const lines = written.get(subdir) ?? [];
+  const indexKey = `${card.setId}/${subdir}`;
+  const lines = written.get(indexKey) ?? [];
   lines.push(exportLine(constName, fileStem));
-  written.set(subdir, lines);
+  written.set(indexKey, lines);
   existing.ids.add(card.id);
 }
 
@@ -507,9 +531,9 @@ if (skipped.length > 0) {
 }
 
 let totalFiles = 0;
-for (const [subdir, lines] of written) {
-  appendExports(join(CARDS_DIR, setDirName!, subdir, "index.ts"), lines);
-  console.log(`  ${setDirName}/${subdir}: ${lines.length} new`);
+for (const [indexKey, lines] of written) {
+  appendExports(join(CARDS_DIR, indexKey, "index.ts"), lines);
+  console.log(`  ${indexKey}: ${lines.length} new`);
   totalFiles += lines.length;
 }
 
@@ -517,8 +541,10 @@ if (totalFiles === 0) {
   console.log("Nothing to write.");
 } else {
   rewriteRootIndex();
-  console.log(`\n✓ ${totalFiles} card files written to packages/cards/src/cards/${setDirName}/`);
-  execSync(`vp fmt "packages/cards/src/cards/${setDirName}" packages/cards/src/cards/index.ts`, {
+  const setDirs = [...new Set([...written.keys()].map((key) => key.split("/")[0]!))];
+  console.log(`\n✓ ${totalFiles} card files written to ${setDirs.join(", ")}`);
+  const targets = setDirs.map((dir) => `"packages/cards/src/cards/${dir}"`).join(" ");
+  execSync(`vp fmt ${targets} packages/cards/src/cards/index.ts`, {
     stdio: "inherit",
     cwd: join(__dirname, "../../.."),
   });

@@ -13,7 +13,7 @@ export const op16Jozu007: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "007",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-007_32LcgNx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-007.png",
     },
   ],
   cardType: "character",
@@ -25,7 +25,7 @@ export const op16Jozu007: CharacterCard = {
   traits: ["Whitebeard Pirates"],
   attribute: "strike",
   effect:
-    "[Blocker]\n\n[On Play] You may reveal 1 Character card with 8000 power from your hand: Give up to 1 of your opponent's Characters -1000 power during this turn.",
+    "[Blocker]\n[On Play] You may reveal 1 Character card with 8000 power from your hand: Give up to 1 of your opponent's Characters −1000 power during this turn.",
   effects: {
     keywords: ["blocker"],
     effects: [

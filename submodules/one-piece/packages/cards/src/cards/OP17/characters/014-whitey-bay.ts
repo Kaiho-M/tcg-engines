@@ -13,7 +13,7 @@ export const op17WhiteyBay014: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "014",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-014_2iGFalB.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-014.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op17WhiteyBay014: CharacterCard = {
   traits: ["Whitebeard Pirates Allies"],
   attribute: "slash",
   effect:
-    "[On Play] K.O. up to 1 of your opponent's Characters with 2000 base power or less.\n\n[On Your Opponent's Attack] You may trash this Character: Your Leader gains +1000 power during this battle.",
+    "[On Play] K.O. up to 1 of your opponent's Characters with 2000 base power or less.\n[On Your Opponent's Attack] You may trash this Character: Your Leader gains +1000 power during this battle.",
   effects: {
     effects: [
       {

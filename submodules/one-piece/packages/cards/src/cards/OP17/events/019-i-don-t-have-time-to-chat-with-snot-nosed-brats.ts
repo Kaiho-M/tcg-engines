@@ -13,7 +13,7 @@ export const op17IDonTHaveTimeToChatWithSnotNosedBrats019: EventCard = {
       setCode: "OP17",
       collectorNumber: "019",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-019_dshq9s8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-019.png",
     },
   ],
   cardType: "event",
@@ -21,8 +21,8 @@ export const op17IDonTHaveTimeToChatWithSnotNosedBrats019: EventCard = {
   rarity: "R",
   setId: "OP17",
   cost: 1,
-  trigger: "Your Leader gains +1000 power during this turn.",
-  traits: ["The Four Emperors Whitebeard Pirates"],
+  trigger: "[Trigger] Your Leader gains +1000 power during this turn.",
+  traits: ["The Four Emperors", "Whitebeard Pirates"],
   effect:
     '[Main] Look at 5 cards from the top of your deck; reveal up to 1 card with a type including "Whitebeard Pirates" and add it to your hand. Then, place the rest at the bottom of your deck in any order.',
   effects: {
@@ -50,6 +50,23 @@ export const op17IDonTHaveTimeToChatWithSnotNosedBrats019: EventCard = {
             ],
             revealDestination: "hand",
             remainderPosition: "bottom",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 1000,
+            duration: "thisTurn",
           },
         ],
       },

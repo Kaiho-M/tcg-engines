@@ -13,7 +13,7 @@ export const op17TonyTonyChopper084: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "084",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-084_JM5DAVg.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-084.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17TonyTonyChopper084: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["Animal Straw Hat Crew Elbaph"],
+  traits: ["Animal", "Elbaph", "Straw Hat Crew"],
   attribute: "strike",
   effect:
     "[On Play] If there is a Character with a cost of 12 or more, up to 1 of your Characters gains [Unblockable] during this turn.\n(This card cannot be blocked.)",

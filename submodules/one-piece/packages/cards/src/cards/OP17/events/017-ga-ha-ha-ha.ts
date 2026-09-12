@@ -13,7 +13,7 @@ export const op17GaHaHaHa017: EventCard = {
       setCode: "OP17",
       collectorNumber: "017",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-017_d0fhw4t.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-017.png",
     },
   ],
   cardType: "event",
@@ -21,7 +21,7 @@ export const op17GaHaHaHa017: EventCard = {
   rarity: "C",
   setId: "OP17",
   cost: 1,
-  traits: ["The Four Emperors Whitebeard Pirates"],
+  traits: ["The Four Emperors", "Whitebeard Pirates"],
   effect:
     '[Counter] Up to 1 of your Leader with a type including "Whitebeard Pirates" or up to 1 of your Characters with a type including "Whitebeard Pirates" gains +2000 power during this battle. Then, give up to 1 of your opponent\'s Leader or Characters −2000 power during this turn.',
   effects: {

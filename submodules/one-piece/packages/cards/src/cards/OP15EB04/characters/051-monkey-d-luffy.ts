@@ -13,7 +13,7 @@ export const op15eb04MonkeyDLuffy051: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "051",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-051_PLRuTd8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-051.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op15eb04MonkeyDLuffy051: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 2000,
-  traits: ["Straw Hat Crew Dressrosa"],
+  traits: ["Dressrosa", "Straw Hat Crew"],
   attribute: "strike",
   effect:
-    '[Opponent\'s Turn] If your Leader has the "Dressrosa" type, this Character gains +3000 power.',
+    "[Opponent's Turn] If your Leader has the {Dressrosa} type, this Character gains +3000 power.",
   effects: {
     permanentEffects: [
       {

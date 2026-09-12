@@ -13,7 +13,7 @@ export const op16MissOlive050: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "050",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-050_fP39R54.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-050.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op16MissOlive050: CharacterCard = {
   traits: ["Impel Down"],
   attribute: "wisdom",
   effect:
-    "[Blocker]\n\n[On Play] You may return 1 of your Characters with a cost of 2 or more to the owner's hand: Draw 2 cards and trash 1 card from your hand.",
+    "[Blocker]\n[On Play] You may return 1 of your Characters with a cost of 2 or more to the owner's hand: Draw 2 cards and trash 1 card from your hand.",
   effects: {
     keywords: ["blocker"],
     effects: [

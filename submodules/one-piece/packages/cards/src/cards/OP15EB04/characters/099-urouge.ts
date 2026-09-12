@@ -13,7 +13,7 @@ export const op15eb04Urouge099: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "099",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-099_4jiuI1B.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-099.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op15eb04Urouge099: CharacterCard = {
   cost: 6,
   power: 7000,
   counter: 1000,
-  traits: ["Fallen Monk Pirates Supernovas Sky Island"],
+  traits: ["Sky Island", "Supernovas", "Fallen Monk Pirates"],
   attribute: "strike",
   effect:
-    "[On Play] You may trash 1 {Supernovas} type card from your hand:This Character gains [Rush] during this turn.\n[Activate: Main] You may turn 1 card from the top of your Life cards face-down: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
+    "[On Play] You may trash 1 {Supernovas} type card from your hand: This Character gains [Rush] during this turn.\n[Activate: Main] You may turn 1 card from the top of your Life cards face-down: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
   effects: {
     effects: [
       {

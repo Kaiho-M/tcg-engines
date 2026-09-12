@@ -13,7 +13,7 @@ export const op16DocQ109: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "109",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-109_thoYpS1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-109.png",
     },
   ],
   cardType: "character",
@@ -21,9 +21,8 @@ export const op16DocQ109: CharacterCard = {
   rarity: "UC",
   setId: "OP16",
   cost: 1,
-  power: 0,
   counter: 2000,
-  trigger: "Activate this card's [On K.O.] effect.",
+  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
   traits: ["Blackbeard Pirates"],
   attribute: "special",
   effect:
@@ -62,6 +61,15 @@ export const op16DocQ109: CharacterCard = {
                 },
               ],
             },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "activateEffect",
+            effectTrigger: "onKo",
           },
         ],
       },

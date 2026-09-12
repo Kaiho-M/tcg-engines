@@ -13,7 +13,7 @@ export const op15eb04MeowbanBrothers028: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "028",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-028.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-028.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04MeowbanBrothers028: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 2000,
-  traits: ["East Blue Black Cat Pirates"],
+  traits: ["East Blue", "Black Cat Pirates"],
   attribute: "slash",
   effect:
     "[On Play] If your Leader has the {East Blue} type, give up to 1 DON!! card from your opponent's cost area to 1 of your opponent's Characters.",

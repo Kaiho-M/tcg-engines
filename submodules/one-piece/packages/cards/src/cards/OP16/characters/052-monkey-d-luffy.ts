@@ -13,7 +13,7 @@ export const op16MonkeyDLuffy052: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "052",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-052_Rbt8BD0.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-052.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op16MonkeyDLuffy052: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  traits: ["Straw Hat Crew Impel Down"],
+  traits: ["Impel Down", "Straw Hat Crew"],
   attribute: "strike",
   effect:
-    "[Activate:Main] [Once Per Turn] Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
+    "[Activate: Main] [Once Per Turn] Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
   effects: {
     effects: [
       {

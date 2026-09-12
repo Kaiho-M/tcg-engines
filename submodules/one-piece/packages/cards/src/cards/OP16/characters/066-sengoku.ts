@@ -13,7 +13,7 @@ export const op16Sengoku066: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "066",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-066_fRVzfk1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-066.png",
     },
   ],
   cardType: "character",

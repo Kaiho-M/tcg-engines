@@ -13,7 +13,7 @@ export const op15eb04GumGumGoldenRifle116: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "116",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-116_Yi5jrOu.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-116.png",
     },
     {
       id: "OP15-116_p1",
@@ -21,7 +21,7 @@ export const op15eb04GumGumGoldenRifle116: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "116",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-116_p1_WxTxrNj.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-116_p1.png",
     },
   ],
   cardType: "event",
@@ -29,11 +29,11 @@ export const op15eb04GumGumGoldenRifle116: EventCard = {
   rarity: "R",
   setId: "OP15EB04",
   cost: 1,
-  traits: ["Straw Hat Crew Sky Island"],
+  traits: ["Sky Island", "Straw Hat Crew"],
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-116_p1_WxTxrNj.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-116_p1.png",
       imageId: "OP15-116_p1",
     },
   ],

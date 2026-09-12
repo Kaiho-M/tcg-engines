@@ -13,7 +13,7 @@ export const op17Barbell053: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "053",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-053_E1I7iXr.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-053.png",
     },
   ],
   cardType: "character",
@@ -22,10 +22,10 @@ export const op17Barbell053: CharacterCard = {
   setId: "OP17",
   cost: 5,
   power: 7000,
-  traits: ["Fish-Man Rocks Pirates"],
+  traits: ["Fish-Man", "Rocks Pirates"],
   attribute: "strike",
   effect:
-    "[On K.O.] Your opponent places 2 cards from their hand at the bottom of their deck in any order.\n\n[Activate: Main] [Once Per Turn] You may trash 1 card from your hand: This Character gains +3000 power during this turn",
+    "[On K.O.] Your opponent places 2 cards from their hand at the bottom of their deck in any order.\n[Activate: Main] [Once Per Turn] You may trash 1 card from your hand: This Character gains +3000 power during this turn.",
   effects: {
     effects: [
       {

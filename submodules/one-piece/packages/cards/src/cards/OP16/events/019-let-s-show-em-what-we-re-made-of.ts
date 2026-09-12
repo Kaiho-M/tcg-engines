@@ -13,7 +13,7 @@ export const op16LetSShowEmWhatWeReMadeOf019: EventCard = {
       setCode: "OP16",
       collectorNumber: "019",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-019_ARyy3x6.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-019.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,10 @@ export const op16LetSShowEmWhatWeReMadeOf019: EventCard = {
   rarity: "C",
   setId: "OP16",
   cost: 9,
+  trigger: "[Trigger] Your Leader gains +1000 power during this turn.",
   traits: ["Whitebeard Pirates"],
   effect:
-    '[Main] Play up to 2 Character cards with a type including "Whitebeard Pirates" and 8000 power from your hand.  [Trigger] Your Leader gains +1000 power during this turn.',
+    '[Main] Play up to 2 Character cards with a type including "Whitebeard Pirates" and 8000 power from your hand.',
   effects: {
     effects: [
       {
@@ -39,6 +40,23 @@ export const op16LetSShowEmWhatWeReMadeOf019: EventCard = {
               amount: 2,
               upTo: true,
             },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 1000,
+            duration: "thisTurn",
           },
         ],
       },

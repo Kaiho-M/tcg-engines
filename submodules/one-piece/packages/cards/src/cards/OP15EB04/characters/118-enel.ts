@@ -13,7 +13,7 @@ export const op15eb04Enel118: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-118_GppZ8HC.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-118.png",
     },
     {
       id: "OP15-118_p1",
@@ -21,7 +21,7 @@ export const op15eb04Enel118: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-118_p1_PvQXjBT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-118_p1.png",
     },
     {
       id: "OP15-118_p2",
@@ -29,7 +29,7 @@ export const op15eb04Enel118: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "118",
       rarity: "SEC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-118_p2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-118_p2.png",
     },
   ],
   cardType: "character",
@@ -42,18 +42,18 @@ export const op15eb04Enel118: CharacterCard = {
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-118_p1_PvQXjBT.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-118_p1.png",
       imageId: "OP15-118_p1",
     },
     {
-      type: "manga-rare",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-118_p2.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-118_p2.png",
       imageId: "OP15-118_p2",
     },
   ],
   effect:
-    "If you have 6 or less DON!! cards on your field, this Character cannot be removed from the field by your opponent's effects and gains +2000 power.\n[On Play] DON!! 1: Look at 5 cards from the top of your deck and add up to 1 card to your hand. Then, place the rest at the bottom of your deck in any order, and trash 1 card from your hand.",
+    "If you have 6 or less DON!! cards on your field, this Character cannot be removed from the field by your opponent's effects and gains +2000 power.\n[On Play] DON!! −1: Look at 5 cards from the top of your deck and add up to 1 card to your hand. Then, place the rest at the bottom of your deck in any order, and trash 1 card from your hand.",
   effects: {
     effects: [
       {

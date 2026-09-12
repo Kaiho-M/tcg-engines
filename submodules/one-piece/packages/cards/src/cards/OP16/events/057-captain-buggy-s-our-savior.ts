@@ -13,7 +13,7 @@ export const op16CaptainBuggySOurSavior057: EventCard = {
       setCode: "OP16",
       collectorNumber: "057",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-057_5vc6Zmg.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-057.png",
     },
   ],
   cardType: "event",
@@ -21,12 +21,27 @@ export const op16CaptainBuggySOurSavior057: EventCard = {
   rarity: "C",
   setId: "OP16",
   cost: 1,
-  trigger: "Draw 2 cards and trash 1 card from your hand.",
+  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
   traits: ["Impel Down"],
   effect:
     "[Counter] If you have 2 or more [Prisoner of Impel Down] cards, up to 1 of your Leader or Character cards gains +4000 power during this battle.",
   effects: {
     effects: [
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 2,
+          },
+          {
+            action: "trashFromHand",
+            player: "self",
+            amount: 1,
+          },
+        ],
+      },
       {
         trigger: "trigger",
         actions: [

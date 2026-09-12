@@ -13,7 +13,7 @@ export const op16Thatch005: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "005",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-005_edjwiya.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-005.png",
     },
   ],
   cardType: "character",
@@ -26,7 +26,7 @@ export const op16Thatch005: CharacterCard = {
   traits: ["Whitebeard Pirates"],
   attribute: "slash",
   effect:
-    'If you have a Character with 8000 power or more and a type including "Whitebeard Pirates" give this card in your hand -3 cost.\n\n[Blocker]',
+    'If you have a Character with 8000 power or more and a type including "Whitebeard Pirates", give this card in your hand −3 cost.\n[Blocker]',
   effects: {
     keywords: ["blocker"],
   },

@@ -13,7 +13,7 @@ export const op16MonkeyDLuffy034: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "034",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-034_pi7IfhS.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-034.png",
     },
     {
       id: "OP16-034_p1",
@@ -21,7 +21,7 @@ export const op16MonkeyDLuffy034: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "034",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-034_p1_rYPd1n8.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-034_p1.png",
     },
   ],
   cardType: "character",
@@ -29,18 +29,18 @@ export const op16MonkeyDLuffy034: CharacterCard = {
   rarity: "R",
   setId: "OP16",
   cost: 1,
-  power: 0,
   counter: 1000,
-  traits: ["Straw Hat Crew Impel Down"],
+  traits: ["Impel Down", "Straw Hat Crew"],
+  attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-034_p1_rYPd1n8.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-034_p1.png",
       imageId: "OP16-034_p1",
     },
   ],
   effect:
-    "[DON!! x1] [Your Turn] This Character gains +1000 power for each of your Characters with a different card name.\n\n[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Impel Down} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "[DON!! x1] [Your Turn] This Character gains +1000 power for each of your Characters with a different card name.\n[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Impel Down} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
   effects: {
     effects: [
       {

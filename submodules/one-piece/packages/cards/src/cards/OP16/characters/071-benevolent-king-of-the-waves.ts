@@ -13,7 +13,7 @@ export const op16BenevolentKingOfTheWaves071: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "071",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-071_TFe665j.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-071.png",
     },
   ],
   cardType: "character",

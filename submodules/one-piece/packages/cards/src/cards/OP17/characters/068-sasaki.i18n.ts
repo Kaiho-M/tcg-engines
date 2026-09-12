@@ -5,6 +5,6 @@ export const op17Sasaki068I18n: OPCardI18n = {
     name: "Sasaki",
     effect:
       "[When Attacking] You may trash 2 cards from your hand: If your Leader has the {Animal Kingdom Pirates} type, add up to 2 DON!! cards as rested from your DON!! deck.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-068_AuVwHbX.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-068.png",
   },
 };

@@ -13,7 +13,7 @@ export const op15eb04Sanji047: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "047",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-047_bjNeD0t.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-047.png",
     },
     {
       id: "OP15-047_p1",
@@ -21,7 +21,7 @@ export const op15eb04Sanji047: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "047",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-047_p1_70z00wN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-047_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Sanji047: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  traits: ["Straw Hat Crew Dressrosa"],
+  traits: ["Dressrosa", "Straw Hat Crew"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-047_p1_70z00wN.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-047_p1.png",
       imageId: "OP15-047_p1",
     },
   ],

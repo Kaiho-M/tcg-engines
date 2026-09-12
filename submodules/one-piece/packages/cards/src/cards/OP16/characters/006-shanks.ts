@@ -13,7 +13,7 @@ export const op16Shanks006: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "006",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-006_QN3IPVz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-006.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Shanks006: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 2000,
-  traits: ["The Four Emperors Red-Haired Pirates"],
+  traits: ["The Four Emperors", "Red-Haired Pirates"],
   attribute: "slash",
   effect:
     "[On Play] You may rest 2 of your DON!! cards: K.O. up to 1 of your opponent's Characters with 4000 power or less.",

@@ -13,7 +13,7 @@ export const op15eb04Morgan017: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "017",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-017.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-017.png",
     },
   ],
   cardType: "character",
@@ -23,9 +23,12 @@ export const op15eb04Morgan017: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["Navy East Blue"],
+  traits: ["East Blue", "Navy"],
   attribute: "slash",
   effect:
-    "[Activate: Main] [Once Per Turn] You may give 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters: Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.",
+    "[Blocker]\n[Activate: Main] [Once Per Turn] You may give 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters: Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.",
+  effects: {
+    keywords: ["blocker"],
+  },
   i18n: op15eb04Morgan017I18n,
 };

@@ -13,7 +13,7 @@ export const op16Mr3Galdino037: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "037",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-037_7SCbkuN.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-037.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16Mr3Galdino037: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  traits: ["Impel Down Former Baroque Works"],
+  traits: ["Impel Down", "Former Baroque Works"],
   attribute: "special",
   effect:
     "[On Play] If your Leader has the {Impel Down} type, rest up to 1 of your opponent's Characters with a cost of 5 or less.",

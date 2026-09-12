@@ -5,6 +5,6 @@ export const op15eb04Orlumbus041I18n: OPCardI18n = {
     name: "Orlumbus",
     effect:
       "[On K.O.] Draw 1 card.\n[Activate: Main] [Once Per Turn] You may place 1 of your Characters at the bottom of the owner's deck: This Character gains [Rush] during this turn.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-041_bKQUxHm.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-041.png",
   },
 };

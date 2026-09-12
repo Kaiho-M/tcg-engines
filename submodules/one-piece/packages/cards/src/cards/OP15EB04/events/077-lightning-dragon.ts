@@ -13,7 +13,7 @@ export const op15eb04LightningDragon077: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "077",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-077_SgdHMKV.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-077.png",
     },
     {
       id: "OP15-077_p1",
@@ -21,7 +21,7 @@ export const op15eb04LightningDragon077: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "077",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-077_p1_FE0OAy2.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-077_p1.png",
     },
   ],
   cardType: "event",
@@ -32,13 +32,13 @@ export const op15eb04LightningDragon077: EventCard = {
   traits: ["Sky Island"],
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-077_p1_FE0OAy2.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-077_p1.png",
       imageId: "OP15-077_p1",
     },
   ],
   effect:
-    "[Main] DON!! 1: Draw 1 card. Then, up to 1 of your opponent's rested Characters with 6000 power or less will not become active in your opponent's next Refresh Phase.",
+    "[Main] DON!! −1: Draw 1 card. Then, up to 1 of your opponent's rested Characters with 6000 power or less will not become active in your opponent's next Refresh Phase.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op15eb04Laboon035: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "035",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-035_3h8VI9h.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-035.png",
     },
   ],
   cardType: "character",

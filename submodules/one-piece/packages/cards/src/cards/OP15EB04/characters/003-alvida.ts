@@ -13,7 +13,7 @@ export const op15eb04Alvida003: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "003",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-003_tgjIXHg.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-003.png",
     },
     {
       id: "OP15-003_p1",
@@ -21,7 +21,7 @@ export const op15eb04Alvida003: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "003",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-003_p1_h0AKASO.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-003_p1.png",
     },
   ],
   cardType: "character",
@@ -31,12 +31,12 @@ export const op15eb04Alvida003: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 1000,
-  traits: ["East Blue Alvida Pirates"],
+  traits: ["East Blue", "Alvida Pirates"],
   attribute: "strike",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-003_p1_h0AKASO.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-003_p1.png",
       imageId: "OP15-003_p1",
     },
   ],

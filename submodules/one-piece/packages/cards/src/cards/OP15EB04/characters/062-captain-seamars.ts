@@ -13,7 +13,7 @@ export const op15eb04CaptainSeamars062: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "062",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-062_uz3oxdx.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-062.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04CaptainSeamars062: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 2000,
-  traits: ["The Moon Space Pirates"],
+  traits: ["The Moon", "Space Pirates"],
   attribute: "slash",
   i18n: op15eb04CaptainSeamars062I18n,
 };

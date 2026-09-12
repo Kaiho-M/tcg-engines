@@ -13,7 +13,7 @@ export const op15eb04ItSAnOrderDoNotDefyMe038: EventCard = {
       setCode: "OP15EB04",
       collectorNumber: "038",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-038_6VB9RC9.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-038.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op15eb04ItSAnOrderDoNotDefyMe038: EventCard = {
   rarity: "R",
   setId: "OP15EB04",
   cost: 1,
-  traits: ["Krieg Pirates East Blue"],
+  traits: ["East Blue", "Krieg Pirates"],
   effect:
-    "[Main] Up to 1 of your opponent's rested Characters with a cost of 8 or less that has 2 or more DON!! cards given will not become active in your opponent's next Refresh Phase.[Counter] Up to 1 of your [Krieg] cards gains +4000 power during this battle.",
+    "[Main] Up to 1 of your opponent's rested Characters with a cost of 8 or less that has 2 or more DON!! cards given will not become active in your opponent's next Refresh Phase.\n[Counter] Up to 1 of your [Krieg] cards gains +4000 power during this battle.",
   effects: {
     effects: [
       {

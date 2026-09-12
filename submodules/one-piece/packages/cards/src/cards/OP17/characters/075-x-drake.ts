@@ -13,7 +13,7 @@ export const op17XDrake075: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "075",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-075_06daLQe.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-075.png",
     },
   ],
   cardType: "character",
@@ -23,9 +23,9 @@ export const op17XDrake075: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 2000,
-  traits: ["Navy Drake Pirates Animal Kingdom Pirates"],
+  traits: ["Navy", "Drake Pirates", "Animal Kingdom Pirates"],
   attribute: "slash",
-  effect: "[On Play] DON!! 2: Trash 1 card from your opponent's hand.",
+  effect: "[On Play] DON!! −2: Trash 1 card from your opponent's hand.",
   effects: {
     effects: [
       {

@@ -13,7 +13,7 @@ export const op16SpeedJil009: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "009",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-009_c9szVFX.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-009.png",
     },
   ],
   cardType: "character",

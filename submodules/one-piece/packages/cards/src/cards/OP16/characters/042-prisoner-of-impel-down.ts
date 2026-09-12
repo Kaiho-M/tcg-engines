@@ -13,7 +13,7 @@ export const op16PrisonerOfImpelDown042: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "042",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-042_senMnhl.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-042.png",
     },
   ],
   cardType: "character",

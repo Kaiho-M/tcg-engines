@@ -13,7 +13,7 @@ export const op16GumGumHammerRifle040: EventCard = {
       setCode: "OP16",
       collectorNumber: "040",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-040_gD10VSF.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-040.png",
     },
   ],
   cardType: "event",
@@ -21,9 +21,9 @@ export const op16GumGumHammerRifle040: EventCard = {
   rarity: "UC",
   setId: "OP16",
   cost: 1,
-  traits: ["Straw Hat Crew Impel Down"],
+  traits: ["Impel Down", "Straw Hat Crew"],
   effect:
-    "[Main] If you have [Monkey.D.Luffy] and [Mr.3(Galdino)], up to 1 of your opponent's rested Characters with a cost of 6 or less will not become active in your opponent's next Refresh Phase.\n\n[Counter] Your Leader gains +3000 power during this battle.",
+    "[Main] If you have [Monkey.D.Luffy] and [Mr.3(Galdino)], up to 1 of your opponent's rested Characters with a cost of 6 or less will not become active in your opponent's next Refresh Phase.\n[Counter] Your Leader gains +3000 power during this battle.",
   effects: {
     effects: [
       {

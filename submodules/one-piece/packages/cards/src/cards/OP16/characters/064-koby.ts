@@ -13,7 +13,7 @@ export const op16Koby064: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "064",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-064_sdV5K9v.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-064.png",
     },
   ],
   cardType: "character",

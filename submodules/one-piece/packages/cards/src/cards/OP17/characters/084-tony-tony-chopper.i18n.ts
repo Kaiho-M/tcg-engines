@@ -5,6 +5,6 @@ export const op17TonyTonyChopper084I18n: OPCardI18n = {
     name: "Tony Tony.Chopper",
     effect:
       "[On Play] If there is a Character with a cost of 12 or more, up to 1 of your Characters gains [Unblockable] during this turn.\n(This card cannot be blocked.)",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-084_JM5DAVg.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-084.png",
   },
 };

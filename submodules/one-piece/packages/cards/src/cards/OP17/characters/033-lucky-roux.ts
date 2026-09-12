@@ -13,7 +13,7 @@ export const op17LuckyRoux033: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "033",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-033_Ztm0iHM.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-033.png",
     },
   ],
   cardType: "character",

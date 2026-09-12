@@ -13,7 +13,7 @@ export const op16Yamato097: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "097",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-097_p9eq1wc.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-097.png",
     },
   ],
   cardType: "character",

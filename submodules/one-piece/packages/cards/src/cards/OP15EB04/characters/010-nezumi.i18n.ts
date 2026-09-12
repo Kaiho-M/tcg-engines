@@ -5,6 +5,6 @@ export const op15eb04Nezumi010I18n: OPCardI18n = {
     name: "Nezumi",
     effect:
       "[Activate: Main] [Once Per Turn] Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-010_8LyWLI8.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-010.png",
   },
 };

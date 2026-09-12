@@ -13,7 +13,7 @@ export const op15eb04Hyouzou030: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "030",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-030_GFtqlBi.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-030.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op15eb04Hyouzou030: CharacterCard = {
   cost: 5,
   power: 6000,
   counter: 2000,
-  traits: ["Merfolk Fish-Man Island"],
+  traits: ["Merfolk", "Fish-Man Island"],
   attribute: "slash",
   i18n: op15eb04Hyouzou030I18n,
 };

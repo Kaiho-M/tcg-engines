@@ -13,7 +13,7 @@ export const op15eb04Rebecca039: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "039",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-039_Fpbv2Zo.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-039.png",
     },
     {
       id: "OP15-039_p1",
@@ -21,7 +21,7 @@ export const op15eb04Rebecca039: LeaderCard = {
       setCode: "OP15EB04",
       collectorNumber: "039",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-039_p1_1RVSBD5.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-039_p1.png",
     },
   ],
   cardType: "leader",
@@ -34,8 +34,8 @@ export const op15eb04Rebecca039: LeaderCard = {
   attribute: "wisdom",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-039_p1_1RVSBD5.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-039_p1.png",
       imageId: "OP15-039_p1",
     },
   ],

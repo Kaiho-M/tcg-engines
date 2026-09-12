@@ -13,7 +13,7 @@ export const op16Buggy041: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "041",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-041_TbocLEZ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-041.png",
     },
     {
       id: "OP16-041_p1",
@@ -21,7 +21,7 @@ export const op16Buggy041: LeaderCard = {
       setCode: "OP16",
       collectorNumber: "041",
       rarity: "L",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-041_p1_XzwbnlK.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-041_p1.png",
     },
   ],
   cardType: "leader",
@@ -30,16 +30,16 @@ export const op16Buggy041: LeaderCard = {
   setId: "OP16",
   power: 5000,
   life: 5,
-  traits: ["Buggy Pirates Impel Down"],
+  traits: ["Impel Down", "Buggy Pirates"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-041_p1_XzwbnlK.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-041_p1.png",
       imageId: "OP16-041_p1",
     },
   ],
   effect:
-    "[DON!! X1] [Once Per Turn] This effect can be activated when your {Impel Down} type Character card is removed from the field. Play up to 1 [Prisoner of Impel Down] card from your hand.",
+    "[DON!! x1] [Once Per Turn] This effect can be activated when your {Impel Down} type Character card is removed from the field. Play up to 1 [Prisoner of Impel Down] card from your hand.",
   i18n: op16Buggy041I18n,
 };

@@ -4,6 +4,6 @@ export const op15eb04KellyFunk043I18n: OPCardI18n = {
   en: {
     name: "Kelly Funk",
     effect: "[On Play] Play up to 1 [Bobby Funk] from your hand.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-043_OOqOx5V.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-043.png",
   },
 };

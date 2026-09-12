@@ -13,7 +13,7 @@ export const op16BoaHancock032: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "032",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-032_ejQ0TgZ.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-032.png",
     },
     {
       id: "OP16-032_p1",
@@ -21,7 +21,7 @@ export const op16BoaHancock032: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "032",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-032_p1_YgUseLD.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-032_p1.png",
     },
   ],
   cardType: "character",
@@ -30,17 +30,17 @@ export const op16BoaHancock032: CharacterCard = {
   setId: "OP16",
   cost: 7,
   power: 9000,
-  traits: ["Kuja Pirates The Seven Warlords of the Sea Impel Down"],
+  traits: ["Impel Down", "The Seven Warlords of the Sea", "Kuja Pirates"],
   attribute: "special",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-032_p1_YgUseLD.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-032_p1.png",
       imageId: "OP16-032_p1",
     },
   ],
   effect:
-    "[Unblockable] (This card cannot be blocked.) [On Play] Up to 1 of your opponent's Characters other than [Monkey.D.Luffy] cannot be rested until the end of your opponent's next End Phase.",
+    "[Unblockable] (This card cannot be blocked.)\n[On Play] Up to 1 of your opponent's Characters other than [Monkey.D.Luffy] cannot be rested until the end of your opponent's next End Phase.",
   effects: {
     keywords: ["unblockable"],
   },

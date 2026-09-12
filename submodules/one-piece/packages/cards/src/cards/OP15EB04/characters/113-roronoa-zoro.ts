@@ -13,7 +13,7 @@ export const op15eb04RoronoaZoro113: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "113",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-113_IoOASXf.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-113.png",
     },
     {
       id: "OP15-113_p1",
@@ -21,7 +21,7 @@ export const op15eb04RoronoaZoro113: CharacterCard = {
       setCode: "OP15EB04",
       collectorNumber: "113",
       rarity: "SR",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-113_p1_lSKJkzB.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-113_p1.png",
     },
   ],
   cardType: "character",
@@ -30,12 +30,12 @@ export const op15eb04RoronoaZoro113: CharacterCard = {
   setId: "OP15EB04",
   cost: 4,
   power: 6000,
-  traits: ["Straw Hat Crew Sky Island"],
+  traits: ["Sky Island", "Straw Hat Crew"],
   attribute: "slash",
   artVariants: [
     {
-      type: "alternate-art",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-113_p1_lSKJkzB.jpg",
+      type: "other",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-113_p1.png",
       imageId: "OP15-113_p1",
     },
   ],

@@ -13,7 +13,7 @@ export const op17Gerd081: CharacterCard = {
       setCode: "OP17",
       collectorNumber: "081",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP17-081_R6KeQy9.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-081.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op17Gerd081: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 2000,
-  traits: ["Giant Elbaph New Giant Pirates"],
+  traits: ["Giant", "Elbaph", "New Giant Pirates"],
   attribute: "slash",
   effect:
     "If your Leader has the {Elbaph} type, this Character gains +12 cost.\n[On Play] You may trash 1 card from your hand: Add up to 1 Character card with a cost of 8 or less other than [Gerd] from your trash to your hand.",

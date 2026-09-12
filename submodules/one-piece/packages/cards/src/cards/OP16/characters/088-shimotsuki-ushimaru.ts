@@ -13,7 +13,7 @@ export const op16ShimotsukiUshimaru088: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "088",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-088_ZjPh991.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-088.png",
     },
   ],
   cardType: "character",

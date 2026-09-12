@@ -13,7 +13,7 @@ export const op16Mr1DazBonez054: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "054",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-054_HqcTLyT.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-054.png",
     },
   ],
   cardType: "character",
@@ -23,10 +23,10 @@ export const op16Mr1DazBonez054: CharacterCard = {
   cost: 2,
   power: 2000,
   counter: 1000,
-  traits: ["Impel Down Former Baroque Works"],
+  traits: ["Impel Down", "Former Baroque Works"],
   attribute: "slash",
   effect:
-    "[DON!! X1] [Your Turn] If you have 5 or more cards in your hand, this Character gains +3000 power.\n\n[On Play] Draw 1 card.",
+    "[DON!! x1] [Your Turn] If you have 5 or more cards in your hand, this Character gains +3000 power.\n[On Play] Draw 1 card.",
   effects: {
     effects: [
       {

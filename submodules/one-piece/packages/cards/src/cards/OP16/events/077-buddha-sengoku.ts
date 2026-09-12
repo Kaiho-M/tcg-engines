@@ -13,7 +13,7 @@ export const op16BuddhaSengoku077: EventCard = {
       setCode: "OP16",
       collectorNumber: "077",
       rarity: "R",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-077_kNzKBvb.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-077.png",
     },
   ],
   cardType: "event",

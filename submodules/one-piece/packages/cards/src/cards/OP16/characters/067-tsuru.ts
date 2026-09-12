@@ -13,7 +13,7 @@ export const op16Tsuru067: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "067",
       rarity: "UC",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-067_1NGQGA1.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-067.png",
     },
   ],
   cardType: "character",

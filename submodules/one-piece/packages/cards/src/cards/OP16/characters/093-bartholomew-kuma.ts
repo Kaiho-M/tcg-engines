@@ -13,7 +13,7 @@ export const op16BartholomewKuma093: CharacterCard = {
       setCode: "OP16",
       collectorNumber: "093",
       rarity: "C",
-      imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP16-093_TT0f5oz.jpg",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP16-093.png",
     },
   ],
   cardType: "character",
@@ -23,7 +23,7 @@ export const op16BartholomewKuma093: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  traits: ["Revolutionary Army The Seven Warlords of the Sea"],
+  traits: ["The Seven Warlords of the Sea", "Revolutionary Army"],
   attribute: "strike",
   effect:
     "[On Play] Draw 2 cards and trash 2 cards from your hand. Then, give up to 1 rested DON!! card to your Leader or 1 of your Characters.",

@@ -5,6 +5,6 @@ export const op15eb04JewelryBonney105I18n: OPCardI18n = {
     name: "Jewelry Bonney",
     effect:
       "If your Character with 7000 base power or less would be removed from the field by your opponent's effect, you may add 1 card from the top of your Life cards to your hand instead.",
-    imageUrl: "https://www.optcgapi.com/media/static/Card_Images/OP15-105_yt4eqp4.jpg",
+    imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-105.png",
   },
 };
