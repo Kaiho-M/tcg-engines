@@ -23,7 +23,7 @@ export const op15eb04Octoballoon106: CharacterCard = {
   cost: 2,
   counter: 1000,
   trigger:
-    "[Trigger] Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
+    "Draw 1 card. Then, play up to 1 yellow Character or Stage card with a cost of 2 or less from your hand.",
   traits: ["Animal", "Sky Island"],
   attribute: "wisdom",
   effect:

@@ -38,14 +38,38 @@ export const op16Shinobu087: CharacterCard = {
         ],
         actions: [
           {
-            action: "draw",
-            player: "self",
-            amount: 1,
-            condition: {
+            action: "conditional",
+            predicate: {
               condition: "leaderTrait",
               trait: "Land of Wano",
               match: "includes",
             },
+            whenTrue: [
+              {
+                action: "draw",
+                player: "self",
+                amount: 1,
+              },
+              {
+                action: "modifyCost",
+                target: {
+                  player: "self",
+                  zones: ["leader", "character"],
+                  count: {
+                    amount: 1,
+                    upTo: true,
+                  },
+                  filters: [
+                    {
+                      filter: "name",
+                      value: "Kouzuki Momonosuke",
+                    },
+                  ],
+                },
+                value: 20,
+                duration: "thisTurn",
+              },
+            ],
           },
         ],
         optional: true,

@@ -76,4 +76,5 @@ export type EffectTrigger =
   | "whenBecomesRested"
   | "whenCharacterRestedByEffect"
   | "whenCardsTrashedFromHandByEffect"
-  | "whenYouTakeDamage";
+  | "whenYouTakeDamage"
+  | "whenLeaderAttacks";

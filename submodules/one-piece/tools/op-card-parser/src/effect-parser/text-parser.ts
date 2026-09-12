@@ -1,6 +1,11 @@
 import type { EffectTrigger } from "@tcg/op-types";
 import type { ParsedCondition, ParsedEffectText, RawCost, RawEffectSegment } from "./types.ts";
-import { KEYWORD_EXPLANATIONS, DON_REMINDERS, TRIGGER_BRACKET_RE } from "./constants.ts";
+import {
+  KEYWORD_EXPLANATIONS,
+  KEYWORD_REMINDERS,
+  DON_REMINDERS,
+  TRIGGER_BRACKET_RE,
+} from "./constants.ts";
 import {
   mapTrigger,
   isDonCondition,
@@ -42,6 +47,9 @@ function stripFlavorParentheticals(text: string): string {
       }
       return match;
     });
+  }
+  for (const pattern of KEYWORD_REMINDERS) {
+    result = result.replace(pattern, "");
   }
   for (const pattern of DON_REMINDERS) {
     result = result.replace(pattern, " ");
@@ -650,13 +658,20 @@ function parseTextCosts(text: string): RawCost[] {
 function parseChoicePattern(actionText: string): {
   prefix: string;
   choiceItems?: string[];
+  choiceChooser?: "opponent";
   postChoiceActionText?: string;
 } {
-  const chooseIdx = actionText.toLowerCase().indexOf("choose one:");
-  if (chooseIdx === -1) return { prefix: actionText };
+  const chooseMatch = /(your\s+opponent\s+chooses|choose)\s+one:/i.exec(actionText);
+  if (!chooseMatch) return { prefix: actionText };
+  const chooseIdx = chooseMatch.index;
+  const choiceChooser = /^your/i.test(chooseMatch[1]!) ? ("opponent" as const) : undefined;
 
-  const prefix = actionText.slice(0, chooseIdx).trim();
-  const afterChoose = actionText.slice(chooseIdx + "Choose one:".length);
+  // "Draw 1 card, then choose one:" — the leading action resolves first.
+  const prefix = actionText
+    .slice(0, chooseIdx)
+    .trim()
+    .replace(/,?\s*then$/i, "");
+  const afterChoose = actionText.slice(chooseIdx + chooseMatch[0].length);
 
   // Split on bullet character (•) — handles both \n• and space-separated •
   const items = afterChoose
@@ -675,8 +690,9 @@ function parseChoicePattern(actionText: string): {
   }
 
   return {
-    prefix: prefix || "Choose one:",
+    prefix,
     choiceItems: items.length > 0 ? items : undefined,
+    ...(choiceChooser && { choiceChooser }),
     ...(postChoiceActionText && { postChoiceActionText }),
   };
 }
@@ -780,6 +796,7 @@ function processSegment(line: string, segments: RawEffectSegment[]): void {
   const {
     prefix: actionPrefix,
     choiceItems,
+    choiceChooser,
     postChoiceActionText,
   } = parseChoicePattern(prefix.actionText);
 
@@ -791,6 +808,7 @@ function processSegment(line: string, segments: RawEffectSegment[]): void {
     optional: prefix.optional,
     rawActionText: actionPrefix,
     ...(choiceItems && { choiceItems }),
+    ...(choiceChooser && { choiceChooser }),
     ...(postChoiceActionText && { postChoiceActionText }),
   });
 }

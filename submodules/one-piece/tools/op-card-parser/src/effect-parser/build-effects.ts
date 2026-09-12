@@ -761,6 +761,63 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
       continue;
     }
 
+    // "When your Leader with a type including "X" attacks or is attacked, you
+    // may trash 1 card from your hand to activate this effect. <actions>"
+    // A Character reacting to its own Leader's battles: one block per
+    // direction, sharing a once-per-turn key when the segment is [Once Per Turn].
+    const leaderBattleReactionMatch =
+      /^When\s+your\s+Leader(?:\s+with\s+a\s+type\s+including\s+["“]([^"”]+)["”])?\s+attacks(\s+or\s+is\s+attacked)?,\s+(?:you\s+may\s+(trash\s+\d+\s+cards?\s+from\s+your\s+hand)\s+to\s+activate\s+this\s+effect\.\s*)?(.+)$/is.exec(
+        seg.rawActionText.trim(),
+      );
+    if (leaderBattleReactionMatch && seg.triggers.length === 0) {
+      const [, trait, alsoAttacked, trashCostText, actionText] = leaderBattleReactionMatch;
+      const reactionActions = parseActions(actionText!);
+      const trashCost = trashCostText
+        ? mapRawCost({ type: "trashFromHand", raw: trashCostText })
+        : undefined;
+      if (reactionActions.unparsed === "" && reactionActions.parsed.length > 0) {
+        const leaderFilters: TargetFilter[] = trait
+          ? [{ filter: "trait", value: trait, match: "includes" }]
+          : [];
+        const directions: Array<Pick<EffectBlock, "trigger" | "eventFilter">> = [
+          {
+            trigger: "whenLeaderAttacks",
+            ...(leaderFilters.length > 0 && { eventFilter: { filters: leaderFilters } }),
+          },
+          ...(alsoAttacked
+            ? [
+                {
+                  trigger: "onOpponentAttack" as const,
+                  eventFilter: {
+                    targetFilters: [
+                      { filter: "cardCategory" as const, value: "leader" as const },
+                      ...leaderFilters,
+                    ],
+                  },
+                },
+              ]
+            : []),
+        ];
+        const oncePerTurnKey =
+          seg.oncePerTurn && directions.length > 1
+            ? `shared:leader-battle:${segmentIndex}`
+            : undefined;
+        for (const direction of directions) {
+          effectBlocks.push({
+            ...direction,
+            ...(seg.conditions.length > 0 && { conditions: seg.conditions }),
+            ...(trashCost && { costs: [trashCost] }),
+            actions: reactionActions.parsed,
+            ...(trashCostText && { optional: true }),
+            ...(seg.oncePerTurn && { oncePerTurn: true }),
+            ...(oncePerTurnKey && { oncePerTurnKey }),
+          });
+        }
+        segmentDiagnostics.push({ rawActionText: seg.rawActionText, unparsed: "", dropped: false });
+        continue;
+      }
+    }
+
     const dependentOptionalThenMatch =
       /^(.+?)\.\s*Then,\s*you\s+may\s+(.+?)\.\s*If\s+you\s+do,\s*(.+)$/is.exec(seg.rawActionText);
     if (dependentOptionalThenMatch && seg.triggers.length === 1) {
@@ -1098,6 +1155,7 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
       if (options.length > 0) {
         actionsResult.parsed.push({
           action: "choice",
+          ...(seg.choiceChooser && { player: seg.choiceChooser }),
           options,
         });
       }

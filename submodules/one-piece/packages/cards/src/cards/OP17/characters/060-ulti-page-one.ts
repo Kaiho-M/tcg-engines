@@ -40,6 +40,14 @@ export const op17UltiPageOne060: CharacterCard = {
         ],
         actions: [
           {
+            action: "addDon",
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            state: "active",
+          },
+          {
             action: "ko",
             target: {
               player: "opponent",

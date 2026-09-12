@@ -22,9 +22,30 @@ export const op16BlackVortex115: EventCard = {
   setId: "OP16",
   cost: 1,
   trigger:
-    "[Trigger] Negate the effect of up to 1 of your opponent's Leader or Character cards during this turn.",
+    "Negate the effect of up to 1 of your opponent's Leader or Character cards during this turn.",
   traits: ["The Seven Warlords of the Sea", "Blackbeard Pirates"],
   effect:
     "[Main] If your Leader has the {Blackbeard Pirates} type, add up to 1 card with a [Trigger] other than [Black Vortex] from your trash to your hand.",
+  effects: {
+    effects: [
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "negateEffects",
+            target: {
+              player: "opponent",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op16BlackVortex115I18n,
 };

@@ -51,6 +51,19 @@ export const KEYWORD_EXPLANATIONS: RegExp[] = [
   /\[Unblockable\]\s*\([^)]*cannot activate[^)]*\)/gi,
 ];
 
+/**
+ * Keyword reminders the official card list prints on their own line, after the
+ * sentence that grants the keyword rather than next to the bracket.
+ */
+export const KEYWORD_REMINDERS: RegExp[] = [
+  /\s*\(This card can attack on the turn in which it is played\.?\)/gi,
+  /\s*\(This card can attack Characters on the turn in which it is played\.?\)/gi,
+  /\s*\(This card cannot be blocked\.?\)/gi,
+  /\s*\(This card deals 2 damage\.?\)/gi,
+  /\s*\(After your opponent declares an attack, you may rest this card to make it the new target of the attack\.?\)/gi,
+  /\s*\(When this card deals damage, the target card is trashed without activating its Trigger\.?\)/gi,
+];
+
 /** DON!! cost reminder parentheticals */
 export const DON_REMINDERS: RegExp[] = [
   /\s*\(You may rest the specified number of DON!! cards in your cost area\.?\)\s*/gi,

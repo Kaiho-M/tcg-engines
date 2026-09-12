@@ -48,6 +48,27 @@ export const op16EmporioIvankov026: CharacterCard = {
         trigger: "onPlay",
         actions: [
           {
+            action: "search",
+            lookCount: 3,
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            revealCount: {
+              amount: 1,
+              upTo: true,
+            },
+            revealFilters: [
+              {
+                filter: "trait",
+                value: "Impel Down",
+                match: "includes",
+              },
+            ],
+            revealDestination: "hand",
+            remainderPosition: "bottom",
+          },
+          {
             action: "play",
             source: {
               player: "self",

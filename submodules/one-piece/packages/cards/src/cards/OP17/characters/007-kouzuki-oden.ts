@@ -26,5 +26,82 @@ export const op17KouzukiOden007: CharacterCard = {
   attribute: "slash",
   effect:
     '[On Play] If your Leader is [Edward.Newgate] or has the {Land of Wano} type, play up to 1 {Land of Wano} type Character card or Character card with a type including "Whitebeard Pirates" with 6000 power or less from your hand.',
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        conditions: [
+          {
+            condition: "compound",
+            operator: "or",
+            conditions: [
+              {
+                condition: "leaderName",
+                name: "Edward.Newgate",
+              },
+              {
+                condition: "leaderTrait",
+                trait: "Land of Wano",
+                match: "includes",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "play",
+            source: {
+              player: "self",
+              zone: "hand",
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            filters: [
+              {
+                filter: "power",
+                comparison: "lte",
+                value: 6000,
+              },
+              {
+                filter: "anyOf",
+                filters: [
+                  {
+                    filter: "allOf",
+                    filters: [
+                      {
+                        filter: "trait",
+                        value: "Land of Wano",
+                        match: "includes",
+                      },
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                  },
+                  {
+                    filter: "allOf",
+                    filters: [
+                      {
+                        filter: "trait",
+                        value: "Whitebeard Pirates",
+                        match: "includes",
+                      },
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
   i18n: op17KouzukiOden007I18n,
 };

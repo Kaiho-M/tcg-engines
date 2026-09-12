@@ -24,5 +24,64 @@ export const op16ThePrisonersAreRioting058: EventCard = {
   traits: ["Impel Down"],
   effect:
     "[Main] If you have 10 DON!! cards on your field, all of your [Prisoner of Impel Down] cards' base power becomes 7000 during this turn.\n[Counter] Up to 1 of your [Buggy] gains +4000 power during this battle.",
+  effects: {
+    effects: [
+      {
+        trigger: "main",
+        conditions: [
+          {
+            condition: "donFieldCount",
+            player: "self",
+            comparison: "eq",
+            value: 10,
+          },
+        ],
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Prisoner of Impel Down",
+                },
+              ],
+            },
+            value: 7000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Buggy",
+                },
+              ],
+            },
+            value: 4000,
+            duration: "thisBattle",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op16ThePrisonersAreRioting058I18n,
 };

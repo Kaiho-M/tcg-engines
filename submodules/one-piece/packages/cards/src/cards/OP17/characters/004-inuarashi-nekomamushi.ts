@@ -27,5 +27,48 @@ export const op17InuarashiNekomamushi004: CharacterCard = {
   attribute: "slash",
   effect:
     '[On Play] Up to 1 of your {Land of Wano} type Characters or up to 1 of your Characters with a type including "Whitebeard Pirates" gains [Rush] during this turn.\n(This card can attack on the turn in which it is played.)',
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "trait",
+                        value: "Land of Wano",
+                        match: "includes",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "trait",
+                        value: "Whitebeard Pirates",
+                        match: "includes",
+                      },
+                    ],
+                  ],
+                },
+              ],
+            },
+            keyword: "rush",
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op17InuarashiNekomamushi004I18n,
 };

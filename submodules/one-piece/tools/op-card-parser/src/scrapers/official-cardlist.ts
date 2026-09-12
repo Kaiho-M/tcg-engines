@@ -177,7 +177,8 @@ export function parseSeriesPage(html: string): RawOPCard[] {
 
     const text = [
       dashToNull(effect ? stripTags(effect[1]!) : undefined),
-      trigger ? `[Trigger] ${stripTags(trigger[1]!)}` : undefined,
+      // The trigger box already prints its own "[Trigger]" label.
+      trigger ? `[Trigger] ${stripTags(trigger[1]!).replace(/^\[Trigger\]\s*/i, "")}` : undefined,
     ]
       .filter((part): part is string => Boolean(part))
       .join("\n");

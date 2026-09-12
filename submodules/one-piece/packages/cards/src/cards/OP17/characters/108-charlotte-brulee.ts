@@ -23,7 +23,7 @@ export const op17CharlotteBrulee108: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  trigger: "[Trigger] Rest up to 1 of your opponent's Characters with a cost of 6 or less.",
+  trigger: "Rest up to 1 of your opponent's Characters with a cost of 6 or less.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -31,29 +31,6 @@ export const op17CharlotteBrulee108: CharacterCard = {
   effects: {
     keywords: ["blocker"],
     effects: [
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "rest",
-            target: {
-              player: "opponent",
-              zones: ["character"],
-              count: {
-                amount: 1,
-                upTo: true,
-              },
-              filters: [
-                {
-                  filter: "cost",
-                  comparison: "lte",
-                  value: 6,
-                },
-              ],
-            },
-          },
-        ],
-      },
       {
         trigger: "trigger",
         actions: [

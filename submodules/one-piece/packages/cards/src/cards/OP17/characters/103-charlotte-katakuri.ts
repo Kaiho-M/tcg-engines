@@ -23,7 +23,7 @@ export const op17CharlotteKatakuri103: CharacterCard = {
   cost: 6,
   power: 4000,
   counter: 1000,
-  trigger: "[Trigger] Play this card.",
+  trigger: "Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "strike",
   effect:
@@ -68,14 +68,6 @@ export const op17CharlotteKatakuri103: CharacterCard = {
             },
             value: -3000,
             duration: "thisTurn",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "playThisCard",
           },
         ],
       },

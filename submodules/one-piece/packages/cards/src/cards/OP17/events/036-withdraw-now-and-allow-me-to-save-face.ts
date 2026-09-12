@@ -71,6 +71,30 @@ export const op17WithdrawNowAndAllowMeToSaveFace036: EventCard = {
         ],
         optional: true,
       },
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Shanks",
+                },
+              ],
+            },
+            value: 4000,
+            duration: "thisBattle",
+          },
+        ],
+      },
     ],
   },
   i18n: op17WithdrawNowAndAllowMeToSaveFace036I18n,

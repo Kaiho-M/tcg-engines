@@ -129,6 +129,26 @@ export function parseTrashFromHandAction(text: string): TrashFromHandAction | nu
       stage: "stage",
       character: "character",
     };
+    // "1 Character card with 6000 power or more" / "with a power of 6000 or less"
+    const qualifiedMatch =
+      /^(Character|Event|Stage)\s+cards?\s+with\s+(?:(\d+)\s+power|a\s+power\s+of\s+(\d+))(?:\s+or\s+(less|more))?$/i.exec(
+        typeText,
+      );
+    if (qualifiedMatch) {
+      return {
+        action: "trashFromHand",
+        player,
+        amount,
+        filters: [
+          { filter: "cardCategory", value: qualifiedMatch[1]!.toLowerCase() as any },
+          {
+            filter: "power",
+            comparison: parseComparison(qualifiedMatch[4]),
+            value: parseInt((qualifiedMatch[2] ?? qualifiedMatch[3])!, 10),
+          },
+        ],
+      };
+    }
     const typeParts = typeText.split(/\s+or\s+/i);
     const filters: TargetFilter[] = [];
     for (const part of typeParts) {

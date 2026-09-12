@@ -24,7 +24,7 @@ export const op16CatarinaDevon104: CharacterCard = {
   power: 3000,
   counter: 2000,
   trigger:
-    "[Trigger] Draw 1 card and play up to 1 {Blackbeard Pirates} type Character with a cost of 1 from your trash.",
+    "Draw 1 card and play up to 1 {Blackbeard Pirates} type Character with a cost of 1 from your trash.",
   traits: ["Impel Down", "Blackbeard Pirates"],
   attribute: "special",
   effect:
@@ -46,43 +46,6 @@ export const op16CatarinaDevon104: CharacterCard = {
             },
             value: 0,
             duration: "thisTurn",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "draw",
-            player: "self",
-            amount: 1,
-          },
-          {
-            action: "play",
-            source: {
-              player: "self",
-              zone: "trash",
-            },
-            count: {
-              amount: 1,
-              upTo: true,
-            },
-            filters: [
-              {
-                filter: "cost",
-                comparison: "eq",
-                value: 1,
-              },
-              {
-                filter: "trait",
-                value: "Blackbeard Pirates",
-                match: "includes",
-              },
-              {
-                filter: "cardCategory",
-                value: "character",
-              },
-            ],
           },
         ],
       },

@@ -105,6 +105,66 @@ export const op16PortgasDAce118: CharacterCard = {
         ],
       },
     ],
+    permanentEffects: [
+      {
+        actions: [
+          {
+            action: "modifyCounter",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "cardCategory",
+                  value: "character",
+                },
+                {
+                  filter: "power",
+                  comparison: "eq",
+                  value: 8000,
+                },
+                {
+                  filter: "counter",
+                  comparison: "eq",
+                  value: 0,
+                },
+              ],
+            },
+            value: 2000,
+          },
+          {
+            action: "modifyCounter",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "cardCategory",
+                  value: "character",
+                },
+                {
+                  filter: "power",
+                  comparison: "eq",
+                  value: 8000,
+                },
+                {
+                  filter: "counter",
+                  comparison: "eq",
+                  value: 1000,
+                },
+              ],
+            },
+            value: 1000,
+          },
+        ],
+      },
+    ],
   },
   i18n: op16PortgasDAce118I18n,
 };

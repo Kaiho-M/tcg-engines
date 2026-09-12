@@ -30,6 +30,27 @@ export const op16BuddhaSengoku077: EventCard = {
         trigger: "main",
         actions: [
           {
+            action: "search",
+            lookCount: 5,
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            revealCount: {
+              amount: 2,
+              upTo: true,
+            },
+            revealFilters: [
+              {
+                filter: "trait",
+                value: "Navy",
+                match: "includes",
+              },
+            ],
+            revealDestination: "hand",
+            remainderPosition: "bottom",
+          },
+          {
             action: "trashFromHand",
             player: "self",
             amount: 1,

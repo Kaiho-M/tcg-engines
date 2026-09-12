@@ -34,7 +34,8 @@ export function isKeywordBracket(content: string): boolean {
  */
 export function mapZoneNoun(noun: string): Zone | null {
   const lower = noun.toLowerCase().trim();
-  if (lower === "character" || lower === "characters") return "character";
+  // "Charactes" is a printed typo on OP17-076.
+  if (lower === "character" || lower === "characters" || lower === "charactes") return "character";
   if (lower === "leader" || lower === "leaders") return "leader";
   if (lower === "stage" || lower === "stages") return "stage";
   if (lower === "don!!" || lower === "don!! card" || lower === "don!! cards") return "costArea";

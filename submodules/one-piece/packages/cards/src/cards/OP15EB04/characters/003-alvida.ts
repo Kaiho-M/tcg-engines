@@ -42,5 +42,31 @@ export const op15eb04Alvida003: CharacterCard = {
   ],
   effect:
     "If this Character would be K.O.'d, you may trash 1 Character card with a power of 6000 or less from your hand instead.\n[Activate: Main] [Once Per Turn] You may give 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters: Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.",
+  effects: {
+    replacementEffects: [
+      {
+        replacedEvent: "ko",
+        eventFilter: {
+          targetSelf: true,
+        },
+        replacementAction: {
+          action: "trashFromHand",
+          player: "self",
+          amount: 1,
+          filters: [
+            {
+              filter: "cardCategory",
+              value: "character",
+            },
+            {
+              filter: "power",
+              comparison: "lte",
+              value: 6000,
+            },
+          ],
+        },
+      },
+    ],
+  },
   i18n: op15eb04Alvida003I18n,
 };

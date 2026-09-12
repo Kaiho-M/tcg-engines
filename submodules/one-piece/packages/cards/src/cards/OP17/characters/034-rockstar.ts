@@ -27,5 +27,59 @@ export const op17Rockstar034: CharacterCard = {
   attribute: "slash",
   effect:
     "[Activate: Main] [Once Per Turn] If your opponent's Leader has 6000 power or more, set up to 1 of your DON!! cards as active. Then, your {Red-Haired Pirates} type Leader's base power becomes 6000 until the end of your opponent's next End Phase.",
+  effects: {
+    effects: [
+      {
+        trigger: "activateMain",
+        conditions: [
+          {
+            condition: "hasCard",
+            player: "opponent",
+            zone: "leader",
+            filters: [
+              {
+                filter: "power",
+                comparison: "gte",
+                value: 6000,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "setActive",
+            target: {
+              player: "self",
+              zones: ["costArea"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+          },
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Red-Haired Pirates",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 6000,
+            duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
+  },
   i18n: op17Rockstar034I18n,
 };

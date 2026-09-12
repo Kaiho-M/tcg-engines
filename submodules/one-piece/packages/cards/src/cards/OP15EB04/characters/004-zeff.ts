@@ -26,5 +26,26 @@ export const op15eb04Zeff004: CharacterCard = {
   attribute: "strike",
   effect:
     "[When Attacking] Your Leader's base power becomes 7000 until the end of your opponent's next End Phase.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenAttacking",
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 7000,
+            duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04Zeff004I18n,
 };

@@ -1,5 +1,10 @@
 import type { Action, Duration, TargetFilter } from "@tcg/op-types";
-import { parseModifyPowerTarget, parseTarget, parseTargetWithoutPlayer } from "../target-parser.ts";
+import {
+  extractTargetFilters,
+  parseModifyPowerTarget,
+  parseTarget,
+  parseTargetWithoutPlayer,
+} from "../target-parser.ts";
 import { parseComparison } from "../helpers.ts";
 import { KEYWORD_BRACKET_TO_TYPE } from "../constants.ts";
 import { parseDuration, parseFullDuration } from "./helpers.ts";
@@ -613,6 +618,41 @@ export function parseCompoundNamedTraitPower(text: string): Action[] | null {
 }
 
 /**
+ * Parse "All of your [Name] cards and this Character gain [Keyword]": the
+ * named Characters and the source itself each receive the keyword.
+ */
+export function parseCompoundNamedSelfKeyword(text: string): Action[] | null {
+  const trimmed = text.trim().replace(/\.+$/, "");
+  const match =
+    /^all\s+(?:of\s+)?your\s+\[([^\]]+)\]\s+cards?\s+and\s+this\s+Character\s+gains?\s+\[([^\]]+)\](?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
+      trimmed,
+    );
+  if (!match) return null;
+  const keyword = KEYWORD_BRACKET_TO_TYPE[match[2]!.toLowerCase()];
+  if (!keyword) return null;
+  const duration = match[3] ? parseFullDuration(match[3]) : "permanent";
+  return [
+    {
+      action: "grantKeyword",
+      target: { player: "self", zones: ["character"], count: { amount: 1 }, self: true },
+      keyword,
+      duration,
+    },
+    {
+      action: "grantKeyword",
+      target: {
+        player: "self",
+        zones: ["character"],
+        count: { amount: "all" },
+        filters: [{ filter: "name", value: match[1]! }],
+      },
+      keyword,
+      duration,
+    },
+  ];
+}
+
+/**
  * Parse "this Character/Leader gains [Keyword] and +/-N power (duration)?" patterns.
  * Must be parsed before clause splitting since "and" would split it apart.
  */
@@ -697,4 +737,184 @@ export function parseCompoundPowerCost(text: string): Action[] | null {
       duration,
     },
   ];
+}
+
+// ── SetBasePower action parsing ──
+
+type SetBasePowerAction = Extract<Action, { action: "setBasePower" }>;
+
+/**
+ * Resolve the subject of a "base power becomes N" sentence. The possessive
+ * has already been stripped ("Your Leader", "this Character",
+ * "all of your [Ohm] cards", "your monocolored Leader").
+ */
+function parseBasePowerSubject(
+  text: string,
+): { target: SetBasePowerAction["target"]; condition?: SetBasePowerAction["condition"] } | null {
+  const subject = text.trim().replace(/^the\s+/i, "");
+  if (/^this\s+Character$/i.test(subject)) {
+    return {
+      target: { player: "self", zones: ["character"], count: { amount: 1 }, self: true },
+    };
+  }
+  if (/^your\s+monocolored\s+Leader$/i.test(subject)) {
+    return {
+      target: { player: "self", zones: ["leader"], count: { amount: 1 } },
+      condition: { condition: "leaderMulticolored", negate: true },
+    };
+  }
+  const allNamedCardsMatch = /^all\s+(?:of\s+)?your\s+\[([^\]]+)\]\s+cards$/i.exec(subject);
+  if (allNamedCardsMatch) {
+    return {
+      target: {
+        player: "self",
+        zones: ["character"],
+        count: { amount: "all" },
+        filters: [{ filter: "name", value: allNamedCardsMatch[1]! }],
+      },
+    };
+  }
+  const target =
+    parseModifyPowerTarget(subject) ??
+    parseTarget(
+      subject.replace(/\s+cards$/i, " cards").replace(/\s+Character\s+cards$/i, " Characters"),
+    );
+  return target ? { target } : null;
+}
+
+/**
+ * Parse "<subject>'s base power becomes N (duration)?" and its variants:
+ * - "Your Leader and this Character's base power becomes 7000 during this turn"
+ * - "All of your [Ohm] cards' base power and this Character's base power become 6000"
+ * - "The base power of all of your Characters with a [Trigger] and 4000 base power becomes 8000"
+ */
+export function parseSetBasePowerAction(text: string): SetBasePowerAction[] | null {
+  const trimmed = text.trim().replace(/\.+$/, "");
+
+  let subjects: string[];
+  let valueText: string;
+  let durationText: string | undefined;
+  const ofMatch =
+    /^the\s+base\s+power\s+of\s+(.+?)\s+becomes?\s+(\d+)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
+      trimmed,
+    );
+  if (ofMatch) {
+    subjects = [ofMatch[1]!];
+    valueText = ofMatch[2]!;
+    durationText = ofMatch[3];
+  } else {
+    const possessiveMatch =
+      /^(.+?)\s+base\s+power\s+becomes?\s+(\d+)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
+        trimmed,
+      );
+    if (!possessiveMatch) return null;
+    valueText = possessiveMatch[2]!;
+    durationText = possessiveMatch[3];
+    subjects = possessiveMatch[1]!.split(/\s+base\s+power\s+and\s+/i).flatMap((part) => {
+      const owner = part
+        .trim()
+        .replace(/['’]s$/i, "")
+        .replace(/s['’]$/i, "s");
+      return /^your\s+Leader\s+and\s+this\s+Character$/i.test(owner)
+        ? ["your Leader", "this Character"]
+        : [owner];
+    });
+  }
+
+  const value = parseInt(valueText, 10);
+  const duration: Duration = durationText ? parseFullDuration(durationText) : "permanent";
+  const actions: SetBasePowerAction[] = [];
+  for (const subjectText of subjects) {
+    const subject = parseBasePowerSubject(subjectText);
+    if (!subject) return null;
+    actions.push({
+      action: "setBasePower",
+      target: subject.target,
+      value,
+      duration,
+      ...(subject.condition && { condition: subject.condition }),
+    });
+  }
+  return actions;
+}
+
+// ── ModifyCounter action parsing ──
+
+type ModifyCounterAction = Extract<Action, { action: "modifyCounter" }>;
+
+/**
+ * Parse continuous counter changes on cards in hand:
+ * - "this card in your hand has a +2000 Counter"
+ * - "All Character cards in your hand without a Counter have a +1000 Counter"
+ * - "The counter of all of your Character cards with 8000 power in your hand
+ *    becomes +2000" (a card printed with a +1000 counter gains only +1000)
+ */
+export function parseModifyCounterAction(text: string): ModifyCounterAction[] | null {
+  const trimmed = text
+    .trim()
+    .replace(/\u2212/g, "-")
+    .replace(/\.+$/, "");
+
+  const selfInHandMatch = /^this\s+card\s+in\s+your\s+hand\s+has\s+a\s+([+-]\d+)\s+Counter$/i.exec(
+    trimmed,
+  );
+  if (selfInHandMatch) {
+    return [
+      {
+        action: "modifyCounter",
+        target: { player: "self", zones: ["hand"], count: { amount: 1 }, self: true },
+        value: parseInt(selfInHandMatch[1]!, 10),
+      },
+    ];
+  }
+
+  const allInHandMatch =
+    /^all\s+(?:of\s+your\s+)?(Character\s+cards?)\s+in\s+your\s+hand(\s+(?:with|without)\s+.+?)?\s+have\s+a\s+([+-]\d+)\s+Counter$/i.exec(
+      trimmed,
+    );
+  if (allInHandMatch) {
+    const qualifier = allInHandMatch[2] ? extractTargetFilters(allInHandMatch[2]) : null;
+    if (qualifier && qualifier.zonesText !== "") return null;
+    return [
+      {
+        action: "modifyCounter",
+        target: {
+          player: "self",
+          zones: ["hand"],
+          count: { amount: "all" },
+          filters: [{ filter: "cardCategory", value: "character" }, ...(qualifier?.filters ?? [])],
+        },
+        value: parseInt(allInHandMatch[3]!, 10),
+      },
+    ];
+  }
+
+  const becomesMatch =
+    /^the\s+counter\s+of\s+all\s+(?:of\s+)?your\s+Character\s+cards?(\s+with\s+.+?)?\s+in\s+your\s+hand\s+becomes\s+\+(\d+)$/i.exec(
+      trimmed,
+    );
+  if (becomesMatch) {
+    const qualifier = becomesMatch[1] ? extractTargetFilters(becomesMatch[1]) : null;
+    if (qualifier && qualifier.zonesText !== "") return null;
+    const value = parseInt(becomesMatch[2]!, 10);
+    const filters: TargetFilter[] = [
+      { filter: "cardCategory", value: "character" },
+      ...(qualifier?.filters ?? []),
+    ];
+    // Printed counters are 0, 1000 or 2000; "becomes +N" adds the difference.
+    return [0, 1000, 2000]
+      .filter((printed) => printed < value)
+      .map((printed) => ({
+        action: "modifyCounter",
+        target: {
+          player: "self",
+          zones: ["hand"],
+          count: { amount: "all" },
+          filters: [...filters, { filter: "counter", comparison: "eq", value: printed }],
+        },
+        value: value - printed,
+      }));
+  }
+
+  return null;
 }

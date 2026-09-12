@@ -32,6 +32,26 @@ export const op17GaHaHaHa017: EventCard = {
           {
             action: "modifyPower",
             target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Whitebeard Pirates",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 2000,
+            duration: "thisBattle",
+          },
+          {
+            action: "modifyPower",
+            target: {
               player: "opponent",
               zones: ["leader", "character"],
               count: {

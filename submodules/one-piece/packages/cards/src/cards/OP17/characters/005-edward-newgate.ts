@@ -58,12 +58,6 @@ export const op17EdwardNewgate005: CharacterCard = {
     effects: [
       {
         trigger: "onPlay",
-        conditions: [
-          {
-            condition: "leaderMulticolored",
-            negate: true,
-          },
-        ],
         actions: [
           {
             action: "setBasePower",
@@ -76,6 +70,10 @@ export const op17EdwardNewgate005: CharacterCard = {
             },
             value: 8000,
             duration: "untilEndOfOpponentNextEndPhase",
+            condition: {
+              condition: "leaderMulticolored",
+              negate: true,
+            },
           },
         ],
       },

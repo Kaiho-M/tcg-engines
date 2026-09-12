@@ -58,11 +58,14 @@ import {
   parseEachModifyPowerActions,
   parseModifyPowerAction,
   parseSetPowerAction,
+  parseSetBasePowerAction,
+  parseModifyCounterAction,
   parseModifyCostAction,
   parseCostReductionAction,
   parseGrantKeywordChoiceAction,
   parseGrantKeywordAction,
   parseCompoundNamedTraitPower,
+  parseCompoundNamedSelfKeyword,
   parseCompoundKeywordPower,
   parseCompoundKeywordCost,
   parseCompoundPowerCost,
@@ -562,6 +565,23 @@ export function parseActions(rawActionText: string): ParseActionsResult {
       : { parsed: [], unparsed: "" };
     if (protection && power && trailing.unparsed === "") {
       preParsed.push(protection, power, ...trailing.parsed);
+      textAfterSearch = "";
+    }
+  }
+
+  // "this Character cannot be removed from the field by your opponent's effects
+  // and gains +2000 power" — a permanent protection and power gain in one sentence.
+  const removalProtectionPowerMatch =
+    /^((?:This|this)\s+Character\s+cannot\s+be\s+removed\s+from\s+the\s+field\s+by\s+your\s+opponent[''’]s\s+effects?)\s+and\s+gains?\s+([+-]?\d+)\s+power$/i.exec(
+      textAfterSearch,
+    );
+  if (removalProtectionPowerMatch) {
+    const protection = parseCannotBeRemovedAction(removalProtectionPowerMatch[1]!);
+    const power = parseModifyPowerAction(
+      `this Character gains ${removalProtectionPowerMatch[2]!} power`,
+    );
+    if (protection && power) {
+      preParsed.push(protection, power);
       textAfterSearch = "";
     }
   }
@@ -1331,26 +1351,30 @@ export function parseActions(rawActionText: string): ParseActionsResult {
     }
   }
 
-  // Try "Your opponent may trash N card(s) from ... If they do not, <action>"
+  // "Your opponent may <pay>. If they do not, <action>" — the opponent picks
+  // one of the two branches. The payment is re-read as a third-person
+  // opponent action ("your opponent trashes 3 cards from their hand").
   if (preParsed.length === 0) {
-    const oppMayTrashMatch =
-      /^Your\s+opponent\s+may\s+trash\s+(\d+)\s+cards?\s+from\s+the\s+top\s+of\s+their\s+Life\s+cards?\.\s*If\s+they\s+do\s+not,\s+(.+)$/i.exec(
+    const oppMayMatch =
+      /^Your\s+opponent\s+may\s+(trash|return|place)\s+(.+?)\.\s*If\s+they\s+do\s+not,\s+(.+)$/i.exec(
         textAfterSearch.trim().replace(/\.+$/, ""),
       );
-    if (oppMayTrashMatch) {
-      const trashAction: Action = {
-        action: "removeFromLife",
-        player: "opponent",
-        count: { amount: parseInt(oppMayTrashMatch[1]!, 10) },
-        destination: "trash",
-      } as Action;
-      const elseActions = parseActions(oppMayTrashMatch[2]!).parsed;
-      if (elseActions.length > 0) {
+    if (oppMayMatch) {
+      const verb = oppMayMatch[1]!.toLowerCase();
+      const thirdPerson = verb === "trash" ? "trashes" : `${verb}s`;
+      const payment = parseActions(`your opponent ${thirdPerson} ${oppMayMatch[2]!}`);
+      const elseActions = parseActions(oppMayMatch[3]!);
+      if (
+        payment.unparsed === "" &&
+        payment.parsed.length > 0 &&
+        elseActions.unparsed === "" &&
+        elseActions.parsed.length > 0
+      ) {
         preParsed.push({
           action: "choice",
           player: "opponent",
-          options: [[trashAction], elseActions],
-        } as Action);
+          options: [payment.parsed, elseActions.parsed],
+        });
         textAfterSearch = "";
       }
     }
@@ -1582,7 +1606,9 @@ export function parseActions(rawActionText: string): ParseActionsResult {
       } else {
         // Compound named + trait power: "your [Name] and all your Characters
         // with a type including "Trait" gain +N power"
-        const compoundNamedTraitPower = parseCompoundNamedTraitPower(textAfterSearch);
+        const compoundNamedTraitPower =
+          parseCompoundNamedTraitPower(textAfterSearch) ??
+          parseCompoundNamedSelfKeyword(textAfterSearch);
         if (compoundNamedTraitPower) {
           textAfterSearch = "";
           preParsed.push(...compoundNamedTraitPower);
@@ -1617,6 +1643,16 @@ export function parseActions(rawActionText: string): ParseActionsResult {
     if (compoundRest) {
       textAfterSearch = "";
       preParsed.push(...compoundRest);
+    }
+  }
+
+  // "Your Leader and this Character's base power becomes 7000" names two
+  // subjects around an "and" that clause splitting would otherwise separate.
+  if (preParsed.length === 0 && /\s+and\s+.*\bbase\s+power\s+becomes?\b/i.test(textAfterSearch)) {
+    const setBasePower = parseSetBasePowerAction(textAfterSearch);
+    if (setBasePower) {
+      textAfterSearch = "";
+      preParsed.push(...setBasePower);
     }
   }
 
@@ -1965,6 +2001,18 @@ export function parseActions(rawActionText: string): ParseActionsResult {
     const cannotBeRemoved = parseCannotBeRemovedAction(clause);
     if (cannotBeRemoved) {
       parsed.push(cannotBeRemoved);
+      continue;
+    }
+
+    const setBasePower = parseSetBasePowerAction(clause);
+    if (setBasePower) {
+      parsed.push(...setBasePower);
+      continue;
+    }
+
+    const modifyCounter = parseModifyCounterAction(clause);
+    if (modifyCounter) {
+      parsed.push(...modifyCounter);
       continue;
     }
 

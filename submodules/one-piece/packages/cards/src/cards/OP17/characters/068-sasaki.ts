@@ -27,5 +27,34 @@ export const op17Sasaki068: CharacterCard = {
   attribute: "slash",
   effect:
     "[When Attacking] You may trash 2 cards from your hand: If your Leader has the {Animal Kingdom Pirates} type, add up to 2 DON!! cards as rested from your DON!! deck.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenAttacking",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 2,
+          },
+        ],
+        actions: [
+          {
+            action: "addDon",
+            count: {
+              amount: 2,
+              upTo: true,
+            },
+            state: "rested",
+            condition: {
+              condition: "leaderTrait",
+              trait: "Animal Kingdom Pirates",
+              match: "includes",
+            },
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: op17Sasaki068I18n,
 };

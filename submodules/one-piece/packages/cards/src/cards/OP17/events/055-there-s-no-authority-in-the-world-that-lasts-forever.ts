@@ -24,5 +24,65 @@ export const op17ThereSNoAuthorityInTheWorldThatLastsForever055: EventCard = {
   traits: ["Rocks Pirates"],
   effect:
     '[Main] You may rest 1 of your DON!! cards: Up to 1 of your [Rocks.D.Xebec] gains [Unblockable] during this turn.\n[Counter] Up to 1 of your Leader with a type including "Rocks Pirates" or up to 1 of your Character with a type including "Rocks Pirates" gains +2000 power during this battle.',
+  effects: {
+    effects: [
+      {
+        trigger: "main",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Rocks.D.Xebec",
+                },
+              ],
+            },
+            keyword: "unblockable",
+            duration: "thisTurn",
+          },
+        ],
+        optional: true,
+      },
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Rocks Pirates",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 2000,
+            duration: "thisBattle",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op17ThereSNoAuthorityInTheWorldThatLastsForever055I18n,
 };

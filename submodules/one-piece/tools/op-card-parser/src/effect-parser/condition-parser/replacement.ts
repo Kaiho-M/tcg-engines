@@ -172,9 +172,29 @@ export function parseNonSelfReplacementCondition(text: string): Condition | null
     };
   }
 
-  // any of your Characters would be K.O.'d/removed [by ...]
+  // one of your {Trait} type Characters would be K.O.'d/removed [by ...]
   m =
-    /^any\s+of\s+your\s+Characters?\s+would\s+be\s+(K\.O\.\u2019?'?d|removed\s+from\s+the\s+field|rested)(?:\s+(.+))?$/i.exec(
+    /^one\s+of\s+your\s+(.+?)\s+would\s+be\s+(K\.O\.\u2019?'?d|removed\s+from\s+the\s+field|rested)(?:\s+(.+))?$/i.exec(
+      t,
+    );
+  if (m && !/^Characters?$/i.test(m[1]!)) {
+    const event = parseReplacementEvent(m[2]!);
+    const source = parseReplacementSource(m[3]);
+    const target = parseTarget(`1 of your ${m[1]!}`);
+    if (target) {
+      return {
+        condition: "replacement",
+        event,
+        targetSelf: false,
+        ...(source && { source }),
+        target,
+      };
+    }
+  }
+
+  // any/one of your Characters would be K.O.'d/removed [by ...]
+  m =
+    /^(?:any|one)\s+of\s+your\s+Characters?\s+would\s+be\s+(K\.O\.\u2019?'?d|removed\s+from\s+the\s+field|rested)(?:\s+(.+))?$/i.exec(
       t,
     );
   if (m) {

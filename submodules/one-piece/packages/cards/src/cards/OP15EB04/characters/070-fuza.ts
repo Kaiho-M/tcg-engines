@@ -44,6 +44,65 @@ export const op15eb04Fuza070: CharacterCard = {
             keyword: "unblockable",
             duration: "permanent",
           },
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Shura",
+                },
+              ],
+            },
+            keyword: "unblockable",
+            duration: "permanent",
+          },
+        ],
+      },
+      {
+        conditions: [
+          {
+            condition: "turn",
+            value: "opponent",
+          },
+        ],
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Shura",
+                },
+              ],
+            },
+            value: 6000,
+            duration: "permanent",
+          },
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 6000,
+            duration: "permanent",
+          },
         ],
       },
     ],

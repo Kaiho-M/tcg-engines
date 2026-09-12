@@ -21,7 +21,7 @@ export const op15eb04WouldYouLetMeEatTheFlameFlameFruit056: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 7,
-  trigger: "[Trigger] Draw 2 cards.",
+  trigger: "Draw 2 cards.",
   traits: ["Dressrosa", "Revolutionary Army"],
   effect:
     "[Main] Draw 2 cards. Then, your [Lucy] Leader gains [Double Attack] and +3000 power during this turn.\n(This card deals 2 damage.)",
@@ -35,15 +35,41 @@ export const op15eb04WouldYouLetMeEatTheFlameFlameFruit056: EventCard = {
             player: "self",
             amount: 2,
           },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
           {
-            action: "draw",
-            player: "self",
-            amount: 2,
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Lucy",
+                },
+              ],
+            },
+            keyword: "doubleAttack",
+            duration: "thisTurn",
+          },
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Lucy",
+                },
+              ],
+            },
+            value: 3000,
+            duration: "thisTurn",
           },
         ],
       },

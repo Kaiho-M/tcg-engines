@@ -21,7 +21,7 @@ export const op15eb04TheOutcomeWillTellUsWhoSStrongAndWhoSWeak037: EventCard = {
   rarity: "UC",
   setId: "OP15EB04",
   cost: 1,
-  trigger: "[Trigger] Draw 1 card.",
+  trigger: "Draw 1 card.",
   traits: ["East Blue", "Krieg Pirates"],
   effect:
     "[Main] Look at 5 cards from the top of your deck; reveal up to 1 {East Blue} type card other than [The Outcome Will Tell Us Who's Strong and Who's Weak] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
@@ -54,16 +54,6 @@ export const op15eb04TheOutcomeWillTellUsWhoSStrongAndWhoSWeak037: EventCard = {
             ],
             revealDestination: "hand",
             remainderPosition: "bottom",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "draw",
-            player: "self",
-            amount: 1,
           },
         ],
       },

@@ -29,7 +29,7 @@ export const op16Zehahahahaha116: EventCard = {
   rarity: "R",
   setId: "OP16",
   cost: 8,
-  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
+  trigger: "Draw 2 cards and trash 1 card from your hand.",
   traits: ["The Seven Warlords of the Sea", "Blackbeard Pirates"],
   artVariants: [
     {
@@ -78,21 +78,6 @@ export const op16Zehahahahaha116: EventCard = {
               upTo: true,
             },
             destination: "hand",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "draw",
-            player: "self",
-            amount: 2,
-          },
-          {
-            action: "trashFromHand",
-            player: "self",
-            amount: 1,
           },
         ],
       },

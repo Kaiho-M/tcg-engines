@@ -41,5 +41,53 @@ export const op17CharlotteLinlin099: LeaderCard = {
   ],
   effect:
     "[When Attacking] You may trash 1 card from your hand: Your opponent chooses one:\n• Trash 1 card from your hand. Then, add up to 1 card from the top of your deck to the top of your Life cards.\n• Trash 1 card from your opponent's hand.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenAttacking",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "choice",
+            player: "opponent",
+            options: [
+              [
+                {
+                  action: "trashFromHand",
+                  player: "self",
+                  amount: 1,
+                },
+                {
+                  action: "addToLife",
+                  target: {
+                    player: "self",
+                    zones: ["deck"],
+                    count: {
+                      amount: 1,
+                      upTo: true,
+                    },
+                  },
+                  position: "top",
+                },
+              ],
+              [
+                {
+                  action: "trashFromHand",
+                  player: "opponent",
+                  amount: 1,
+                },
+              ],
+            ],
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: op17CharlotteLinlin099I18n,
 };

@@ -43,6 +43,37 @@ export const op15eb04SmokerTashigi003: CharacterCard = {
     "[Rush] (This card can attack on the turn in which it is played.)\n[Opponent's Turn] Your {Navy} type Leader's base power becomes 7000.",
   effects: {
     keywords: ["rush"],
+    permanentEffects: [
+      {
+        conditions: [
+          {
+            condition: "turn",
+            value: "opponent",
+          },
+        ],
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Navy",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 7000,
+            duration: "permanent",
+          },
+        ],
+      },
+    ],
   },
   i18n: op15eb04SmokerTashigi003I18n,
 };

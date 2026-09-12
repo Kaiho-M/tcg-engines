@@ -41,5 +41,53 @@ export const op16PortgasDAce001: LeaderCard = {
   ],
   effect:
     '[Activate: Main] [Once Per Turn] Up to 1 of your [Monkey.D.Luffy] Characters or up to 1 of your Characters with a type including "Whitebeard Pirates", with 8000 power or more, gains [Rush] during this turn.',
+  effects: {
+    effects: [
+      {
+        trigger: "activateMain",
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "name",
+                        value: "Monkey.D.Luffy",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "trait",
+                        value: "Whitebeard Pirates",
+                        match: "includes",
+                      },
+                    ],
+                  ],
+                },
+                {
+                  filter: "power",
+                  comparison: "gte",
+                  value: 8000,
+                },
+              ],
+            },
+            keyword: "rush",
+            duration: "thisTurn",
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
+  },
   i18n: op16PortgasDAce001I18n,
 };

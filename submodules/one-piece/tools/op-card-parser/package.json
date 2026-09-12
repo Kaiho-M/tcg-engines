@@ -35,6 +35,7 @@
     "inventory:stages": "node scripts/inventory-event-stages.ts stage",
     "test": "vp test run",
     "unparsed": "node scripts/unparsed-segments.ts",
+    "regenerate:effects": "node scripts/regenerate-effects.ts",
     "check": "vp check",
     "prepublishOnly": "vp run build"
   },

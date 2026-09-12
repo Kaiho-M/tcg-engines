@@ -21,24 +21,42 @@ export const op16CaptainBuggySOurSavior057: EventCard = {
   rarity: "C",
   setId: "OP16",
   cost: 1,
-  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
+  trigger: "Draw 2 cards and trash 1 card from your hand.",
   traits: ["Impel Down"],
   effect:
     "[Counter] If you have 2 or more [Prisoner of Impel Down] cards, up to 1 of your Leader or Character cards gains +4000 power during this battle.",
   effects: {
     effects: [
       {
-        trigger: "trigger",
+        trigger: "counter",
+        conditions: [
+          {
+            condition: "zoneCount",
+            player: "self",
+            zone: "field",
+            comparison: "gte",
+            value: 2,
+            filters: [
+              {
+                filter: "name",
+                value: "Prisoner of Impel Down",
+              },
+            ],
+          },
+        ],
         actions: [
           {
-            action: "draw",
-            player: "self",
-            amount: 2,
-          },
-          {
-            action: "trashFromHand",
-            player: "self",
-            amount: 1,
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: 4000,
+            duration: "thisBattle",
           },
         ],
       },

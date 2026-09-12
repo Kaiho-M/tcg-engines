@@ -33,6 +33,27 @@ export const op16Tsuru067: CharacterCard = {
         trigger: "onPlay",
         actions: [
           {
+            action: "search",
+            lookCount: 5,
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            revealCount: {
+              amount: 1,
+              upTo: true,
+            },
+            revealFilters: [
+              {
+                filter: "trait",
+                value: "Navy",
+                match: "includes",
+              },
+            ],
+            revealDestination: "hand",
+            remainderPosition: "bottom",
+          },
+          {
             action: "trashFromHand",
             player: "self",
             amount: 1,

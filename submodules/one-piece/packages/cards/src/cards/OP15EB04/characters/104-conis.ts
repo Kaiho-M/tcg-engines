@@ -22,7 +22,7 @@ export const op15eb04Conis104: CharacterCard = {
   setId: "OP15EB04",
   cost: 1,
   counter: 2000,
-  trigger: "[Trigger] Draw 2 cards and trash 1 card from your hand.",
+  trigger: "Draw 2 cards and trash 1 card from your hand.",
   traits: ["Sky Island"],
   attribute: "wisdom",
   effect:
@@ -47,21 +47,6 @@ export const op15eb04Conis104: CharacterCard = {
             action: "trashFromHand",
             player: "self",
             amount: 2,
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "draw",
-            player: "self",
-            amount: 2,
-          },
-          {
-            action: "trashFromHand",
-            player: "self",
-            amount: 1,
           },
         ],
       },

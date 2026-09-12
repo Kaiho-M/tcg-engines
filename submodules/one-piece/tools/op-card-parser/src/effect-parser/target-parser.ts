@@ -26,7 +26,7 @@ export function extractTargetFilters(text: string): {
   // Suffix trait wording: `Characters with a type including "Baroque
   // Works"`. Strip it and recurse so cost/state filters can compose with it.
   const includesTraitMatch =
-    /(?:^|\s+)with\s+a\s+type\s+including\s+(?:[[{"\u201c])([^\]}"\u201d]+)(?:[\]}"\u201d])\.?$/i.exec(
+    /(?:^|\s+)(?:with|and)\s+a\s+type\s+including\s+(?:[[{"\u201c])([^\]}"\u201d]+)(?:[\]}"\u201d])\.?$/i.exec(
       text,
     );
   if (includesTraitMatch) {
@@ -131,8 +131,11 @@ export function extractTargetFilters(text: string): {
   }
 
   // "with N base power (or less|or more)?" OR "with a base power of N (or less|or more)?"
+  // Also "and N base power" after another qualifier ("with a [Trigger] and 4000 base power").
   const basePowerMatch =
-    /\s+with (?:(\d+) base power|a base power of (\d+))(?:\s+or\s+(less|more))?\.?$/i.exec(text);
+    /\s+(?:with|and) (?:(\d+) base power|a base power of (\d+))(?:\s+or\s+(less|more))?\.?$/i.exec(
+      text,
+    );
   if (basePowerMatch) {
     const value = parseInt((basePowerMatch[1] ?? basePowerMatch[2])!, 10);
     filters.push({
@@ -140,7 +143,13 @@ export function extractTargetFilters(text: string): {
       comparison: parseComparison(basePowerMatch[3]),
       value,
     });
-    return { zonesText: text.slice(0, basePowerMatch.index).trim(), filters };
+    const before = text.slice(0, basePowerMatch.index).trim();
+    const sub = extractTargetFilters(before);
+    return {
+      zonesText: sub.zonesText,
+      filters: [...sub.filters, ...filters],
+      totalConstraint: sub.totalConstraint,
+    };
   }
 
   // "with N power (or less|or more)?"
@@ -167,6 +176,18 @@ export function extractTargetFilters(text: string): {
         comparison: parseComparison(totalMatch[3]),
         value: parseInt(totalMatch[2]!, 10),
       },
+    };
+  }
+
+  // "without a Counter"
+  const withoutCounterMatch = /\s+without\s+a\s+Counter\.?$/i.exec(text);
+  if (withoutCounterMatch) {
+    filters.push({ filter: "counter", comparison: "eq", value: 0 });
+    const sub = extractTargetFilters(text.slice(0, withoutCounterMatch.index).trim());
+    return {
+      zonesText: sub.zonesText,
+      filters: [...sub.filters, ...filters],
+      totalConstraint: sub.totalConstraint,
     };
   }
 
@@ -505,8 +526,77 @@ export function parseTargetWithoutPlayer(text: string): Target | null {
   };
 }
 
+/**
+ * Two owned subjects sharing one selection:
+ * "up to 1 of your Leader with a type including "Rocks Pirates" or up to 1 of
+ * your Characters with a type including "Rocks Pirates"". A trailing
+ * ", with 8000 power or more" qualifier applies to both subjects.
+ */
+function parseAlternativeOwnedTargets(text: string): Target | null {
+  const match =
+    /^up\s+to\s+(\d+)\s+of\s+your\s+(.+?)\s+or\s+up\s+to\s+\1\s+of\s+your\s+(.+?)(?:,\s+(with\s+.+))?$/i.exec(
+      text,
+    );
+  if (!match) return null;
+  const amount = parseInt(match[1]!, 10);
+  const left = parseModifyPowerTarget(`up to ${amount} of your ${match[2]!}`);
+  const right = parseModifyPowerTarget(`up to ${amount} of your ${match[3]!}`);
+  if (!left || !right || left.player !== "self" || right.player !== "self") return null;
+  const shared = match[4] ? extractTargetFilters(` ${match[4]}`) : null;
+  if (shared && shared.zonesText !== "") return null;
+
+  const zones = [...new Set([...left.zones, ...right.zones])];
+  const sameZones = left.zones.length === right.zones.length && zones.length === left.zones.length;
+  const leftFilters = left.filters ?? [];
+  const rightFilters = right.filters ?? [];
+  const group = (side: Target, filters: TargetFilter[]): TargetFilter[] =>
+    !sameZones &&
+    side.zones.length === 1 &&
+    (side.zones[0] === "leader" || side.zones[0] === "character")
+      ? [{ filter: "cardCategory", value: side.zones[0] }, ...filters]
+      : filters;
+  const filters: TargetFilter[] =
+    JSON.stringify(leftFilters) === JSON.stringify(rightFilters)
+      ? leftFilters
+      : [{ filter: "anyOf", groups: [group(left, leftFilters), group(right, rightFilters)] }];
+  if (shared) filters.push(...shared.filters);
+
+  return {
+    player: "self",
+    zones,
+    count: { amount, upTo: true },
+    ...(filters.length > 0 && { filters }),
+  };
+}
+
 export function parseModifyPowerTarget(text: string): Target | null {
-  const trimmed = text.trim();
+  const trimmed = text.trim().replace(/,$/, "");
+
+  const alternatives = parseAlternativeOwnedTargets(trimmed);
+  if (alternatives) return alternatives;
+
+  // A bare name with no zone noun refers to a Leader or Character with that
+  // name: "up to 1 of your [Shanks]".
+  const bareNamedMatch = /^up\s+to\s+(\d+)\s+of\s+your\s+\[([^\]]+)\]$/i.exec(trimmed);
+  if (bareNamedMatch) {
+    return {
+      player: "self",
+      zones: ["leader", "character"],
+      count: { amount: parseInt(bareNamedMatch[1]!, 10), upTo: true },
+      filters: [{ filter: "name", value: bareNamedMatch[2]! }],
+    };
+  }
+
+  // "your [Charlotte Linlin] Leader" → the controller's Leader with that name.
+  const namedLeaderMatch = /^your\s+\[([^\]]+)\]\s+Leader$/i.exec(trimmed);
+  if (namedLeaderMatch) {
+    return {
+      player: "self",
+      zones: ["leader"],
+      count: { amount: 1 },
+      filters: [{ filter: "name", value: namedLeaderMatch[1]! }],
+    };
+  }
 
   const ownedTraitLeaderOrCharacterMatch =
     /^up\s+to\s+(\d+)\s+(?:[[{"\u201c])([^\]}"\u201d]+)(?:[\]}"\u201d])\s+type\s+Leader\s+or\s+Character\s+cards?\s+on\s+your\s+field$/i.exec(

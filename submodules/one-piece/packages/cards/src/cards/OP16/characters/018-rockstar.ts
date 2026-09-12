@@ -27,5 +27,43 @@ export const op16Rockstar018: CharacterCard = {
   attribute: "slash",
   effect:
     "[Once Per Turn] If your {Red-Haired Pirates} type Character would be K.O.'d, you may trash 1 Character card with 6000 power or more from your hand instead.",
+  effects: {
+    replacementEffects: [
+      {
+        replacedEvent: "ko",
+        target: {
+          player: "self",
+          zones: ["character"],
+          count: {
+            amount: 1,
+          },
+          filters: [
+            {
+              filter: "trait",
+              value: "Red-Haired Pirates",
+              match: "includes",
+            },
+          ],
+        },
+        replacementAction: {
+          action: "trashFromHand",
+          player: "self",
+          amount: 1,
+          filters: [
+            {
+              filter: "cardCategory",
+              value: "character",
+            },
+            {
+              filter: "power",
+              comparison: "gte",
+              value: 6000,
+            },
+          ],
+        },
+        oncePerTurn: true,
+      },
+    ],
+  },
   i18n: op16Rockstar018I18n,
 };

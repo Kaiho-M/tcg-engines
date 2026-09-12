@@ -827,6 +827,9 @@ export function beginAttack(
     targetInstanceId: targetId,
   };
   enqueueEffectsForTrigger(state, attackerId, seat, "whenAttacking", undefined, attackEvent);
+  if (attacker.zone === "leader") {
+    enqueueInPlayEffectsForTrigger(state, "whenLeaderAttacks", attackEvent, [seat]);
+  }
   enqueueInPlayEffectsForTrigger(state, "onOpponentAttack", attackEvent, [otherSeat(seat)]);
   enqueueResolution(state, { kind: "battleBlockStep", battleId: state.battle.id });
 }

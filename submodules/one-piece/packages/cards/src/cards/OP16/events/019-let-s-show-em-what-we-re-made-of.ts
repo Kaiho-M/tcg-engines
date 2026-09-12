@@ -21,7 +21,7 @@ export const op16LetSShowEmWhatWeReMadeOf019: EventCard = {
   rarity: "C",
   setId: "OP16",
   cost: 9,
-  trigger: "[Trigger] Your Leader gains +1000 power during this turn.",
+  trigger: "Your Leader gains +1000 power during this turn.",
   traits: ["Whitebeard Pirates"],
   effect:
     '[Main] Play up to 2 Character cards with a type including "Whitebeard Pirates" and 8000 power from your hand.',
@@ -40,23 +40,6 @@ export const op16LetSShowEmWhatWeReMadeOf019: EventCard = {
               amount: 2,
               upTo: true,
             },
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "modifyPower",
-            target: {
-              player: "self",
-              zones: ["leader"],
-              count: {
-                amount: 1,
-              },
-            },
-            value: 1000,
-            duration: "thisTurn",
           },
         ],
       },

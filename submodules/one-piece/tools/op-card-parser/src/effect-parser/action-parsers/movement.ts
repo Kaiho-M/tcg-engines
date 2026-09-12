@@ -260,7 +260,11 @@ export function parseCompoundReturnToHand(text: string): Action[] | null {
  * Parse a "place <target> at the (bottom|top) of the owner's deck" action clause.
  */
 export function parseReturnToDeckAction(text: string): ReturnToDeckAction | null {
-  const trimmed = text.trim().replace(/\.+$/, "");
+  // "in any order of the owner's choosing" only says who orders the cards.
+  const trimmed = text
+    .trim()
+    .replace(/\.+$/, "")
+    .replace(/(\s+in\s+any\s+order)\s+of\s+the\s+owner[''’]s\s+choosing$/i, "$1");
   const inAnyOrder = /\s+in\s+any\s+order$/i.test(trimmed);
 
   const opponentPlacesTypedTrashMatch =

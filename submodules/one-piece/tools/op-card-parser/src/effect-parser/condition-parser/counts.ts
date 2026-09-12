@@ -1,5 +1,6 @@
 import type { Condition, OPColor } from "@tcg/op-types";
 import { parseComparison } from "../helpers.ts";
+import { parseTarget } from "../target-parser.ts";
 
 export function parseCountCondition(text: string): Condition | null {
   const t = text;
@@ -673,6 +674,57 @@ export function parseCountCondition(text: string): Condition | null {
       comparison: parseComparison(m[2]),
       value: parseInt(m[1]!, 10),
     };
+  }
+
+  // Opponent Leader power: "your opponent's Leader has 6000 power or more"
+  m = /^your\s+opponent[''\u2019]s\s+Leader\s+has\s+(\d+)\s+power(?:\s+or\s+(more|less))?$/i.exec(
+    t,
+  );
+  if (m) {
+    return {
+      condition: "hasCard",
+      player: "opponent",
+      zone: "leader",
+      filters: [{ filter: "power", comparison: parseComparison(m[2]), value: parseInt(m[1]!, 10) }],
+    };
+  }
+
+  // Two named cards on the field: "you have [Monkey.D.Luffy] and [Mr.3(Galdino)]"
+  m = /^you\s+have\s+\[([^\]]+)\]\s+and\s+\[([^\]]+)\]$/i.exec(t);
+  if (m) {
+    return {
+      condition: "compound",
+      operator: "and",
+      conditions: [m[1]!, m[2]!].map((name) => ({
+        condition: "hasCard" as const,
+        player: "self" as const,
+        zone: "field" as const,
+        filters: [{ filter: "name" as const, value: name }],
+      })),
+    };
+  }
+
+  // Generic field count with qualifiers the target parser understands:
+  // "you have 2 or more Characters with a [Trigger]",
+  // "you have 2 or more [Prisoner of Impel Down] cards".
+  m =
+    /^(you|your\s+opponent)\s+ha(?:ve|s)\s+(\d+)\s+or\s+(more|less)\s+((?:Characters?|.+?\s+Characters?|\[[^\]]+\]\s+cards?)(?:\s+with\s+.+)?)$/i.exec(
+      t,
+    );
+  if (m) {
+    const player = /^you$/i.test(m[1]!) ? "self" : "opponent";
+    const target = parseTarget(`1 of ${player === "self" ? "your" : "your opponent's"} ${m[4]!}`);
+    const namedCards = /^\[[^\]]+\]\s+cards?(?:\s+with\s+.+)?$/i.test(m[4]!);
+    if (target && (namedCards || target.zones.every((zone) => zone === "character"))) {
+      return {
+        condition: "zoneCount",
+        player,
+        zone: namedCards ? "field" : "character",
+        comparison: parseComparison(m[3]),
+        value: parseInt(m[2]!, 10),
+        ...(target.filters && { filters: target.filters }),
+      };
+    }
   }
 
   return null;

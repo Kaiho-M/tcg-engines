@@ -23,7 +23,7 @@ export const op17CharlottePerospero110: CharacterCard = {
   cost: 7,
   power: 4000,
   counter: 1000,
-  trigger: "[Trigger] Play this card.",
+  trigger: "Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -78,14 +78,6 @@ export const op17CharlottePerospero110: CharacterCard = {
             },
             keyword: "rush",
             duration: "thisTurn",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "playThisCard",
           },
         ],
       },

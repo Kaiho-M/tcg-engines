@@ -21,7 +21,7 @@ export const op17IMLuffyTheManWhoWillBeKingOfThePirates096: EventCard = {
   rarity: "R",
   setId: "OP17",
   cost: 1,
-  trigger: "[Trigger] Add up to 1 {Elbaph} type card from your trash to your hand.",
+  trigger: "Add up to 1 {Elbaph} type card from your trash to your hand.",
   traits: ["Elbaph", "The Four Emperors", "Straw Hat Crew"],
   effect:
     "[Counter] If there is a Character with a cost of 12 or more, up to 1 of your Leader or Characters gains +4000 power during this battle.",
@@ -55,29 +55,6 @@ export const op17IMLuffyTheManWhoWillBeKingOfThePirates096: EventCard = {
             },
             value: 4000,
             duration: "thisBattle",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "returnToHand",
-            target: {
-              player: "self",
-              zones: ["trash"],
-              count: {
-                amount: 1,
-                upTo: true,
-              },
-              filters: [
-                {
-                  filter: "trait",
-                  value: "Elbaph",
-                  match: "includes",
-                },
-              ],
-            },
           },
         ],
       },

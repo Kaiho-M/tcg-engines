@@ -23,7 +23,7 @@ export const op15eb04Absalom079: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  trigger: "Activate this card's [On K.O.] effect.",
   traits: ["Thriller Bark Pirates"],
   attribute: "ranged",
   effect: "[On K.O.] Add up to 1 {Thriller Bark Pirates} type card from your trash to your hand.",
@@ -49,15 +49,6 @@ export const op15eb04Absalom079: CharacterCard = {
                 },
               ],
             },
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "activateEffect",
-            effectTrigger: "onKo",
           },
         ],
       },

@@ -21,27 +21,36 @@ export const op17WoRoRoRoRoIThinkIVeSoberedUp076: EventCard = {
   rarity: "R",
   setId: "OP17",
   cost: 0,
-  trigger: "[Trigger] DON!! −1: Draw 2 cards.",
+  trigger: "DON!! −1: Draw 2 cards.",
   traits: ["The Four Emperors", "Animal Kingdom Pirates"],
   effect:
     "[Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Charactes gains +3000 power during this battle.",
   effects: {
     effects: [
       {
-        trigger: "trigger",
+        trigger: "counter",
         costs: [
           {
-            cost: "returnDon",
+            cost: "trashFromHand",
             amount: 1,
           },
         ],
         actions: [
           {
-            action: "draw",
-            player: "self",
-            amount: 2,
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: 3000,
+            duration: "thisBattle",
           },
         ],
+        optional: true,
       },
       {
         trigger: "trigger",

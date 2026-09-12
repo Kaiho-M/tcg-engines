@@ -60,6 +60,30 @@ export const op17RoronoaZoro095: CharacterCard = {
         ],
       },
     ],
+    replacementEffects: [
+      {
+        replacedEvent: "removeFromField",
+        target: {
+          player: "self",
+          zones: ["character"],
+          count: {
+            amount: 1,
+          },
+        },
+        source: "opponentEffect",
+        replacementAction: {
+          action: "returnToDeck",
+          target: {
+            player: "self",
+            zones: ["trash"],
+            count: {
+              amount: 3,
+            },
+          },
+          position: "bottom",
+        },
+      },
+    ],
   },
   i18n: op17RoronoaZoro095I18n,
 };

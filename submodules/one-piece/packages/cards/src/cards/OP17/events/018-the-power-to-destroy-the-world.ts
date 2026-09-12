@@ -49,6 +49,40 @@ export const op17ThePowerToDestroyTheWorld018: EventCard = {
         ],
         optional: true,
       },
+      {
+        trigger: "counter",
+        conditions: [
+          {
+            condition: "zoneCount",
+            player: "self",
+            zone: "character",
+            comparison: "gte",
+            value: 2,
+            filters: [
+              {
+                filter: "basePower",
+                comparison: "gte",
+                value: 8000,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: 4000,
+            duration: "thisBattle",
+          },
+        ],
+      },
     ],
   },
   i18n: op17ThePowerToDestroyTheWorld018I18n,

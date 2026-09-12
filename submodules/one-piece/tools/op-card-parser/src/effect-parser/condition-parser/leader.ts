@@ -81,9 +81,36 @@ export function parseLeaderCondition(text: string): Condition | null {
     };
   }
 
+  // Leader name or trait: "your Leader is [X] or has the {Y} type"
+  m =
+    /^your\s+Leader\s+is\s+\[([^\]]+)\]\s+or\s+has\s+the\s+[""[{]([^""\]}]+)[""\]}]\s+type$/i.exec(
+      t,
+    );
+  if (m) {
+    return {
+      condition: "compound",
+      operator: "or",
+      conditions: [{ condition: "leaderName", name: m[1]! }, leaderTrait(m[2]!)],
+    };
+  }
+
   // Leader name: your Leader is [X] or "X"
   m = /^your Leader is (?:\[([^\]]+)\]|[""]([^""]+)[""])$/i.exec(t);
   if (m) return { condition: "leaderName", name: (m[1] ?? m[2])! };
+
+  // Opponent's Leader attribute: "your opponent's Leader has the "Slash" attribute"
+  m =
+    /^your\s+opponent[''’]s\s+Leader\s+has\s+the\s+(?:\(([^)]+)\)|[""“]([^""”]+)[""”])\s+attribute$/i.exec(
+      t,
+    );
+  if (m) {
+    return {
+      condition: "hasCard",
+      player: "opponent",
+      zone: "leader",
+      filters: [{ filter: "attribute", value: (m[1] ?? m[2])!.toLowerCase() as OPAttribute }],
+    };
+  }
 
   // Leader multi-trait: your Leader has the [X] or [X] type / {X} or {X} type
   m =
@@ -126,6 +153,15 @@ export function parseLeaderCondition(text: string): Condition | null {
   m = /^your\s+Leader[''\u2019]s\s+type\s+includes?\s+[""\u201c]([^""\u201d]+)[""\u201d]$/i.exec(t);
   if (m) {
     return leaderTrait(m[1]!);
+  }
+
+  // "your Leader's card name includes "Ace""
+  m =
+    /^your\s+Leader[''\u2019]s\s+card\s+name\s+includes?\s+[""\u201c]([^""\u201d]+)[""\u201d]$/i.exec(
+      t,
+    );
+  if (m) {
+    return { condition: "leaderName", name: m[1]!, match: "includes" };
   }
 
   return null;

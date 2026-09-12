@@ -1,5 +1,6 @@
 import type { Condition, OPColor, Zone } from "@tcg/op-types";
 import { parseComparison } from "../helpers.ts";
+import { parseTarget } from "../target-parser.ts";
 
 export function parseCardStateCondition(text: string): Condition | null {
   const t = text.trim();
@@ -497,6 +498,37 @@ export function parseCardStateCondition(text: string): Condition | null {
     );
   if (m) {
     return { condition: "triggerEvent", event: "whenAttacking" } as any;
+  }
+
+  // "you only have Characters without a Counter" (vacuously true with no Characters)
+  if (/^you\s+only\s+have\s+Characters\s+without\s+a\s+Counter$/i.test(t)) {
+    return {
+      condition: "notHasCard",
+      player: "self",
+      zone: "character",
+      filters: [{ filter: "counter", comparison: "gt", value: 0 }],
+    };
+  }
+
+  // Generic field presence with qualifiers the target parser understands:
+  // "you have no Characters with a type including "X" and a cost of 8 or more",
+  // "you have a Character with 8000 power or more and a type including "X"",
+  // "you have an {Admiral} type Character".
+  m =
+    /^(you|your\s+opponent)\s+ha(?:ve|s)\s+(an?|no)\s+((?:(?:[[{"\u201c])[^\]}"\u201d]+(?:[\]}"\u201d])\s+type\s+)?Characters?(?:\s+(?:with|without)\s+.+)?)$/i.exec(
+      t,
+    );
+  if (m) {
+    const player = /^you$/i.test(m[1]!) ? "self" : "opponent";
+    const target = parseTarget(`1 of ${player === "self" ? "your" : "your opponent's"} ${m[3]!}`);
+    if (target && target.zones.every((zone) => zone === "character") && target.filters?.length) {
+      return {
+        condition: /^no$/i.test(m[2]!) ? "notHasCard" : "hasCard",
+        player,
+        zone: "character",
+        filters: target.filters,
+      };
+    }
   }
 
   return null;

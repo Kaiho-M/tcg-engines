@@ -23,7 +23,7 @@ export const op15eb04Genbo103: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 1000,
-  trigger: "[Trigger] Draw 1 card. Then, if you have 2 or less Life cards, play this card.",
+  trigger: "Draw 1 card. Then, if you have 2 or less Life cards, play this card.",
   traits: ["Sky Island", "Shandian Warrior"],
   attribute: "ranged",
   effect:

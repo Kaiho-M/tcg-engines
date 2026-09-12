@@ -31,7 +31,7 @@ export const op17CharlotteDaifuku107: CharacterCard = {
   cost: 3,
   power: 4000,
   counter: 2000,
-  trigger: "[Trigger] Play this card.",
+  trigger: "Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "slash",
   artVariants: [

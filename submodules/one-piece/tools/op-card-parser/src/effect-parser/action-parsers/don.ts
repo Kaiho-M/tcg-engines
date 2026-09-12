@@ -30,6 +30,23 @@ export function parseAddDonAction(text: string): AddDonAction | null {
     };
   }
 
+  // Newer printings state the DON!! state before the source:
+  // "Add up to 1 DON!! card as rested from your DON!! deck"
+  const stateFirstMatch =
+    /^ad{1,2}\s+(up to )?(\d+)\s+DON!! cards?\s+as\s+(rested|active)\s+from\s+your\s+DON!!\s+deck$/i.exec(
+      cleaned,
+    );
+  if (stateFirstMatch) {
+    return {
+      action: "addDon",
+      count: {
+        amount: parseInt(stateFirstMatch[2]!, 10),
+        ...(stateFirstMatch[1] && { upTo: true }),
+      },
+      state: stateFirstMatch[3]!.toLowerCase() as "active" | "rested",
+    };
+  }
+
   // "Add [up to] N DON!! card(s) from your DON!! deck and (rest it|set it as active)"
   // A later clause may abbreviate the repeated source as "additional DON!! card".
   const match =
@@ -315,8 +332,10 @@ type ReturnDonAction = Extract<Action, { action: "returnDon" }>;
 export function parseOpponentReturnDonAction(text: string): ReturnDonAction | null {
   const trimmed = text.trim().replace(/\.+$/, "");
 
+  // "your opponent returns 1 DON!! card from their field to their DON!! deck"
+  // "your opponent returns 1 of their active DON!! cards to their DON!! deck"
   const match =
-    /^your\s+opponent\s+returns\s+(\d+)\s+DON!!\s+cards?\s+from\s+their\s+field\s+to\s+their\s+DON!!\s+deck$/i.exec(
+    /^your\s+opponent\s+returns\s+(\d+)\s+(?:DON!!\s+cards?\s+from\s+their\s+field|of\s+their\s+(?:active\s+)?DON!!\s+cards?)\s+to\s+their\s+DON!!\s+deck$/i.exec(
       trimmed,
     );
   if (match) {

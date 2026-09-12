@@ -23,7 +23,7 @@ export const op16Laffitte114: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  trigger: "Activate this card's [On K.O.] effect.",
   traits: ["Blackbeard Pirates"],
   attribute: "strike",
   effect: "[On K.O.] K.O. up to 1 of your opponent's Characters with a cost of 4 or less.",
@@ -49,15 +49,6 @@ export const op16Laffitte114: CharacterCard = {
                 },
               ],
             },
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "activateEffect",
-            effectTrigger: "onKo",
           },
         ],
       },

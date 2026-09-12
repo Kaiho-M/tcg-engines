@@ -27,6 +27,63 @@ export const op16GumGumHammerRifle040: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        conditions: [
+          {
+            condition: "compound",
+            operator: "and",
+            conditions: [
+              {
+                condition: "hasCard",
+                player: "self",
+                zone: "field",
+                filters: [
+                  {
+                    filter: "name",
+                    value: "Monkey.D.Luffy",
+                  },
+                ],
+              },
+              {
+                condition: "hasCard",
+                player: "self",
+                zone: "field",
+                filters: [
+                  {
+                    filter: "name",
+                    value: "Mr.3(Galdino)",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "freeze",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "state",
+                  value: "rested",
+                },
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 6,
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
         trigger: "counter",
         actions: [
           {

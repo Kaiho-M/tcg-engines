@@ -24,7 +24,7 @@ export const op16GeckoMoria105: CharacterCard = {
   power: 7000,
   counter: 1000,
   trigger:
-    "[Trigger] If you have 1 or less Life cards, play up to 1 [Absalom], up to 1 [Dr. Hogback], and up to 1 [Perona], with a cost of 4 or less from your trash.",
+    "If you have 1 or less Life cards, play up to 1 [Absalom], up to 1 [Dr. Hogback], and up to 1 [Perona], with a cost of 4 or less from your trash.",
   traits: ["The Seven Warlords of the Sea", "Thriller Bark Pirates"],
   attribute: "special",
   effect:

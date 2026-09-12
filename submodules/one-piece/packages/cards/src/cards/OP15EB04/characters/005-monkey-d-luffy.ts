@@ -26,5 +26,101 @@ export const op15eb04MonkeyDLuffy005: CharacterCard = {
   attribute: "strike",
   effect:
     "[On Play]/[When Attacking] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): If your Leader is multicolored and your opponent has 5 or more DON!! cards on their field, your {Straw Hat Crew} type Leader's base power becomes 7000 until the end of your opponent's next End Phase.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        costs: [
+          {
+            cost: "returnDon",
+            amount: 2,
+          },
+        ],
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Straw Hat Crew",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 7000,
+            duration: "untilEndOfOpponentNextEndPhase",
+            condition: {
+              condition: "compound",
+              operator: "and",
+              conditions: [
+                {
+                  condition: "leaderMulticolored",
+                },
+                {
+                  condition: "donFieldCount",
+                  player: "opponent",
+                  comparison: "gte",
+                  value: 5,
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
+      },
+      {
+        trigger: "whenAttacking",
+        costs: [
+          {
+            cost: "returnDon",
+            amount: 2,
+          },
+        ],
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Straw Hat Crew",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 7000,
+            duration: "untilEndOfOpponentNextEndPhase",
+            condition: {
+              condition: "compound",
+              operator: "and",
+              conditions: [
+                {
+                  condition: "leaderMulticolored",
+                },
+                {
+                  condition: "donFieldCount",
+                  player: "opponent",
+                  comparison: "gte",
+                  value: 5,
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: op15eb04MonkeyDLuffy005I18n,
 };

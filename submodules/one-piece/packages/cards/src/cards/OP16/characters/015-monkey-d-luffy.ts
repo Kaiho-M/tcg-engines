@@ -96,15 +96,21 @@ export const op16MonkeyDLuffy015: CharacterCard = {
       {
         conditions: [
           {
-            condition: "leaderName",
-            name: "Ace",
-            match: "includes",
-          },
-          {
-            condition: "donFieldCount",
-            player: "self",
-            comparison: "gte",
-            value: 6,
+            condition: "compound",
+            operator: "and",
+            conditions: [
+              {
+                condition: "leaderName",
+                name: "Ace",
+                match: "includes",
+              },
+              {
+                condition: "donFieldCount",
+                player: "self",
+                comparison: "gte",
+                value: 6,
+              },
+            ],
           },
         ],
         actions: [

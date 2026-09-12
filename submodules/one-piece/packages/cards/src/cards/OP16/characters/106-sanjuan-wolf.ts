@@ -23,7 +23,7 @@ export const op16SanjuanWolf106: CharacterCard = {
   cost: 4,
   power: 5000,
   counter: 1000,
-  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  trigger: "Activate this card's [On K.O.] effect.",
   traits: ["Giant", "Impel Down", "Blackbeard Pirates"],
   attribute: "strike",
   effect:
@@ -45,14 +45,18 @@ export const op16SanjuanWolf106: CharacterCard = {
             player: "self",
             amount: 1,
           },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
           {
-            action: "activateEffect",
-            effectTrigger: "onKo",
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: 7000,
+            duration: "thisTurn",
           },
         ],
       },

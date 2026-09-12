@@ -25,5 +25,56 @@ export const op17DonTYouKnowThatEvenInTheCruelWorldOfPiratesThereSStillACodeOfHo
     traits: ["The Four Emperors", "Big Mom Pirates"],
     effect:
       "[Main] Your [Charlotte Linlin] Leader gains [Unblockable] during this turn.\n[Counter] Up to 1 of your [Charlotte Linlin] gains +4000 power during this battle.",
+    effects: {
+      effects: [
+        {
+          trigger: "main",
+          actions: [
+            {
+              action: "grantKeyword",
+              target: {
+                player: "self",
+                zones: ["leader"],
+                count: {
+                  amount: 1,
+                },
+                filters: [
+                  {
+                    filter: "name",
+                    value: "Charlotte Linlin",
+                  },
+                ],
+              },
+              keyword: "unblockable",
+              duration: "thisTurn",
+            },
+          ],
+        },
+        {
+          trigger: "counter",
+          actions: [
+            {
+              action: "modifyPower",
+              target: {
+                player: "self",
+                zones: ["leader", "character"],
+                count: {
+                  amount: 1,
+                  upTo: true,
+                },
+                filters: [
+                  {
+                    filter: "name",
+                    value: "Charlotte Linlin",
+                  },
+                ],
+              },
+              value: 4000,
+              duration: "thisBattle",
+            },
+          ],
+        },
+      ],
+    },
     i18n: op17DonTYouKnowThatEvenInTheCruelWorldOfPiratesThereSStillACodeOfHonor115I18n,
   };

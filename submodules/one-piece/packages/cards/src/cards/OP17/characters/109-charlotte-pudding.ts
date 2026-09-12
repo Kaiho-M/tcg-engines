@@ -24,7 +24,7 @@ export const op17CharlottePudding109: CharacterCard = {
   power: 4000,
   counter: 1000,
   trigger:
-    "[Trigger] Look at 5 cards from the top of your deck; reveal up to 1 {Big Mom Pirates} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "Look at 5 cards from the top of your deck; reveal up to 1 {Big Mom Pirates} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
   traits: ["Big Mom Pirates"],
   attribute: "wisdom",
   effect: "[On Play] You may trash 1 card with a [Trigger] from your hand: Draw 3 cards.",
@@ -52,6 +52,32 @@ export const op17CharlottePudding109: CharacterCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "search",
+            lookCount: 5,
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            revealCount: {
+              amount: 1,
+              upTo: true,
+            },
+            revealFilters: [
+              {
+                filter: "trait",
+                value: "Big Mom Pirates",
+                match: "includes",
+              },
+            ],
+            revealDestination: "hand",
+            remainderPosition: "bottom",
+          },
+        ],
       },
     ],
   },

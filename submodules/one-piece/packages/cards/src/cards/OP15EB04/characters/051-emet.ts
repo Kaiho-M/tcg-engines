@@ -23,38 +23,12 @@ export const op15eb04Emet051: CharacterCard = {
   cost: 8,
   power: 7000,
   trigger:
-    "[Trigger] Give all of your opponent's Characters −3000 power during this turn. Then, if you have 0 Life cards, play this card.",
+    "Give all of your opponent's Characters −3000 power during this turn. Then, if you have 0 Life cards, play this card.",
   traits: ["Egghead"],
   attribute: "strike",
   effect: "This Character cannot attack unless there is a Character with 12000 base power or more.",
   effects: {
     effects: [
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "modifyPower",
-            target: {
-              player: "opponent",
-              zones: ["character"],
-              count: {
-                amount: "all",
-              },
-            },
-            value: -3000,
-            duration: "thisTurn",
-          },
-          {
-            action: "playThisCard",
-            condition: {
-              condition: "lifeCount",
-              player: "self",
-              comparison: "eq",
-              value: 0,
-            },
-          },
-        ],
-      },
       {
         trigger: "trigger",
         actions: [

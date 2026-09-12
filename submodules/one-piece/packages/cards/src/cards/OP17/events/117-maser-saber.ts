@@ -22,8 +22,74 @@ export const op17MaserSaber117: EventCard = {
   setId: "OP17",
   cost: 1,
   trigger:
-    "[Trigger] Your opponent may trash 3 cards from their hand. If they do not, K.O. up to 1 of your opponent's Characters with a cost of 6 or less.",
+    "Your opponent may trash 3 cards from their hand. If they do not, K.O. up to 1 of your opponent's Characters with a cost of 6 or less.",
   traits: ["The Four Emperors", "Big Mom Pirates"],
   effect: "[Counter] Up to 1 of your [Charlotte Linlin] gains +3000 power during this battle.",
+  effects: {
+    effects: [
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Charlotte Linlin",
+                },
+              ],
+            },
+            value: 3000,
+            duration: "thisBattle",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "choice",
+            player: "opponent",
+            options: [
+              [
+                {
+                  action: "trashFromHand",
+                  player: "opponent",
+                  amount: 3,
+                },
+              ],
+              [
+                {
+                  action: "ko",
+                  target: {
+                    player: "opponent",
+                    zones: ["character"],
+                    count: {
+                      amount: 1,
+                      upTo: true,
+                    },
+                    filters: [
+                      {
+                        filter: "cost",
+                        comparison: "lte",
+                        value: 6,
+                      },
+                    ],
+                  },
+                },
+              ],
+            ],
+          },
+        ],
+      },
+    ],
+  },
   i18n: op17MaserSaber117I18n,
 };

@@ -26,5 +26,48 @@ export const op15eb04Amazon059: CharacterCard = {
   attribute: "wisdom",
   effect:
     "[On Your Opponent's Attack] You may rest this Character: Your opponent may return 1 of their active DON!! cards to their DON!! deck. If they do not, give up to 1 of your opponent's Leader or Character cards −2000 power during this turn.",
+  effects: {
+    effects: [
+      {
+        trigger: "onOpponentAttack",
+        costs: [
+          {
+            cost: "restThisCard",
+          },
+        ],
+        actions: [
+          {
+            action: "choice",
+            player: "opponent",
+            options: [
+              [
+                {
+                  action: "returnDon",
+                  player: "opponent",
+                  amount: 1,
+                },
+              ],
+              [
+                {
+                  action: "modifyPower",
+                  target: {
+                    player: "opponent",
+                    zones: ["leader", "character"],
+                    count: {
+                      amount: 1,
+                      upTo: true,
+                    },
+                  },
+                  value: -2000,
+                  duration: "thisTurn",
+                },
+              ],
+            ],
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: op15eb04Amazon059I18n,
 };

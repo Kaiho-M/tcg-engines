@@ -23,7 +23,7 @@ export const op16VascoShot110: CharacterCard = {
   cost: 1,
   power: 2000,
   counter: 1000,
-  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  trigger: "Activate this card's [On K.O.] effect.",
   traits: ["Impel Down", "Blackbeard Pirates"],
   attribute: "special",
   effect:
@@ -55,15 +55,6 @@ export const op16VascoShot110: CharacterCard = {
                 },
               ],
             },
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "activateEffect",
-            effectTrigger: "onKo",
           },
         ],
       },

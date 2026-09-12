@@ -31,7 +31,7 @@ export const op17Sweet3Generals114: CharacterCard = {
   cost: 6,
   power: 4000,
   counter: 1000,
-  trigger: "[Trigger] Play this card.",
+  trigger: "Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: ["slash", "strike"],
   artVariants: [
@@ -92,14 +92,6 @@ export const op17Sweet3Generals114: CharacterCard = {
           },
         ],
         optional: true,
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "playThisCard",
-          },
-        ],
       },
       {
         trigger: "trigger",

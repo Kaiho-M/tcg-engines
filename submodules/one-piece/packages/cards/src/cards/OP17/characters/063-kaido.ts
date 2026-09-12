@@ -93,6 +93,34 @@ export const op17Kaido063: CharacterCard = {
         oncePerTurn: true,
       },
     ],
+    permanentEffects: [
+      {
+        actions: [
+          {
+            action: "modifyCounter",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "cardCategory",
+                  value: "character",
+                },
+                {
+                  filter: "counter",
+                  comparison: "eq",
+                  value: 0,
+                },
+              ],
+            },
+            value: 1000,
+          },
+        ],
+      },
+    ],
   },
   i18n: op17Kaido063I18n,
 };

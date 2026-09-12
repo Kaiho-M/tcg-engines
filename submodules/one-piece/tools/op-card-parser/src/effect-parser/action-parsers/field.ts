@@ -1,6 +1,7 @@
 import type { Action, Target, TargetFilter, Zone } from "@tcg/op-types";
 import { mapZoneNoun, parseComparison } from "../helpers.ts";
 import {
+  extractTargetFilters,
   parseTarget,
   parseTargetWithoutPlayer,
   traitAlternativesFilter,
@@ -773,15 +774,20 @@ export function parseFreezeAction(text: string): FreezeAction | null {
             : ["character"];
     const filters: TargetFilter[] = [{ filter: "state", value: "rested" }];
 
-    // Parse optional filter like "a cost of N or less"
+    // Parse optional qualifiers like "a cost of N or less" / "6000 power or less"
     if (opponentMatch[3]) {
-      const costFilter = /a\s+cost\s+of\s+(\d+)\s+or\s+(less|more)/i.exec(opponentMatch[3]);
-      if (costFilter) {
-        filters.push({
-          filter: "cost",
-          comparison: parseComparison(costFilter[2]),
-          value: parseInt(costFilter[1]!, 10),
-        });
+      const qualifiers = extractTargetFilters(` with ${opponentMatch[3]}`);
+      if (qualifiers.zonesText === "") {
+        filters.push(...qualifiers.filters);
+      } else {
+        const costFilter = /a\s+cost\s+of\s+(\d+)\s+or\s+(less|more)/i.exec(opponentMatch[3]);
+        if (costFilter) {
+          filters.push({
+            filter: "cost",
+            comparison: parseComparison(costFilter[2]),
+            value: parseInt(costFilter[1]!, 10),
+          });
+        }
       }
     }
 

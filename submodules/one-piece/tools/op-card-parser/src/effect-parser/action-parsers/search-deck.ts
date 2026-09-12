@@ -356,8 +356,10 @@ export function parseSearchAction(
   };
 
   // Pattern 1: "reveal up to N / a total of N <desc> and add it/them to your hand [and|. Then,] <remainder>"
+  // Newer printings join the clauses with commas:
+  // "reveal up to 1 {Navy} type card, add it to your hand and place the rest ..."
   const revealPattern =
-    /^reveal\s+(?:up\s+to|a\s+total\s+of(?:\s+up\s+to)?)\s+(\d+)\s+(.+?)\s+and\s+add\s+(?:it|them)\s+to\s+your\s+hand/i;
+    /^reveal\s+(?:up\s+to|a\s+total\s+of(?:\s+up\s+to)?)\s+(\d+)\s+(.+?)(?:\s+and|,)\s+add\s+(?:it|them)\s+to\s+your\s+hand/i;
   const revealMatch = revealPattern.exec(afterLook);
   if (revealMatch) {
     const afterReveal = afterLook.slice(revealMatch[0].length);

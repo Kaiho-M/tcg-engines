@@ -26,5 +26,32 @@ export const op17Jozu008: CharacterCard = {
   attribute: "strike",
   effect:
     "[On Play] Your [Edward.Newgate] Leader's base power becomes 8000 until the end of your opponent's next End Phase.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "name",
+                  value: "Edward.Newgate",
+                },
+              ],
+            },
+            value: 8000,
+            duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op17Jozu008I18n,
 };

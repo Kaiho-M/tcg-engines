@@ -80,6 +80,14 @@ export const op17Kaido062: CharacterCard = {
         ],
         actions: [
           {
+            action: "addDon",
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            state: "active",
+          },
+          {
             action: "setActive",
             target: {
               player: "self",

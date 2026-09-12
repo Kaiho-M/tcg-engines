@@ -24,7 +24,7 @@ export const op17Caribou101: CharacterCard = {
   power: 6000,
   counter: 1000,
   trigger:
-    "[Trigger] You may trash 1 card from your hand: K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
+    "You may trash 1 card from your hand: K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
   traits: ["Supernovas", "Caribou Pirates"],
   attribute: "special",
   effect:
@@ -57,36 +57,6 @@ export const op17Caribou101: CharacterCard = {
         ],
         optional: true,
         oncePerTurn: true,
-      },
-      {
-        trigger: "trigger",
-        costs: [
-          {
-            cost: "trashFromHand",
-            amount: 1,
-          },
-        ],
-        actions: [
-          {
-            action: "ko",
-            target: {
-              player: "opponent",
-              zones: ["character"],
-              count: {
-                amount: 1,
-                upTo: true,
-              },
-              filters: [
-                {
-                  filter: "cost",
-                  comparison: "lte",
-                  value: 5,
-                },
-              ],
-            },
-          },
-        ],
-        optional: true,
       },
       {
         trigger: "trigger",

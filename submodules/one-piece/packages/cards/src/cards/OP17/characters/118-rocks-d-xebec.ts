@@ -86,6 +86,38 @@ export const op17RocksDXebec118: CharacterCard = {
         ],
       },
     ],
+    permanentEffects: [
+      {
+        conditions: [
+          {
+            condition: "notHasCard",
+            player: "self",
+            zone: "character",
+            filters: [
+              {
+                filter: "counter",
+                comparison: "gt",
+                value: 0,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "modifyCounter",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 2000,
+          },
+        ],
+      },
+    ],
   },
   i18n: op17RocksDXebec118I18n,
 };

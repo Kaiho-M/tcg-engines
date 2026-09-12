@@ -23,7 +23,7 @@ export const op17CharlotteOven102: CharacterCard = {
   cost: 4,
   power: 4000,
   counter: 1000,
-  trigger: "[Trigger] Play this card.",
+  trigger: "Play this card.",
   traits: ["Big Mom Pirates"],
   attribute: "special",
   effect:
@@ -58,14 +58,6 @@ export const op17CharlotteOven102: CharacterCard = {
                 value: "character",
               },
             ],
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "playThisCard",
           },
         ],
       },

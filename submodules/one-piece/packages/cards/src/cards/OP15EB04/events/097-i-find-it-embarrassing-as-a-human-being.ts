@@ -21,7 +21,7 @@ export const op15eb04IFindItEmbarrassingAsAHumanBeing097: EventCard = {
   rarity: "C",
   setId: "OP15EB04",
   cost: 1,
-  trigger: "[Trigger] Activate this card's [Main] effect.",
+  trigger: "Activate this card's [Main] effect.",
   traits: ["Straw Hat Crew"],
   effect:
     "[Main] If you have 10 or more cards in your trash, up to 1 of your opponent's Characters with a base cost of 5 or less cannot attack until the end of your opponent's next End Phase.",
@@ -57,15 +57,6 @@ export const op15eb04IFindItEmbarrassingAsAHumanBeing097: EventCard = {
               ],
             },
             duration: "untilEndOfOpponentNextEndPhase",
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "activateEffect",
-            effectTrigger: "main",
           },
         ],
       },

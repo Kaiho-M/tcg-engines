@@ -22,7 +22,7 @@ export const op16DocQ109: CharacterCard = {
   setId: "OP16",
   cost: 1,
   counter: 2000,
-  trigger: "[Trigger] Activate this card's [On K.O.] effect.",
+  trigger: "Activate this card's [On K.O.] effect.",
   traits: ["Blackbeard Pirates"],
   attribute: "special",
   effect:
@@ -61,15 +61,6 @@ export const op16DocQ109: CharacterCard = {
                 },
               ],
             },
-          },
-        ],
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "activateEffect",
-            effectTrigger: "onKo",
           },
         ],
       },

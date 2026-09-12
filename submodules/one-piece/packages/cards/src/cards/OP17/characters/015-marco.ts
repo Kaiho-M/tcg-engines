@@ -60,6 +60,30 @@ export const op17Marco015: CharacterCard = {
         optional: true,
       },
     ],
+    replacementEffects: [
+      {
+        replacedEvent: "removeFromField",
+        target: {
+          player: "self",
+          zones: ["character"],
+          count: {
+            amount: 1,
+          },
+        },
+        source: "opponentEffect",
+        replacementAction: {
+          action: "ko",
+          target: {
+            player: "self",
+            zones: ["character"],
+            count: {
+              amount: 1,
+            },
+            self: true,
+          },
+        },
+      },
+    ],
   },
   i18n: op17Marco015I18n,
 };

@@ -23,7 +23,7 @@ export const op17WhoSWho071: CharacterCard = {
   cost: 2,
   power: 3000,
   counter: 1000,
-  trigger: "[Trigger] Play this card.",
+  trigger: "Play this card.",
   traits: ["Animal Kingdom Pirates", "Former CP9"],
   attribute: "slash",
   effect:
@@ -59,14 +59,6 @@ export const op17WhoSWho071: CharacterCard = {
           },
         ],
         optional: true,
-      },
-      {
-        trigger: "trigger",
-        actions: [
-          {
-            action: "playThisCard",
-          },
-        ],
       },
       {
         trigger: "trigger",

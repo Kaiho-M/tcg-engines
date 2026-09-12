@@ -27,6 +27,35 @@ export const op17DrunkenDragonBagua078: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 2,
+          },
+          {
+            cost: "trashFromHand",
+            amount: 2,
+          },
+        ],
+        actions: [
+          {
+            action: "addDon",
+            count: {
+              amount: 3,
+              upTo: true,
+            },
+            state: "rested",
+            condition: {
+              condition: "leaderTrait",
+              trait: "Animal Kingdom Pirates",
+              match: "includes",
+            },
+          },
+        ],
+        optional: true,
+      },
+      {
         trigger: "counter",
         actions: [
           {

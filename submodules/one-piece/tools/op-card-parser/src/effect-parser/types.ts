@@ -47,6 +47,8 @@ export interface RawEffectSegment {
   rawActionText: string;
   /** For "Choose one:" patterns, the individual bullet items */
   choiceItems?: string[];
+  /** Set when the printed text reads "Your opponent chooses one:" */
+  choiceChooser?: "opponent";
   /** Action text printed after the final choice bullet and resolved after the choice */
   postChoiceActionText?: string;
 }

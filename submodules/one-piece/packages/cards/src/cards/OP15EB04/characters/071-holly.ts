@@ -78,9 +78,14 @@ export const op15eb04Holly071: CharacterCard = {
               player: "self",
               zones: ["character"],
               count: {
-                amount: 1,
+                amount: "all",
               },
-              self: true,
+              filters: [
+                {
+                  filter: "name",
+                  value: "Ohm",
+                },
+              ],
             },
             value: 6000,
             duration: "permanent",
@@ -91,14 +96,9 @@ export const op15eb04Holly071: CharacterCard = {
               player: "self",
               zones: ["character"],
               count: {
-                amount: "all",
+                amount: 1,
               },
-              filters: [
-                {
-                  filter: "name",
-                  value: "Ohm",
-                },
-              ],
+              self: true,
             },
             value: 6000,
             duration: "permanent",
