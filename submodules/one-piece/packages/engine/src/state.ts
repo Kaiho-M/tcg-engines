@@ -690,6 +690,10 @@ function resetStartOfTurnState(state: MatchState, seat: MatchSeat) {
   let returningDon = 0;
 
   for (const instance of Object.values(state.cards)) {
+    // [Once Per Turn] resets at the start of every turn, not only the controller's own turn:
+    // a defender's "when your Leader attacks or is attacked" effect used on its own turn
+    // must be available again on the opponent's turn (OP17-040).
+    instance.usedEffectKeys = [];
     if (instance.controller !== seat) {
       continue;
     }
@@ -698,7 +702,6 @@ function resetStartOfTurnState(state: MatchState, seat: MatchSeat) {
       if (!isCardPreventedFromRefreshing(state, instance.instanceId)) {
         instance.rested = false;
       }
-      instance.usedEffectKeys = [];
       if (instance.attachedDon > 0) {
         returningDon += instance.attachedDon;
         instance.attachedDon = 0;

@@ -2780,9 +2780,12 @@ export function resolveEffectChoicePrompt(
         selectedIds.length > maximum ||
         new Set(selectedIds).size !== selectedIds.length ||
         selectedIds.some((instanceId) => !playableEligibleIds.includes(instanceId)) ||
-        selectedIds.filter(
-          (instanceId) => getCardForInstance(state, instanceId).cardType === "character",
-        ).length > openCharacterSlots ||
+        // Only a search that plays the revealed cards is limited by the character area;
+        // adding a Character card to hand must work with a full area (OP13-016).
+        (context.action.revealDestination === "character" &&
+          selectedIds.filter(
+            (instanceId) => getCardForInstance(state, instanceId).cardType === "character",
+          ).length > openCharacterSlots) ||
         player.deck
           .slice(0, context.lookedIds.length)
           .some((instanceId, index) => instanceId !== context.lookedIds[index])

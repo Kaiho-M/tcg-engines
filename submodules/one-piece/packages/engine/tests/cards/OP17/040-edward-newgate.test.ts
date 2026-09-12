@@ -67,6 +67,38 @@ describe("OP17-040 Edward.Newgate", () => {
     expect(leaderPower(engine)).toBe(op17RocksDXebec039.power);
   });
 
+  test("[Once Per Turn] used on its own turn is available again when attacked on the opponent's turn", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op17RocksDXebec039,
+        character: [{ card: op17EdwardNewgate040, playedOnTurn: 0 }],
+        hand: [op17Kyo045, op17Kyo045, op17Kyo045],
+      },
+      { leaderCardId: op17RocksDXebec039, hand: [op17Kyo045] },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    engine.declareAttack(engine.leader("south"), engine.leader("north"), "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+    engine.resolveDecision("effectOptional", { optionId: "yes" }, "south");
+    engine.resolveDecision(
+      "effectCostTrashFromHand",
+      { selectedIds: [engine.findCardInZone("south", "hand", op17Kyo045)] },
+      "south",
+    );
+    engine.resolveDecision("battleCounter", { selectedIds: [] }, "north");
+    engine.endTurn("south");
+
+    engine.declareAttack(engine.leader("north"), engine.leader("south"), "north");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "north");
+    engine.resolveDecision("effectOptional", { optionId: "yes" }, "south");
+    engine.resolveDecision(
+      "effectCostTrashFromHand",
+      { selectedIds: [engine.findCardInZone("south", "hand", op17Kyo045)] },
+      "south",
+    );
+    expect(leaderPower(engine)).toBe(op17RocksDXebec039.power + 3000);
+  });
+
   test("does not react for a Leader without the {Rocks Pirates} type", () => {
     const engine = OnePieceTestEngine.create(
       {
