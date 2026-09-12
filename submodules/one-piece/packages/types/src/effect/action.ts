@@ -8,6 +8,7 @@ export type Action =
   | DelayedAction
   | ModifyPowerAction
   | ModifyCounterAction
+  | SetCounterAction
   | KoAction
   | DrawAction
   | RedrawHandAction
@@ -120,6 +121,14 @@ export interface ModifyPowerAction {
 
 export interface ModifyCounterAction {
   action: "modifyCounter";
+  target: Target;
+  value: number;
+  condition?: Condition;
+}
+
+/** Set a card's counter to a printed value; several sources do not add up. */
+export interface SetCounterAction {
+  action: "setCounter";
   target: Target;
   value: number;
   condition?: Condition;

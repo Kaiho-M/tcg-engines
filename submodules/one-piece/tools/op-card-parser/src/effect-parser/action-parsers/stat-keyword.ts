@@ -840,16 +840,16 @@ export function parseSetBasePowerAction(text: string): SetBasePowerAction[] | nu
 
 // ── ModifyCounter action parsing ──
 
-type ModifyCounterAction = Extract<Action, { action: "modifyCounter" }>;
+type CounterAction = Extract<Action, { action: "modifyCounter" | "setCounter" }>;
 
 /**
  * Parse continuous counter changes on cards in hand:
  * - "this card in your hand has a +2000 Counter"
  * - "All Character cards in your hand without a Counter have a +1000 Counter"
  * - "The counter of all of your Character cards with 8000 power in your hand
- *    becomes +2000" (a card printed with a +1000 counter gains only +1000)
+ *    becomes +2000" (an absolute value: `setCounter`)
  */
-export function parseModifyCounterAction(text: string): ModifyCounterAction[] | null {
+export function parseModifyCounterAction(text: string): CounterAction[] | null {
   const trimmed = text
     .trim()
     .replace(/\u2212/g, "-")
@@ -896,24 +896,18 @@ export function parseModifyCounterAction(text: string): ModifyCounterAction[] | 
   if (becomesMatch) {
     const qualifier = becomesMatch[1] ? extractTargetFilters(becomesMatch[1]) : null;
     if (qualifier && qualifier.zonesText !== "") return null;
-    const value = parseInt(becomesMatch[2]!, 10);
-    const filters: TargetFilter[] = [
-      { filter: "cardCategory", value: "character" },
-      ...(qualifier?.filters ?? []),
-    ];
-    // Printed counters are 0, 1000 or 2000; "becomes +N" adds the difference.
-    return [0, 1000, 2000]
-      .filter((printed) => printed < value)
-      .map((printed) => ({
-        action: "modifyCounter",
+    return [
+      {
+        action: "setCounter",
         target: {
           player: "self",
           zones: ["hand"],
           count: { amount: "all" },
-          filters: [...filters, { filter: "counter", comparison: "eq", value: printed }],
+          filters: [{ filter: "cardCategory", value: "character" }, ...(qualifier?.filters ?? [])],
         },
-        value: value - printed,
-      }));
+        value: parseInt(becomesMatch[2]!, 10),
+      },
+    ];
   }
 
   return null;

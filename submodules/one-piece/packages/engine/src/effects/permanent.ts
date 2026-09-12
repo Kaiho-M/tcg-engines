@@ -682,6 +682,88 @@ export function getPermanentBasePower(state: MatchState, targetInstanceId: strin
   }
 }
 
+/**
+ * "The counter of ... becomes +N" is an absolute value, so two copies of the
+ * same source leave the counter at N. The most recently played source wins;
+ * `modifyCounter` deltas are then added on top by `getCardCounter`.
+ */
+export function getPermanentSetCounter(state: MatchState, targetInstanceId: string): number | null {
+  const evaluationKey = `setCounter:${targetInstanceId}`;
+  const active = activeEvaluations.get(state) ?? new Set<string>();
+  if (active.has(evaluationKey)) {
+    return null;
+  }
+  activeEvaluations.set(state, active);
+  active.add(evaluationKey);
+
+  try {
+    let winner: { value: number; order: number } | null = null;
+    for (const source of Object.values(state.cards)) {
+      const sourceIsSelfInHand = source.instanceId === targetInstanceId && source.zone === "hand";
+      if (
+        (!sourceIsInPlay(state, source.instanceId) && !sourceIsSelfInHand) ||
+        sourceEffectsAreNegated(state, source.instanceId)
+      ) {
+        continue;
+      }
+      const card = getCard(source.cardId);
+      for (const effect of card.effects?.permanentEffects ?? []) {
+        const setActions = effect.actions.filter(
+          (action): action is Extract<Action, { action: "setCounter" }> =>
+            action.action === "setCounter",
+        );
+        if (setActions.length === 0) {
+          continue;
+        }
+        const conditions = evaluateConditions(
+          state,
+          source.controller,
+          source.instanceId,
+          effect.conditions,
+        );
+        if (!conditions.supported || !conditions.matches) {
+          continue;
+        }
+        for (const action of setActions) {
+          if (action.condition) {
+            const actionCondition = evaluateConditions(
+              state,
+              source.controller,
+              source.instanceId,
+              [action.condition],
+            );
+            if (!actionCondition.supported || !actionCondition.matches) {
+              continue;
+            }
+          }
+          if (action.target.count.amount !== "all" && !action.target.self) {
+            continue;
+          }
+          const pool = candidatePoolForTarget(
+            state,
+            source.controller,
+            source.instanceId,
+            action.target,
+          );
+          if (!pool.supported || !pool.candidateIds.includes(targetInstanceId)) {
+            continue;
+          }
+          const order = source.playedOnTurn ?? -1;
+          if (!winner || order >= winner.order) {
+            winner = { value: action.value, order };
+          }
+        }
+      }
+    }
+    return winner?.value ?? null;
+  } finally {
+    active.delete(evaluationKey);
+    if (active.size === 0) {
+      activeEvaluations.delete(state);
+    }
+  }
+}
+
 export function getPermanentSetCost(state: MatchState, targetInstanceId: string): number | null {
   const evaluationKey = `setCost:${targetInstanceId}`;
   const active = activeEvaluations.get(state) ?? new Set<string>();

@@ -1692,6 +1692,7 @@ export function processEffectAction(
       }
       return true;
     case "modifyCounter":
+    case "setCounter":
       // Counter modifiers are continuous effects evaluated from their source card.
       return false;
     case "draw": {
