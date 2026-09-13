@@ -97,3 +97,4 @@ export { op12Shiki005 } from "./005-shiki.ts";
 export { op12Buffalo110 } from "./110-buffalo.ts";
 export { op12Carmen067 } from "./067-carmen.ts";
 export { op12MarshallDTeachSpGold093 } from "./093-marshall-d-teach-sp-gold.ts";
+export { op12MohjiCabaji055 } from "./055-mohji-cabaji.ts";

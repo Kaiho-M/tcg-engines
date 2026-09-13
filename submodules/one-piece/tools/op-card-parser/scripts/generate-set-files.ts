@@ -219,10 +219,10 @@ function scanExistingCatalog(): ExistingCatalog {
       }
       if (!entry.name.endsWith(".ts") || entry.name.endsWith(".i18n.ts")) continue;
       const source = readFileSync(path, "utf8");
-      const id = /^  id: "([^"]+)",$/m.exec(source)?.[1];
-      const slug = /^  slug: "([^"]+)",$/m.exec(source)?.[1];
-      if (id) ids.add(id);
-      if (slug) slugs.add(slug);
+      // A file may hold several definitions (ST01/index.ts) and the formatter
+      // indents a wrapped definition by four spaces.
+      for (const match of source.matchAll(/^ {2,4}id: "([^"]+)",$/gm)) ids.add(match[1]!);
+      for (const match of source.matchAll(/^ {2,4}slug: "([^"]+)",$/gm)) slugs.add(match[1]!);
     }
   };
   if (existsSync(CARDS_DIR)) visit(CARDS_DIR);
@@ -485,6 +485,7 @@ for (const { bases, variants } of grouped.values()) {
 const sharedNames = new Set([...nameCounts].filter(([, n]) => n > 1).map(([name]) => name));
 
 const skipped: string[] = [];
+const reprints: string[] = [];
 // "<setId>/<subdir>" → export lines. A page can carry reprints whose set differs
 // from the page's own set, so the index is grouped by the card's own setId.
 const written = new Map<string, string[]>();
@@ -496,6 +497,13 @@ for (const cardId of [...grouped.keys()].sort()) {
   if (!baseRaw) continue;
   if (existing.ids.has(cardId)) {
     skipped.push(cardId);
+    continue;
+  }
+  // The official list prints every card's base art on its own series page, so a
+  // page that only carries a reprint ("P-030_r1" on the ST17 page) is not the
+  // place to define it: the definition would take the reprint's set and art.
+  if (options.source === "official" && bases.length === 0) {
+    reprints.push(cardId);
     continue;
   }
   const cardTypeRaw = baseRaw.card_type.trim().toLowerCase();
@@ -528,6 +536,11 @@ for (const cardId of [...grouped.keys()].sort()) {
 
 if (skipped.length > 0) {
   console.log(`Skipped ${skipped.length} ids already in the catalog: ${skipped.join(", ")}`);
+}
+if (reprints.length > 0) {
+  console.log(
+    `Skipped ${reprints.length} reprints whose base printing is on another page: ${reprints.join(", ")}`,
+  );
 }
 
 let totalFiles = 0;

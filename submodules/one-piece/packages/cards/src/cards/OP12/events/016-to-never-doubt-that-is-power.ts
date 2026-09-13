@@ -1,0 +1,28 @@
+import type { EventCard } from "@tcg/op-types";
+import { op12ToNeverDoubtThatIsPower016I18n } from "./016-to-never-doubt-that-is-power.i18n.ts";
+
+export const op12ToNeverDoubtThatIsPower016: EventCard = {
+  id: "OP12-016",
+  canonicalId: "OP12-016",
+  slug: "to-never-doubt-that-is-power",
+  name: "To Never Doubt--That Is Power!",
+  printings: [
+    {
+      id: "OP12-016",
+      artId: "OP12-016",
+      setCode: "OP12",
+      collectorNumber: "016",
+      rarity: "C",
+      imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-016.png",
+    },
+  ],
+  cardType: "event",
+  color: ["red"],
+  rarity: "C",
+  setId: "OP12",
+  cost: 0,
+  traits: ["Former Roger Pirates"],
+  effect:
+    "[Main] You may give 2 active DON!! cards to 1 of your [Silvers Rayleigh]: Your opponent cannot activate [Blocker] when the card given these DON!! cards attacks during this turn.\n[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle.",
+  i18n: op12ToNeverDoubtThatIsPower016I18n,
+};

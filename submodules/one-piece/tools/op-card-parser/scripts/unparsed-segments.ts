@@ -152,7 +152,7 @@ for (const file of cardFiles(storedSets)) {
 
 function fileCardId(file: string): string {
   const source = readFileSync(file, "utf8");
-  return /^  id: "([^"]+)",$/m.exec(source)?.[1] ?? "";
+  return /^ {2,4}id: "([^"]+)",$/m.exec(source)?.[1] ?? "";
 }
 
 const incomplete = reports.filter(

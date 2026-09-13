@@ -41,3 +41,4 @@ export { eb01MontBlancCricket058 } from "./058-mont-blanc-cricket.ts";
 export { eb01PrinceBellett026 } from "./026-prince-bellett.ts";
 export { eb01Scarlet042 } from "./042-scarlet.ts";
 export { eb01Brook045 } from "./045-brook.ts";
+export { eb01KidKiller003 } from "./003-kid-killer.ts";

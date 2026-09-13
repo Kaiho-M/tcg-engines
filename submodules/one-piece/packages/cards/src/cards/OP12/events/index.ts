@@ -14,3 +14,7 @@ export { op12UrsaShock096 } from "./096-ursa-shock.ts";
 export { op12IWillMakeWhitebeardTheKingOfThePirates058 } from "./058-i-will-make-whitebeard-the-king-of-the-pirates.ts";
 export { op12ILoveYou115 } from "./115-i-love-you.ts";
 export { op12TheExtinguishesAllSoundCreatedByYourInfluenceTechnique077 } from "./077-the-extinguishes-all-sound-created-by-your-influence-technique.ts";
+export { op12ToNeverDoubtThatIsPower016 } from "./016-to-never-doubt-that-is-power.ts";
+export { op12ColorOfObservationHaki017 } from "./017-color-of-observation-haki.ts";
+export { op12ColorOfTheSupremeKingHaki018 } from "./018-color-of-the-supreme-king-haki.ts";
+export { op12ColorOfArmsHaki019 } from "./019-color-of-arms-haki.ts";

@@ -82,6 +82,8 @@ function parseAttribute(
   cardId: string,
 ): OPAttribute | OPAttribute[] | undefined {
   if (!raw || isNullValue(raw)) return undefined;
+  // Imu (OP13-079) is printed with the attribute "?", which matches none of the five.
+  if (raw.trim() === "?") return undefined;
   // API uses either "/" or space as separator (e.g. "Slash/Wisdom" or "Slash Wisdom")
   const attributes = (raw.includes("/") ? raw.split("/") : raw.split(" ")).map((part) => {
     const attr = ATTRIBUTE_MAP[part.trim().toLowerCase()];

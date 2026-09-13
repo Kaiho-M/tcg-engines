@@ -94,3 +94,5 @@ export { op08MariaOnionBear009 } from "./009-maria-onion-bear.ts";
 export { op08PortgasDAceSp013 } from "./013-portgas-d-ace-sp.ts";
 export { op08Jack084 } from "./084-jack.ts";
 export { op08WhosWho091 } from "./091-whos-who.ts";
+export { op08Chessmarimo006 } from "./006-chessmarimo.ts";
+export { op08KaidoLinlin119 } from "./119-kaido-linlin.ts";

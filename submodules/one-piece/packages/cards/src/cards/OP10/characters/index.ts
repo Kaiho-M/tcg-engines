@@ -98,3 +98,4 @@ export { op10Hajrudin050 } from "./050-hajrudin.ts";
 export { op10FightingFish069 } from "./069-fighting-fish.ts";
 export { op10BlueGilly054 } from "./054-blue-gilly.ts";
 export { op10CharlotteFlampeSp056 } from "./056-charlotte-flampe-sp.ts";
+export { op10HeatWire110 } from "./110-heat-wire.ts";

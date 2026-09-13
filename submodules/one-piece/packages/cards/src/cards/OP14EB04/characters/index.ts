@@ -123,3 +123,4 @@ export { op14eb04Queen032 } from "./032-queen.ts";
 export { op14eb04Kumacy102 } from "./102-kumacy.ts";
 export { op14eb04KouzukiSukiyaki014 } from "./014-kouzuki-sukiyaki.ts";
 export { op14eb04Kaido030 } from "./030-kaido.ts";
+export { op14eb04RosinanteLaw038 } from "./038-rosinante-law.ts";

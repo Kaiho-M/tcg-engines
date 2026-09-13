@@ -1,0 +1,12 @@
+export { st08Uta002 } from "./002-uta.ts";
+export { st08Gaimon003 } from "./003-gaimon.ts";
+export { st08Koby004 } from "./004-koby.ts";
+export { st08Shanks005 } from "./005-shanks.ts";
+export { st08Shirahoshi006 } from "./006-shirahoshi.ts";
+export { st08NefeltariVivi007 } from "./007-nefeltari-vivi.ts";
+export { st08Higuma008 } from "./008-higuma.ts";
+export { st08Makino009 } from "./009-makino.ts";
+export { st08MonkeyDGarp010 } from "./010-monkey-d-garp.ts";
+export { st08MonkeyDLuffy011 } from "./011-monkey-d-luffy.ts";
+export { st08Laboon012 } from "./012-laboon.ts";
+export { st08Mr2BonKureiBentham013 } from "./013-mr-2-bon-kurei-bentham.ts";

@@ -1,0 +1,9 @@
+export { st06Koby002 } from "./002-koby.ts";
+export { st06Jango003 } from "./003-jango.ts";
+export { st06Smoker004 } from "./004-smoker.ts";
+export { st06Sengoku005 } from "./005-sengoku.ts";
+export { st06Tsuru007 } from "./007-tsuru.ts";
+export { st06Fullbody009 } from "./009-fullbody.ts";
+export { st06Momonga011 } from "./011-momonga.ts";
+export { st06MonkeyDGarp012 } from "./012-monkey-d-garp.ts";
+export { st06TBone013 } from "./013-t-bone.ts";

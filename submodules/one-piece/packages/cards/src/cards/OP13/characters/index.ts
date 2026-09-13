@@ -99,3 +99,4 @@ export { op13PortgasDAceEb02028Sp028 } from "./028-portgas-d-ace-eb02-028-sp.ts"
 export { op13SaboOp07118Sp118 } from "./118-sabo-op07-118-sp.ts";
 export { op13Gyogyo103 } from "./103-gyogyo.ts";
 export { op13ShanksOp09004SpSilver004 } from "./004-shanks-op09-004-sp-silver.ts";
+export { op13FiveElders082 } from "./082-five-elders.ts";

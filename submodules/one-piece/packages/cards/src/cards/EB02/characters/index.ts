@@ -42,3 +42,4 @@ export { eb02DonAccino004 } from "./004-don-accino.ts";
 export { eb02Komei034 } from "./034-komei.ts";
 export { eb02GrandpaRyu029 } from "./029-grandpa-ryu.ts";
 export { eb02Blueno047 } from "./047-blueno.ts";
+export { eb02SanjiPudding035 } from "./035-sanji-pudding.ts";

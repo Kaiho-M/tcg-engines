@@ -87,7 +87,7 @@ function cardFiles(storedSets: string[]): string[] {
 }
 
 function fileCardId(file: string): string {
-  return /^  id: "([^"]+)",$/m.exec(readFileSync(file, "utf8"))?.[1] ?? "";
+  return /^ {2,4}id: "([^"]+)",$/m.exec(readFileSync(file, "utf8"))?.[1] ?? "";
 }
 
 async function loadCard(file: string): Promise<OPCard | undefined> {
