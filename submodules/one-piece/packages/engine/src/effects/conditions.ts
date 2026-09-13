@@ -532,7 +532,11 @@ function evaluateCondition(
         supported: true,
         matches: [
           player.leaderInstanceId,
-          ...player.characterArea.filter((instanceId): instanceId is string => Boolean(instanceId)),
+          ...(condition.zone === "leader"
+            ? []
+            : player.characterArea.filter((instanceId): instanceId is string =>
+                Boolean(instanceId),
+              )),
         ].some((instanceId) => getInstance(state, instanceId).attachedDon > 0),
       };
     }

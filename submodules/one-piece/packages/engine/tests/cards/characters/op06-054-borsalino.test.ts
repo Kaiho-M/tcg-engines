@@ -19,8 +19,8 @@ function attackBorsalinoController(handCount: number) {
 }
 
 describe("OP06-054 Borsalino", () => {
-  test("gains Blocker with four cards in hand", () => {
-    const { borsalinoId, engine, lifeBefore } = attackBorsalinoController(4);
+  test("gains Blocker with five cards in hand", () => {
+    const { borsalinoId, engine, lifeBefore } = attackBorsalinoController(5);
     const blocker = engine.pendingDecision("battleBlocker", "north").steps[0];
 
     expect(blocker?.kind).toBe("selectEntity");
@@ -35,8 +35,8 @@ describe("OP06-054 Borsalino", () => {
     ).toBe(true);
   });
 
-  test("does not gain Blocker with five cards in hand", () => {
-    const { borsalinoId, engine, lifeBefore } = attackBorsalinoController(5);
+  test("does not gain Blocker with six cards in hand", () => {
+    const { borsalinoId, engine, lifeBefore } = attackBorsalinoController(6);
 
     expect(() => engine.pendingDecision("battleBlocker", "north")).toThrow();
     engine.resolveDecision("battleCounter", { selectedIds: [] }, "north");

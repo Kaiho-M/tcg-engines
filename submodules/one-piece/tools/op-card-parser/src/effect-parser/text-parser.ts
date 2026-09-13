@@ -597,12 +597,16 @@ function parseTextCosts(text: string): RawCost[] {
     });
   }
   // "You may add N cards from the top, bottom, or top or bottom of your Life cards to your hand"
+  // The errata wording "add 1 card from your Life area to your hand" (OP01-008/013) lets the
+  // player pick any Life card; top-or-bottom is the closest the engine offers.
   const addLifeToHandMatch =
-    /add\s+(\d+)\s+cards?\s+from\s+the\s+(top\s+or\s+bottom|top|bottom)\s+of\s+your\s+Life\s+cards?\s+to\s+your\s+hand/i.exec(
+    /add\s+(\d+)\s+cards?\s+from\s+(?:the\s+(top\s+or\s+bottom|top|bottom)\s+of\s+your\s+Life\s+cards?|your\s+Life\s+area)\s+to\s+your\s+hand/i.exec(
       text,
     );
   if (addLifeToHandMatch) {
-    const positionText = addLifeToHandMatch[2]!.toLowerCase().replace(/\s+/g, " ");
+    const positionText = (addLifeToHandMatch[2] ?? "top or bottom")
+      .toLowerCase()
+      .replace(/\s+/g, " ");
     costs.push({
       index: addLifeToHandMatch.index,
       cost: {
@@ -718,8 +722,14 @@ export function parseEffectText(text: string): ParsedEffectText {
   // Step 2: Strip flavor parentheticals
   const stripped = stripFlavorParentheticals(cleaned);
 
+  // Step 2a: The older official pages print the DON!! rest cost as a circled
+  // digit ("➀" / "①", OP05-032, ST02-001); the parser reads it as "(N)".
+  let fixed = stripped
+    .replace(/[➀-➉]/g, (digit) => `(${digit.codePointAt(0)! - 0x277f})`)
+    .replace(/[①-⑩]/g, (digit) => `(${digit.codePointAt(0)! - 0x245f})`);
+
   // Step 2b-pre: Fix missing comma after "K.O.'d" before action text
-  let fixed = stripped.replace(
+  fixed = fixed.replace(
     /\bK\.O\.\u2019?'?d\s+(?=add\s|draw\s|play\s|rest\s|return\s|give\s|place\s|trash\s|K\.O\.\s)/gi,
     (m) => m.trimEnd() + ", ",
   );

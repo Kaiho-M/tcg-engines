@@ -794,14 +794,15 @@ export function parseSetBasePowerAction(text: string): SetBasePowerAction[] | nu
   let subjects: string[];
   let valueText: string;
   let durationText: string | undefined;
+  // "The base power of X becomes N" / "set the base power of X to N" (OP13-084)
   const ofMatch =
-    /^the\s+base\s+power\s+of\s+(.+?)\s+becomes?\s+(\d+)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
+    /^(?:the\s+base\s+power\s+of\s+(.+?)\s+becomes?|set\s+the\s+base\s+power\s+of\s+(.+?)\s+to)\s+(\d+)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
       trimmed,
     );
   if (ofMatch) {
-    subjects = [ofMatch[1]!];
-    valueText = ofMatch[2]!;
-    durationText = ofMatch[3];
+    subjects = [(ofMatch[1] ?? ofMatch[2])!];
+    valueText = ofMatch[3]!;
+    durationText = ofMatch[4];
   } else {
     const possessiveMatch =
       /^(.+?)\s+base\s+power\s+becomes?\s+(\d+)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(

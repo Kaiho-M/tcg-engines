@@ -21,9 +21,10 @@ export const op01RadicalBeam029: EventCard = {
   rarity: "UC",
   setId: "OP01",
   cost: 1,
+  trigger: "Up to 1 of your Leader or Character cards gains +1000 power during this turn.",
   traits: ["Straw Hat Crew"],
   effect:
-    "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, if you have 2 or less Life cards, that card gains an additional +2000 power.  This card has been officially errata'd.",
+    "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, if you have 2 or less Life cards, that card gains an additional +2000 power.",
   effects: {
     effects: [
       {
@@ -61,6 +62,24 @@ export const op01RadicalBeam029: EventCard = {
               comparison: "lte",
               value: 2,
             },
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: 1000,
+            duration: "thisTurn",
           },
         ],
       },

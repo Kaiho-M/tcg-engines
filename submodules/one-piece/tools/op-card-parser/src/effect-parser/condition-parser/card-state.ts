@@ -449,6 +449,12 @@ export function parseCardStateCondition(text: string): Condition | null {
     return { condition: "donGiven", player: "self" };
   }
 
+  // DON!! given to the Leader only: "your Leader has DON!! cards given to it" (P-159)
+  m = /^your\s+Leader\s+has\s+(?:any\s+)?DON!!\s+cards?\s+given(?:\s+to\s+it)?$/i.exec(t);
+  if (m) {
+    return { condition: "donGiven", player: "self", zone: "leader" };
+  }
+
   // Attribute condition: that Character has the (Attribute) attribute
   m = /^that\s+Character\s+has\s+the\s+\(([^)]+)\)\s+attribute$/i.exec(t);
   if (m) {

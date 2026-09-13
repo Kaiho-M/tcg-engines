@@ -22,11 +22,11 @@ export const op10Moocy043: CharacterCard = {
   setId: "OP10",
   cost: 2,
   power: 2000,
-  counter: 1000,
+  counter: 2000,
   traits: ["Animal Dressrosa"],
   attribute: "strike",
   effect:
-    '[On Play] You may rest 1 of your "Dressrosa" type Leader or Stage cards: Up to 1 of your [Monkey.D.Luffy] Characters gains [Banish] during this turn.',
+    "[On Play] You may rest 1 of your {Dressrosa} type Leader or Stage cards: Up to 1 of your [Monkey.D.Luffy] Characters gains [Banish] during this turn.",
   effects: {
     effects: [
       {

@@ -37,7 +37,35 @@ export const st03Sentomaru007: CharacterCard = {
             amount: 1,
           },
         ],
+        costs: [
+          {
+            cost: "restDon",
+            amount: 2,
+          },
+        ],
         actions: [
+          {
+            action: "play",
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            filters: [
+              {
+                filter: "cost",
+                comparison: "lte",
+                value: 4,
+              },
+              {
+                filter: "name",
+                value: "Pacifista",
+              },
+            ],
+          },
           {
             action: "shuffleDeck",
             player: "self",

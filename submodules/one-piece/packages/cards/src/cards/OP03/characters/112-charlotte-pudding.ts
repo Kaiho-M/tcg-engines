@@ -30,7 +30,7 @@ export const op03CharlottePudding112: CharacterCard = {
   setId: "OP03",
   cost: 1,
   power: 2000,
-  counter: 2000,
+  counter: 1000,
   traits: ["Big Mom Pirates"],
   attribute: "wisdom",
   artVariants: [

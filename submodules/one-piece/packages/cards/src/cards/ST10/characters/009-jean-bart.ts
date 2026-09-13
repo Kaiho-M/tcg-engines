@@ -27,5 +27,29 @@ export const st10JeanBart009: CharacterCard = {
   attribute: "strike",
   effect:
     "[On Play] ➀ (You may rest the specified number of DON!! cards in your cost area.): Add up to 1 DON!! card from your DON!! deck and set it as active.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "addDon",
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            state: "active",
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: st10JeanBart009I18n,
 };

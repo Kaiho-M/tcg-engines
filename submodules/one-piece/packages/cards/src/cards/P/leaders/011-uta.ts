@@ -26,5 +26,39 @@ export const pUta011: LeaderCard = {
   attribute: "special",
   effect:
     "[Activate: Main] [Once Per Turn] ① (You may rest the specified number of DON!! cards in your cost area.): Up to 1 of your Characters with no base effect gains +2000 power during this turn.",
+  effects: {
+    effects: [
+      {
+        trigger: "activateMain",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "noBaseEffect",
+                },
+              ],
+            },
+            value: 2000,
+            duration: "thisTurn",
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
+  },
   i18n: pUta011I18n,
 };

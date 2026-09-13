@@ -361,6 +361,20 @@ export function parsePlayDescription(text: string): TargetFilter[] | null {
     rest = rest.slice(0, eitherNameOrAttributeMatch.index).trim();
   }
 
+  // Extract "that has the {Trait} type or a [Trigger]" (P-118) the same way.
+  const traitOrTriggerMatch =
+    /\s+that\s+has\s+the\s+[{[]([^}\]]+)[}\]]\s+type\s+or\s+a\s+\[Trigger\]$/i.exec(rest);
+  if (traitOrTriggerMatch) {
+    filters.push({
+      filter: "anyOf",
+      groups: [
+        [{ filter: "trait", value: traitOrTriggerMatch[1]!, match: "includes" }],
+        [{ filter: "hasTrigger", value: true }],
+      ],
+    });
+    rest = rest.slice(0, traitOrTriggerMatch.index).trim();
+  }
+
   // Extract "and no base effect" (before cost/power so it doesn't block their $ anchors)
   if (/\s+and no base effect$/i.test(rest)) {
     filters.push({ filter: "noBaseEffect" });

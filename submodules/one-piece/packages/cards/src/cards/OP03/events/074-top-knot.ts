@@ -21,9 +21,10 @@ export const op03TopKnot074: EventCard = {
   rarity: "UC",
   setId: "OP03",
   cost: 2,
+  trigger: "Activate this card's [Main] effect.",
   traits: ["Galley-La Company Water Seven"],
   effect:
-    "[Main] DON!! -1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Place up to 1 of your opponent's Characters with a cost of 4 or less at the bottom of the owner's deck. [Trigger] Activate this card's [Main] effect.",
+    "[Main] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Place up to 1 of your opponent's Characters with a cost of 4 or less at the bottom of the owner's deck.",
   effects: {
     effects: [
       {
@@ -31,7 +32,7 @@ export const op03TopKnot074: EventCard = {
         costs: [
           {
             cost: "returnDon",
-            amount: 1,
+            amount: 2,
           },
         ],
         actions: [

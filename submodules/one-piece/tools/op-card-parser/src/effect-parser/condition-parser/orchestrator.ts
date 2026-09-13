@@ -202,9 +202,10 @@ export function parseWhenEvent(text: string): EffectTrigger | null {
   )
     return "onKo";
 
-  // "a DON!! card on your field is returned to your DON!! deck" (with or without "by your effect")
+  // "a DON!! card on your field is returned to your DON!! deck" (with or without "by your effect");
+  // the official OP02-071 text says "on the field".
   if (
-    /^a\s+DON!!\s+card\s+on\s+your\s+field\s+is\s+returned\s+to\s+your\s+DON!!\s+deck(?:\s+by\s+your\s+effect)?$/i.test(
+    /^a\s+DON!!\s+card\s+on\s+(?:your|the)\s+field\s+is\s+returned\s+to\s+your\s+DON!!\s+deck(?:\s+by\s+your\s+effect)?$/i.test(
       t,
     )
   )

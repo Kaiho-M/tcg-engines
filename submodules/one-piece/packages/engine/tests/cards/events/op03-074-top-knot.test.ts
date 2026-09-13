@@ -5,7 +5,7 @@ import { OnePieceTestEngine } from "../../../src/index.ts";
 import { SOUTH_ATTACKS_WITHOUT_TURN_SETUP } from "./battle-fixture.shared.ts";
 
 describe("OP03-074 Top Knot", () => {
-  test("pays DON!! -1 and bottom-decks the opposing cost-4 boundary", () => {
+  test("pays DON!! -2 and bottom-decks the opposing cost-4 boundary", () => {
     const engine = OnePieceTestEngine.create(
       {
         hand: [op03TopKnot074],
@@ -20,7 +20,11 @@ describe("OP03-074 Top Knot", () => {
     const ownerDeckBefore = engine.getView("north").players.north.deckCount;
 
     engine.playCard(op03TopKnot074);
-    engine.resolveDecision("effectCostReturnDon", { selectedIds: ["active-don:0"] }, "south");
+    engine.resolveDecision(
+      "effectCostReturnDon",
+      { selectedIds: ["active-don:0", "rested-don:0"] },
+      "south",
+    );
 
     const returnDecision = engine.pendingDecision("effectTargetSelection", "south");
     const returnStep = returnDecision.steps[0];
@@ -43,7 +47,7 @@ describe("OP03-074 Top Knot", () => {
     expect(engine.getState().capabilityHistory).toHaveLength(0);
   });
 
-  test("Life Trigger skips Event payment but retains DON!! -1 before the return", () => {
+  test("Life Trigger skips Event payment but retains DON!! -2 before the return", () => {
     const engine = OnePieceTestEngine.create(
       {
         character: [
@@ -53,7 +57,7 @@ describe("OP03-074 Top Knot", () => {
       },
       {
         life: [op03TopKnot074],
-        activeDon: 1,
+        activeDon: 2,
       },
       SOUTH_ATTACKS_WITHOUT_TURN_SETUP,
     );
@@ -68,9 +72,9 @@ describe("OP03-074 Top Knot", () => {
 
     const view = engine.getView("north");
     expect(view.players.north).toMatchObject({
-      activeDon: before.activeDon - 1,
+      activeDon: before.activeDon - 2,
       restedDon: before.restedDon,
-      donDeckCount: before.donDeckCount + 1,
+      donDeckCount: before.donDeckCount + 2,
     });
     expect(engine.getView("south").players.south.deckCount).toBe(ownerDeckBefore + 1);
     expect(view.prompts).toHaveLength(0);

@@ -32,6 +32,10 @@ export const st02EustassCaptainKid001: LeaderCard = {
         trigger: "activateMain",
         costs: [
           {
+            cost: "restDon",
+            amount: 3,
+          },
+          {
             cost: "trashFromHand",
             amount: 1,
           },

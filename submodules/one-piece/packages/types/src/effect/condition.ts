@@ -201,6 +201,8 @@ export interface LifeComparisonCondition {
 export interface DonGivenCondition {
   condition: "donGiven";
   player: Player;
+  /** Restrict to the Leader ("your Leader has DON!! cards given to it"); default: Leader or any Character. */
+  zone?: "leader";
 }
 
 export interface CompoundCondition {

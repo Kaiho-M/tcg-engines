@@ -30,7 +30,7 @@ export const op01Nami016: CharacterCard = {
   setId: "OP01",
   cost: 1,
   power: 2000,
-  counter: 2000,
+  counter: 1000,
   traits: ["Straw Hat Crew"],
   attribute: "special",
   artVariants: [
@@ -41,7 +41,7 @@ export const op01Nami016: CharacterCard = {
     },
   ],
   effect:
-    '[On Play] Look at 5 cards from the top of your deck; reveal up to 1 "Straw Hat Crew" type Character card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.  This card has been officially errata\'d.',
+    "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 {Straw Hat Crew} type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
   effects: {
     effects: [
       {
@@ -67,10 +67,6 @@ export const op01Nami016: CharacterCard = {
                 filter: "trait",
                 value: "Straw Hat Crew",
                 match: "includes",
-              },
-              {
-                filter: "cardCategory",
-                value: "character",
               },
             ],
             revealDestination: "hand",

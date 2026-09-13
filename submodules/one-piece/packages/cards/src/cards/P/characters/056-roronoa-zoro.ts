@@ -26,5 +26,39 @@ export const pRoronoaZoro056: CharacterCard = {
   attribute: "slash",
   effect:
     "[On Play] ➁ (You may rest the specified number of DON!! cards in your cost area.): Return up to 1 Character with a cost of 5 or less to the owner's hand.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 2,
+          },
+        ],
+        actions: [
+          {
+            action: "returnToHand",
+            target: {
+              player: "any",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 5,
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: pRoronoaZoro056I18n,
 };

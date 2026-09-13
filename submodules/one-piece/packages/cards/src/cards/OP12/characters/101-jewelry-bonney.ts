@@ -23,10 +23,11 @@ export const op12JewelryBonney101: CharacterCard = {
   cost: 3,
   power: 1000,
   counter: 1000,
+  trigger: "If your Leader has the {Supernovas} type, play this card.",
   traits: ["Bonney Pirates Supernovas"],
   attribute: "special",
   effect:
-    '[Activate: Main] You may rest this Character: Your "Supernovas" type Leader gains +1000 power until the end of your opponent\'s next turn.',
+    "[Activate: Main] You may rest this Character: Your {Supernovas} type Leader gains +1000 power until the end of your opponent's next turn.",
   effects: {
     effects: [
       {
@@ -58,6 +59,21 @@ export const op12JewelryBonney101: CharacterCard = {
           },
         ],
         optional: true,
+      },
+      {
+        trigger: "trigger",
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "Supernovas",
+            match: "includes",
+          },
+        ],
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
       },
     ],
   },
