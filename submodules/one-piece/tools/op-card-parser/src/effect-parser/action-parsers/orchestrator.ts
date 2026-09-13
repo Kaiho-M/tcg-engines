@@ -981,10 +981,52 @@ export function parseActions(rawActionText: string): ParseActionsResult {
   // optional effect.
   const lifeThenMatch = /^(.+?)\.\s*If\s+you\s+do,\s*(.+)$/i.exec(textAfterSearch);
   if (lifeThenMatch) {
-    const lifeAction = parseRemoveFromLifeAction(lifeThenMatch[1]!.replace(/^you\s+may\s+/i, ""));
+    // "Do W. Then, you may move Life. If you do, Y" (ST22-015): W resolves on
+    // its own and the Life move stays optional.
+    const leadingThenLifeMatch = /^(.+?)\.\s*Then,\s*(.+)$/i.exec(lifeThenMatch[1]!);
+    const leadingActions = leadingThenLifeMatch ? parseActions(leadingThenLifeMatch[1]!) : null;
+    const lifeText = leadingThenLifeMatch ? leadingThenLifeMatch[2]! : lifeThenMatch[1]!;
+    const lifeIsOptional = /^you\s+may\s+/i.test(lifeText);
+    const lifeAction = parseRemoveFromLifeAction(lifeText.replace(/^you\s+may\s+/i, ""));
     const thenActions = parseActions(lifeThenMatch[2]!).parsed;
-    if (lifeAction?.action === "removeFromLife" && thenActions.length > 0) {
-      preParsed.push({ ...lifeAction, thenActions });
+    if (
+      lifeAction?.action === "removeFromLife" &&
+      thenActions.length > 0 &&
+      (!leadingActions || (leadingActions.parsed.length > 0 && !leadingActions.unparsed))
+    ) {
+      const lifeWithThen = { ...lifeAction, thenActions };
+      if (leadingActions) {
+        preParsed.push(
+          ...leadingActions.parsed,
+          lifeIsOptional ? { action: "optional", actions: [lifeWithThen] } : lifeWithThen,
+        );
+      } else {
+        preParsed.push(lifeWithThen);
+      }
+      textAfterSearch = "";
+    }
+  }
+
+  // "Do W. Then, you may rest N of your DON!! cards. If you do, Y" (OP12-018):
+  // resting the DON!! and Y form one optional step after W.
+  const restDonThenMatch =
+    /^(?:(.+?)\.\s*Then,\s*)?you\s+may\s+(rest\s+\d+\s+of\s+your\s+DON!!\s+cards?)\.\s*If\s+you\s+do,\s*(.+)$/i.exec(
+      textAfterSearch,
+    );
+  if (restDonThenMatch) {
+    const leadingActions = restDonThenMatch[1] ? parseActions(restDonThenMatch[1]) : null;
+    const restDon = parseRestAction(restDonThenMatch[2]!);
+    const thenActions = parseActions(restDonThenMatch[3]!);
+    if (
+      restDon &&
+      thenActions.parsed.length > 0 &&
+      !thenActions.unparsed &&
+      (!leadingActions || (leadingActions.parsed.length > 0 && !leadingActions.unparsed))
+    ) {
+      preParsed.push(...(leadingActions?.parsed ?? []), {
+        action: "optional",
+        actions: [restDon, ...thenActions.parsed],
+      });
       textAfterSearch = "";
     }
   }
@@ -1569,6 +1611,23 @@ export function parseActions(rawActionText: string): ParseActionsResult {
     }
   }
 
+  // The mirror case: the rearrange clause comes first and ". Then," continues
+  // with other actions (ST17-004).
+  const rearrangeThenMatch = /^(Look at .+?)\.\s*Then,\s*(.+)$/i.exec(textAfterSearch);
+  if (rearrangeThenMatch) {
+    const rearrange = parseRearrangeDeckAction(rearrangeThenMatch[1]!);
+    const trailingActions = rearrange ? parseActions(rearrangeThenMatch[2]!) : null;
+    if (
+      rearrange &&
+      trailingActions &&
+      trailingActions.parsed.length > 0 &&
+      !trailingActions.unparsed
+    ) {
+      preParsed.push(rearrange, ...trailingActions.parsed);
+      textAfterSearch = "";
+    }
+  }
+
   // Preserve an independent compound named-or-trait power continuation after
   // a leading action. Generic clause splitting would otherwise split the
   // compound subject at its printed `and`.
@@ -1653,6 +1712,18 @@ export function parseActions(rawActionText: string): ParseActionsResult {
     if (setBasePower) {
       textAfterSearch = "";
       preParsed.push(...setBasePower);
+    } else {
+      // "Draw 1 card and your {Supernovas} type Leader's base power becomes
+      // 7000" (ST36-003): a leading action joined to one base-power subject.
+      const leadingAndMatch = /^(.+?)\s+and\s+(your\s+.+\bbase\s+power\s+becomes?\b.+)$/i.exec(
+        textAfterSearch,
+      );
+      const leading = leadingAndMatch ? parseActions(leadingAndMatch[1]!) : null;
+      const trailing = leadingAndMatch ? parseSetBasePowerAction(leadingAndMatch[2]!) : null;
+      if (leading && leading.parsed.length > 0 && !leading.unparsed && trailing) {
+        textAfterSearch = "";
+        preParsed.push(...leading.parsed, ...trailing);
+      }
     }
   }
 

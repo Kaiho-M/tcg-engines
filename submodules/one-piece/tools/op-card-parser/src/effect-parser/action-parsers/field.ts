@@ -17,10 +17,29 @@ type ChoiceAction = Extract<Action, { action: "choice" }>;
 type FreezeAction = Extract<Action, { action: "freeze" }>;
 type TrashThisCardAction = Extract<Action, { action: "trashThisCard" }>;
 
-export function parseCompoundRestActions(text: string): RestAction[] | null {
-  const match = /^rest\s+this\s+(Character|Leader|Stage)\s+and\s+(.+)$/i.exec(
-    text.trim().replace(/\.+$/, ""),
-  );
+export function parseCompoundRestActions(text: string): (RestAction | FreezeAction)[] | null {
+  const trimmed = text.trim().replace(/\.+$/, "");
+
+  // "Rest up to 1 of your opponent's Characters and that Character will not
+  // become active in your opponent's next Refresh Phase" (ST24-004)
+  const restFreezeMatch =
+    /^(rest\s+.+?)\s+and\s+that\s+(?:Character|card)\s+will\s+not\s+become\s+active\s+in\s+your\s+opponent's\s+next\s+Refresh\s+Phase$/i.exec(
+      trimmed,
+    );
+  if (restFreezeMatch) {
+    const rest = parseRestAction(restFreezeMatch[1]!);
+    if (!rest) return null;
+    return [
+      rest,
+      {
+        action: "freeze",
+        target: { ...rest.target, count: { amount: rest.target.count.amount } },
+        previousActionTargets: true,
+      },
+    ];
+  }
+
+  const match = /^rest\s+this\s+(Character|Leader|Stage)\s+and\s+(.+)$/i.exec(trimmed);
   if (!match) return null;
 
   const opponentTarget = parseTarget(match[2]!);

@@ -61,6 +61,22 @@ export const pTrafalgarLaw155: CharacterCard = {
         ],
         optional: true,
       },
+      {
+        trigger: "trigger",
+        conditions: [
+          {
+            condition: "lifeCount",
+            player: "opponent",
+            comparison: "lte",
+            value: 3,
+          },
+        ],
+        actions: [
+          {
+            action: "playThisCard",
+          },
+        ],
+      },
     ],
   },
   i18n: pTrafalgarLaw155I18n,

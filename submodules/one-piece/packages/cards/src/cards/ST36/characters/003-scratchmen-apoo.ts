@@ -29,5 +29,38 @@ export const st36ScratchmenApoo003: CharacterCard = {
   attribute: "ranged",
   effect:
     "[Trigger] Draw 1 card and your {Supernovas} type Leader's base power becomes 7000 during this turn.",
+  effects: {
+    effects: [
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 1,
+          },
+          {
+            action: "setBasePower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Supernovas",
+                  match: "includes",
+                },
+              ],
+            },
+            value: 7000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: st36ScratchmenApoo003I18n,
 };

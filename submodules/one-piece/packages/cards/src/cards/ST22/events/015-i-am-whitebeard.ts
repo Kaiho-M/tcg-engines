@@ -54,13 +54,33 @@ export const st22IAmWhitebeard015: EventCard = {
             ],
           },
           {
-            action: "removeFromLife",
-            player: "self",
-            count: {
-              amount: 1,
-            },
-            destination: "hand",
-            position: "choice",
+            action: "optional",
+            actions: [
+              {
+                action: "removeFromLife",
+                player: "self",
+                count: {
+                  amount: 1,
+                },
+                destination: "hand",
+                position: "choice",
+                thenActions: [
+                  {
+                    action: "modifyPower",
+                    target: {
+                      player: "self",
+                      zones: ["leader"],
+                      count: {
+                        amount: 1,
+                        upTo: true,
+                      },
+                    },
+                    value: 2000,
+                    duration: "untilEndOfOpponentNextTurn",
+                  },
+                ],
+              },
+            ],
           },
         ],
       },

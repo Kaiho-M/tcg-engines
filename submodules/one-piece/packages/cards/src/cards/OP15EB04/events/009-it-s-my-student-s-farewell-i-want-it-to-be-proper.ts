@@ -24,5 +24,46 @@ export const op15eb04ItSMyStudentSFarewellIWantItToBeProper009: EventCard = {
   traits: ["Former Roger Pirates"],
   effect:
     "[Main] You may give 1 active DON!! card to 1 of your [Silvers Rayleigh]: Give up to 1 of your opponent's Characters −2000 power during this turn.\n[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle.",
+  effects: {
+    effects: [
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
+            },
+            value: 2000,
+            duration: "thisBattle",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04ItSMyStudentSFarewellIWantItToBeProper009I18n,
 };

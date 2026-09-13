@@ -24,5 +24,46 @@ export const op12ToNeverDoubtThatIsPower016: EventCard = {
   traits: ["Former Roger Pirates"],
   effect:
     "[Main] You may give 2 active DON!! cards to 1 of your [Silvers Rayleigh]: Your opponent cannot activate [Blocker] when the card given these DON!! cards attacks during this turn.\n[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle.",
+  effects: {
+    effects: [
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
+            },
+            value: 2000,
+            duration: "thisBattle",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op12ToNeverDoubtThatIsPower016I18n,
 };

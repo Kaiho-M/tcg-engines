@@ -23,6 +23,7 @@ export const pGeneralFranky027: CharacterCard = {
   cost: 2,
   power: 4000,
   traits: ["Straw Hat Crew"],
+  alternateNames: ["Franky"],
   attribute: "ranged",
   effect:
     "Also treat this card's name as [Franky] according to the rules.\n[Opponent's Turn] All of your Characters with 3000 base power or less gain +1000 power.",

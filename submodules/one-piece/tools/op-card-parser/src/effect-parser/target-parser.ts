@@ -667,6 +667,38 @@ export function parseModifyPowerTarget(text: string): Target | null {
     return { player: "opponent", zones: ["character"], count: { amount: "all" } };
   }
 
+  // "your opponent's Leader and all of their Characters" (OP12-018)
+  if (
+    /^your opponent's Leader and all (?:of )?(?:their|your opponent's) Characters$/i.test(trimmed)
+  ) {
+    return { player: "opponent", zones: ["leader", "character"], count: { amount: "all" } };
+  }
+
+  if (/^your opponent's Leader$/i.test(trimmed)) {
+    return { player: "opponent", zones: ["leader"], count: { amount: 1 } };
+  }
+
+  // "up to 1 of your Characters or [Silvers Rayleigh]": a Character, or the
+  // named card whether it is the Leader or a Character (OP12-016/018/019).
+  const charactersOrNamedMatch =
+    /^up\s+to\s+(\d+)\s+of\s+your\s+Characters\s+or\s+\[([^\]]+)\]$/i.exec(trimmed);
+  if (charactersOrNamedMatch) {
+    return {
+      player: "self",
+      zones: ["leader", "character"],
+      count: { amount: parseInt(charactersOrNamedMatch[1]!, 10), upTo: true },
+      filters: [
+        {
+          filter: "anyOf",
+          groups: [
+            [{ filter: "cardCategory", value: "character" }],
+            [{ filter: "name", value: charactersOrNamedMatch[2]! }],
+          ],
+        },
+      ],
+    };
+  }
+
   // "all of your {Trait} (or {Trait2}) type (Leader and )Characters (with filters)"
   const allTraitMatch =
     /^all (?:of )?your\s+(?:[[{"\u201c])([^\]}\u201d"]+)(?:[\]}\u201d"])(?:\s+or\s+(?:[[{"\u201c])([^\]}\u201d"]+)(?:[\]}\u201d"]))?\s+type\s+(Leader\s+and\s+Character|Characters?)\s*(.*)$/i.exec(

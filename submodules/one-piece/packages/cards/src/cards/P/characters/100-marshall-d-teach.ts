@@ -26,5 +26,25 @@ export const pMarshallDTeach100: CharacterCard = {
   attribute: "special",
   effect:
     "[When Attacking] Negate the effects of your opponent's Leader and all of their Characters during this turn.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenAttacking",
+        actions: [
+          {
+            action: "negateEffects",
+            target: {
+              player: "opponent",
+              zones: ["leader", "character"],
+              count: {
+                amount: "all",
+              },
+            },
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: pMarshallDTeach100I18n,
 };

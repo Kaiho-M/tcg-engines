@@ -329,6 +329,8 @@ function renderCard(card: GeneratedCard, constName: string, slug: string, num: s
   }
   if (card.traits !== undefined && card.traits.length > 0)
     lines.push(`  traits: ${JSON.stringify(card.traits)},`);
+  if (card.alternateNames !== undefined && card.alternateNames.length > 0)
+    lines.push(`  alternateNames: ${JSON.stringify(card.alternateNames)},`);
   if (card.attribute !== undefined) lines.push(`  attribute: ${JSON.stringify(card.attribute)},`);
 
   if (card.artVariants !== undefined && card.artVariants.length > 0) {
@@ -372,7 +374,11 @@ function buildCard(
   const trigger = card.cardType === "leader" ? undefined : card.trigger;
   const effectText = [
     printedEffect,
-    trigger && !/\[Trigger\]/i.test(printedEffect ?? "") ? `[Trigger] ${trigger}` : undefined,
+    // A mid-sentence "[Trigger]" ("trash 1 card with a [Trigger]", P-155) is a
+    // property, not the trigger clause; only a line-leading label counts.
+    trigger && !/(?:^|\n)\s*\[Trigger\]/i.test(printedEffect ?? "")
+      ? `[Trigger] ${trigger}`
+      : undefined,
   ]
     .filter((text): text is string => Boolean(text))
     .join("\n");

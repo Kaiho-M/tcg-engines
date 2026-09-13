@@ -30,16 +30,62 @@ export const op12ColorOfTheSupremeKingHaki018: EventCard = {
         trigger: "counter",
         actions: [
           {
-            action: "rest",
+            action: "modifyPower",
             target: {
               player: "self",
-              zones: ["costArea"],
+              zones: ["leader", "character"],
               count: {
                 amount: 1,
+                upTo: true,
               },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
             },
+            value: 2000,
+            duration: "thisBattle",
           },
         ],
+      },
+      {
+        trigger: "counter",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "opponent",
+              zones: ["leader", "character"],
+              count: {
+                amount: "all",
+              },
+            },
+            value: -1000,
+            duration: "thisTurn",
+          },
+        ],
+        optional: true,
       },
     ],
   },

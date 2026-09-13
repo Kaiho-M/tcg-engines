@@ -27,6 +27,42 @@ export const st23Shanks002: CharacterCard = {
   effect:
     "If your opponent has a Character with 8000 base power or more, give this card in your hand −3 cost.\n[On Play] If your Leader has the {Red-Haired Pirates} type or is [Uta], your Leader gains +2000 power until the end of your opponent's next End Phase.",
   effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        conditions: [
+          {
+            condition: "compound",
+            operator: "or",
+            conditions: [
+              {
+                condition: "leaderTrait",
+                trait: "Red-Haired Pirates",
+                match: "includes",
+              },
+              {
+                condition: "leaderName",
+                name: "Uta",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 2000,
+            duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+      },
+    ],
     permanentEffects: [
       {
         conditions: [

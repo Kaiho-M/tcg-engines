@@ -32,6 +32,28 @@ export const st24LawBepo004: CharacterCard = {
         trigger: "onPlay",
         actions: [
           {
+            action: "rest",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+          },
+          {
+            action: "freeze",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+            },
+            previousActionTargets: true,
+          },
+          {
             action: "modifyPower",
             target: {
               player: "self",

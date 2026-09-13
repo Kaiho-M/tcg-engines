@@ -94,6 +94,19 @@ export function parseLeaderCondition(text: string): Condition | null {
     };
   }
 
+  // The same pair the other way round: "your Leader has the {Y} type or is [X]" (ST23-002)
+  m =
+    /^your\s+Leader\s+has\s+the\s+[""[{]([^""\]}]+)[""\]}]\s+type\s+or\s+is\s+\[([^\]]+)\]$/i.exec(
+      t,
+    );
+  if (m) {
+    return {
+      condition: "compound",
+      operator: "or",
+      conditions: [leaderTrait(m[1]!), { condition: "leaderName", name: m[2]! }],
+    };
+  }
+
   // Leader name: your Leader is [X] or "X"
   m = /^your Leader is (?:\[([^\]]+)\]|[""]([^""]+)[""])$/i.exec(t);
   if (m) return { condition: "leaderName", name: (m[1] ?? m[2])! };

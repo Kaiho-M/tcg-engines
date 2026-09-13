@@ -33,6 +33,12 @@ export const st17BoaHancock004: CharacterCard = {
         trigger: "onPlay",
         actions: [
           {
+            action: "rearrangeDeck",
+            player: "self",
+            count: 3,
+            position: "topOrBottom",
+          },
+          {
             action: "giveDon",
             target: {
               player: "self",

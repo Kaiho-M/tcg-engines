@@ -31,6 +31,7 @@ export const op14eb04RosinanteLaw038: CharacterCard = {
   cost: 6,
   power: 8000,
   traits: ["Navy", "Donquixote Pirates"],
+  alternateNames: ["Trafalgar Law", "Donquixote Rosinante"],
   attribute: ["special", "wisdom"],
   artVariants: [
     {

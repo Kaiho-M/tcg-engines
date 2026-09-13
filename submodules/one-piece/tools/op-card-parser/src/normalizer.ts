@@ -77,6 +77,17 @@ function parseColors(raw: string, cardId: string): OPColor[] {
   });
 }
 
+/**
+ * "Also treat this card's name as [Usopp] according to the rules." / "Under the
+ * rules of this game, also treat this card's name as [A] and [B]." → the extra
+ * names the card answers to.
+ */
+function parseAlternateNames(text: string): string[] {
+  const match = /treat this card's name as ((?:\[[^\]]+\](?:\s+and\s+)?)+)/i.exec(text);
+  if (!match) return [];
+  return [...match[1]!.matchAll(/\[([^\]]+)\]/g)].map((m) => m[1]!);
+}
+
 function parseAttribute(
   raw: string | null,
   cardId: string,
@@ -219,6 +230,7 @@ export function normalize(raw: RawOPCard): OPCard {
   const effects: CardEffects | undefined = keywords.length > 0 ? { keywords } : undefined;
   const counter =
     raw.counter_amount != null && raw.counter_amount > 0 ? raw.counter_amount : undefined;
+  const alternateNames = parseAlternateNames(cardText);
 
   const i18n: OPCardI18n = {
     en: {
@@ -248,6 +260,7 @@ export function normalize(raw: RawOPCard): OPCard {
     setId,
     ...(traits.length > 0 && { traits }),
     ...(attribute !== undefined && { attribute }),
+    ...(alternateNames.length > 0 && { alternateNames }),
     ...(effects !== undefined && { effects }),
     i18n,
   };

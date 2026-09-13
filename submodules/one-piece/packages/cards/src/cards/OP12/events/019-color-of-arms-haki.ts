@@ -24,5 +24,46 @@ export const op12ColorOfArmsHaki019: EventCard = {
   traits: ["Former Roger Pirates"],
   effect:
     "[Main] You may give 1 active DON!! card to 1 of your [Silvers Rayleigh]: Up to 1 of your Leader or Character cards gains +1000 power during this turn.\n[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle.",
+  effects: {
+    effects: [
+      {
+        trigger: "counter",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
+            },
+            value: 2000,
+            duration: "thisBattle",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op12ColorOfArmsHaki019I18n,
 };
