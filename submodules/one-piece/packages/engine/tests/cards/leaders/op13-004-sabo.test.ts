@@ -19,7 +19,8 @@ describe("OP13-004 Sabo", () => {
     engine.attachDon(engine.leader("south"), 1, "south");
 
     let view = engine.getView("south");
-    expect(view.players.south.leader.power).toBe(8000);
+    // 4 Life: the printed "-1000" clause applies (5000 + 1000 DON!! - 1000 + 1000 for the cost-8 Character).
+    expect(view.players.south.leader.power).toBe(6000);
     expect(view.players.south.characters[0]?.power).toBe(11000);
 
     engine.endTurn("south");

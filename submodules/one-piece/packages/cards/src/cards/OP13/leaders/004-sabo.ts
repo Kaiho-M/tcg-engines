@@ -40,16 +40,30 @@ export const op13Sabo004: LeaderCard = {
     },
   ],
   effect:
-    "If you have 4 or more Life cards, give this Leader 1000 power.\n[DON!! x1] If you have a Character with a cost of 8 or more, your Leader and all of your Characters gain +1000 power.",
+    "If you have 4 or more Life cards, give this Leader −1000 power.\n[DON!! x1] If you have a Character with a cost of 8 or more, your Leader and all of your Characters gain +1000 power.",
   effects: {
     permanentEffects: [
       {
-        conditions: [{ condition: "lifeCount", player: "self", comparison: "gte", value: 4 }],
+        conditions: [
+          {
+            condition: "lifeCount",
+            player: "self",
+            comparison: "gte",
+            value: 4,
+          },
+        ],
         actions: [
           {
             action: "modifyPower",
-            target: { player: "self", zones: ["leader"], count: { amount: "all" } },
-            value: 1000,
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: "all",
+              },
+              self: true,
+            },
+            value: -1000,
             duration: "permanent",
           },
         ],

@@ -274,6 +274,16 @@ export function parseTarget(text: string): Target | null {
     };
   }
 
+  // A bare Leader: "your Leader" / "your opponent's Leader" (OP16-039 "Rest your opponent's Leader")
+  const bareLeaderMatch = /^(your opponent's|your)\s+Leader$/i.exec(trimmed);
+  if (bareLeaderMatch) {
+    return {
+      player: bareLeaderMatch[1]!.toLowerCase() === "your" ? "self" : "opponent",
+      zones: ["leader"],
+      count: { amount: 1 },
+    };
+  }
+
   // Standard pattern: (up to )?(a total of )?N of (your opponent's|your) (rested|active)? <zones+filters>
   let rest = trimmed;
 

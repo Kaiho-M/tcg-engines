@@ -16,7 +16,7 @@ describe("OP13-003 Gol.D.Roger", () => {
 
     const view = engine.getView("south");
     expect(view.players.south).toMatchObject({ activeDon: 2, donDeckCount: 0 });
-    expect(view.players.south.leader).toMatchObject({ attachedDon: 1, power: 10000 });
+    expect(view.players.south.leader).toMatchObject({ attachedDon: 1, power: 6000 });
 
     const capped = OnePieceTestEngine.create({
       leaderCardId: op13GolDRoger003,

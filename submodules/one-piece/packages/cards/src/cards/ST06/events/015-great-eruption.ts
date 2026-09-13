@@ -50,6 +50,16 @@ export const st06GreatEruption015: EventCard = {
           },
         ],
       },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "trashFromHand",
+            player: "opponent",
+            amount: 1,
+          },
+        ],
+      },
     ],
   },
   i18n: st06GreatEruption015I18n,

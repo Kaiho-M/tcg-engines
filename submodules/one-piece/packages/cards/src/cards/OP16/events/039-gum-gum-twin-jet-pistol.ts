@@ -74,6 +74,21 @@ export const op16GumGumTwinJetPistol039: EventCard = {
           },
         ],
       },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "rest",
+            target: {
+              player: "opponent",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   i18n: op16GumGumTwinJetPistol039I18n,

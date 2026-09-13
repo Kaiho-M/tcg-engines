@@ -2849,6 +2849,26 @@ export function resolveEffectChoicePrompt(
           ) {
             return false;
           }
+        } else if (context.action.revealDestination === "life") {
+          // "add up to 1 card to the top of your Life cards" (OP16-119): face-down, unrevealed.
+          moveCard(state, instanceId, context.controller, "life", {
+            lifePosition: "top",
+            faceUp: false,
+            publicKnowledge: false,
+            actor: context.controller,
+            visibility: "private",
+            suppressLog: true,
+          });
+          emitLog(
+            state,
+            context.controller,
+            `${getPlayer(state, context.controller).playerName} adds 1 card from the looked-at cards to the top of Life.`,
+            {
+              sourceCardId: prompt.sourceCardId,
+              sourceInstanceId: context.sourceInstanceId,
+              visibility: "public",
+            },
+          );
         } else {
           emitLog(
             state,

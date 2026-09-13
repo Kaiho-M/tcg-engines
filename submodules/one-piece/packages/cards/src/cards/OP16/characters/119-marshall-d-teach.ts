@@ -46,6 +46,25 @@ export const op16MarshallDTeach119: CharacterCard = {
   effects: {
     effects: [
       {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "search",
+            lookCount: 3,
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            revealCount: {
+              amount: 1,
+              upTo: true,
+            },
+            revealDestination: "life",
+            remainderPosition: "bottom",
+          },
+        ],
+      },
+      {
         trigger: "trigger",
         actions: [
           {

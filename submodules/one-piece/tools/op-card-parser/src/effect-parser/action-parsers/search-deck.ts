@@ -424,7 +424,9 @@ export function parseSearchAction(
   }
 
   // Pattern 3: "add up to N card(s) to your hand [. Then, <remainder>]"
-  const addPattern = /^add\s+up\s+to\s+(\d+)\s+cards?\s+to\s+your\s+hand/i;
+  // Pattern 3b: "add up to N card(s) to the top of your Life cards" (OP16-119) puts the card on Life instead.
+  const addPattern =
+    /^add\s+up\s+to\s+(\d+)\s+cards?\s+to\s+(your\s+hand|the\s+top\s+of\s+your\s+Life\s+cards?)/i;
   const addMatch = addPattern.exec(afterLook);
   if (addMatch) {
     const afterAdd = afterLook.slice(addMatch[0].length);
@@ -443,7 +445,7 @@ export function parseSearchAction(
       lookCount,
       source: { player: "self", zone: "deck" },
       revealCount: { amount: parseInt(addMatch[1]!, 10), upTo: true },
-      revealDestination: "hand",
+      revealDestination: /Life/i.test(addMatch[2]!) ? "life" : "hand",
       remainderPosition,
     };
     return { action, remaining };

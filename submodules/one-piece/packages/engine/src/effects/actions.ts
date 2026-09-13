@@ -4076,7 +4076,9 @@ export function processEffectAction(
       if (
         action.source.player !== "self" ||
         action.source.zone !== "deck" ||
-        (action.revealDestination !== "hand" && action.revealDestination !== "character") ||
+        (action.revealDestination !== "hand" &&
+          action.revealDestination !== "character" &&
+          action.revealDestination !== "life") ||
         (action.remainderPosition !== "bottom" &&
           action.remainderPosition !== "top" &&
           action.remainderPosition !== "trash" &&
@@ -6012,6 +6014,9 @@ export function payCosts(
         const selected =
           trashHandIds ??
           candidatesForTrashFromHandCost(state, seat, sourceInstanceId, cost).slice(0, cost.amount);
+        const fromHand = selected.filter(
+          (instanceId) => getInstance(state, instanceId).zone === "hand",
+        );
         for (const instanceId of selected) {
           returnAttachedDonToCostArea(state, instanceId);
           moveCard(state, instanceId, getInstance(state, instanceId).owner, "trash", {
@@ -6020,6 +6025,19 @@ export function payCosts(
             actor: controller,
             visibility: "private",
           });
+        }
+        // Paying a cost is part of that card's effect, so a hand card trashed
+        // this way counts as "trashed from your hand by ... card's effect"
+        // (Kuzan OP12-040 draws when Garp OP12-056 trashes for its cost).
+        if (fromHand.length > 0) {
+          const triggerEvent = {
+            instanceId: fromHand[0]!,
+            effectController: controller,
+            amount: fromHand.length,
+            sourceInstanceId,
+          };
+          enqueueInPlayEffectsForTrigger(state, "whenCardTrashedFromHandByEffect", triggerEvent);
+          enqueueInPlayEffectsForTrigger(state, "whenCardsTrashedFromHandByEffect", triggerEvent);
         }
         break;
       }

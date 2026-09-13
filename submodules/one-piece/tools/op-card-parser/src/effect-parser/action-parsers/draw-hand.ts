@@ -162,15 +162,17 @@ export function parseTrashFromHandAction(text: string): TrashFromHandAction | nu
     }
   }
 
-  // "your opponent trashes N card(s) from their hand"
-  const opponentMatch = /^your\s+opponent\s+trashes\s+(\d+)\s+cards?\s+from\s+their\s+hand$/i.exec(
-    trimmed,
-  );
+  // "your opponent trashes N card(s) from their hand" /
+  // "your opponent chooses N card(s) from their hand and trashes it/them" (ST06-015)
+  const opponentMatch =
+    /^your\s+opponent\s+(?:trashes\s+(\d+)\s+cards?\s+from\s+their\s+hand|chooses\s+(\d+)\s+cards?\s+from\s+their\s+hand\s+and\s+trashes\s+(?:it|them))$/i.exec(
+      trimmed,
+    );
   if (opponentMatch) {
     return {
       action: "trashFromHand",
       player: "opponent",
-      amount: parseInt(opponentMatch[1]!, 10),
+      amount: parseInt((opponentMatch[1] ?? opponentMatch[2])!, 10),
     };
   }
 
