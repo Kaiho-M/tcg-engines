@@ -226,6 +226,24 @@ export function parseGiveDonAction(text: string): GiveDonAction | GiveDonAction[
     };
   }
 
+  // Pattern 6: "Give up to N of your Characters with 6000 base power up to M rested DON!! cards each" (ST30-014)
+  const filteredEachMatch =
+    /^give\s+(up\s+to\s+\d+\s+of\s+your\s+.+?)\s+up\s+to\s+(\d+)\s+rested\s+DON!!\s+cards?\s+each$/i.exec(
+      cleaned,
+    );
+  if (filteredEachMatch) {
+    const target = parseTarget(filteredEachMatch[1]!);
+    if (target && target.player === "self") {
+      return {
+        action: "giveDon",
+        target,
+        count: { amount: parseInt(filteredEachMatch[2]!, 10), upTo: true },
+        donState: "rested",
+        distribution: "each",
+      };
+    }
+  }
+
   return null;
 }
 

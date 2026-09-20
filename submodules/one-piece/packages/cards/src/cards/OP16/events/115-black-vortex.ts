@@ -29,6 +29,39 @@ export const op16BlackVortex115: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "Blackbeard Pirates",
+            match: "includes",
+          },
+        ],
+        actions: [
+          {
+            action: "returnToHand",
+            target: {
+              player: "self",
+              zones: ["trash"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "hasTrigger",
+                  value: true,
+                },
+                {
+                  filter: "excludeName",
+                  value: "Black Vortex",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
         trigger: "trigger",
         actions: [
           {

@@ -74,6 +74,43 @@ export const st30LuffyAce001: LeaderCard = {
           },
         ],
       },
+      {
+        conditions: [
+          {
+            condition: "turn",
+            value: "opponent",
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  filters: [
+                    {
+                      filter: "name",
+                      value: "Portgas.D.Ace",
+                    },
+                    {
+                      filter: "name",
+                      value: "Monkey.D.Luffy",
+                    },
+                  ],
+                },
+              ],
+            },
+            value: 3000,
+            duration: "permanent",
+          },
+        ],
+      },
     ],
   },
   i18n: st30LuffyAce001I18n,

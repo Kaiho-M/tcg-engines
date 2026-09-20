@@ -513,15 +513,19 @@ export function parseCannotBeRestedAction(text: string): CannotBeRestedAction | 
   }
 
   // "Up to N of your opponent's Characters with a cost of X or less cannot be rested until the end of your opponent's next End Phase"
+  // "Up to 1 of your opponent's Characters other than [Monkey.D.Luffy] cannot be rested until ..." (OP16-032)
   const match =
-    /^(Up\s+to\s+(\d+)\s+of\s+your\s+opponent's\s+Characters?\s*(?:with\s+(.+?))?)\s+cannot\s+be\s+rested\s+(until\s+the\s+end\s+of\s+your\s+opponent's\s+next\s+(?:End\s+Phase|turn))$/i.exec(
+    /^(Up\s+to\s+(\d+)\s+of\s+your\s+opponent's\s+Characters?\s*(?:other\s+than\s+\[([^\]]+)\])?\s*(?:with\s+(.+?))?)\s+cannot\s+be\s+rested\s+(until\s+the\s+end\s+of\s+your\s+opponent's\s+next\s+(?:End\s+Phase|turn))$/i.exec(
       trimmed,
     );
   if (match) {
     const amount = parseInt(match[2]!, 10);
     const filters: TargetFilter[] = [];
     if (match[3]) {
-      const costFilter = /a\s+cost\s+of\s+(\d+)\s+or\s+(less|more)/i.exec(match[3]);
+      filters.push({ filter: "excludeName", value: match[3] });
+    }
+    if (match[4]) {
+      const costFilter = /a\s+cost\s+of\s+(\d+)\s+or\s+(less|more)/i.exec(match[4]);
       if (costFilter) {
         filters.push({
           filter: "cost",
@@ -538,7 +542,7 @@ export function parseCannotBeRestedAction(text: string): CannotBeRestedAction | 
         count: { amount, upTo: true },
         filters: filters.length > 0 ? filters : undefined,
       },
-      duration: parseFullDuration(match[4]!),
+      duration: parseFullDuration(match[5]!),
     };
   }
 

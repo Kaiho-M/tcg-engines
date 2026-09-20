@@ -45,6 +45,43 @@ export const op16Shiryu108: CharacterCard = {
   effects: {
     effects: [
       {
+        trigger: "onPlay",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "addToLife",
+            target: {
+              player: "self",
+              zones: ["trash"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Blackbeard Pirates",
+                  match: "includes",
+                },
+                {
+                  filter: "cost",
+                  comparison: "lte",
+                  value: 6,
+                },
+              ],
+            },
+            position: "top",
+            faceUp: true,
+          },
+        ],
+        optional: true,
+      },
+      {
         trigger: "trigger",
         actions: [
           {

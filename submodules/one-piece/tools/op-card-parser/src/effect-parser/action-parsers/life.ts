@@ -63,9 +63,9 @@ export function parseAddToLifeAction(text: string): AddToLifeAction | null {
     };
   }
 
-  // Pattern 2: "add up to N [filters] card(s) [with a cost of N] from your hand to the (top|bottom) of your Life cards [face-up]"
+  // Pattern 2: "add up to N [filters] card(s) [with a cost of N] from your hand/trash to the (top|bottom) of your Life cards [face-up]"
   const handMatch =
-    /^add\s+up\s+to\s+(\d+)\s+(.+?)\s+cards?(?:\s+with\s+a\s+cost\s+of\s+(\d+)(?:\s+or\s+(less|more))?)?\s+(?:with\s+a\s+\[Trigger\]\s+)?from\s+your\s+hand\s+to\s+the\s+(top|bottom)\s+of\s+your\s+Life\s+cards?(?:\s+face-up)?$/i.exec(
+    /^add\s+up\s+to\s+(\d+)\s+(.+?)\s+cards?(?:\s+with\s+a\s+cost\s+of\s+(\d+)(?:\s+or\s+(less|more))?)?\s+(?:with\s+a\s+\[Trigger\]\s+)?from\s+your\s+(hand|trash)\s+to\s+the\s+(top|bottom)\s+of\s+your\s+Life\s+cards?(?:\s+face-up)?$/i.exec(
       trimmed,
     );
   if (handMatch) {
@@ -104,11 +104,11 @@ export function parseAddToLifeAction(text: string): AddToLifeAction | null {
       action: "addToLife",
       target: {
         player: "self",
-        zones: ["hand"],
+        zones: [handMatch[5]!.toLowerCase() as "hand" | "trash"],
         count: { amount: parseInt(handMatch[1]!, 10), upTo: true },
         ...(filters.length > 0 && { filters }),
       },
-      position: handMatch[5]!.toLowerCase() as "top" | "bottom",
+      position: handMatch[6]!.toLowerCase() as "top" | "bottom",
       ...(faceUp && { faceUp: true }),
     };
   }

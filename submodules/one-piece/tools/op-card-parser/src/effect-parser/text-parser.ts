@@ -77,9 +77,19 @@ function splitIntoLines(text: string): string[] {
     if (trimmed.startsWith("•") && joined.length > 0) {
       // Continuation of a "Choose one:" pattern — append to previous line
       joined[joined.length - 1] += "\n" + trimmed;
-    } else {
-      joined.push(trimmed);
+      continue;
     }
+    // "X, and if it is your opponent's turn, Y" is two permanent effects; the
+    // second one carries the turn condition as a bracket prefix (OP17-119).
+    const turnClause = /^(.+?),\s+and\s+if\s+it\s+is\s+your\s+(opponent['’]s\s+)?turn,\s+(.+)$/i.exec(
+      trimmed,
+    );
+    if (turnClause) {
+      joined.push(`${turnClause[1]!}.`);
+      joined.push(`[${turnClause[2] ? "Opponent's" : "Your"} Turn] ${turnClause[3]!}`);
+      continue;
+    }
+    joined.push(trimmed);
   }
 
   const result: string[] = [];

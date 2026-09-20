@@ -95,6 +95,7 @@ import {
 } from "./restrictions.ts";
 import {
   parseSelectAction,
+  parseChangeBattleTargetAction,
   parseActivateEffectAction,
   parseActivateEffectInZoneAction,
   parseOpponentAction,
@@ -2102,6 +2103,12 @@ export function parseActions(rawActionText: string): ParseActionsResult {
     const cannotBeRested = parseCannotBeRestedAction(clause);
     if (cannotBeRested) {
       parsed.push(cannotBeRested);
+      continue;
+    }
+
+    const changeBattleTarget = parseChangeBattleTargetAction(clause);
+    if (changeBattleTarget) {
+      parsed.push(changeBattleTarget);
       continue;
     }
 

@@ -71,6 +71,37 @@ export function parseDealDamageAction(text: string): DealDamageAction | null {
   return { action: "dealDamage", player: "self", amount: parseInt(selfMatch[1]!, 10) };
 }
 
+/**
+ * Parse "Change the target of that attack to this Leader or to one of your
+ * {Trait} type Character cards" (OP16-080). The redirect target is chosen
+ * among the controller's Leader and matching Characters.
+ */
+export function parseChangeBattleTargetAction(text: string): Action | null {
+  const trimmed = text.trim().replace(/\.+$/, "");
+  const match =
+    /^change\s+the\s+target\s+of\s+(?:that|the)\s+attack\s+to\s+this\s+Leader\s+or\s+to\s+(?:one|1)\s+of\s+your\s+(?:[[{"“])([^\]}”"]+)(?:[\]}”"])\s+type\s+Character\s+cards?$/i.exec(
+      trimmed,
+    );
+  if (!match) return null;
+  return {
+    action: "changeBattleTarget",
+    target: {
+      player: "self",
+      zones: ["leader", "character"],
+      count: { amount: 1 },
+      filters: [
+        {
+          filter: "anyOf",
+          groups: [
+            [{ filter: "cardCategory", value: "leader" }],
+            [{ filter: "trait", value: match[1]!, match: "includes" }],
+          ],
+        },
+      ],
+    },
+  };
+}
+
 export function parseSelectAction(text: string): Action[] | null {
   const trimmed = text.trim().replace(/\.+$/, "");
 
@@ -218,14 +249,13 @@ export function parseSelectAction(text: string): Action[] | null {
     const duration = selectSetPowerMatch[4]
       ? parseFullDuration(selectSetPowerMatch[4])
       : "thisTurn";
-    return [
-      {
-        action: "setPower",
-        target: { player: "self", zones: ["character" as Zone], count: { amount: 1 }, self: true },
-        value: 0, // Sentinel: "copy selected power"
-        duration,
-      },
-    ];
+    // copyPower copies the chosen card's current power onto this Character (OP16-104).
+    const upTo = /^select\s+up\s+to/i.test(trimmed);
+    const copiedFrom = parseTarget(
+      `${upTo ? "up to " : ""}${selectSetPowerMatch[1]!} of ${selectSetPowerMatch[2]!} ${selectSetPowerMatch[3]!}`,
+    );
+    if (!copiedFrom) return null;
+    return [{ action: "copyPower", target: copiedFrom, duration }];
   }
 
   // "Select up to 1 of your [Name] cards and that card gains +N power during this turn. Then, if the selected card attacks during this turn, your opponent cannot activate [Blocker]"

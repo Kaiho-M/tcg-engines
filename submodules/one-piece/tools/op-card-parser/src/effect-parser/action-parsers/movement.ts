@@ -212,7 +212,15 @@ export function parseAddFromTrashToHandAction(text: string): ReturnToHandAction 
                 }
               }
             } else {
-              return null;
+              // "card with a [Trigger] other than [Name]" — any card type (OP16-115)
+              const anyCardMatch = /^cards?\s+with\s+a\s+\[Trigger\](?:\s+other\s+than\s+\[([^\]]+)\])?$/i.exec(
+                remaining,
+              );
+              if (!anyCardMatch) return null;
+              filters.push({ filter: "hasTrigger", value: true });
+              if (anyCardMatch[1]) {
+                filters.push({ filter: "excludeName", value: anyCardMatch[1] });
+              }
             }
           }
         }

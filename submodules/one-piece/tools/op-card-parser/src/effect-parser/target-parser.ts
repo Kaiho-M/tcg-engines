@@ -662,6 +662,26 @@ export function parseModifyPowerTarget(text: string): Target | null {
     return { player: "self", zones: ["character"], count: { amount: "all" } };
   }
 
+  // "all of your [A] and [B] cards" → every Leader or Character with either name (ST30-001)
+  const allNamedAlternativesMatch =
+    /^all\s+(?:of\s+)?your\s+\[([^\]]+)\]\s+and\s+\[([^\]]+)\]\s+cards$/i.exec(trimmed);
+  if (allNamedAlternativesMatch) {
+    return {
+      player: "self",
+      zones: ["leader", "character"],
+      count: { amount: "all" },
+      filters: [
+        {
+          filter: "anyOf",
+          filters: [
+            { filter: "name", value: allNamedAlternativesMatch[1]! },
+            { filter: "name", value: allNamedAlternativesMatch[2]! },
+          ],
+        },
+      ],
+    };
+  }
+
   const allNamedCharactersMatch = /^your\s+\[([^\]]+)\]$/i.exec(trimmed);
   if (allNamedCharactersMatch) {
     return {

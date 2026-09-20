@@ -53,6 +53,28 @@ export const op16Mr2BonKureiBentham055: CharacterCard = {
           },
         ],
       },
+      {
+        trigger: "whenAttacking",
+        conditions: [
+          {
+            condition: "donAttached",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "copyPower",
+            target: {
+              player: "opponent",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            duration: "thisTurn",
+          },
+        ],
+      },
     ],
   },
   i18n: op16Mr2BonKureiBentham055I18n,

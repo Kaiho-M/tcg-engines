@@ -42,5 +42,44 @@ export const st30Mr3Galdino014: CharacterCard = {
   ],
   effect:
     "[Activate: Main] You may rest this Character: Give up to 2 of your Characters with 6000 base power up to 2 rested DON!! cards each.",
+  effects: {
+    effects: [
+      {
+        trigger: "activateMain",
+        costs: [
+          {
+            cost: "restThisCard",
+          },
+        ],
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 2,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "basePower",
+                  comparison: "eq",
+                  value: 6000,
+                },
+              ],
+            },
+            count: {
+              amount: 2,
+              upTo: true,
+            },
+            donState: "rested",
+            distribution: "each",
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: st30Mr3Galdino014I18n,
 };

@@ -28,6 +28,66 @@ export const op15eb04BlackRopeDragonTwister059: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        costs: [
+          {
+            cost: "turnLifeFaceUp",
+            count: 1,
+            faceUp: true,
+          },
+        ],
+        actions: [
+          {
+            action: "conditional",
+            predicate: {
+              condition: "zoneCountComparison",
+              zone: "character",
+              selfComparison: "lt",
+              difference: 1,
+            },
+            whenTrue: [
+              {
+                action: "ko",
+                target: {
+                  player: "opponent",
+                  zones: ["character"],
+                  count: {
+                    amount: 1,
+                    upTo: true,
+                  },
+                  filters: [
+                    {
+                      filter: "cost",
+                      comparison: "lte",
+                      value: 6,
+                    },
+                  ],
+                },
+              },
+              {
+                action: "ko",
+                target: {
+                  player: "opponent",
+                  zones: ["character"],
+                  count: {
+                    amount: 1,
+                    upTo: true,
+                  },
+                  filters: [
+                    {
+                      filter: "cost",
+                      comparison: "lte",
+                      value: 5,
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        ],
+        optional: true,
+      },
+      {
         trigger: "trigger",
         actions: [
           {

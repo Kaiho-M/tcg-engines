@@ -43,6 +43,31 @@ export const op16BoaHancock032: CharacterCard = {
     "[Unblockable] (This card cannot be blocked.)\n[On Play] Up to 1 of your opponent's Characters other than [Monkey.D.Luffy] cannot be rested until the end of your opponent's next End Phase.",
   effects: {
     keywords: ["unblockable"],
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "cannotBeRested",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "excludeName",
+                  value: "Monkey.D.Luffy",
+                },
+              ],
+            },
+            duration: "untilEndOfOpponentNextEndPhase",
+          },
+        ],
+      },
+    ],
   },
   i18n: op16BoaHancock032I18n,
 };

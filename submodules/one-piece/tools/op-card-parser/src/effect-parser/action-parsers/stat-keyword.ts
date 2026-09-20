@@ -99,6 +99,31 @@ export function parseModifyPowerAction(text: string): ModifyPowerAction | null {
     }
   }
 
+  // "For every {Trait} type card on your field, give <target> +/-N power (duration)?" (ST31-004)
+  const forEveryGiveMatch =
+    /^for\s+every\s+(?:[[{"“])([^\]}”"]+)(?:[\]}”"])\s+type\s+cards?\s+on\s+your\s+field,\s+give\s+(.+?)\s+([+-]?\d+)\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
+      trimmed,
+    );
+  if (forEveryGiveMatch) {
+    const target = parseModifyPowerTarget(forEveryGiveMatch[2]!);
+    if (!target) return null;
+    return {
+      action: "modifyPower",
+      target,
+      value: parseInt(forEveryGiveMatch[3]!, 10),
+      valuePerCardGroup: {
+        size: 1,
+        target: {
+          player: "self",
+          zones: ["leader", "character", "stage"],
+          count: { amount: "all" },
+          filters: [{ filter: "trait", value: forEveryGiveMatch[1]!, match: "includes" }],
+        },
+      },
+      duration: forEveryGiveMatch[4] ? parseFullDuration(forEveryGiveMatch[4]) : "permanent",
+    };
+  }
+
   // Pattern 1: "Give <target> +/-N power (duration)?"
   const giveMatch =
     /^give\s+(.+?)\s+([+-]?\d+)\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
@@ -187,10 +212,22 @@ export function parseSetPowerAction(text: string): SetPowerAction | null {
         triggerEventAttacker: true,
       };
     }
-    const sourceMatch = /^(your|your opponent['\u2019]s) Leader(?:['\u2019]s base power)?$/i.exec(
-      copiedSource,
-    );
+    const sourceMatch =
+      /^(your|your opponent['\u2019]s) Leader(?:['\u2019]s (base )?power)?$/i.exec(copiedSource);
     if (!sourceMatch) return null;
+    // "the same as your opponent's Leader's power" copies the current power,
+    // DON!! and modifiers included, unlike "base power" (OP16-055).
+    if (/Leader['\u2019]s power$/i.test(copiedSource)) {
+      return {
+        action: "copyPower",
+        target: {
+          player: /^your opponent/i.test(sourceMatch[1]!) ? "opponent" : "self",
+          zones: ["leader"],
+          count: { amount: 1 },
+        },
+        duration,
+      };
+    }
     return {
       action: "setBasePowerFrom",
       target: { player: "self", zones: ["character"], count: { amount: 1 }, self: true },

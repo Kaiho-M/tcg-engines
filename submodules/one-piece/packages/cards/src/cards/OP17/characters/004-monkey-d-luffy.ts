@@ -27,6 +27,43 @@ export const op17MonkeyDLuffy004: CharacterCard = {
   effect:
     "If you have a total of 3 or more given DON!! cards, this Character gains [Rush].\n(This card can attack on the turn in which it is played.)\n[On Play] For every {Straw Hat Crew} type card on your field, give up to 1 of your opponent's Characters −1000 power during this turn.",
   effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: -1000,
+            valuePerCardGroup: {
+              size: 1,
+              target: {
+                player: "self",
+                zones: ["leader", "character", "stage"],
+                count: {
+                  amount: "all",
+                },
+                filters: [
+                  {
+                    filter: "trait",
+                    value: "Straw Hat Crew",
+                    match: "includes",
+                  },
+                ],
+              },
+            },
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
     permanentEffects: [
       {
         conditions: [

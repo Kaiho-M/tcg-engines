@@ -42,6 +42,57 @@ export const op16MarshallDTeach080: LeaderCard = {
   effect:
     "[Opponent's Turn] All of your Characters gain +1 cost.\n[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card with a [Trigger] from your hand: Change the target of that attack to this Leader or to one of your {Blackbeard Pirates} type Character cards.",
   effects: {
+    effects: [
+      {
+        trigger: "onOpponentAttack",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+            filters: [
+              {
+                filter: "hasTrigger",
+                value: true,
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "changeBattleTarget",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+              },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "leader",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "trait",
+                        value: "Blackbeard Pirates",
+                        match: "includes",
+                      },
+                    ],
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+        optional: true,
+        oncePerTurn: true,
+      },
+    ],
     permanentEffects: [
       {
         conditions: [

@@ -448,6 +448,17 @@ export function parseCountCondition(text: string): Condition | null {
     };
   }
 
+  // Character count comparison: "you have less Characters than your opponent" (EB04-059)
+  m = /^you\s+have\s+(less|more|fewer)\s+Characters\s+than\s+your\s+opponent$/i.exec(t);
+  if (m) {
+    return {
+      condition: "zoneCountComparison",
+      zone: "character",
+      selfComparison: m[1]!.toLowerCase() === "more" ? "gt" : "lt",
+      difference: 1,
+    };
+  }
+
   // Life comparison: you have less/more life cards than your opponent
   m = /^you\s+have\s+(less|more|fewer)\s+life\s+cards?\s+than\s+your\s+opponent$/i.exec(t);
   if (m) {
