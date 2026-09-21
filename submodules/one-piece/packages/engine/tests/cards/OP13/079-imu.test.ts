@@ -41,7 +41,7 @@ describe("OP13-079 Imu", () => {
       (id) => state.cards[id]?.cardId === op13TheEmptyThrone099.id,
     );
     const prompt = state.promptQueue.find((entry) => entry.seat === "south");
-    expect(prompt?.resolutionContext.intent).toBe("effectPlaySelection");
+    expect(prompt?.resolutionContext?.intent).toBe("effectPlaySelection");
     expect(throneId).toBeDefined();
     const played = applyCommand(state, {
       type: "resolvePrompt",
