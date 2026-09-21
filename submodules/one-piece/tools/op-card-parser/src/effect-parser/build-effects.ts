@@ -76,7 +76,7 @@ function mapRawCost(raw: RawCost): Cost | null {
     case "restDon":
       return { cost: "restDon", amount: raw.amount };
     case "giveDon":
-      return { cost: "giveDon", amount: raw.amount };
+      return { cost: "giveDon", amount: raw.amount, ...(raw.filters && { filters: raw.filters }) };
     case "returnDon":
       return "minimumAmount" in raw && raw.minimumAmount !== undefined
         ? { cost: "returnDon", minimumAmount: raw.minimumAmount }

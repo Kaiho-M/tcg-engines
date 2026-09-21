@@ -27,6 +27,37 @@ export const op15eb04ItSMyStudentSFarewellIWantItToBeProper009: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        costs: [
+          {
+            cost: "giveDon",
+            amount: 1,
+            filters: [
+              {
+                filter: "name",
+                value: "Silvers Rayleigh",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+            },
+            value: -2000,
+            duration: "thisTurn",
+          },
+        ],
+        optional: true,
+      },
+      {
         trigger: "counter",
         actions: [
           {

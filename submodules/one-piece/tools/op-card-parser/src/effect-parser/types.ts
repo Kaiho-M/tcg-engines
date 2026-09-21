@@ -1,4 +1,4 @@
-import type { Action, Condition, EffectTrigger } from "@tcg/op-types";
+import type { Action, Condition, EffectTrigger, TargetFilter } from "@tcg/op-types";
 
 export type ParsedCondition =
   | Extract<Condition, { condition: "donAttached" }>
@@ -6,7 +6,7 @@ export type ParsedCondition =
 
 export type RawCost =
   | { type: "restDon"; amount: number }
-  | { type: "giveDon"; amount: number }
+  | { type: "giveDon"; amount: number; filters?: TargetFilter[] }
   | { type: "returnDon"; amount: number; minimumAmount?: never }
   | { type: "returnDon"; minimumAmount: number; amount?: never }
   | { type: "trashFromHand"; raw: string }

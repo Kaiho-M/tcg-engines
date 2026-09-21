@@ -81,9 +81,8 @@ function splitIntoLines(text: string): string[] {
     }
     // "X, and if it is your opponent's turn, Y" is two permanent effects; the
     // second one carries the turn condition as a bracket prefix (OP17-119).
-    const turnClause = /^(.+?),\s+and\s+if\s+it\s+is\s+your\s+(opponent['’]s\s+)?turn,\s+(.+)$/i.exec(
-      trimmed,
-    );
+    const turnClause =
+      /^(.+?),\s+and\s+if\s+it\s+is\s+your\s+(opponent['’]s\s+)?turn,\s+(.+)$/i.exec(trimmed);
     if (turnClause) {
       joined.push(`${turnClause[1]!}.`);
       joined.push(`[${turnClause[2] ? "Opponent's" : "Your"} Turn] ${turnClause[3]!}`);
@@ -332,14 +331,21 @@ function parsePrefixChain(segment: string): PrefixParseResult {
 function parseTextCosts(text: string): RawCost[] {
   const costs: Array<{ index: number; cost: RawCost }> = [];
 
+  // "give 1 of your active DON!! cards to 1 of your Leader or Character cards" (any recipient)
+  // "give 2 active DON!! cards to 1 of your [Silvers Rayleigh]" (recipient restricted by name)
   const giveDonMatch =
-    /give\s+(\d+)\s+of\s+your\s+active\s+DON!!\s+cards?\s+to\s+\d+\s+of\s+your\s+Leader\s+or\s+Character\s+cards?/i.exec(
+    /give\s+(\d+)\s+(?:of\s+your\s+)?active\s+DON!!\s+cards?\s+to\s+\d+\s+of\s+your\s+(?:Leader\s+or\s+Character\s+cards?|\[([^\]]+)\])/i.exec(
       text,
     );
   if (giveDonMatch) {
+    const recipientName = giveDonMatch[2];
     costs.push({
       index: giveDonMatch.index,
-      cost: { type: "giveDon", amount: parseInt(giveDonMatch[1]!, 10) },
+      cost: {
+        type: "giveDon",
+        amount: parseInt(giveDonMatch[1]!, 10),
+        ...(recipientName && { filters: [{ filter: "name", value: recipientName }] }),
+      },
     });
   }
 

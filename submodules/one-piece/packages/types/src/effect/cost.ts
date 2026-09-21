@@ -50,6 +50,8 @@ export interface RestDonCost {
 export interface GiveDonCost {
   cost: "giveDon";
   amount: number;
+  /** Restricts which of your Leader or Characters may receive the DON!! ("to 1 of your [Silvers Rayleigh]"). */
+  filters?: TargetFilter[];
 }
 
 export type ReturnDonCost =

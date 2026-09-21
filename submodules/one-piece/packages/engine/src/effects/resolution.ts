@@ -38,6 +38,7 @@ import {
   candidatesForTrashCharacterCost,
   candidatesForTrashFromHandCost,
   freezeActionCandidateIds,
+  candidatesForGiveDonCost,
   candidatesForRevealFromHandCost,
   candidatesForReturnCharacterCost,
   candidatesForRestCardsCost,
@@ -309,11 +310,12 @@ export function processEffectBlock(
 
   const giveDonCost = block.costs?.find((cost) => cost.cost === "giveDon");
   if (giveDonCost && !item.costPaymentIdsByType?.giveDon) {
-    const player = getPlayer(state, item.controller);
-    const candidateIds = [
-      player.leaderInstanceId,
-      ...player.characterArea.filter((instanceId): instanceId is string => instanceId !== null),
-    ];
+    const candidateIds = candidatesForGiveDonCost(
+      state,
+      item.controller,
+      item.sourceInstanceId,
+      giveDonCost,
+    );
     if (candidateIds.length > 1) {
       createChoicePrompt(state, {
         choiceKind: "costPayment",

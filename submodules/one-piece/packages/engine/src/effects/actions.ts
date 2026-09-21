@@ -60,6 +60,7 @@ import {
 import { candidatePoolForTarget, candidatesForTarget, matchesTargetFilter } from "./targeting.ts";
 
 type RestCardsCost = Extract<Cost, { cost: "restCards" }>;
+type GiveDonCost = Extract<Cost, { cost: "giveDon" }>;
 type TrashCharacterCost = Extract<Cost, { cost: "trashCharacter" }>;
 type KoCharacterCost = Extract<Cost, { cost: "koCharacter" }>;
 type RevealFromHandCost = Extract<Cost, { cost: "revealFromHand" }>;
@@ -1094,6 +1095,24 @@ export function candidatesForTrashCardCost(
       ),
     ),
   ];
+}
+
+export function candidatesForGiveDonCost(
+  state: MatchState,
+  controller: MatchSeat,
+  sourceInstanceId: string,
+  cost: GiveDonCost,
+): string[] {
+  const player = getPlayer(state, controller);
+  return [
+    player.leaderInstanceId,
+    ...player.characterArea.filter((entry): entry is string => Boolean(entry)),
+  ].filter((instanceId) =>
+    (cost.filters ?? []).every((filter) => {
+      const result = matchesTargetFilter(state, sourceInstanceId, instanceId, filter);
+      return result.supported && result.matches;
+    }),
+  );
 }
 
 export function candidatesForKoCharacterCost(
@@ -5596,14 +5615,10 @@ export function canPayCosts(
         }
         break;
       case "giveDon": {
-        const player = getPlayer(state, controller);
-        const candidates = [
-          player.leaderInstanceId,
-          ...player.characterArea.filter((instanceId): instanceId is string => instanceId !== null),
-        ];
+        const candidates = candidatesForGiveDonCost(state, controller, sourceInstanceId, cost);
         const selected = costPaymentIdsByType?.giveDon ?? candidates.slice(0, 1);
         if (
-          player.activeDon < cost.amount ||
+          getPlayer(state, controller).activeDon < cost.amount ||
           selected.length !== 1 ||
           !candidates.includes(selected[0]!)
         ) {
@@ -5937,7 +5952,8 @@ export function payCosts(
         break;
       case "giveDon": {
         const player = getPlayer(state, controller);
-        const targetId = (costPaymentIdsByType?.giveDon ?? [player.leaderInstanceId])[0]!;
+        const targetId = (costPaymentIdsByType?.giveDon ??
+          candidatesForGiveDonCost(state, controller, sourceInstanceId, cost))[0]!;
         player.activeDon -= cost.amount;
         getInstance(state, targetId).attachedDon += cost.amount;
         emitLog(
