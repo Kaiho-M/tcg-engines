@@ -62,6 +62,8 @@ export type EffectTrigger =
   | "whenBlockerActivated"
   | "whenTriggerActivates"
   | "whenDonReturned"
+  /** Once, when the match starts, before the first turn ("at the start of the game, play ..."). */
+  | "gameStart"
   | "whenOpponentActivatesEvent"
   | "whenYouActivateEvent"
   | "whenDonGiven"

@@ -1,4 +1,4 @@
-import type { Action, Condition, EffectTrigger, TargetFilter } from "@tcg/op-types";
+import type { Action, CardCostOption, Condition, EffectTrigger, TargetFilter } from "@tcg/op-types";
 
 export type ParsedCondition =
   | Extract<Condition, { condition: "donAttached" }>
@@ -34,7 +34,7 @@ export type RawCost =
   | { type: "trashCharacter"; raw: string }
   | { type: "koCharacter"; raw: string }
   | { type: "playCard"; raw: string }
-  | { type: "trashCard"; raw: string }
+  | { type: "trashCard"; raw: string; amount?: number; options?: CardCostOption[] }
   | { type: "modifyLeaderPower"; value: number; duration: "thisTurn"; requiresActive?: boolean }
   | { type: "unknown"; raw: string };
 

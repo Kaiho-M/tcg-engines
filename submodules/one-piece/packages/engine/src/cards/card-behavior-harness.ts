@@ -60,6 +60,7 @@ function printedTextMentionsTrigger(card: OPCard, trigger: EffectTrigger): boole
     whenBlockerActivated: /when .*activates? \[Blocker\]|when you activate .*Blocker/i,
     whenTriggerActivates: /when .*Trigger.*activates|when you activate .*Trigger/i,
     whenDonReturned: /DON!! cards?.*returned|returned to your DON!! deck/i,
+    gameStart: /at the start of the game/i,
     whenOpponentActivatesEvent: /opponent activates? an Event/i,
     whenYouActivateEvent: /When you activate an Event/i,
     whenDonGiven: /given a DON!! card/i,

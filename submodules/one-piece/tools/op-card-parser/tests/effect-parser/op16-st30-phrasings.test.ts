@@ -509,4 +509,60 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
       ],
     });
   });
+
+  test("OP13-079 reads a deck-building ban, a game-start play and an either-zone trash cost", () => {
+    expect(
+      buildCardEffects(
+        [
+          "Under the rules of this game, you cannot include Events with a cost of 2 or more in your deck and at the start of the game, play up to 1 {Mary Geoise} type Stage card from your deck.",
+          "[Activate: Main] [Once Per Turn] You may trash 1 of your {Celestial Dragons} type Characters or 1 card from your hand: Draw 1 card.",
+        ].join("\n"),
+      ),
+    ).toEqual({
+      deckBuildingRules: [
+        {
+          rule: "cannotInclude",
+          filters: [
+            { filter: "cardCategory", value: "event" },
+            { filter: "cost", comparison: "gte", value: 2 },
+          ],
+        },
+      ],
+      effects: [
+        {
+          trigger: "gameStart",
+          actions: [
+            {
+              action: "play",
+              source: { player: "self", zone: "deck" },
+              count: { amount: 1, upTo: true },
+              filters: [
+                { filter: "trait", value: "Mary Geoise", match: "includes" },
+                { filter: "cardCategory", value: "stage" },
+              ],
+            },
+          ],
+        },
+        {
+          trigger: "activateMain",
+          costs: [
+            {
+              cost: "trashCard",
+              amount: 1,
+              options: [
+                {
+                  zones: ["character"],
+                  filters: [{ filter: "trait", value: "Celestial Dragons", match: "includes" }],
+                },
+                { zones: ["hand"] },
+              ],
+            },
+          ],
+          actions: [{ action: "draw", player: "self", amount: 1 }],
+          optional: true,
+          oncePerTurn: true,
+        },
+      ],
+    });
+  });
 });

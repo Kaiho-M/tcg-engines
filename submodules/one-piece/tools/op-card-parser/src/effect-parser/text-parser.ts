@@ -469,16 +469,43 @@ function parseTextCosts(text: string): RawCost[] {
     /trash\s+this\s+(?:Character|Stage|Leader)\s+and\s+\d+\s+of\s+your\s+Characters?\s+with\s+a\s+type\s+including\s+[""\u201c][^""\u201d]+[""\u201d]/i.exec(
       text,
     );
-  const trashCharacterMatch =
-    /trash\s+\d+\s+of\s+your\s+Characters?\s+with\s+a\s+type\s+including\s+["\u201c][^"\u201d]+["\u201d]/i.exec(
-      text,
-    ) ??
-    /trash\s+\d+\s+of\s+your\s+(?:.+?\s+)?Characters?(?:(?:\s+other\s+than\s+this\s+Character)(?:\s+with\s+\d+\s+power\s+or\s+more)?|(?:\s+with\s+\d+\s+power\s+or\s+more)(?:\s+other\s+than\s+this\s+Character)?|)/i.exec(
-      text,
-    ) ??
-    /\band\s+\d+\s+of\s+your\s+Characters?\s+with\s+a\s+type\s+including\s+["\u201c][^"\u201d]+["\u201d]/i.exec(
+  // "trash 1 of your {Trait} type Characters or 1 card from your hand" (OP13-079): either zone pays.
+  const characterOrHandTrashMatch =
+    /trash\s+(\d+)\s+of\s+your\s+(?:[[{"\u201c]([^\]}"\u201d]+)[\]}"\u201d]\s+type\s+)?Characters?\s+or\s+\d+\s+cards?\s+from\s+your\s+hand/i.exec(
       text,
     );
+  if (characterOrHandTrashMatch) {
+    costs.push({
+      index: characterOrHandTrashMatch.index,
+      cost: {
+        type: "trashCard",
+        raw: characterOrHandTrashMatch[0],
+        amount: parseInt(characterOrHandTrashMatch[1]!, 10),
+        options: [
+          {
+            zones: ["character"],
+            ...(characterOrHandTrashMatch[2] && {
+              filters: [
+                { filter: "trait", value: characterOrHandTrashMatch[2], match: "includes" },
+              ],
+            }),
+          },
+          { zones: ["hand"] },
+        ],
+      },
+    });
+  }
+  const trashCharacterMatch = characterOrHandTrashMatch
+    ? null
+    : (/trash\s+\d+\s+of\s+your\s+Characters?\s+with\s+a\s+type\s+including\s+["\u201c][^"\u201d]+["\u201d]/i.exec(
+        text,
+      ) ??
+      /trash\s+\d+\s+of\s+your\s+(?:.+?\s+)?Characters?(?:(?:\s+other\s+than\s+this\s+Character)(?:\s+with\s+\d+\s+power\s+or\s+more)?|(?:\s+with\s+\d+\s+power\s+or\s+more)(?:\s+other\s+than\s+this\s+Character)?|)/i.exec(
+        text,
+      ) ??
+      /\band\s+\d+\s+of\s+your\s+Characters?\s+with\s+a\s+type\s+including\s+["\u201c][^"\u201d]+["\u201d]/i.exec(
+        text,
+      ));
   if (trashCharacterMatch) {
     const raw = trashCharacterMatch[0];
     costs.push({

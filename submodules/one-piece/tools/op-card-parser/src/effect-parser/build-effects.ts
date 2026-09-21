@@ -14,6 +14,7 @@ import { parseKeywords } from "./keywords.ts";
 import { parseEffectText } from "./text-parser.ts";
 import { parseActions } from "./action-parsers/index.ts";
 import { parseConditionText, parseInlineCondition } from "./condition-parser/index.ts";
+import { extractTargetFilters } from "./target-parser.ts";
 
 function parseDeckBuildingRules(effectText: string): NonNullable<CardEffects["deckBuildingRules"]> {
   const rules: NonNullable<CardEffects["deckBuildingRules"]> = [];
@@ -24,6 +25,25 @@ function parseDeckBuildingRules(effectText: string): NonNullable<CardEffects["de
     )
   ) {
     rules.push({ rule: "unlimitedCopies" });
+  }
+
+  // "you cannot include Events with a cost of 2 or more in your deck" (OP12-001, OP13-079)
+  const cannotInclude =
+    /Under the rules of this game, you cannot include (.+?) in your deck\b/i.exec(effectText);
+  if (cannotInclude) {
+    const { zonesText, filters } = extractTargetFilters(cannotInclude[1]!);
+    const category = /^(Character|Event|Stage)/i.exec(zonesText)?.[1]?.toLowerCase() as
+      | "character"
+      | "event"
+      | "stage"
+      | undefined;
+    rules.push({
+      rule: "cannotInclude",
+      filters: [
+        ...(category ? [{ filter: "cardCategory" as const, value: category }] : []),
+        ...filters,
+      ],
+    });
   }
 
   return rules;
@@ -127,6 +147,9 @@ function mapRawCost(raw: RawCost): Cost | null {
       };
     }
     case "trashCard": {
+      if (raw.options && raw.amount !== undefined) {
+        return { cost: "trashCard", amount: raw.amount, options: raw.options };
+      }
       const match =
         /trash\s+(\d+)\s+[""\u201c]([^""\u201d]+)[""\u201d]\s+type\s+card\s+from\s+your\s+hand\s+or\s+\d+\s+\[([^\]]+)\]\s+from\s+your\s+hand\s+or\s+field/i.exec(
           raw.raw,
@@ -778,6 +801,16 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
   ];
 
   for (const [segmentIndex, seg] of segments.entries()) {
+    // "Under the rules of this game, ... and at the start of the game, <actions>" (OP13-079).
+    // The deck-building half is read by parseDeckBuildingRules; the rest fires once at game start.
+    const gameStartMatch = /\bat the start of the game,\s+(.+)$/is.exec(seg.rawActionText.trim());
+    if (gameStartMatch && seg.triggers.length === 0) {
+      const gameStartActions = parseActions(gameStartMatch[1]!);
+      if (gameStartActions.parsed.length > 0) {
+        effectBlocks.push({ trigger: "gameStart", actions: gameStartActions.parsed });
+        continue;
+      }
+    }
     if (
       /^Once\s+per\s+turn,\s+this\s+Character\s+cannot\s+be\s+K\.O\.[’']?d\s+by\s+your\s+opponent['’]s\s+effects\.?$/i.test(
         seg.rawActionText.trim(),
