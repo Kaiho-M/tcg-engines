@@ -104,6 +104,13 @@ export function parseInlineCondition(text: string): InlineConditionResult | null
     }
   }
 
+  // "During the turn in which X, Y" — X already happened this turn (ST33-004)
+  const duringTurnMatch = /^During\s+the\s+turn\s+in\s+which\s+(.+?),\s+(.+)$/is.exec(text);
+  if (duringTurnMatch) {
+    const cond = parseConditionText(duringTurnMatch[1]!);
+    if (cond) return { condition: cond, remainingText: duringTurnMatch[2]! };
+  }
+
   // "When X, Y" — event prefix
   const whenMatch = /^When\s+(.+?),\s+(.+)$/is.exec(text);
   if (whenMatch) {

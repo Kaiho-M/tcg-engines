@@ -580,6 +580,14 @@ function evaluateCondition(
         }),
       };
     }
+    case "eventThisTurn": {
+      const player = condition.player === "self" ? controllerPlayer : opponentPlayer;
+      const lastTurn =
+        condition.event === "handTrashedByEffect"
+          ? player.handTrashedByEffectOnTurn
+          : player.lifeRemovedOnTurn;
+      return { supported: true, matches: lastTurn === state.turnNumber };
+    }
     case "replacement":
     case "triggerEvent":
       return { supported: false, matches: false };

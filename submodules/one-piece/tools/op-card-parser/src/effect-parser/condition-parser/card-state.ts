@@ -181,6 +181,31 @@ export function parseCardStateCondition(text: string): Condition | null {
   m = /^this\s+Character\s+(?:was|has)\s+played\s+on\s+this\s+turn$/i.exec(t);
   if (m) return { condition: "playedThisTurn" };
 
+  // Event earlier this turn (P-120): "a card was removed from your opponent's Life cards during this turn"
+  m =
+    /^a\s+card\s+was\s+removed\s+from\s+(your\s+opponent[''’]s|your)\s+Life\s+cards\s+during\s+this\s+turn$/i.exec(
+      t,
+    );
+  if (m) {
+    return {
+      condition: "eventThisTurn",
+      player: /opponent/i.test(m[1]!) ? "opponent" : "self",
+      event: "lifeRemoved",
+    };
+  }
+  // (ST33-004): "a card in your hand is trashed by an effect" under "During the turn in which ..."
+  m =
+    /^a\s+card\s+in\s+(your\s+opponent[''’]s|your)\s+hand\s+is\s+trashed\s+by\s+an\s+effect$/i.exec(
+      t,
+    );
+  if (m) {
+    return {
+      condition: "eventThisTurn",
+      player: /opponent/i.test(m[1]!) ? "opponent" : "self",
+      event: "handTrashedByEffect",
+    };
+  }
+
   // Face-up life: you have a face-up Life card
   m = /^you\s+have\s+a\s+face-up\s+Life\s+card$/i.exec(t);
   if (m) return { condition: "faceUpLife", player: "self" };

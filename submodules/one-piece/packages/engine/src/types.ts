@@ -990,6 +990,9 @@ export interface PlayerState {
   activeDon: number;
   restedDon: number;
   donDeckCount: number;
+  /** Turn on which this player last had a hand card trashed by an effect / a Life card removed. */
+  handTrashedByEffectOnTurn?: number;
+  lifeRemovedOnTurn?: number;
 }
 
 export interface EngineEvent {

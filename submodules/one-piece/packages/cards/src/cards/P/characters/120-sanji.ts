@@ -27,5 +27,33 @@ export const pSanji120: CharacterCard = {
   attribute: "strike",
   effect:
     "If a card was removed from your opponent's Life cards during this turn, give this card in your hand −2 cost.",
+  effects: {
+    permanentEffects: [
+      {
+        conditions: [
+          {
+            condition: "eventThisTurn",
+            player: "opponent",
+            event: "lifeRemoved",
+          },
+        ],
+        actions: [
+          {
+            action: "modifyCost",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: -2,
+            duration: "permanent",
+          },
+        ],
+      },
+    ],
+  },
   i18n: pSanji120I18n,
 };

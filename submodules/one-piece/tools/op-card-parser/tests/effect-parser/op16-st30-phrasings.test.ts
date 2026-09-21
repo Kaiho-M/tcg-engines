@@ -480,4 +480,33 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
       ],
     });
   });
+
+  test("ST33-004 / P-120 reduce their hand cost after an event earlier this turn", () => {
+    expect(
+      buildCardEffects(
+        "During the turn in which a card in your hand is trashed by an effect, give this card in your hand −3 cost.",
+      ),
+    ).toMatchObject({
+      permanentEffects: [
+        {
+          conditions: [
+            { condition: "eventThisTurn", player: "self", event: "handTrashedByEffect" },
+          ],
+          actions: [{ action: "modifyCost", value: -3, target: { zones: ["hand"], self: true } }],
+        },
+      ],
+    });
+    expect(
+      buildCardEffects(
+        "If a card was removed from your opponent's Life cards during this turn, give this card in your hand −2 cost.",
+      ),
+    ).toMatchObject({
+      permanentEffects: [
+        {
+          conditions: [{ condition: "eventThisTurn", player: "opponent", event: "lifeRemoved" }],
+          actions: [{ action: "modifyCost", value: -2 }],
+        },
+      ],
+    });
+  });
 });

@@ -293,6 +293,19 @@ export function enqueueInPlayEffectsForTrigger(
   triggerEvent?: Extract<ResolutionItem, { kind: "effectBlock" }>["triggerEvent"],
   sourceControllers?: readonly MatchSeat[],
 ) {
+  // Remember, per player, the turn these events last happened for "during this turn" conditions.
+  if (trigger === "whenCardTrashedFromHandByEffect" && triggerEvent) {
+    getPlayer(
+      state,
+      getInstance(state, triggerEvent.instanceId).controller,
+    ).handTrashedByEffectOnTurn = state.turnNumber;
+  }
+  if (trigger === "whenLifeRemoved" && triggerEvent?.targetInstanceId) {
+    getPlayer(
+      state,
+      getInstance(state, triggerEvent.targetInstanceId).controller,
+    ).lifeRemovedOnTurn = state.turnNumber;
+  }
   for (const source of Object.values(state.cards)) {
     if (sourceControllers && !sourceControllers.includes(source.controller)) {
       continue;

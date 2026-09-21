@@ -30,6 +30,7 @@ export type Condition =
   | GivenDonCountCondition
   | CompoundCondition
   | PlayedThisTurnCondition
+  | EventThisTurnCondition
   | FaceUpLifeCondition
   | ReplacementCondition
   | ExistsOnFieldCondition
@@ -215,6 +216,13 @@ export interface CompoundCondition {
 
 export interface PlayedThisTurnCondition {
   condition: "playedThisTurn";
+}
+
+/** Something happened to a player earlier this turn ("If a card was removed from your opponent's Life cards during this turn"). */
+export interface EventThisTurnCondition {
+  condition: "eventThisTurn";
+  player: Player;
+  event: "handTrashedByEffect" | "lifeRemoved";
 }
 
 export interface FaceUpLifeCondition {

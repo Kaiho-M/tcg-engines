@@ -27,6 +27,33 @@ export const pIMGonnaBeKingOfThePirates024: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 1000,
+            valuePerCardGroup: {
+              size: 1,
+              target: {
+                player: "self",
+                zones: ["character"],
+                count: {
+                  amount: "all",
+                },
+              },
+            },
+            duration: "thisTurn",
+          },
+        ],
+      },
+      {
         trigger: "trigger",
         actions: [
           {
