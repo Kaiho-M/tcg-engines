@@ -84,6 +84,8 @@ export interface MatchConfig {
   seed?: number | string;
   shuffleDecks?: boolean;
   skipFirstTurnDraw?: boolean;
+  /** DON!! placed on the first player's first turn. Official rules: 1 (the default); 2 reproduces the older behaviour. */
+  firstTurnDon?: number;
   openingHandSize?: number;
   maxCharacterSlots?: number;
 }
@@ -1100,6 +1102,7 @@ export interface MatchState {
       | "maxCharacterSlots"
       | "shuffleDecks"
       | "skipFirstTurnDraw"
+      | "firstTurnDon"
     >
   > &
     Pick<MatchConfig, "firstPlayer" | "players" | "seed">;

@@ -51,6 +51,7 @@ export function normalizeConfig(config: MatchConfig): MatchState["config"] {
     maxCharacterSlots: config.maxCharacterSlots ?? DEFAULT_MAX_CHARACTER_SLOTS,
     shuffleDecks: config.shuffleDecks ?? false,
     skipFirstTurnDraw: config.skipFirstTurnDraw ?? true,
+    firstTurnDon: config.firstTurnDon ?? 1,
   };
 }
 

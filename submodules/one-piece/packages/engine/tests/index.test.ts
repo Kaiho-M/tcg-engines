@@ -244,7 +244,8 @@ describe("@tcg/op-engine", () => {
     expect(started.accepted).toBe(true);
     expect(started.state.status).toBe("active");
     expect(started.state.phase).toBe("main");
-    expect(started.state.players.south.activeDon).toBe(2);
+    // Official rules: the first player's first DON!! phase places 1 (MatchConfig.firstTurnDon).
+    expect(started.state.players.south.activeDon).toBe(1);
     expect(
       started.state.logHistory.some((entry) => entry.message.includes("enters DON!! phase")),
     ).toBe(true);
@@ -601,7 +602,8 @@ describe("@tcg/op-engine", () => {
   });
 
   test("plays a stage, activates it, and projects the modified character power", () => {
-    const started = runCommands(createMatch(buildConfig()), startGameCommands());
+    // Two 1-cost plays on the first turn need the pre-official 2 DON!!.
+    const started = runCommands(createMatch(buildConfig({ firstTurnDon: 2 })), startGameCommands());
     const otamaId = findCardInZone(started, "south", "hand", op13Otama043);
     const afterOtama = applyCommand(started, {
       type: "playCard",

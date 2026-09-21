@@ -774,7 +774,10 @@ export function finalizeBeginTurnRefresh(state: MatchState, seat: MatchSeat, ski
     visibility: "public",
   });
   const player = getPlayer(state, seat);
-  const placedDon = Math.min(2, player.donDeckCount);
+  // The first player's first turn places config.firstTurnDon (official rules: 1); every other turn places 2.
+  const donThisPhase =
+    state.turnNumber === 1 && seat === state.config.firstPlayer ? state.config.firstTurnDon : 2;
+  const placedDon = Math.min(donThisPhase, player.donDeckCount);
   const givenDon = Math.min(placedDon, donGivenFromDonPhase(state, seat));
   addDonFromDeck(state, seat, placedDon - givenDon, false);
   if (givenDon > 0) {
