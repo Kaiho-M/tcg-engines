@@ -1225,7 +1225,12 @@ export function processQueuedEffectAction(
         ? item.returnToDeckContinuation.allTargetIds
         : item.action.action === "ko"
           ? movedCardIds
-          : item.selectedTargetIds;
+          : item.action.action === "revealFromLife"
+            ? getPlayer(
+                state,
+                item.action.player === "self" ? item.controller : otherSeat(item.controller),
+              ).life.slice(0, 1)
+            : item.selectedTargetIds;
     nextItem.previousActionTargetIds = completedTargetIds?.length
       ? completedTargetIds
       : movedCardIds;

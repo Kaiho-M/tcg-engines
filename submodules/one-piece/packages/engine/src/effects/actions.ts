@@ -2223,6 +2223,11 @@ export function processEffectAction(
               Math.floor(
                 (previousActionTargetIds?.length ?? 0) /
                   (action.previousActionTargetGroupSize ?? 1),
+              ) +
+            (action.valuePerPreviousActionTargetCost ?? 0) *
+              (previousActionTargetIds ?? []).reduce(
+                (sum, instanceId) => sum + getCardCost(state, instanceId),
+                0,
               );
       for (const [targetIndex, targetId] of targetIds.entries()) {
         const targetModifierValue = action.distributedValues?.[targetIndex] ?? modifierValue;

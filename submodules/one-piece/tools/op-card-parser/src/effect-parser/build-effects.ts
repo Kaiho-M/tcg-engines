@@ -1626,7 +1626,10 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
   ) {
     firstBlock.actions = [{ action: "redrawHand", player: "opponent", drawCount: 5 }];
   }
-  if (firstBlock && /activates \[Blocker\] or an Event/i.test(effectText)) {
+  if (
+    firstBlock &&
+    /activates (?:\[Blocker\] or an Event|an Event or \[Blocker\])/i.test(effectText)
+  ) {
     const eventBlock: EffectBlock = { ...firstBlock, trigger: "whenOpponentActivatesEvent" };
     effectBlocks.push(eventBlock);
     const blockerIndex = keywords.indexOf("blocker");

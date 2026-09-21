@@ -42,7 +42,54 @@ export const op15eb04MonkeyDLuffy119: CharacterCard = {
   effect:
     "If you have 6 or more DON!! cards on your field, this Character gains [Rush].\nWhen your opponent activates an Event or [Blocker], reveal up to 1 card from the top of your Life cards. This Character gains +1000 power during this turn per 1 cost on the revealed card.",
   effects: {
-    keywords: ["blocker"],
+    effects: [
+      {
+        trigger: "whenBlockerActivated",
+        actions: [
+          {
+            action: "revealFromLife",
+            player: "self",
+          },
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 0,
+            valuePerPreviousActionTargetCost: 1000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+      {
+        trigger: "whenOpponentActivatesEvent",
+        actions: [
+          {
+            action: "revealFromLife",
+            player: "self",
+          },
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 0,
+            valuePerPreviousActionTargetCost: 1000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
     permanentEffects: [
       {
         conditions: [

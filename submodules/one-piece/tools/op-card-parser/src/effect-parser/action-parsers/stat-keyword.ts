@@ -169,6 +169,23 @@ export function parseModifyPowerAction(text: string): ModifyPowerAction | null {
     return { action: "modifyPower", target, value, duration };
   }
 
+  // "<target> gains +N power (duration) per 1 cost on the revealed card" (OP15-119)
+  const perRevealedCostMatch =
+    /^(.+?)\s+gains?\s+([+-]?\d+)\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+?))?\s+per\s+1\s+cost\s+on\s+the\s+revealed\s+card$/i.exec(
+      trimmed,
+    );
+  if (perRevealedCostMatch) {
+    const target = parseModifyPowerTarget(perRevealedCostMatch[1]!);
+    if (!target) return null;
+    return {
+      action: "modifyPower",
+      target,
+      value: 0,
+      valuePerPreviousActionTargetCost: parseInt(perRevealedCostMatch[2]!, 10),
+      duration: perRevealedCostMatch[3] ? parseFullDuration(perRevealedCostMatch[3]) : "permanent",
+    };
+  }
+
   // Pattern 2: "<target> gains/gain +/-N power (duration)?"
   const gainsMatch =
     /^(.+?)\s+gains?\s+([+-]?\d+)\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(

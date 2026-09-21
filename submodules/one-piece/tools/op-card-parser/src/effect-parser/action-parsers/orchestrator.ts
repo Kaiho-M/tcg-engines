@@ -1219,6 +1219,16 @@ export function parseActions(rawActionText: string): ParseActionsResult {
       /^Reveal\s+1\s+card\s+from\s+the\s+top\s+of\s+your\s+Life\s+cards?\.\s*If\s+that\s+card\s+is\s+(?:a\s+)?\[([^\]]+)\]\s+with\s+a\s+cost\s+of\s+(\d+),\s+you\s+may\s+play\s+that\s+card\.\s*If\s+you\s+do,\s+(.+)$/i.exec(
         textAfterSearch.trim().replace(/\.+$/, ""),
       );
+    // "Reveal up to 1 card from the top of your Life cards." with no conditional play (OP15-119):
+    // the revealed card is handed to the next action as its previous-action target.
+    const bareRevealLifeMatch =
+      /^Reveal\s+(?:up\s+to\s+)?1\s+card\s+from\s+the\s+top\s+of\s+your\s+Life\s+cards?\.?\s*(.*)$/is.exec(
+        textAfterSearch,
+      );
+    if (!revealLifeMatch && bareRevealLifeMatch) {
+      preParsed.push({ action: "revealFromLife", player: "self" as const });
+      textAfterSearch = bareRevealLifeMatch[1]!.trim();
+    }
     if (revealLifeMatch) {
       const nameFilter: TargetFilter = { filter: "name", value: revealLifeMatch[1]! };
       const costFilter: TargetFilter = {

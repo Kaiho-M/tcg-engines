@@ -223,8 +223,12 @@ export function parseWhenEvent(text: string): EffectTrigger | null {
     return "whenOpponentActivatesEvent";
   if (/^you\s+activate\s+an\s+Event$/i.test(t)) return "whenYouActivateEvent";
 
-  // "your opponent activates [Blocker] or an Event"
-  if (/^your\s+opponent\s+activates\s+\[Blocker\]\s+or\s+an\s+Event$/i.test(t))
+  // "your opponent activates [Blocker] or an Event" (either order)
+  if (
+    /^your\s+opponent\s+activates\s+(?:\[Blocker\]\s+or\s+an\s+Event|an\s+Event\s+or\s+\[Blocker\])$/i.test(
+      t,
+    )
+  )
     return "whenBlockerActivated";
 
   // "a card is removed from your, your opponent's, or either player's Life cards"

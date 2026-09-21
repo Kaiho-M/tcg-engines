@@ -111,6 +111,8 @@ export interface ModifyPowerAction {
   previousActionTargets?: boolean;
   valuePerPreviousActionTarget?: number;
   previousActionTargetGroupSize?: number;
+  /** Added per 1 cost printed on the previous action's cards ("+1000 power per 1 cost on the revealed card"). */
+  valuePerPreviousActionTargetCost?: number;
   restedDonGroupSize?: number;
   valuePerCardGroup?: {
     target: Target;
