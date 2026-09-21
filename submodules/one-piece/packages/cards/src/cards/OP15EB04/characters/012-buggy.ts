@@ -30,6 +30,26 @@ export const op15eb04Buggy012: CharacterCard = {
   effects: {
     effects: [
       {
+        trigger: "whenAttacking",
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            donState: "rested",
+          },
+        ],
+      },
+      {
         trigger: "onKo",
         actions: [
           {

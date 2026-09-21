@@ -213,9 +213,10 @@ export function parseAddFromTrashToHandAction(text: string): ReturnToHandAction 
               }
             } else {
               // "card with a [Trigger] other than [Name]" — any card type (OP16-115)
-              const anyCardMatch = /^cards?\s+with\s+a\s+\[Trigger\](?:\s+other\s+than\s+\[([^\]]+)\])?$/i.exec(
-                remaining,
-              );
+              const anyCardMatch =
+                /^cards?\s+with\s+a\s+\[Trigger\](?:\s+other\s+than\s+\[([^\]]+)\])?$/i.exec(
+                  remaining,
+                );
               if (!anyCardMatch) return null;
               filters.push({ filter: "hasTrigger", value: true });
               if (anyCardMatch[1]) {

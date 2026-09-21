@@ -299,6 +299,7 @@ export interface GiveDonFromDonPhaseAction {
   condition?: Condition;
 }
 
+/** The DON!! comes from the cost area of the player who controls the target (an opponent's DON!! for "1 of your opponent's Characters"). */
 export interface GiveDonAction {
   action: "giveDon";
   target: Target;

@@ -47,6 +47,21 @@ export const op15eb04Krieg008: CharacterCard = {
         trigger: "onPlay",
         actions: [
           {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 3,
+              upTo: true,
+            },
+            donState: "rested",
+          },
+          {
             action: "grantKeyword",
             target: {
               player: "self",

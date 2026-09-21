@@ -319,6 +319,13 @@ function constraintForFilter(filter: TargetFilter): ProjectedDecisionConstraint 
         operator: operatorForComparison(filter.comparison),
         value: filter.value,
       };
+    case "attachedDon":
+      return {
+        id: "attachedDon",
+        label: `DON!! given ${filter.comparison} ${filter.value}`,
+        operator: operatorForComparison(filter.comparison),
+        value: filter.value,
+      };
     case "color":
       return {
         id: "color",

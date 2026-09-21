@@ -44,6 +44,27 @@ export const op15eb04Kuro025: CharacterCard = {
     "[Blocker]\n[On Play] Give up to 2 DON!! cards from your opponent's cost area to 1 of your opponent's Characters. Then, at the end of this turn, up to 1 rested Character with 3 or more DON!! cards given will not become active in your opponent's next Refresh Phase.",
   effects: {
     keywords: ["blocker"],
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 2,
+              upTo: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   i18n: op15eb04Kuro025I18n,
 };

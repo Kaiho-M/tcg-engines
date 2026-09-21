@@ -42,6 +42,32 @@ export const op15eb04Krieg001: LeaderCard = {
   effect:
     "[DON!! x1] [Opponent's Turn] If the only Characters on your field are {East Blue} type Characters, give all of your opponent's Characters −2000 power.\n[Activate: Main] [Once Per Turn] Rest up to 1 of your opponent's Characters that has 2 or more DON!! cards given.",
   effects: {
+    effects: [
+      {
+        trigger: "activateMain",
+        actions: [
+          {
+            action: "rest",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "attachedDon",
+                  comparison: "gte",
+                  value: 2,
+                },
+              ],
+            },
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
     permanentEffects: [
       {
         conditions: [

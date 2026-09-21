@@ -29,6 +29,44 @@ export const op15eb04Morgan017: CharacterCard = {
     "[Blocker]\n[Activate: Main] [Once Per Turn] You may give 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters: Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.",
   effects: {
     keywords: ["blocker"],
+    effects: [
+      {
+        trigger: "activateMain",
+        costs: [
+          {
+            cost: "giveDon",
+            amount: 1,
+            player: "opponent",
+            donState: "rested",
+            filters: [
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            donState: "rested",
+          },
+        ],
+        optional: true,
+        oncePerTurn: true,
+      },
+    ],
   },
   i18n: op15eb04Morgan017I18n,
 };

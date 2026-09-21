@@ -83,6 +83,28 @@ type GiveDonAction = Extract<Action, { action: "giveDon" }>;
 export function parseGiveDonAction(text: string): GiveDonAction | GiveDonAction[] | null {
   const cleaned = text.trim().replace(/\.+$/, "");
 
+  // Opponent's own DON!! moved onto their cards (OP15 East Blue):
+  // "Give up to N of your opponent's rested DON!! cards to 1 of your opponent's Characters"
+  // "Give up to N DON!! cards from your opponent's cost area to 1 of your opponent's Characters"
+  // "Give up to N rested DON!! cards to its owner's Leader or 1 of their Characters"
+  const opponentDonMatch =
+    /^give\s+up\s+to\s+(\d+)\s+(?:of\s+your\s+opponent['’]s\s+(rested)\s+DON!!\s+cards?|DON!!\s+cards?\s+from\s+(?:your\s+opponent['’]s|its\s+owner['’]s)\s+cost\s+area|(rested)\s+DON!!\s+cards?)\s+to\s+(?:1\s+of\s+your\s+opponent['’]s\s+Characters|its\s+owner['’]s\s+Leader\s+or\s+1\s+of\s+their\s+(Characters))$/i.exec(
+      cleaned,
+    );
+  if (opponentDonMatch) {
+    const leaderToo = Boolean(opponentDonMatch[4]);
+    return {
+      action: "giveDon",
+      target: {
+        player: "opponent",
+        zones: leaderToo ? ["leader", "character"] : ["character"],
+        count: { amount: 1 },
+      },
+      count: { amount: parseInt(opponentDonMatch[1]!, 10), upTo: true },
+      ...((opponentDonMatch[2] || opponentDonMatch[3]) && { donState: "rested" }),
+    };
+  }
+
   // Pattern 4 (first to avoid greedy match in Pattern 1): "Give up to N rested DON!! card(s) to each of your [Trait] type Characters"
   const eachTraitMatch =
     /^give\s+up\s+to\s+(\d+)\s+rested\s+DON!!\s+cards?\s+to\s+each\s+of\s+your\s+(?:[[{"\u201c])([^\]}\u201d"]+)(?:[\]}\u201d"])\s+type\s+Characters?$/i.exec(

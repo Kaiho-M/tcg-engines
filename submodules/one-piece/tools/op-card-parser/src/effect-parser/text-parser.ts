@@ -348,6 +348,23 @@ function parseTextCosts(text: string): RawCost[] {
       },
     });
   }
+  // "give 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters" (OP15 East Blue)
+  const giveOpponentDonMatch =
+    /give\s+(\d+)\s+of\s+your\s+opponent['’]s\s+rested\s+DON!!\s+cards?\s+to\s+\d+\s+of\s+your\s+opponent['’]s\s+Characters?/i.exec(
+      text,
+    );
+  if (giveOpponentDonMatch) {
+    costs.push({
+      index: giveOpponentDonMatch.index,
+      cost: {
+        type: "giveDon",
+        amount: parseInt(giveOpponentDonMatch[1]!, 10),
+        player: "opponent",
+        donState: "rested",
+        filters: [{ filter: "cardCategory", value: "character" }],
+      },
+    });
+  }
 
   const variableReturnDonMatch =
     /return\s+(\d+)\s+or\s+more\s+DON!!\s+cards?\s+from\s+your\s+field\s+to\s+your\s+DON!!\s+deck/i.exec(

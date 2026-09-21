@@ -27,5 +27,33 @@ export const op15eb04Cabaji005: CharacterCard = {
   attribute: "slash",
   effect:
     "[When Attacking] If your opponent has any DON!! cards given, this Character gains +2000 power during this turn.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenAttacking",
+        conditions: [
+          {
+            condition: "donGiven",
+            player: "opponent",
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 2000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04Cabaji005I18n,
 };

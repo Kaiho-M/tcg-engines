@@ -6,7 +6,13 @@ export type ParsedCondition =
 
 export type RawCost =
   | { type: "restDon"; amount: number }
-  | { type: "giveDon"; amount: number; filters?: TargetFilter[] }
+  | {
+      type: "giveDon";
+      amount: number;
+      player?: "self" | "opponent";
+      donState?: "rested" | "active";
+      filters?: TargetFilter[];
+    }
   | { type: "returnDon"; amount: number; minimumAmount?: never }
   | { type: "returnDon"; minimumAmount: number; amount?: never }
   | { type: "trashFromHand"; raw: string }

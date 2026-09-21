@@ -27,5 +27,35 @@ export const op15eb04MeowbanBrothers028: CharacterCard = {
   attribute: "slash",
   effect:
     "[On Play] If your Leader has the {East Blue} type, give up to 1 DON!! card from your opponent's cost area to 1 of your opponent's Characters.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        conditions: [
+          {
+            condition: "leaderTrait",
+            trait: "East Blue",
+            match: "includes",
+          },
+        ],
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04MeowbanBrothers028I18n,
 };

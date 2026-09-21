@@ -27,5 +27,49 @@ export const op15eb04Higuma015: CharacterCard = {
   attribute: "slash",
   effect:
     "[On Play] Give up to 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters. Then, give −1000 power during this turn to up to 1 of your opponent's Characters with a DON!! card given.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            donState: "rested",
+          },
+          {
+            action: "modifyPower",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "attachedDon",
+                  comparison: "gte",
+                  value: 1,
+                },
+              ],
+            },
+            value: -1000,
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04Higuma015I18n,
 };

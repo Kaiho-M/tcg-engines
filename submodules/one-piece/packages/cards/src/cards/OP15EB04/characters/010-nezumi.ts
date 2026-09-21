@@ -27,5 +27,30 @@ export const op15eb04Nezumi010: CharacterCard = {
   attribute: "strike",
   effect:
     "[Activate: Main] [Once Per Turn] Give up to 1 rested DON!! card to its owner's Leader or 1 of their Characters.",
+  effects: {
+    effects: [
+      {
+        trigger: "activateMain",
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            donState: "rested",
+          },
+        ],
+        oncePerTurn: true,
+      },
+    ],
+  },
   i18n: op15eb04Nezumi010I18n,
 };

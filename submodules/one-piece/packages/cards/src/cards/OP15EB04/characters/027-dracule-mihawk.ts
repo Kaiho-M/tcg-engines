@@ -26,5 +26,32 @@ export const op15eb04DraculeMihawk027: CharacterCard = {
   traits: ["East Blue", "The Seven Warlords of the Sea"],
   attribute: "slash",
   effect: "[On Play] Rest up to 1 of your opponent's Characters with a DON!! card given.",
+  effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "rest",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "attachedDon",
+                  comparison: "gte",
+                  value: 1,
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04DraculeMihawk027I18n,
 };

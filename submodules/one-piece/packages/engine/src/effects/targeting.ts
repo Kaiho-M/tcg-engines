@@ -93,8 +93,14 @@ export function matchesTargetFilter(
       }
       break;
     }
-    case "counter": {
-      const value = card.cardType === "character" ? (card.counter ?? 0) : 0;
+    case "counter":
+    case "attachedDon": {
+      const value =
+        filter.filter === "attachedDon"
+          ? candidate.attachedDon
+          : card.cardType === "character"
+            ? (card.counter ?? 0)
+            : 0;
       switch (filter.comparison) {
         case "eq":
           return { supported: true, matches: value === filter.value };

@@ -179,6 +179,27 @@ export function extractTargetFilters(text: string): {
     };
   }
 
+  // "with a DON!! card given" / "with|that has N or more DON!! cards given" (OP15 East Blue)
+  const donGivenMatch =
+    /\s+(?:with|that\s+has)\s+(?:a\s+DON!!\s+card|(\d+)\s+or\s+more\s+DON!!\s+cards)\s+given\.?$/i.exec(
+      text,
+    );
+  if (donGivenMatch) {
+    const sub = extractTargetFilters(text.slice(0, donGivenMatch.index).trim());
+    return {
+      zonesText: sub.zonesText,
+      filters: [
+        ...sub.filters,
+        {
+          filter: "attachedDon",
+          comparison: "gte",
+          value: donGivenMatch[1] ? parseInt(donGivenMatch[1], 10) : 1,
+        },
+      ],
+      totalConstraint: sub.totalConstraint,
+    };
+  }
+
   // "without a Counter"
   const withoutCounterMatch = /\s+without\s+a\s+Counter\.?$/i.exec(text);
   if (withoutCounterMatch) {

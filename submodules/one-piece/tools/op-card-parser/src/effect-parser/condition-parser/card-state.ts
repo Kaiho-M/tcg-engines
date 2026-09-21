@@ -468,10 +468,10 @@ export function parseCardStateCondition(text: string): Condition | null {
     };
   }
 
-  // DON!! given: you have any DON!! cards given
-  m = /^you\s+have\s+any\s+DON!!\s+cards?\s+given$/i.exec(t);
+  // DON!! given: you have any DON!! cards given / your opponent has any DON!! cards given (OP15-005)
+  m = /^(you|your\s+opponent)\s+ha(?:ve|s)\s+any\s+DON!!\s+cards?\s+given$/i.exec(t);
   if (m) {
-    return { condition: "donGiven", player: "self" };
+    return { condition: "donGiven", player: /opponent/i.test(m[1]!) ? "opponent" : "self" };
   }
 
   // DON!! given to the Leader only: "your Leader has DON!! cards given to it" (P-159)

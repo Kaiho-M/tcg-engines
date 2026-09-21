@@ -50,7 +50,11 @@ export interface RestDonCost {
 export interface GiveDonCost {
   cost: "giveDon";
   amount: number;
-  /** Restricts which of your Leader or Characters may receive the DON!! ("to 1 of your [Silvers Rayleigh]"). */
+  /** Whose DON!! and whose Leader or Characters; defaults to self ("give 1 of your opponent's rested DON!! cards to 1 of your opponent's Characters"). */
+  player?: Player;
+  /** Defaults to active. */
+  donState?: "rested" | "active";
+  /** Restricts which Leader or Characters may receive the DON!! ("to 1 of your [Silvers Rayleigh]"). */
   filters?: TargetFilter[];
 }
 

@@ -1,4 +1,4 @@
-import type { Action, Cost, Duration, GroupedPlayAction, PlayAction } from "@tcg/op-types";
+import type { Action, Cost, Duration, GroupedPlayAction, PlayAction, Target } from "@tcg/op-types";
 import {
   getCardBasePower,
   cardName,
@@ -74,6 +74,11 @@ type TrashCardCost = Extract<Cost, { cost: "trashCard" }>;
 type CardCostOption = PlayCardCost | TrashCardCost["options"][number];
 type TrashFromHandCost = Extract<Cost, { cost: "trashFromHand" }>;
 type LifePosition = "top" | "bottom" | "choice" | undefined;
+
+/** Given DON!! always comes from the cost area of the player whose card receives it. */
+function donSeatForTarget(controller: MatchSeat, target: Pick<Target, "player">): MatchSeat {
+  return target.player === "opponent" ? otherSeat(controller) : controller;
+}
 
 /** A Life cost paid from "the top or bottom" carries the chosen end as its payment id. */
 function lifePositionPaymentIsValid(
@@ -1134,7 +1139,7 @@ export function candidatesForGiveDonCost(
   sourceInstanceId: string,
   cost: GiveDonCost,
 ): string[] {
-  const player = getPlayer(state, controller);
+  const player = getPlayer(state, donSeatForTarget(controller, { player: cost.player ?? "self" }));
   return [
     player.leaderInstanceId,
     ...player.characterArea.filter((entry): entry is string => Boolean(entry)),
@@ -3621,7 +3626,7 @@ export function processEffectAction(
       return true;
     }
     case "giveDon": {
-      const player = getPlayer(state, controller);
+      const player = getPlayer(state, donSeatForTarget(controller, action.target));
       const availableDon = action.donState === "rested" ? player.restedDon : player.activeDon;
       if (action.distribution === "each") {
         if (action.count.amount === "all") {
@@ -5650,8 +5655,13 @@ export function canPayCosts(
       case "giveDon": {
         const candidates = candidatesForGiveDonCost(state, controller, sourceInstanceId, cost);
         const selected = costPaymentIdsByType?.giveDon ?? candidates.slice(0, 1);
+        const donPlayer = getPlayer(
+          state,
+          donSeatForTarget(controller, { player: cost.player ?? "self" }),
+        );
+        const availableDon = cost.donState === "rested" ? donPlayer.restedDon : donPlayer.activeDon;
         if (
-          getPlayer(state, controller).activeDon < cost.amount ||
+          availableDon < cost.amount ||
           selected.length !== 1 ||
           !candidates.includes(selected[0]!)
         ) {
@@ -5983,15 +5993,22 @@ export function payCosts(
         getPlayer(state, controller).restedDon += cost.amount;
         break;
       case "giveDon": {
-        const player = getPlayer(state, controller);
+        const player = getPlayer(
+          state,
+          donSeatForTarget(controller, { player: cost.player ?? "self" }),
+        );
         const targetId = (costPaymentIdsByType?.giveDon ??
           candidatesForGiveDonCost(state, controller, sourceInstanceId, cost))[0]!;
-        player.activeDon -= cost.amount;
+        if (cost.donState === "rested") {
+          player.restedDon -= cost.amount;
+        } else {
+          player.activeDon -= cost.amount;
+        }
         getInstance(state, targetId).attachedDon += cost.amount;
         emitLog(
           state,
           controller,
-          `${effectSourceName(state, sourceInstanceId)} gives ${cost.amount} active DON!! to ${cardName(getCardForInstance(state, targetId))} as an activation cost.`,
+          `${effectSourceName(state, sourceInstanceId)} gives ${cost.amount} ${cost.donState ?? "active"} DON!! to ${cardName(getCardForInstance(state, targetId))} as an activation cost.`,
           {
             sourceCardId: getInstance(state, sourceInstanceId).cardId,
             sourceInstanceId,

@@ -27,5 +27,37 @@ export const op15eb04Mohji018: CharacterCard = {
   attribute: "wisdom",
   effect:
     "[When Attacking] K.O. up to 1 of your opponent's Characters with 3000 power or less with a DON!! card given.",
+  effects: {
+    effects: [
+      {
+        trigger: "whenAttacking",
+        actions: [
+          {
+            action: "ko",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+                upTo: true,
+              },
+              filters: [
+                {
+                  filter: "power",
+                  comparison: "lte",
+                  value: 3000,
+                },
+                {
+                  filter: "attachedDon",
+                  comparison: "gte",
+                  value: 1,
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
   i18n: op15eb04Mohji018I18n,
 };

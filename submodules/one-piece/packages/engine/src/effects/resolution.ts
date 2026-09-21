@@ -1933,16 +1933,30 @@ export function resolveEffectChoicePrompt(
     case "effectCostGiveDon": {
       const context = prompt.resolutionContext;
       const selectedIds = command.selectedIds ?? [];
-      const player = getPlayer(state, context.controller);
-      const liveCandidateIds = [
-        player.leaderInstanceId,
-        ...player.characterArea.filter((instanceId): instanceId is string => instanceId !== null),
-      ];
+      const card = getCard(getInstance(state, context.sourceInstanceId).cardId);
+      const giveDonCost = effectBlocksFor(card, context.trigger)[context.blockIndex]?.costs?.find(
+        (cost) => cost.cost === "giveDon",
+      );
+      if (!giveDonCost) {
+        return false;
+      }
+      const liveCandidateIds = candidatesForGiveDonCost(
+        state,
+        context.controller,
+        context.sourceInstanceId,
+        giveDonCost,
+      );
+      const donPlayer = getPlayer(
+        state,
+        giveDonCost.player === "opponent" ? otherSeat(context.controller) : context.controller,
+      );
+      const availableDon =
+        giveDonCost.donState === "rested" ? donPlayer.restedDon : donPlayer.activeDon;
       if (
         selectedIds.length !== 1 ||
         !context.candidateIds.includes(selectedIds[0]!) ||
         !liveCandidateIds.includes(selectedIds[0]!) ||
-        player.activeDon < context.amount
+        availableDon < context.amount
       ) {
         return false;
       }
@@ -3862,7 +3876,12 @@ export function resolveEffectChoicePrompt(
     case "effectGiveDonCount": {
       const selectedCount = Number.parseInt(command.optionId ?? "", 10);
       const context = prompt.resolutionContext;
-      const player = getPlayer(state, context.controller);
+      const player = getPlayer(
+        state,
+        context.action.target.player === "opponent"
+          ? otherSeat(context.controller)
+          : context.controller,
+      );
       const availableDon =
         context.action.donState === "rested" ? player.restedDon : player.activeDon;
       const maximum = Math.min(context.maximum, availableDon);

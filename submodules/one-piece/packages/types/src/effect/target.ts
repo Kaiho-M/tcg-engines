@@ -24,6 +24,7 @@ export type TargetFilter =
   | PowerFilter
   | BasePowerFilter
   | CounterFilter
+  | AttachedDonFilter
   | ColorFilter
   | CardCategoryFilter
   | StateFilter
@@ -89,6 +90,13 @@ export interface BasePowerFilter {
 
 export interface CounterFilter {
   filter: "counter";
+  comparison: Comparison;
+  value: number;
+}
+
+/** DON!! cards given to the card ("Characters with a DON!! card given", "with 2 or more DON!! cards given"). */
+export interface AttachedDonFilter {
+  filter: "attachedDon";
   comparison: Comparison;
   value: number;
 }

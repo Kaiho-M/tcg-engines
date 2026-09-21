@@ -156,6 +156,19 @@ export function parseModifyPowerAction(text: string): ModifyPowerAction | null {
     return { action: "modifyPower", target, value, duration };
   }
 
+  // Pattern 1b: "give +/-N power (duration)? to <target>" (OP15-015)
+  const giveToMatch =
+    /^give\s+([+-]?\d+)\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+?))?\s+to\s+(.+)$/i.exec(
+      trimmed,
+    );
+  if (giveToMatch) {
+    const target = parseModifyPowerTarget(giveToMatch[3]!);
+    if (!target) return null;
+    const value = parseInt(giveToMatch[1]!, 10);
+    const duration = giveToMatch[2] ? parseFullDuration(giveToMatch[2]) : "permanent";
+    return { action: "modifyPower", target, value, duration };
+  }
+
   // Pattern 2: "<target> gains/gain +/-N power (duration)?"
   const gainsMatch =
     /^(.+?)\s+gains?\s+([+-]?\d+)\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(

@@ -55,6 +55,32 @@ export const op15eb04Jango026: CharacterCard = {
           },
         ],
       },
+      {
+        trigger: "activateMain",
+        costs: [
+          {
+            cost: "trashThisCard",
+          },
+        ],
+        actions: [
+          {
+            action: "giveDon",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            donState: "rested",
+          },
+        ],
+        optional: true,
+      },
     ],
   },
   i18n: op15eb04Jango026I18n,
