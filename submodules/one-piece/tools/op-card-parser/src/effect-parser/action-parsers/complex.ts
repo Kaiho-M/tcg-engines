@@ -259,6 +259,24 @@ export function parseSelectAction(text: string): Action[] | null {
     ];
   }
 
+  // "Your opponent cannot activate [Blocker] when the card given these DON!! cards attacks
+  // during this turn" (OP12-016): the give-DON!! cost recipient is the previous action target.
+  if (
+    /^your\s+opponent\s+cannot\s+activate\s+\[Blocker\]\s+when\s+the\s+card\s+given\s+(?:these|the)\s+DON!!\s+cards?\s+attacks\s+during\s+this\s+turn$/i.test(
+      trimmed,
+    )
+  ) {
+    return [
+      {
+        action: "grantKeyword",
+        target: { player: "self", zones: ["leader", "character"], count: { amount: 1 } },
+        keyword: "unblockable",
+        duration: "thisTurn",
+        previousActionTargets: true,
+      },
+    ];
+  }
+
   // "Select up to N of your opponent's Characters. This Character's base power becomes the same as the selected Character's power during this turn."
   const selectSetPowerMatch =
     /^select\s+(?:up\s+to\s+)?(\d+)\s+(?:of\s+)?(your(?:\s+opponent[''\u2019]s)?)\s+(.+?)\.\s+This\s+Character[''\u2019]s\s+base\s+power\s+becomes\s+the\s+same\s+as\s+the\s+selected\s+Character[''\u2019]s\s+power(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(

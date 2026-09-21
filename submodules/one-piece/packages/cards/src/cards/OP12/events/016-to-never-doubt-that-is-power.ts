@@ -27,6 +27,37 @@ export const op12ToNeverDoubtThatIsPower016: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        costs: [
+          {
+            cost: "giveDon",
+            amount: 2,
+            filters: [
+              {
+                filter: "name",
+                value: "Silvers Rayleigh",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+              },
+            },
+            keyword: "unblockable",
+            duration: "thisTurn",
+            previousActionTargets: true,
+          },
+        ],
+        optional: true,
+      },
+      {
         trigger: "counter",
         actions: [
           {

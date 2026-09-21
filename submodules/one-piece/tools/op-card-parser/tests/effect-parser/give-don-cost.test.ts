@@ -45,4 +45,33 @@ describe("give DON!! activation costs", () => {
       ],
     });
   });
+
+  test("OP12-016 makes the DON!! recipient unblockable for the turn", () => {
+    expect(
+      buildCardEffects(
+        "[Main] You may give 2 active DON!! cards to 1 of your [Silvers Rayleigh]: Your opponent cannot activate [Blocker] when the card given these DON!! cards attacks during this turn.",
+      ),
+    ).toMatchObject({
+      effects: [
+        {
+          trigger: "main",
+          costs: [
+            {
+              cost: "giveDon",
+              amount: 2,
+              filters: [{ filter: "name", value: "Silvers Rayleigh" }],
+            },
+          ],
+          actions: [
+            {
+              action: "grantKeyword",
+              keyword: "unblockable",
+              duration: "thisTurn",
+              previousActionTargets: true,
+            },
+          ],
+        },
+      ],
+    });
+  });
 });

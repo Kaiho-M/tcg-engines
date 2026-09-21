@@ -349,6 +349,11 @@ export function processEffectBlock(
       });
       return;
     }
+    // A sole recipient is chosen silently but still recorded, so later actions can refer
+    // to "the card given these DON!! cards" (OP12-016) through previousActionTargetIds.
+    if (candidateIds.length === 1) {
+      item.costPaymentIdsByType = { ...item.costPaymentIdsByType, giveDon: candidateIds };
+    }
   }
 
   const pendingOrderedCost = block.costs?.find((cost) =>
