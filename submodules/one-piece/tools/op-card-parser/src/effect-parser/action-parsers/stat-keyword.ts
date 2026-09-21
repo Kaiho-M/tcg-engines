@@ -51,7 +51,7 @@ export function parseModifyPowerAction(text: string): ModifyPowerAction | null {
   // "This Character gains +1000 power for every 3 of your rested DON!! cards"
   // "This Character gains +1000 power for every card in your hand"
   const forEveryMatch =
-    /^(.+?)\s+gains?\s+([+-]?\d+)\s+power\s+for\s+every\s+(?:(\d+)\s+(?:of\s+)?)?(.+?)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
+    /^(.+?)\s+gains?\s+([+-]?\d+)\s+power\s+for\s+(?:every|each)\s+(?:(\d+)\s+(?:of\s+)?|of\s+)?(.+?)(?:\s+(during\s+this\s+(?:turn|battle)|until\s+.+))?$/i.exec(
       trimmed,
     );
   if (forEveryMatch) {
@@ -93,6 +93,25 @@ export function parseModifyPowerAction(text: string): ModifyPowerAction | null {
           target,
           value,
           restedDonGroupSize: per,
+          duration,
+        };
+      }
+      // "your [{Trait} type] Characters [with a different card name]" — cards on your field,
+      // counted by distinct name when the suffix is present (OP16-034).
+      const fieldGroupMatch = /^(your\s+.+?)(\s+with\s+(?:a\s+)?different\s+card\s+names?)?$/i.exec(
+        sourceText,
+      );
+      const fieldGroupTarget = fieldGroupMatch ? parseTarget(`all of ${fieldGroupMatch[1]}`) : null;
+      if (fieldGroupTarget) {
+        return {
+          action: "modifyPower",
+          target,
+          value,
+          valuePerCardGroup: {
+            size: per,
+            target: fieldGroupTarget,
+            ...(fieldGroupMatch![2] && { distinctNames: true }),
+          },
           duration,
         };
       }

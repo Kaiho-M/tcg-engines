@@ -70,6 +70,46 @@ export const op16MonkeyDLuffy034: CharacterCard = {
         ],
       },
     ],
+    permanentEffects: [
+      {
+        conditions: [
+          {
+            condition: "donAttached",
+            amount: 1,
+          },
+          {
+            condition: "turn",
+            value: "your",
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              self: true,
+            },
+            value: 1000,
+            valuePerCardGroup: {
+              size: 1,
+              target: {
+                player: "self",
+                zones: ["character"],
+                count: {
+                  amount: "all",
+                },
+              },
+              distinctNames: true,
+            },
+            duration: "permanent",
+          },
+        ],
+      },
+    ],
   },
   i18n: op16MonkeyDLuffy034I18n,
 };

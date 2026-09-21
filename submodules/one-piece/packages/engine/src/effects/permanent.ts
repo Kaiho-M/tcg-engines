@@ -3,7 +3,7 @@ import type { Action, EffectTrigger, Keyword } from "@tcg/op-types";
 import type { CardInstance, MatchState } from "../types.ts";
 import { evaluateConditions } from "./conditions.ts";
 import { getCardBasePower } from "../shared.ts";
-import { candidatePoolForTarget, matchesTargetFilter } from "./targeting.ts";
+import { candidatePoolForTarget, countCards, matchesTargetFilter } from "./targeting.ts";
 
 const activeEvaluations = new WeakMap<MatchState, Set<string>>();
 /**
@@ -549,8 +549,10 @@ export function getPermanentModifierTotal(
               ? Math.floor(state.players[source.controller].restedDon / restedDonGroupSize) *
                 action.value
               : valuePerCardGroup && cardGroupPool?.supported
-                ? Math.floor(cardGroupPool.candidateIds.length / valuePerCardGroup.size) *
-                  action.value
+                ? Math.floor(
+                    countCards(state, cardGroupPool.candidateIds, valuePerCardGroup) /
+                      valuePerCardGroup.size,
+                  ) * action.value
                 : action.value;
           }
         }

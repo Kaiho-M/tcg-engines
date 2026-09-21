@@ -3,6 +3,7 @@ import type { Target, TargetFilter } from "@tcg/op-types";
 import {
   baseCost,
   getCardBasePower,
+  cardName,
   cardNames,
   donCardsOnField,
   effectBlocksFor,
@@ -217,6 +218,19 @@ export function matchesTargetFilter(
           return { supported: true, matches: candidateCost >= referenceValue };
       }
   }
+}
+
+/** Number of cards, or of distinct card names among them when `distinctNames` is set. */
+export function countCards(
+  state: MatchState,
+  instanceIds: readonly string[],
+  options?: { distinctNames?: boolean },
+): number {
+  return options?.distinctNames
+    ? new Set(
+        instanceIds.map((instanceId) => cardName(getCard(getInstance(state, instanceId).cardId))),
+      ).size
+    : instanceIds.length;
 }
 
 export function candidatesForTarget(

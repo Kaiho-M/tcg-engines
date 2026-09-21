@@ -27,6 +27,43 @@ export const op16LetSGoToTheNavyHeadquarters038: EventCard = {
   effects: {
     effects: [
       {
+        trigger: "main",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 6,
+          },
+        ],
+        actions: [
+          {
+            action: "setActive",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: "all",
+              },
+            },
+            condition: {
+              condition: "zoneCount",
+              player: "self",
+              zone: "character",
+              comparison: "eq",
+              value: 5,
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Impel Down",
+                  match: "includes",
+                },
+              ],
+              distinctNames: true,
+            },
+          },
+        ],
+        optional: true,
+      },
+      {
         trigger: "counter",
         actions: [
           {

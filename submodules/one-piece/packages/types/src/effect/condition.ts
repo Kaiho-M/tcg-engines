@@ -95,6 +95,8 @@ export interface ZoneCountCondition {
   comparison: Comparison;
   value: number;
   filters?: TargetFilter[];
+  /** Count distinct card names instead of cards ("5 Characters with different card names"). */
+  distinctNames?: boolean;
 }
 
 export interface ZoneValueTotalCondition {

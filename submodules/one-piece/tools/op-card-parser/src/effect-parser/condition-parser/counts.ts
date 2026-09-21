@@ -208,9 +208,10 @@ export function parseCountCondition(text: string): Condition | null {
     };
   }
 
-  // Zone count (typed characters): you have N or more/less [color] "X" type Characters
+  // Zone count (typed characters): you have N [or more/less] [color] "X" type Characters
+  // [with different card names] — the last counts distinct names (OP16-038, OP16-060).
   m =
-    /^you\s+have\s+(\d+)\s+or\s+(less|more)\s+(?:(red|green|blue|purple|black|yellow)\s+)?[""[{]([^""\]}]+)[""\]}]\s+type\s+Characters$/i.exec(
+    /^you\s+have\s+(\d+)(?:\s+or\s+(less|more))?\s+(?:(red|green|blue|purple|black|yellow)\s+)?[""[{]([^""\]}]+)[""\]}]\s+type\s+Characters(\s+with\s+different\s+card\s+names)?$/i.exec(
       t,
     );
   if (m) {
@@ -218,12 +219,13 @@ export function parseCountCondition(text: string): Condition | null {
       condition: "zoneCount",
       player: "self",
       zone: "character",
-      comparison: parseComparison(m[2]),
+      comparison: m[2] ? parseComparison(m[2]) : "eq",
       value: parseInt(m[1]!, 10),
       filters: [
         ...(m[3] ? [{ filter: "color", value: m[3].toLowerCase() as OPColor } as const] : []),
         { filter: "trait", value: m[4]!, match: "includes" },
       ],
+      ...(m[5] && { distinctNames: true }),
     };
   }
 

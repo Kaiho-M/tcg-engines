@@ -57,7 +57,12 @@ import {
   findRestReplacement,
   restActionCandidateIds,
 } from "./replacements.ts";
-import { candidatePoolForTarget, candidatesForTarget, matchesTargetFilter } from "./targeting.ts";
+import {
+  candidatePoolForTarget,
+  candidatesForTarget,
+  countCards,
+  matchesTargetFilter,
+} from "./targeting.ts";
 
 type RestCardsCost = Extract<Cost, { cost: "restCards" }>;
 type GiveDonCost = Extract<Cost, { cost: "giveDon" }>;
@@ -2178,8 +2183,10 @@ export function processEffectAction(
         ? Math.floor(getPlayer(state, controller).restedDon / action.restedDonGroupSize) *
           action.value
         : action.valuePerCardGroup && cardGroupPool?.supported
-          ? Math.floor(cardGroupPool.candidateIds.length / action.valuePerCardGroup.size) *
-            action.value
+          ? Math.floor(
+              countCards(state, cardGroupPool.candidateIds, action.valuePerCardGroup) /
+                action.valuePerCardGroup.size,
+            ) * action.value
           : action.value +
             (action.valuePerPreviousActionTarget ?? 0) *
               Math.floor(

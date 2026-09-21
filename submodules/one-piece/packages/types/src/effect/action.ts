@@ -115,6 +115,8 @@ export interface ModifyPowerAction {
   valuePerCardGroup?: {
     target: Target;
     size: number;
+    /** Count distinct card names instead of cards ("for each of your Characters with a different card name"). */
+    distinctNames?: boolean;
   };
   condition?: Condition;
 }

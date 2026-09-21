@@ -388,4 +388,57 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
       ],
     });
   });
+
+  test("OP16-034 counts distinct card names among its controller's Characters", () => {
+    expect(
+      buildCardEffects(
+        "[DON!! x1] [Your Turn] This Character gains +1000 power for each of your Characters with a different card name.",
+      ),
+    ).toMatchObject({
+      permanentEffects: [
+        {
+          actions: [
+            {
+              action: "modifyPower",
+              value: 1000,
+              valuePerCardGroup: {
+                size: 1,
+                target: { player: "self", zones: ["character"], count: { amount: "all" } },
+                distinctNames: true,
+              },
+            },
+          ],
+        },
+      ],
+    });
+  });
+
+  test("OP16-038 requires five differently named typed Characters, then readies the whole field", () => {
+    expect(
+      buildCardEffects(
+        "[Main] You may rest 6 of your DON!! cards: If you have 5 {Impel Down} type Characters with different card names, set your Leader and all of your Characters as active.",
+      ),
+    ).toMatchObject({
+      effects: [
+        {
+          trigger: "main",
+          costs: [{ cost: "restDon", amount: 6 }],
+          actions: [
+            {
+              action: "setActive",
+              target: { player: "self", zones: ["leader", "character"], count: { amount: "all" } },
+              condition: {
+                condition: "zoneCount",
+                zone: "character",
+                comparison: "eq",
+                value: 5,
+                filters: [{ filter: "trait", value: "Impel Down", match: "includes" }],
+                distinctNames: true,
+              },
+            },
+          ],
+        },
+      ],
+    });
+  });
 });

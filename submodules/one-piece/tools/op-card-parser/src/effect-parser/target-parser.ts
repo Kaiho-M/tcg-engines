@@ -284,6 +284,11 @@ export function parseTarget(text: string): Target | null {
     };
   }
 
+  // "Your Leader and all of your Characters" → multi-zone target
+  if (/^Your Leader and all (?:of your )?Characters$/i.test(trimmed)) {
+    return { player: "self", zones: ["leader", "character"], count: { amount: "all" } };
+  }
+
   // Standard pattern: (up to )?(a total of )?N of (your opponent's|your) (rested|active)? <zones+filters>
   let rest = trimmed;
 
@@ -659,11 +664,6 @@ export function parseModifyPowerTarget(text: string): Target | null {
       count: { amount: 1 },
       filters: [{ filter: "trait", value: traitLeaderMatch[1]!, match: "includes" }],
     };
-  }
-
-  // "Your Leader and all of your Characters" → multi-zone target
-  if (/^Your Leader and all (?:of your )?Characters$/i.test(trimmed)) {
-    return { player: "self", zones: ["leader", "character"], count: { amount: "all" } };
   }
 
   // "all of your Characters" → all characters

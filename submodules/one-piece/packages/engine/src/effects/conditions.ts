@@ -9,8 +9,7 @@ import {
   getPlayer,
   otherSeat,
 } from "../shared.ts";
-import { candidatesForTarget } from "./targeting.ts";
-import { matchesTargetFilter } from "./targeting.ts";
+import { candidatesForTarget, countCards, matchesTargetFilter } from "./targeting.ts";
 import type { MatchSeat, MatchState, ResolutionItem } from "../types.ts";
 
 type TriggerEvent = Extract<ResolutionItem, { kind: "effectBlock" }>["triggerEvent"];
@@ -110,7 +109,7 @@ function evaluateCondition(
               : condition.zone === "field"
                 ? 1 + player.characterArea.filter(Boolean).length + (player.stageArea ? 1 : 0)
                 : instanceIds.length;
-      if (condition.filters?.length) {
+      if (condition.filters?.length || condition.distinctNames) {
         if (
           condition.zone === "costArea" ||
           condition.zone === "don" ||
@@ -119,16 +118,17 @@ function evaluateCondition(
           return { supported: false, matches: false };
         }
         let supported = true;
-        total = instanceIds.filter((instanceId) =>
-          condition.filters!.every((filter) => {
+        const countedIds = instanceIds.filter((instanceId) =>
+          (condition.filters ?? []).every((filter) => {
             const result = matchesTargetFilter(state, sourceInstanceId, instanceId, filter);
             supported &&= result.supported;
             return result.matches;
           }),
-        ).length;
+        );
         if (!supported) {
           return { supported: false, matches: false };
         }
+        total = countCards(state, countedIds, condition);
       }
       switch (condition.comparison) {
         case "eq":
