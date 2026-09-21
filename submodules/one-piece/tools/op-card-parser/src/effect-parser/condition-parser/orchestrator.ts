@@ -231,6 +231,10 @@ export function parseWhenEvent(text: string): EffectTrigger | null {
   // "your opponent plays a Character with a base cost of N or more" (with optional "or when..." compound)
   if (/^your\s+opponent\s+plays\s+a\s+Character/i.test(t)) return "whenOpponentPlaysCharacter";
 
+  // "a {Trait} type Character card is played from your trash" (OP16-079)
+  if (/^an?\s+.+?\s*Character\s+card\s+is\s+played\s+from\s+your\s+trash$/i.test(t))
+    return "whenYouPlayCharacter";
+
   // "your opponent's Character is returned to the owner's hand by your effect"
   if (
     /^your\s+opponent[''\u2019]s\s+Character\s+is\s+returned\s+to\s+the\s+owner[''\u2019]s\s+hand\s+by\s+your\s+effect$/i.test(

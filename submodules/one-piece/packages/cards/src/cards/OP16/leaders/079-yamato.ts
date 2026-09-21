@@ -41,5 +41,38 @@ export const op16Yamato079: LeaderCard = {
   ],
   effect:
     "When a {Land of Wano} type Character card is played from your trash, that Character gains [Rush] during this turn.\n(This card can attack on the turn in which it is played.)",
+  effects: {
+    effects: [
+      {
+        trigger: "whenYouPlayCharacter",
+        eventFilter: {
+          player: "self",
+          fromZone: "trash",
+          filters: [
+            {
+              filter: "trait",
+              value: "Land of Wano",
+              match: "includes",
+            },
+          ],
+        },
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["character"],
+              count: {
+                amount: 1,
+              },
+              triggerEventCard: true,
+            },
+            keyword: "rush",
+            duration: "thisTurn",
+          },
+        ],
+      },
+    ],
+  },
   i18n: op16Yamato079I18n,
 };

@@ -179,6 +179,8 @@ export interface Target {
   totalConstraint?: TotalConstraint;
   /** True when the target is the card bearing this effect */
   self?: boolean;
+  /** True when the target is the card the block's trigger event is about ("that Character" after "When a Character is played") */
+  triggerEventCard?: boolean;
   /** Who selects the target; defaults to effect controller when omitted */
   chosenBy?: Player;
 }

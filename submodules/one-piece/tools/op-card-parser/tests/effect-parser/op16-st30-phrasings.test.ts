@@ -36,7 +36,11 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
           actions: [
             {
               action: "copyPower",
-              target: { player: "opponent", zones: ["character"], count: { amount: 1, upTo: true } },
+              target: {
+                player: "opponent",
+                zones: ["character"],
+                count: { amount: 1, upTo: true },
+              },
               duration: "thisTurn",
             },
           ],
@@ -175,7 +179,9 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
       effects: [
         {
           trigger: "main",
-          conditions: [{ condition: "leaderTrait", trait: "Blackbeard Pirates", match: "includes" }],
+          conditions: [
+            { condition: "leaderTrait", trait: "Blackbeard Pirates", match: "includes" },
+          ],
           actions: [
             {
               action: "returnToHand",
@@ -208,15 +214,30 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
           actions: [
             {
               action: "conditional",
-              predicate: { condition: "zoneCountComparison", zone: "character", selfComparison: "lt", difference: 1 },
+              predicate: {
+                condition: "zoneCountComparison",
+                zone: "character",
+                selfComparison: "lt",
+                difference: 1,
+              },
               whenTrue: [
                 {
                   action: "ko",
-                  target: { player: "opponent", zones: ["character"], count: { amount: 1, upTo: true }, filters: [{ filter: "cost", comparison: "lte", value: 6 }] },
+                  target: {
+                    player: "opponent",
+                    zones: ["character"],
+                    count: { amount: 1, upTo: true },
+                    filters: [{ filter: "cost", comparison: "lte", value: 6 }],
+                  },
                 },
                 {
                   action: "ko",
-                  target: { player: "opponent", zones: ["character"], count: { amount: 1, upTo: true }, filters: [{ filter: "cost", comparison: "lte", value: 5 }] },
+                  target: {
+                    player: "opponent",
+                    zones: ["character"],
+                    count: { amount: 1, upTo: true },
+                    filters: [{ filter: "cost", comparison: "lte", value: 5 }],
+                  },
                 },
               ],
             },
@@ -235,7 +256,9 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
       effects: [
         {
           trigger: "onOpponentAttack",
-          costs: [{ cost: "trashFromHand", amount: 1, filters: [{ filter: "hasTrigger", value: true }] }],
+          costs: [
+            { cost: "trashFromHand", amount: 1, filters: [{ filter: "hasTrigger", value: true }] },
+          ],
           actions: [
             {
               action: "changeBattleTarget",
@@ -280,7 +303,11 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
           actions: [
             {
               action: "modifyPower",
-              target: { player: "opponent", zones: ["character"], count: { amount: 1, upTo: true } },
+              target: {
+                player: "opponent",
+                zones: ["character"],
+                count: { amount: 1, upTo: true },
+              },
               value: -1000,
               valuePerCardGroup: {
                 size: 1,
@@ -323,6 +350,38 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
               target: { player: "self", zones: ["character"], count: { amount: 1 }, self: true },
               value: 3000,
               duration: "permanent",
+            },
+          ],
+        },
+      ],
+    });
+  });
+
+  test("OP16-079 grants [Rush] to the Character that was just played from the trash", () => {
+    expect(
+      buildCardEffects(
+        "When a {Land of Wano} type Character card is played from your trash, that Character gains [Rush] during this turn.",
+      ),
+    ).toEqual({
+      effects: [
+        {
+          trigger: "whenYouPlayCharacter",
+          eventFilter: {
+            player: "self",
+            fromZone: "trash",
+            filters: [{ filter: "trait", value: "Land of Wano", match: "includes" }],
+          },
+          actions: [
+            {
+              action: "grantKeyword",
+              target: {
+                player: "self",
+                zones: ["character"],
+                count: { amount: 1 },
+                triggerEventCard: true,
+              },
+              keyword: "rush",
+              duration: "thisTurn",
             },
           ],
         },

@@ -1119,18 +1119,22 @@ export function processEffectBlock(
       action.action === "draw" && action.amountFromTriggerEvent
         ? { ...action, amount: item.triggerEvent?.amount ?? 0 }
         : action;
+    const targetsTriggerEventCard = "target" in action && action.target?.triggerEventCard === true;
     const bindsTriggerEventTarget =
+      targetsTriggerEventCard ||
       (action.action === "returnToDeck" && action.triggerEventTarget) ||
       (action.action === "copyPower" && action.triggerEventAttacker);
-    const triggerEventTargetId =
-      action.action === "returnToDeck" && action.triggerEventTarget
+    const triggerEventTargetId = targetsTriggerEventCard
+      ? item.triggerEvent?.instanceId
+      : action.action === "returnToDeck" && action.triggerEventTarget
         ? item.triggerEvent?.targetInstanceId
         : action.action === "copyPower" && action.triggerEventAttacker
           ? item.triggerEvent?.instanceId
           : undefined;
-    const triggerEventTargetPool = bindsTriggerEventTarget
-      ? candidatePoolForTarget(state, item.controller, item.sourceInstanceId, action.target)
-      : undefined;
+    const triggerEventTargetPool =
+      bindsTriggerEventTarget && "target" in action && action.target
+        ? candidatePoolForTarget(state, item.controller, item.sourceInstanceId, action.target)
+        : undefined;
     const selectedTargetIds = bindsTriggerEventTarget
       ? triggerEventTargetId &&
         triggerEventTargetPool?.supported &&

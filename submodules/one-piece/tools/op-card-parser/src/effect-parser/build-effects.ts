@@ -934,6 +934,28 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
         actionText,
       );
     const leavingTraitMatch = leavingIncludedTraitMatch ?? leavingPrefixTraitMatch;
+    // "When a {Trait} type Character card is played from your trash, that Character ..." (OP16-079).
+    // The event carries the played card, so a leading "that Character" is bound to it.
+    const playedFromTrashMatch =
+      /^When\s+an?\s+(?:[[{"“]([^\]}"”]+)[\]}"”]\s+type\s+)?Character\s+card\s+is\s+played\s+from\s+your\s+trash,\s*(that\s+Character\b)?/i.exec(
+        actionText,
+      );
+    const playedFromTrashEventFilter = playedFromTrashMatch
+      ? {
+          player: "self" as const,
+          fromZone: "trash" as const,
+          ...(playedFromTrashMatch[1] && {
+            filters: [
+              {
+                filter: "trait" as const,
+                value: playedFromTrashMatch[1],
+                match: "includes" as const,
+              },
+            ],
+          }),
+        }
+      : undefined;
+    const bindsThatCharacterToEvent = Boolean(playedFromTrashMatch?.[2]);
     const leavingEventFilter = leavingTraitMatch
       ? {
           player: "self" as const,
@@ -1386,40 +1408,48 @@ export function buildCardEffects(effectText: string): CardEffects | undefined {
         ...(triggerEventCond.source && !leavingEventFilter && { source: triggerEventCond.source }),
         ...(leavingEventFilter
           ? { eventFilter: leavingEventFilter }
-          : triggerEventCond.event === "whenBecomesRested"
-            ? { eventFilter: { targetSelf: true } }
-            : opponentLifeRemoved
-              ? { eventFilter: { player: "opponent" as const } }
-              : sourceSelfBattleEndMatch
-                ? {
-                    eventFilter: {
-                      sourceSelf: true,
-                      targetFilters: [
-                        {
-                          filter: "cost" as const,
-                          comparison:
-                            sourceSelfBattleEndMatch[2]?.toLowerCase() === "less"
-                              ? ("lte" as const)
-                              : sourceSelfBattleEndMatch[2]?.toLowerCase() === "more"
-                                ? ("gte" as const)
-                                : ("eq" as const),
-                          value: parseInt(sourceSelfBattleEndMatch[1]!, 10),
-                        },
-                      ],
-                    },
-                  }
-                : sourceSelfBattleKo
+          : playedFromTrashEventFilter
+            ? { eventFilter: playedFromTrashEventFilter }
+            : triggerEventCond.event === "whenBecomesRested"
+              ? { eventFilter: { targetSelf: true } }
+              : opponentLifeRemoved
+                ? { eventFilter: { player: "opponent" as const } }
+                : sourceSelfBattleEndMatch
                   ? {
                       eventFilter: {
-                        player: "opponent" as const,
-                        koCause: "battle" as const,
                         sourceSelf: true,
+                        targetFilters: [
+                          {
+                            filter: "cost" as const,
+                            comparison:
+                              sourceSelfBattleEndMatch[2]?.toLowerCase() === "less"
+                                ? ("lte" as const)
+                                : sourceSelfBattleEndMatch[2]?.toLowerCase() === "more"
+                                  ? ("gte" as const)
+                                  : ("eq" as const),
+                            value: parseInt(sourceSelfBattleEndMatch[1]!, 10),
+                          },
+                        ],
                       },
                     }
-                  : {}),
+                  : sourceSelfBattleKo
+                    ? {
+                        eventFilter: {
+                          player: "opponent" as const,
+                          koCause: "battle" as const,
+                          sourceSelf: true,
+                        },
+                      }
+                    : {}),
         ...(remainingConditions.length > 0 && { conditions: remainingConditions }),
         ...(costs.length > 0 && { costs }),
-        actions: actionsResult.parsed,
+        actions: bindsThatCharacterToEvent
+          ? actionsResult.parsed.map((action, index) =>
+              index === 0 && "target" in action && action.target
+                ? { ...action, target: { ...action.target, triggerEventCard: true } }
+                : action,
+            )
+          : actionsResult.parsed,
         ...(optional && { optional: true }),
         ...(seg.oncePerTurn && { oncePerTurn: true }),
       });
