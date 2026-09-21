@@ -24,5 +24,75 @@ export const op12ColorOfObservationHaki017: EventCard = {
   traits: ["Former Roger Pirates"],
   effect:
     "[Main] You may give 1 active DON!! card to 1 of your [Silvers Rayleigh]: Look at 4 cards from the top of your deck; reveal up to 1 red Event or up to 1 Character card with a cost of 3 or more and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+  effects: {
+    effects: [
+      {
+        trigger: "main",
+        costs: [
+          {
+            cost: "giveDon",
+            amount: 1,
+            filters: [
+              {
+                filter: "name",
+                value: "Silvers Rayleigh",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "search",
+            lookCount: 4,
+            source: {
+              player: "self",
+              zone: "deck",
+            },
+            revealCount: {
+              amount: 1,
+              upTo: true,
+            },
+            revealFilters: [
+              {
+                filter: "anyOf",
+                filters: [
+                  {
+                    filter: "allOf",
+                    filters: [
+                      {
+                        filter: "color",
+                        value: "red",
+                      },
+                      {
+                        filter: "cardCategory",
+                        value: "event",
+                      },
+                    ],
+                  },
+                  {
+                    filter: "allOf",
+                    filters: [
+                      {
+                        filter: "cost",
+                        comparison: "gte",
+                        value: 3,
+                      },
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            revealDestination: "hand",
+            remainderPosition: "bottom",
+          },
+        ],
+        optional: true,
+      },
+    ],
+  },
   i18n: op12ColorOfObservationHaki017I18n,
 };

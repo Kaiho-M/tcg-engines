@@ -60,13 +60,18 @@ export const op16PortgasDAce118: CharacterCard = {
             },
             revealFilters: [
               {
-                filter: "trait",
-                value: "Whitebeard Pirates",
-                match: "includes",
-              },
-              {
-                filter: "name",
-                value: "Monkey.D.Luffy",
+                filter: "anyOf",
+                filters: [
+                  {
+                    filter: "name",
+                    value: "Monkey.D.Luffy",
+                  },
+                  {
+                    filter: "trait",
+                    value: "Whitebeard Pirates",
+                    match: "includes",
+                  },
+                ],
               },
             ],
             revealDestination: "hand",
@@ -90,13 +95,18 @@ export const op16PortgasDAce118: CharacterCard = {
             },
             revealFilters: [
               {
-                filter: "trait",
-                value: "Whitebeard Pirates",
-                match: "includes",
-              },
-              {
-                filter: "name",
-                value: "Monkey.D.Luffy",
+                filter: "anyOf",
+                filters: [
+                  {
+                    filter: "name",
+                    value: "Monkey.D.Luffy",
+                  },
+                  {
+                    filter: "trait",
+                    value: "Whitebeard Pirates",
+                    match: "includes",
+                  },
+                ],
               },
             ],
             revealDestination: "hand",

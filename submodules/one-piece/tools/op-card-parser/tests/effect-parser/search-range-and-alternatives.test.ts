@@ -58,4 +58,36 @@ describe("search ranges and alternative card descriptions", () => {
       ],
     });
   });
+
+  test("keeps a colored category or a counted, qualified category as alternatives (OP12-017)", () => {
+    expect(
+      mainSearch(
+        "[Main] Look at 4 cards from the top of your deck; reveal up to 1 red Event or up to 1 Character card with a cost of 3 or more and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+      ),
+    ).toMatchObject({
+      action: "search",
+      revealCount: { amount: 1, upTo: true },
+      revealFilters: [
+        {
+          filter: "anyOf",
+          filters: [
+            {
+              filter: "allOf",
+              filters: [
+                { filter: "color", value: "red" },
+                { filter: "cardCategory", value: "event" },
+              ],
+            },
+            {
+              filter: "allOf",
+              filters: [
+                { filter: "cost", comparison: "gte", value: 3 },
+                { filter: "cardCategory", value: "character" },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+  });
 });

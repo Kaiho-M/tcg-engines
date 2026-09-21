@@ -63,8 +63,10 @@ function parsePlayDescription(text: string): TargetFilter[] | null {
     rest = rest.trim();
   }
 
+  // "<desc> or [up to 1] <category card [with ...]>": each side is its own alternative
+  // (OP12-017 "red Event or up to 1 Character card with a cost of 3 or more").
   const mixedAlternativeMatch =
-    /^(.+?)\s+or\s+(?:1\s+)?((?:(?:red|green|blue|purple|black|yellow)\s+)?(?:Character|Event|Stage)(?:\s+card)?|card\s+with\s+a\s+type\s+including\s+["“][^"”]+["”]|\[[^\]]+\])$/i.exec(
+    /^(.+?)\s+or\s+(?:up\s+to\s+)?(?:1\s+)?((?:(?:red|green|blue|purple|black|yellow)\s+)?(?:Character|Event|Stage)(?:\s+card)?(?:\s+with\s+.+)?|card\s+with\s+a\s+type\s+including\s+["“][^"”]+["”]|\[[^\]]+\])$/i.exec(
       rest,
     );
   if (mixedAlternativeMatch) {
