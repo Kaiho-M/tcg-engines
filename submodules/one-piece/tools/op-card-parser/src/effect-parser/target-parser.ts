@@ -600,15 +600,22 @@ export function parseModifyPowerTarget(text: string): Target | null {
   if (alternatives) return alternatives;
 
   // A bare name with no zone noun refers to a Leader or Character with that
-  // name: "up to 1 of your [Shanks]".
-  const bareNamedMatch = /^up\s+to\s+(\d+)\s+of\s+your\s+\[([^\]]+)\]$/i.exec(trimmed);
-  if (bareNamedMatch) {
-    return {
-      player: "self",
-      zones: ["leader", "character"],
-      count: { amount: parseInt(bareNamedMatch[1]!, 10), upTo: true },
-      filters: [{ filter: "name", value: bareNamedMatch[2]! }],
-    };
+  // name: "up to 1 of your [Shanks]", "your [Eustass"Captain"Kid] with 5000 base power or more".
+  const bareNamedMatch =
+    /^(up\s+to\s+)?(?:(\d+)\s+of\s+)?your\s+\[([^\]]+)\](\s+with\s+.+)?$/i.exec(trimmed);
+  if (bareNamedMatch && (bareNamedMatch[2] || bareNamedMatch[4])) {
+    const suffix = bareNamedMatch[4] ? extractTargetFilters(bareNamedMatch[4]) : undefined;
+    if (!suffix || suffix.zonesText === "") {
+      return {
+        player: "self",
+        zones: ["leader", "character"],
+        count: {
+          amount: bareNamedMatch[2] ? parseInt(bareNamedMatch[2], 10) : 1,
+          ...(bareNamedMatch[1] && { upTo: true }),
+        },
+        filters: [{ filter: "name", value: bareNamedMatch[3]! }, ...(suffix?.filters ?? [])],
+      };
+    }
   }
 
   // "your [Charlotte Linlin] Leader" → the controller's Leader with that name.

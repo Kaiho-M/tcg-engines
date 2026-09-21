@@ -17,7 +17,7 @@ export type RawCost =
   | { type: "returnThisToHand" }
   | { type: "returnThisToDeck"; position: "top" | "bottom" }
   | { type: "returnThisAndHandToDeck"; handAmount: number; position: "top" | "bottom" }
-  | { type: "turnLifeFaceUp"; count: number; faceUp: boolean }
+  | { type: "turnLifeFaceUp"; count: number; faceUp: boolean; position?: "choice" }
   | { type: "returnCharacter"; raw: string }
   | { type: "returnCharacterToDeck"; raw: string }
   | { type: "returnFromTrashToDeck"; raw: string }

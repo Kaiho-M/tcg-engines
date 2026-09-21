@@ -407,18 +407,8 @@ export type PromptResolutionContext =
       };
     }
   | {
-      intent: "effectCostTrashLife";
-      sourceInstanceId: string;
-      controller: MatchSeat;
-      trigger: EffectTrigger;
-      blockIndex: number;
-      triggerEvent?: {
-        instanceId: string;
-        effectController: MatchSeat;
-      };
-    }
-  | {
-      intent: "effectCostAddLifeToHand";
+      /** Which end of Life a "top or bottom" cost is paid from. */
+      intent: "effectCostTrashLife" | "effectCostAddLifeToHand" | "effectCostTurnLifeFaceUp";
       sourceInstanceId: string;
       controller: MatchSeat;
       trigger: EffectTrigger;

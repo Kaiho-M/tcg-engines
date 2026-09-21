@@ -73,6 +73,32 @@ type PlayCardCost = Extract<Cost, { cost: "playCard" }>;
 type TrashCardCost = Extract<Cost, { cost: "trashCard" }>;
 type CardCostOption = PlayCardCost | TrashCardCost["options"][number];
 type TrashFromHandCost = Extract<Cost, { cost: "trashFromHand" }>;
+type LifePosition = "top" | "bottom" | "choice" | undefined;
+
+/** A Life cost paid from "the top or bottom" carries the chosen end as its payment id. */
+function lifePositionPaymentIsValid(
+  position: LifePosition,
+  lifeCount: number,
+  costPaymentIds: string[] | undefined,
+): boolean {
+  return (
+    position !== "choice" ||
+    lifeCount <= 1 ||
+    costPaymentIds === undefined ||
+    (costPaymentIds.length === 1 && (costPaymentIds[0] === "top" || costPaymentIds[0] === "bottom"))
+  );
+}
+
+/** The Life cards a top/bottom cost takes, reading a "choice" end from the payment id. */
+function lifeCardsForPositionCost(
+  life: readonly string[],
+  count: number,
+  position: LifePosition,
+  costPaymentIds: string[] | undefined,
+): string[] {
+  const end = position === "choice" ? costPaymentIds?.[0] : position;
+  return end === "bottom" ? life.slice(-count) : life.slice(0, count);
+}
 
 /** Modifier for "base power becomes N": stores the absolute value, so several never add up. */
 function setBasePowerModifier(
@@ -5720,11 +5746,11 @@ export function canPayCosts(
       case "trashLife":
         if (
           getPlayer(state, controller).life.length < cost.amount ||
-          (cost.position === "choice" &&
-            getPlayer(state, controller).life.length > 1 &&
-            costPaymentIds !== undefined &&
-            (costPaymentIds.length !== 1 ||
-              (costPaymentIds[0] !== "top" && costPaymentIds[0] !== "bottom")))
+          !lifePositionPaymentIsValid(
+            cost.position,
+            getPlayer(state, controller).life.length,
+            costPaymentIds,
+          )
         ) {
           return false;
         }
@@ -5804,18 +5830,23 @@ export function canPayCosts(
         }
         break;
       }
-      case "turnLifeFaceUp":
-        if (getPlayer(state, controller).life.length < cost.count) {
+      case "turnLifeFaceUp": {
+        const life = getPlayer(state, controller).life;
+        if (
+          life.length < cost.count ||
+          !lifePositionPaymentIsValid(cost.position, life.length, costPaymentIds)
+        ) {
           return false;
         }
         if (
-          getPlayer(state, controller)
-            .life.slice(0, cost.count)
-            .some((instanceId) => getInstance(state, instanceId).faceUp === (cost.faceUp ?? true))
+          lifeCardsForPositionCost(life, cost.count, cost.position, costPaymentIds).some(
+            (instanceId) => getInstance(state, instanceId).faceUp === (cost.faceUp ?? true),
+          )
         ) {
           return false;
         }
         break;
+      }
       case "addLifeToHand": {
         const player = getPlayer(state, controller);
         if (
@@ -5824,13 +5855,7 @@ export function canPayCosts(
         ) {
           return false;
         }
-        if (
-          cost.position === "choice" &&
-          player.life.length > 1 &&
-          costPaymentIds !== undefined &&
-          (costPaymentIds.length !== 1 ||
-            (costPaymentIds[0] !== "top" && costPaymentIds[0] !== "bottom"))
-        ) {
+        if (!lifePositionPaymentIsValid(cost.position, player.life.length, costPaymentIds)) {
           return false;
         }
         break;
@@ -6088,17 +6113,12 @@ export function payCosts(
         break;
       }
       case "trashLife": {
-        const player = getPlayer(state, controller);
-        const position =
-          cost.position === "choice"
-            ? costPaymentIds?.[0] === "bottom"
-              ? "bottom"
-              : "top"
-            : cost.position;
-        const selected =
-          position === "bottom"
-            ? player.life.slice(-cost.amount)
-            : player.life.slice(0, cost.amount);
+        const selected = lifeCardsForPositionCost(
+          getPlayer(state, controller).life,
+          cost.amount,
+          cost.position,
+          costPaymentIds,
+        );
         for (const instanceId of selected) {
           moveCard(state, instanceId, getInstance(state, instanceId).owner, "trash", {
             faceUp: true,
@@ -6257,7 +6277,12 @@ export function payCosts(
         break;
       }
       case "turnLifeFaceUp": {
-        const lifeIds = getPlayer(state, controller).life.slice(0, cost.count);
+        const lifeIds = lifeCardsForPositionCost(
+          getPlayer(state, controller).life,
+          cost.count,
+          cost.position,
+          costPaymentIds,
+        );
         const faceUp = cost.faceUp ?? true;
         for (const instanceId of lifeIds) {
           const instance = getInstance(state, instanceId);
@@ -6280,13 +6305,12 @@ export function payCosts(
         break;
       }
       case "addLifeToHand": {
-        const player = getPlayer(state, controller);
-        const position =
-          cost.position === "choice" ? (costPaymentIds?.[0] ?? "top") : (cost.position ?? "top");
-        const selected =
-          position === "bottom"
-            ? player.life.slice(-cost.amount)
-            : player.life.slice(0, cost.amount);
+        const selected = lifeCardsForPositionCost(
+          getPlayer(state, controller).life,
+          cost.amount,
+          cost.position,
+          costPaymentIds,
+        );
         for (const instanceId of selected) {
           moveCard(state, instanceId, controller, "hand", {
             faceUp: false,

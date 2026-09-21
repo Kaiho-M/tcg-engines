@@ -548,9 +548,9 @@ function parseTextCosts(text: string): RawCost[] {
       },
     });
   }
-  // "You may turn N card(s) from the top of your Life cards face-up/face-down"
+  // "You may turn N card(s) from the top [or bottom] of your Life cards face-up/face-down"
   const faceUpMatch =
-    /turn\s+(\d+)\s+cards?\s+from\s+the\s+top\s+of\s+your\s+Life\s+cards?\s+face-(up|down)/i.exec(
+    /turn\s+(\d+)\s+cards?\s+from\s+the\s+top(\s+or\s+bottom)?\s+of\s+your\s+Life\s+cards?\s+face-(up|down)/i.exec(
       text,
     );
   if (faceUpMatch) {
@@ -559,7 +559,8 @@ function parseTextCosts(text: string): RawCost[] {
       cost: {
         type: "turnLifeFaceUp",
         count: parseInt(faceUpMatch[1]!, 10),
-        faceUp: faceUpMatch[2]!.toLowerCase() === "up",
+        faceUp: faceUpMatch[3]!.toLowerCase() === "up",
+        ...(faceUpMatch[2] && { position: "choice" }),
       },
     });
   }

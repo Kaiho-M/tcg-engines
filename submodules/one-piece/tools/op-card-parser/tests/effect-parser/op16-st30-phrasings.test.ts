@@ -441,4 +441,43 @@ describe("OP16 / ST30 / ST31 phrasings found by OPTCGSim replays", () => {
       ],
     });
   });
+
+  test("ST36-005 pays a Life card from the top or bottom and redirects to a named Character", () => {
+    expect(
+      buildCardEffects(
+        [
+          '[On Your Opponent\'s Attack] [Once Per Turn] You may turn 1 card from the top or bottom of your Life cards face-down: Change the target of the attack to your [Eustass"Captain"Kid] with 5000 base power or more.',
+          "[Activate: Main] [Once Per Turn] You may turn 1 card from the top or bottom of your Life cards face-up: Give up to 1 rested DON!! card to your Leader.",
+        ].join("\n"),
+      ),
+    ).toMatchObject({
+      effects: [
+        {
+          trigger: "onOpponentAttack",
+          costs: [{ cost: "turnLifeFaceUp", count: 1, faceUp: false, position: "choice" }],
+          actions: [
+            {
+              action: "changeBattleTarget",
+              target: {
+                player: "self",
+                zones: ["leader", "character"],
+                count: { amount: 1 },
+                filters: [
+                  { filter: "name", value: 'Eustass"Captain"Kid' },
+                  { filter: "basePower", comparison: "gte", value: 5000 },
+                ],
+              },
+            },
+          ],
+          oncePerTurn: true,
+        },
+        {
+          trigger: "activateMain",
+          costs: [{ cost: "turnLifeFaceUp", count: 1, faceUp: true, position: "choice" }],
+          actions: [{ action: "giveDon", donState: "rested", count: { amount: 1, upTo: true } }],
+          oncePerTurn: true,
+        },
+      ],
+    });
+  });
 });

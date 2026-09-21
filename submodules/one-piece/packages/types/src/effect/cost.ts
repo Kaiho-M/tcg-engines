@@ -93,6 +93,8 @@ export interface TurnLifeFaceUpCost {
   count: number;
   /** Defaults to true for legacy definitions. False turns currently face-up Life face-down. */
   faceUp?: boolean;
+  /** Which end of Life to turn; defaults to top. "choice" lets the player pick ("from the top or bottom"). */
+  position?: "top" | "bottom" | "choice";
 }
 
 export interface ReturnCharacterCost {

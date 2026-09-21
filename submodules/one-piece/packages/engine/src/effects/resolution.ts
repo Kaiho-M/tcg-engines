@@ -1,4 +1,5 @@
 import { getCard } from "../../../cards/src/runtime-catalog.ts";
+import type { Cost } from "@tcg/op-types";
 import {
   baseCost,
   cardName,
@@ -976,49 +977,36 @@ export function processEffectBlock(
     return;
   }
 
-  const addLifeToHandCost = block.costs?.find((cost) => cost.cost === "addLifeToHand");
-  const trashLifeCost = block.costs?.find((cost) => cost.cost === "trashLife");
+  // Costs paid "from the top or bottom of your Life cards" ask which end first.
+  const lifePositionCost = block.costs?.find(
+    (cost): cost is Extract<Cost, { cost: "trashLife" | "addLifeToHand" | "turnLifeFaceUp" }> =>
+      (cost.cost === "trashLife" ||
+        cost.cost === "addLifeToHand" ||
+        cost.cost === "turnLifeFaceUp") &&
+      cost.position === "choice",
+  );
   if (
-    trashLifeCost?.position === "choice" &&
+    lifePositionCost &&
     getPlayer(state, item.controller).life.length > 1 &&
     !item.costPaymentIds
   ) {
-    createChoicePrompt(state, {
-      choiceKind: "chooseOption",
-      seat: item.controller,
-      label: `${cardName(card)} Life cost payment`,
-      details: "Choose whether to trash from the top or bottom of Life.",
-      sourceCardId: source.cardId,
-      sourceInstanceId: item.sourceInstanceId,
-      eventId: null,
-      options: [
-        { id: "top", label: "Top of Life", value: "top" },
-        { id: "bottom", label: "Bottom of Life", value: "bottom" },
-      ],
-      minSelections: 1,
-      maxSelections: 1,
-      context: { cost: "trashLife" },
-      resolutionContext: {
-        intent: "effectCostTrashLife",
-        sourceInstanceId: item.sourceInstanceId,
-        controller: item.controller,
-        trigger: item.trigger,
-        blockIndex: item.blockIndex,
-        triggerEvent: item.triggerEvent,
+    const lifePositionIntents = {
+      trashLife: { intent: "effectCostTrashLife", verb: "trash" },
+      addLifeToHand: { intent: "effectCostAddLifeToHand", verb: "add" },
+      turnLifeFaceUp: {
+        intent: "effectCostTurnLifeFaceUp",
+        verb:
+          lifePositionCost.cost === "turnLifeFaceUp" && lifePositionCost.faceUp === false
+            ? "turn face-down"
+            : "turn face-up",
       },
-    });
-    return;
-  }
-  if (
-    addLifeToHandCost?.position === "choice" &&
-    getPlayer(state, item.controller).life.length > 1 &&
-    !item.costPaymentIds
-  ) {
+    } as const;
+    const { intent, verb } = lifePositionIntents[lifePositionCost.cost];
     createChoicePrompt(state, {
       choiceKind: "chooseOption",
       seat: item.controller,
       label: `${cardName(card)} Life cost payment`,
-      details: "Choose whether to add from the top or bottom of Life.",
+      details: `Choose whether to ${verb} from the top or bottom of Life.`,
       sourceCardId: source.cardId,
       sourceInstanceId: item.sourceInstanceId,
       eventId: null,
@@ -1028,9 +1016,9 @@ export function processEffectBlock(
       ],
       minSelections: 1,
       maxSelections: 1,
-      context: { cost: "addLifeToHand" },
+      context: { cost: lifePositionCost.cost },
       resolutionContext: {
-        intent: "effectCostAddLifeToHand",
+        intent,
         sourceInstanceId: item.sourceInstanceId,
         controller: item.controller,
         trigger: item.trigger,
@@ -2163,7 +2151,8 @@ export function resolveEffectChoicePrompt(
       return true;
     }
     case "effectCostTrashLife":
-    case "effectCostAddLifeToHand": {
+    case "effectCostAddLifeToHand":
+    case "effectCostTurnLifeFaceUp": {
       if (command.optionId !== "top" && command.optionId !== "bottom") {
         return false;
       }

@@ -146,7 +146,12 @@ function mapRawCost(raw: RawCost): Cost | null {
     case "trashFromDeck":
       return null;
     case "turnLifeFaceUp":
-      return { cost: "turnLifeFaceUp", count: raw.count, faceUp: raw.faceUp };
+      return {
+        cost: "turnLifeFaceUp",
+        count: raw.count,
+        faceUp: raw.faceUp,
+        ...(raw.position && { position: raw.position }),
+      };
     case "returnCharacter": {
       const match =
         /return\s+(\d+)\s+(?:of\s+your\s+)?(?:(.*?)\s+)?Characters?(?:\s+with\s+a\s+cost\s+of\s+(\d+)(?:\s+or\s+(less|more))?)?\s+to\s+(?:the\s+owner[''\u2019]s|your)\s+hand/i.exec(

@@ -1,7 +1,12 @@
 import type { Action, TargetFilter, Zone } from "@tcg/op-types";
 import { KEYWORD_BRACKET_TO_TYPE, TRIGGER_MAP_ACTIVATE } from "../constants.ts";
 import { parseComparison, parseZoneList } from "../helpers.ts";
-import { extractTargetFilters, parseTarget, parseTargetWithoutPlayer } from "../target-parser.ts";
+import {
+  extractTargetFilters,
+  parseModifyPowerTarget,
+  parseTarget,
+  parseTargetWithoutPlayer,
+} from "../target-parser.ts";
 import { parseFullDuration } from "./helpers.ts";
 
 type ActivateEffectAction = Extract<Action, { action: "activateEffect" }>;
@@ -82,24 +87,38 @@ export function parseChangeBattleTargetAction(text: string): Action | null {
     /^change\s+the\s+target\s+of\s+(?:that|the)\s+attack\s+to\s+this\s+Leader\s+or\s+to\s+(?:one|1)\s+of\s+your\s+(?:[[{"“])([^\]}”"]+)(?:[\]}”"])\s+type\s+Character\s+cards?$/i.exec(
       trimmed,
     );
-  if (!match) return null;
-  return {
-    action: "changeBattleTarget",
-    target: {
-      player: "self",
-      zones: ["leader", "character"],
-      count: { amount: 1 },
-      filters: [
-        {
-          filter: "anyOf",
-          groups: [
-            [{ filter: "cardCategory", value: "leader" }],
-            [{ filter: "trait", value: match[1]!, match: "includes" }],
-          ],
-        },
-      ],
-    },
-  };
+  if (match) {
+    return {
+      action: "changeBattleTarget",
+      target: {
+        player: "self",
+        zones: ["leader", "character"],
+        count: { amount: 1 },
+        filters: [
+          {
+            filter: "anyOf",
+            groups: [
+              [{ filter: "cardCategory", value: "leader" }],
+              [{ filter: "trait", value: match[1]!, match: "includes" }],
+            ],
+          },
+        ],
+      },
+    };
+  }
+  // "Change the target of the attack to <one of your Leader/Characters>" (ST36-005)
+  const generalMatch = /^change\s+the\s+target\s+of\s+(?:that|the)\s+attack\s+to\s+(.+)$/i.exec(
+    trimmed,
+  );
+  const target = generalMatch ? parseModifyPowerTarget(generalMatch[1]!) : null;
+  if (
+    !target ||
+    target.player !== "self" ||
+    target.zones.some((zone) => zone !== "leader" && zone !== "character")
+  ) {
+    return null;
+  }
+  return { action: "changeBattleTarget", target };
 }
 
 export function parseSelectAction(text: string): Action[] | null {
