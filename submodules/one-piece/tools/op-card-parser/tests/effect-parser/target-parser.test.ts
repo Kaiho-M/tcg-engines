@@ -174,6 +174,20 @@ describe("parseTarget", () => {
     });
   });
 
+  test("parses a count-less plural bounded only by a total constraint (OP17-119)", () => {
+    const target = parseTarget("your opponent's Characters with a total cost of 4 or less");
+    expect(target).toEqual({
+      player: "opponent",
+      zones: ["character"],
+      count: { amount: "all", upTo: true },
+      totalConstraint: { property: "cost", comparison: "lte", value: 4 },
+    });
+  });
+
+  test("returns null for a count-less plural without a total constraint", () => {
+    expect(parseTarget("your opponent's Characters with a cost of 4 or less")).toBeNull();
+  });
+
   test("returns null for empty string", () => {
     expect(parseTarget("")).toBeNull();
   });

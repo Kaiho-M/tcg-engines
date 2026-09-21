@@ -42,6 +42,29 @@ export const op17Loki119: CharacterCard = {
   effect:
     "This Character gains +12 cost, and if it is your opponent's turn, this Character gains +3000 power.\n[On Play] K.O. your opponent's Characters with a total cost of 4 or less.",
   effects: {
+    effects: [
+      {
+        trigger: "onPlay",
+        actions: [
+          {
+            action: "ko",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: "all",
+                upTo: true,
+              },
+              totalConstraint: {
+                property: "cost",
+                comparison: "lte",
+                value: 4,
+              },
+            },
+          },
+        ],
+      },
+    ],
     permanentEffects: [
       {
         actions: [

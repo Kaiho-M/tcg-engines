@@ -295,15 +295,23 @@ export function parseTarget(text: string): Target | null {
 
   // "all (of) ..." — amount = "all"
   const allPrefix = /^all\s+(?:of\s+)?/i.exec(rest);
+  // A plural target with no count at all ("your opponent's Characters with a total cost of
+  // 4 or less", OP17-119) means any number of them, bounded only by the total constraint.
+  // Without such a constraint the count-less form is not a target expression.
+  let countless = false;
   let amount: number | "all";
   if (allPrefix) {
     amount = "all";
     rest = rest.slice(allPrefix[0].length);
   } else {
     const numMatch = /^(\d+) of /i.exec(rest);
-    if (!numMatch) return null;
-    amount = parseInt(numMatch[1]!, 10);
-    rest = rest.slice(numMatch[0].length);
+    if (numMatch) {
+      amount = parseInt(numMatch[1]!, 10);
+      rest = rest.slice(numMatch[0].length);
+    } else {
+      countless = true;
+      amount = "all";
+    }
   }
 
   const playerMatch = /^(your opponent's|your) /i.exec(rest);
@@ -409,6 +417,7 @@ export function parseTarget(text: string): Target | null {
 
   // rest is now "Characters with a cost of 5 or less" or "DON!! cards or Characters" etc.
   const { zonesText, filters, totalConstraint } = extractTargetFilters(rest);
+  if (countless && !totalConstraint) return null;
 
   const zones = parseZoneList(zonesText);
   if (!zones) return null;
@@ -427,7 +436,7 @@ export function parseTarget(text: string): Target | null {
   const target: Target = {
     player,
     zones,
-    count: { amount, ...(upTo && { upTo: true }) },
+    count: { amount, ...((upTo || countless) && { upTo: true }) },
   };
   if (allFilters.length > 0) target.filters = allFilters;
   if (totalConstraint) target.totalConstraint = totalConstraint;
