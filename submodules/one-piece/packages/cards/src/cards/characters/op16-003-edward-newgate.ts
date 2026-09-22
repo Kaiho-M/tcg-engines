@@ -89,7 +89,7 @@ export const op16EdwardNewgate003: CharacterCard = {
               player: "self",
               zones: ["leader"],
               count: {
-                amount: 1,
+                amount: "all",
               },
             },
             keyword: "doubleAttack",
