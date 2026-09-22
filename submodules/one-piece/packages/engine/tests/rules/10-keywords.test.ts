@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vite-plus/test";
 import {
   eb01EdwardWeevil023,
+  eb01Laboon047,
   eb01MountainGod018,
   eb01Mr9037,
   eb01TonyTonyChopper006,
@@ -650,6 +651,62 @@ describe("Rule 10-2-13: [Once Per Turn]", () => {
         .getView("south")
         .players.south.characters.find((card) => card?.instanceId === replayedSunnyId)?.power,
     ).toBe(4000);
+  });
+
+  // "Once per turn" counts every turn, so an effect used on its controller's turn is
+  // available again on the opponent's turn. Laboon EB01-047 reads: [Once Per Turn] when a
+  // Character is K.O.'d, draw 1 card and trash 1 card from your hand.
+  test("10-2-13-1: a [Once Per Turn] effect used on its controller's turn may be activated again on the opponent's turn", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        character: [eb01Laboon047, { card: eb01MountainGod018, playedOnTurn: 0 }],
+        hand: 2,
+        deck: 3,
+      },
+      {
+        character: [
+          { card: eb01MountainGod018, playedOnTurn: 0 },
+          { card: op13Higuma013, rested: true },
+        ],
+        hand: 2,
+        deck: 3,
+      },
+      SOUTH_ATTACKS,
+    );
+    const southAttackerId = engine.asSouth().findOnField(eb01MountainGod018);
+    const higumaId = engine.asNorth().findOnField(op13Higuma013);
+
+    // South's turn: Higuma is K.O.'d in battle and Laboon draws then trashes.
+    engine.asSouth().attack(southAttackerId, higumaId);
+    engine.asNorth().chooseCounter();
+    expect(engine.asSouth().view().players.south.hand).toHaveLength(3);
+    engine.asSouth().trashFromHand(engine.asSouth().view().players.south.hand[0]!.instanceId!);
+    expect(engine.asSouth().view().players.south.deckCount).toBe(2);
+
+    // North's turn: the rested Mountain God is K.O.'d in battle, so Laboon reacts again.
+    engine.asSouth().endTurn();
+    const northAttackerId = engine.asNorth().findOnField(eb01MountainGod018);
+    engine.asNorth().attack(northAttackerId, southAttackerId);
+    engine.asSouth().chooseCounter();
+
+    expect(
+      engine
+        .asSouth()
+        .view()
+        .players.south.characters.map((card) => card?.instanceId),
+    ).not.toContain(southAttackerId);
+    const discard = engine.pendingDecision("effectTrashFromHandSelection", "south").steps[0];
+    expect(discard?.kind).toBe("selectEntity");
+    if (discard?.kind !== "selectEntity") {
+      throw new Error("Expected Laboon's controller to choose the post-draw discard.");
+    }
+    expect(engine.asSouth().view().players.south.hand).toHaveLength(3);
+    engine.asSouth().trashFromHand(discard.candidates[0]!.ref.id);
+
+    const south = engine.asSouth().view().players.south;
+    expect(south.hand).toHaveLength(2);
+    expect(south.deckCount).toBe(1);
+    expect(engine.asSouth().view().prompts).toHaveLength(0);
   });
 
   // GAP: test-harness — 10-2-13-5 (a failed activation-cost payment still spends the
