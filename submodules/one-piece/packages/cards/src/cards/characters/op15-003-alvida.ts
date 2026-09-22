@@ -49,6 +49,12 @@ export const op15Alvida003: CharacterCard = {
             donorPlayer: "opponent",
             donState: "rested",
             recipientPlayer: "opponent",
+            filters: [
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+            ],
           },
         ],
         actions: [

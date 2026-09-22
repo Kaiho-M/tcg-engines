@@ -41,6 +41,12 @@ export const op15Morgan017: CharacterCard = {
             donorPlayer: "opponent",
             donState: "rested",
             recipientPlayer: "opponent",
+            filters: [
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+            ],
           },
         ],
         actions: [

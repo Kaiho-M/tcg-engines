@@ -71,6 +71,12 @@ export const op15Arlong023: CharacterCard = {
             donorPlayer: "opponent",
             donState: "rested",
             recipientPlayer: "opponent",
+            filters: [
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+            ],
           },
         ],
         actions: [

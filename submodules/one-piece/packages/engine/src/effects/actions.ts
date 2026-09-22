@@ -17,6 +17,7 @@ import {
   getInstance,
   getKeywords,
   getPlayer,
+  getSetBasePower,
   hasFlagModifier,
   isDonActivationByCharacterEffectPrevented,
   recordCapabilityIssue,
@@ -2672,7 +2673,10 @@ export function processEffectAction(
         );
         return false;
       }
-      const copiedBasePower = basePower(getCardForInstance(state, sourceIds[0]!));
+      // 4-9-2-1: a base power set by another effect is the card's base power now,
+      // so "becomes the same as your opponent's Leader" copies the set value.
+      const copiedBasePower =
+        getSetBasePower(state, sourceIds[0]!) ?? basePower(getCardForInstance(state, sourceIds[0]!));
       for (const targetId of targetIds) {
         addModifier(state, sourceInstanceId, targetId, {
           type: "basePower",
