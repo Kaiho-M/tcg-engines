@@ -804,6 +804,12 @@ function resetStartOfTurnState(state: MatchState, seat: MatchSeat) {
   let returningDon = 0;
 
   for (const instance of Object.values(state.cards)) {
+    // 10-2-13: [Once Per Turn] counts per turn, not per own turn, so every
+    // card's usage resets whenever a turn starts. Clearing only the turn
+    // player's cards left an effect used on its controller's turn (Laboon
+    // EB01-047 reacting to a K.O. in its own attack) unavailable on the
+    // opponent's turn.
+    instance.usedEffectKeys = [];
     if (instance.controller !== seat) {
       continue;
     }
@@ -812,7 +818,6 @@ function resetStartOfTurnState(state: MatchState, seat: MatchSeat) {
       if (!isCardPreventedFromRefreshing(state, instance.instanceId)) {
         instance.rested = false;
       }
-      instance.usedEffectKeys = [];
       if (instance.attachedDon > 0) {
         returningDon += instance.attachedDon;
         instance.attachedDon = 0;
