@@ -113,4 +113,25 @@ describe("OP17-040 Edward.Newgate", () => {
     expect(() => engine.pendingDecision("effectOptional", "south")).toThrow();
     expect(engine.pendingDecision("battleCounter", "north")).toBeDefined();
   });
+
+  test("declining the hand-trash cost leaves the Leader's power and the hand alone", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op17RocksDXebec039,
+        character: [{ card: op17EdwardNewgate040, playedOnTurn: 0 }],
+        hand: [op17Kyo045, op17Kyo045],
+      },
+      { hand: 1 },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    engine.declareAttack(engine.leader("south"), engine.leader("north"), "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(leaderPower(engine)).toBe(op17RocksDXebec039.power);
+    expect(view.players.south.hand.length).toBe(2);
+    expect(view.players.south.trash.length).toBe(0);
+    expect(view.players.south.characters.filter(Boolean).length).toBe(1);
+  });
 });

@@ -80,4 +80,22 @@ describe("OP13-079 Imu", () => {
     expect(south.characterArea).toContain(characterId);
     expect(south.hand).toHaveLength(2);
   });
+
+  test("[Activate: Main] may be declined, leaving the hand, board and deck alone", () => {
+    const engine = OnePieceTestEngine.create(
+      { leaderCardId: op13Imu079, hand: [eb01Doma005], deck: 5 },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    engine.activateEffect(engine.leader("south"), "activateMain", "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(view.players.south.hand).toHaveLength(1);
+    expect(view.players.south.deckCount).toBe(5);
+    expect(view.players.south.trash).toHaveLength(0);
+    expect(view.players.south.characters.filter(Boolean)).toHaveLength(0);
+    expect(view.prompts).toHaveLength(0);
+  });
 });

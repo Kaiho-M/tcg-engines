@@ -1,5 +1,4 @@
 import { describe, expect, test } from "vite-plus/test";
-import { eb01Doma005 } from "@tcg/op-cards";
 import { st21MonkeyDLuffy014 } from "../../../../cards/src/cards/characters/st21-014-monkey-d-luffy.ts";
 
 import { OnePieceTestEngine } from "../../../src/index.ts";

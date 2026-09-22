@@ -65,4 +65,22 @@ describe("OP16-038 Let's Go!! To the Navy Headquarters!!", () => {
     ]);
     expect(south.characters.every((card) => card?.rested === true)).toBe(true);
   });
+
+  test("[Main] may be declined, keeping every DON!! active", () => {
+    const engine = OnePieceTestEngine.create(
+      { hand: [op16LetSGoToTheNavyHeadquarters038], activeDon: 10 },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    engine.playCard(op16LetSGoToTheNavyHeadquarters038, "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    // The Event itself costs 1 DON!!; the 6-DON!! rest cost was declined.
+    expect(view.players.south.activeDon).toBe(9);
+    expect(view.players.south.restedDon).toBe(1);
+    expect(view.players.south.hand).toHaveLength(0);
+    expect(view.prompts).toHaveLength(0);
+  });
 });

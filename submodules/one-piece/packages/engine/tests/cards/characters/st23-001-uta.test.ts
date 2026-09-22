@@ -17,9 +17,9 @@ describe("ST23-001 Uta", () => {
       {},
       { firstPlayer: "north", activeSeat: "south" },
     );
-    const utaInHand = engine.getView("south").players.south.hand.find(
-      (card) => card.cardId === st23Uta001.id,
-    );
+    const utaInHand = engine
+      .getView("south")
+      .players.south.hand.find((card) => card.cardId === st23Uta001.id);
     expect(utaInHand?.cost).toBe(2);
 
     engine.playCard(st23Uta001, "south");
@@ -41,7 +41,8 @@ describe("ST23-001 Uta", () => {
       { firstPlayer: "north", activeSeat: "south" },
     );
     expect(
-      engine.getView("south").players.south.hand.find((card) => card.cardId === st23Uta001.id)?.cost,
+      engine.getView("south").players.south.hand.find((card) => card.cardId === st23Uta001.id)
+        ?.cost,
     ).toBe(6);
     expect(() => engine.playCard(st23Uta001, "south")).toThrow();
     expect(engine.getView("south").players.south.activeDon).toBe(5);

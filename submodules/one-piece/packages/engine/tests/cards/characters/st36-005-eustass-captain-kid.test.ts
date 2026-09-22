@@ -52,4 +52,29 @@ describe('ST36-005 Eustass"Captain"Kid', () => {
     expect(engine.getState().battle?.targetId).toBe(kidId);
     expect(engine.pendingDecision("battleCounter", "south")).toBeDefined();
   });
+
+  test("declining the Life cost leaves the attack target and Life as they were", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        character: [{ card: st36EustassCaptainKid005, playedOnTurn: 0 }],
+        life: [
+          { card: eb01Doma005, faceUp: true },
+          { card: eb01Doma005, faceUp: false },
+        ],
+        hand: [eb01Doma005],
+      },
+      { character: [{ card: eb01Doma005, playedOnTurn: 0 }] },
+      { firstPlayer: "south", activeSeat: "north" },
+    );
+    const attackerId = engine.findCardInZone("north", "character", eb01Doma005);
+    const [topLifeId] = engine.getState().players.south.life;
+
+    engine.declareAttack(attackerId, engine.leader("south"), "north");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    expect(engine.getState().cards[topLifeId!]?.faceUp).toBe(true);
+    expect(engine.getState().battle?.targetId).toBe(engine.leader("south"));
+    expect(engine.getView("south").players.south.lifeCount).toBe(2);
+    expect(engine.getView("south").players.south.hand).toHaveLength(1);
+  });
 });

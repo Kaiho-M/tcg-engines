@@ -17,4 +17,21 @@ describe("OP17-074 Yamato", () => {
     expect(view.restedDon).toBe(op17Yamato074.cost + 1);
     expect(view.donDeckCount).toBe(4);
   });
+
+  test("[On Play] may add no DON!! card", () => {
+    const engine = OnePieceTestEngine.create(
+      { hand: [op17Yamato074], activeDon: 3, donDeckCount: 5 },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    engine.playCard(op17Yamato074, "south");
+    engine.resolveDecision("effectAddDon", { optionId: "0" }, "south");
+
+    const view = engine.getView("south").players.south;
+    expect(view.restedDon).toBe(op17Yamato074.cost);
+    expect(view.activeDon).toBe(0);
+    expect(view.donDeckCount).toBe(5);
+    expect(engine.getView("south").prompts).toHaveLength(0);
+  });
 });

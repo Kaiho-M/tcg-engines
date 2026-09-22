@@ -34,4 +34,33 @@ describe("OP16-118 Portgas.D.Ace", () => {
   test("a second Ace does not raise the Counter beyond +2000", () => {
     expect(countersWithAces(2)).toEqual([2000, 2000, 2000, 1000]);
   });
+
+  test("Ace played from hand boosts an 8000-power Character's Counter on the field", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op16PortgasDAce001,
+        hand: [op16PortgasDAce118, op16Marco014],
+        activeDon: op16PortgasDAce118.cost,
+        deck: 6,
+      },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const marcoId = engine.findCardInZone("south", "hand", op16Marco014);
+    expect(getCardCounter(engine.getState(), marcoId)).toBe(0);
+
+    engine.playCard(op16PortgasDAce118, "south");
+    engine.resolveDecision("effectSearchSelection", { selectedIds: [] }, "south");
+    const remainder = engine.pendingDecision("effectSearchRemainderOrder", "south").steps[0];
+    if (remainder?.kind !== "orderItems") throw new Error("Expected the deck order.");
+    engine.resolveDecision(
+      "effectSearchRemainderOrder",
+      { selectedIds: remainder.candidates.map((candidate) => candidate.ref.id) },
+      "south",
+    );
+
+    expect(getCardCounter(engine.getState(), marcoId)).toBe(2000);
+    expect(engine.getView("south").players.south.activeDon).toBe(0);
+    expect(engine.getView("south").prompts).toHaveLength(0);
+  });
 });

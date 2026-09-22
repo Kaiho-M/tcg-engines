@@ -30,4 +30,29 @@ describe("OP16-104 Catarina Devon", () => {
       .players.south.characters.find((card) => card?.cardId === op16CatarinaDevon104.id);
     expect(devon?.power).toBe(eb01Doma005.power);
   });
+
+  test("[When Attacking] selecting no Character leaves its printed power", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op16MarshallDTeach080,
+        character: [{ card: op16CatarinaDevon104, playedOnTurn: 0 }],
+      },
+      {
+        leaderCardId: op17RocksDXebec039,
+        character: [{ card: eb01Doma005, playedOnTurn: 0 }],
+      },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const devonId = engine.findCardInZone("south", "character", op16CatarinaDevon104);
+
+    engine.declareAttack(devonId, engine.leader("north"), "south");
+    engine.resolveDecision("effectTargetSelection", { selectedIds: [] }, "south");
+
+    const view = engine.getView("south");
+    const devon = view.players.south.characters.find((card) => card?.instanceId === devonId);
+    expect(devon?.power).toBe(op16CatarinaDevon104.power);
+    expect(view.players.south.trash).toHaveLength(0);
+    expect(view.players.north.characters.filter(Boolean)).toHaveLength(1);
+    expect(view.players.north.leader?.power).toBe(op17RocksDXebec039.power);
+  });
 });

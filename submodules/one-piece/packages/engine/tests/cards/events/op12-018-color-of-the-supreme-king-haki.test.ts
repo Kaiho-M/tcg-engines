@@ -50,4 +50,39 @@ describe("OP12-018 Color of the Supreme King Haki", () => {
         .players.north.characters.find((card) => card?.instanceId === northKyoId)?.power,
     ).toBe(op17Kyo045.power! - 1000);
   });
+
+  test("[Counter] declining the rest-DON!! step leaves the opposing board alone", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op12SilversRayleigh001,
+        character: [{ card: op17Kyo045, playedOnTurn: 0 }],
+        hand: [op12ColorOfTheSupremeKingHaki018],
+        activeDon: 2,
+      },
+      { leaderCardId: op01RoronoaZoro001, character: [{ card: op17Kyo045, playedOnTurn: 0 }] },
+      { firstPlayer: "south", activeSeat: "north" },
+    );
+    const attackerId = engine.findCardInZone("north", "character", op17Kyo045);
+    const eventId = engine.findCardInZone("south", "hand", op12ColorOfTheSupremeKingHaki018);
+
+    engine.declareAttack(attackerId, engine.leader("south"), "north");
+    engine.resolveDecision("battleCounter", { selectedIds: [eventId] }, "south");
+    engine.resolveDecision(
+      "effectTargetSelection",
+      { selectedIds: [engine.leader("south")] },
+      "south",
+    );
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    // A Counter Event is paid from the defender's DON!! only on their own turn; here
+    // the declined optional simply leaves every DON!! where it was.
+    expect(view.players.south.restedDon).toBe(0);
+    expect(view.players.south.activeDon).toBe(2);
+    expect(view.players.north.leader?.power).toBe(op01RoronoaZoro001.power);
+    expect(
+      view.players.north.characters.find((card) => card?.instanceId === attackerId)?.power,
+    ).toBe(op17Kyo045.power!);
+    expect(view.players.south.trash.map((card) => card.instanceId)).toContain(eventId);
+  });
 });

@@ -241,6 +241,8 @@ export const OPTIONAL_TRIGGER_OPENERS: Record<string, OptionalOpener[]> = {
   whenliferemoved: ["lifeRemoved", "attack"],
   whentriggercharacterplayed: ["triggerCharacterPlayed", "attack", "play"],
   whentriggeractivates: ["triggerActivates", "attack", "play"],
+  whenleaderattacks: ["attack"],
+  gamestart: ["play"],
 };
 
 function blockHasDecline(block: string): boolean {

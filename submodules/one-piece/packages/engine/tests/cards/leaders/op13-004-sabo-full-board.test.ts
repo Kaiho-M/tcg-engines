@@ -55,4 +55,28 @@ describe("OP13-004 Sabo with a full board", () => {
     expect(engine.declareAttack(brookId, engine.leader("north"), "south").accepted).toBe(true);
     expect(Date.now() - started).toBeLessThan(10000);
   });
+
+  test("Sabo's cost condition still reads a small board correctly", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op13Sabo004,
+        character: [{ card: st01Brook011, playedOnTurn: 0 }],
+        hand: [op12Sengoku047],
+        activeDon: 10,
+      },
+      { leaderCardId: op12Kuzan040 },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    const before = engine.getView("south").players.south;
+    expect(before.characters.filter(Boolean)).toHaveLength(1);
+    expect(before.activeDon).toBe(10);
+
+    engine.playCard(op12Sengoku047, "south");
+    engine.acceptLeadingOptional("south");
+
+    const after = engine.getView("south").players.south;
+    expect(after.characters.filter(Boolean).length).toBeGreaterThanOrEqual(2);
+    expect(after.activeDon).toBeLessThan(10);
+  });
 });

@@ -84,4 +84,23 @@ describe("ST32-001 Kin'emon", () => {
     expect(engine.getState().players.south.restedDon).toBe(2);
     expect(engine.getView("south").players.south.hand).toHaveLength(2);
   });
+
+  test("[On Play] may be declined, leaving the DON!! and the Leader untouched", () => {
+    const engine = OnePieceTestEngine.create(
+      { hand: [st32KinEmon001], deck: 5, activeDon: 3 },
+      { hand: 1 },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    engine.playCard(st32KinEmon001, "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    // Kin'emon costs 1 DON!!; the optional Leader-or-DON!! rest was declined.
+    expect(view.players.south.restedDon).toBe(1);
+    expect(view.players.south.activeDon).toBe(2);
+    expect(view.players.south.deckCount).toBe(5);
+    expect(engine.getState().cards[engine.leader("south")]!.rested).toBe(false);
+    expect(view.prompts).toHaveLength(0);
+  });
 });

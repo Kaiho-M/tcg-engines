@@ -30,4 +30,27 @@ describe("OP15-119 Monkey.D.Luffy", () => {
     // A revealed Life card goes back face-down.
     expect(engine.getState().cards[topLifeId]?.faceUp).toBe(false);
   });
+
+  test("declining the reveal leaves its power and Life alone", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        character: [{ card: op15MonkeyDLuffy119, playedOnTurn: 0 }],
+        life: [op17WangZhi041, eb01Doma005],
+      },
+      { character: [eb01TonyTonyChopper006], hand: [eb01Doma005] },
+      SOUTH_ATTACKS_WITHOUT_TURN_SETUP,
+    );
+    const luffyId = engine.findCardInZone("south", "character", op15MonkeyDLuffy119);
+    const blockerId = engine.findCardInZone("north", "character", eb01TonyTonyChopper006);
+    const topLifeId = engine.getState().players.south.life[0]!;
+
+    engine.declareAttack(luffyId, engine.leader("north"), "south");
+    engine.resolveDecision("battleBlocker", { selectedIds: [blockerId] }, "north");
+    engine.resolveDecision("effectRevealFromLifeSelection", { optionId: "0" }, "south");
+
+    expect(getCardPower(engine.getState(), luffyId)).toBe(op15MonkeyDLuffy119.power!);
+    expect(engine.getState().cards[topLifeId]?.faceUp).toBe(false);
+    expect(engine.getView("south").players.south.lifeCount).toBe(2);
+    expect(engine.getView("south").players.south.trash).toHaveLength(0);
+  });
 });

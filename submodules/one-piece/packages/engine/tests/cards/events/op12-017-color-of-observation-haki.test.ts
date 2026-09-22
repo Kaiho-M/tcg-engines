@@ -32,4 +32,26 @@ describe("OP12-017 Color of Observation Haki", () => {
         .sort(),
     ).toEqual([redEventId, bigCharacterId].sort());
   });
+
+  test("[Main] may be declined, keeping the DON!! on the field and the Event in hand", () => {
+    const engine = OnePieceTestEngine.create({
+      hand: [op12ColorOfObservationHaki017],
+      character: [op08SilversRayleigh118],
+      deck: [op12ColorOfArmsHaki019, op17WangZhi041, op17WhiteyBay014, op17RocksPirates056],
+      activeDon: 2,
+    });
+    const rayleighId = engine.findCardInZone("south", "character", op08SilversRayleigh118);
+
+    engine.playCard(op12ColorOfObservationHaki017);
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(view.players.south.activeDon).toBe(2);
+    expect(
+      view.players.south.characters.find((card) => card?.instanceId === rayleighId)?.attachedDon,
+    ).toBe(0);
+    expect(view.players.south.hand).toHaveLength(0);
+    expect(view.players.south.deckCount).toBe(4);
+    expect(view.prompts).toHaveLength(0);
+  });
 });

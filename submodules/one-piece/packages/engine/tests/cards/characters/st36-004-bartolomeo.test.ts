@@ -8,7 +8,11 @@ import { OnePieceTestEngine } from "../../../src/index.ts";
 describe("ST36-004 Bartolomeo", () => {
   test("[On Play] trashes a Supernovas card from hand to draw 2", () => {
     const engine = OnePieceTestEngine.create(
-      { hand: [st36Bartolomeo004, st36Killer002, st36Killer002, eb01Doma005], deck: 5, activeDon: 1 },
+      {
+        hand: [st36Bartolomeo004, st36Killer002, st36Killer002, eb01Doma005],
+        deck: 5,
+        activeDon: 1,
+      },
       {},
       { firstPlayer: "north", activeSeat: "south" },
     );

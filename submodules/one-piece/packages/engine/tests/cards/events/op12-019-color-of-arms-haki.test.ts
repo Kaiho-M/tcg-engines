@@ -52,4 +52,25 @@ describe("OP12-019 Color of Arms Haki", () => {
     expect(doma).toMatchObject({ attachedDon: 0, power: eb01Doma005.power });
     expect(view.players.south.activeDon).toBe(2);
   });
+
+  test("[Main] may be declined, keeping the DON!! and leaving power alone", () => {
+    const engine = OnePieceTestEngine.create({
+      hand: [op12ColorOfArmsHaki019],
+      character: [op08SilversRayleigh118],
+      activeDon: 2,
+    });
+    const rayleighId = engine.findCardInZone("south", "character", op08SilversRayleigh118);
+
+    engine.playCard(op12ColorOfArmsHaki019);
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(view.players.south.activeDon).toBe(2);
+    expect(engine.getState().cards[rayleighId]?.attachedDon).toBe(0);
+    expect(
+      view.players.south.characters.find((card) => card?.instanceId === rayleighId)?.power,
+    ).toBe(op08SilversRayleigh118.power);
+    expect(view.players.south.leader?.power).toBe(5000);
+    expect(view.prompts).toHaveLength(0);
+  });
 });

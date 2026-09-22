@@ -22,10 +22,31 @@ describe("ST30-001 Luffy & Ace", () => {
       { leaderCardId: op17RocksDXebec039 },
       { firstPlayer: "south", activeSeat: "north" },
     );
-    expect(powerOf(engine, op16PortgasDAce118.id)).toBe(op16PortgasDAce118.power + 3000);
+    expect(powerOf(engine, op16PortgasDAce118.id)).toBe(op16PortgasDAce118.power! + 3000);
     expect(powerOf(engine, eb01Doma005.id)).toBe(eb01Doma005.power);
 
     engine.endTurn("north");
     expect(powerOf(engine, op16PortgasDAce118.id)).toBe(op16PortgasDAce118.power);
+  });
+
+  test("the bonus does not apply on your own turn", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: st30LuffyAce001,
+        character: [
+          { card: op16PortgasDAce118, playedOnTurn: 0 },
+          { card: eb01Doma005, playedOnTurn: 0 },
+        ],
+      },
+      { leaderCardId: op17RocksDXebec039 },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+
+    expect(powerOf(engine, op16PortgasDAce118.id)).toBe(op16PortgasDAce118.power);
+    expect(powerOf(engine, eb01Doma005.id)).toBe(eb01Doma005.power);
+
+    engine.endTurn("south");
+    expect(powerOf(engine, op16PortgasDAce118.id)).toBe(op16PortgasDAce118.power! + 3000);
+    expect(powerOf(engine, eb01Doma005.id)).toBe(eb01Doma005.power);
   });
 });

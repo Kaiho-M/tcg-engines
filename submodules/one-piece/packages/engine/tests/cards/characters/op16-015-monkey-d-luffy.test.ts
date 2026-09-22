@@ -103,4 +103,28 @@ describe("OP16-015 Monkey.D.Luffy", () => {
     expect(leaderPower(engine)).toBe(8000);
     expect(characterPower(engine, luffyId)).toBe(7000);
   });
+
+  test("declining the hand-trash cost leaves both base powers alone", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        leaderCardId: op16PortgasDAce001,
+        character: [op16MonkeyDLuffy015],
+        hand: [op16Curiel004, op16Curiel004],
+      },
+      { character: [{ card: eb01MountainGod018, playedOnTurn: 0 }] },
+      { firstPlayer: "south", activeSeat: "south" },
+    );
+    const luffyId = engine.findCardInZone("south", "character", op16MonkeyDLuffy015);
+
+    engine.endTurn("south");
+    const attackerId = engine.findCardInZone("north", "character", eb01MountainGod018);
+    engine.declareAttack(attackerId, engine.leader("south"), "north");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(leaderPower(engine)).toBe(op16PortgasDAce001.power);
+    expect(characterPower(engine, luffyId)).toBe(op16MonkeyDLuffy015.power);
+    expect(view.players.south.hand).toHaveLength(2);
+    expect(view.players.south.trash).toHaveLength(0);
+  });
 });

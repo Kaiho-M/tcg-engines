@@ -76,8 +76,8 @@ export const st30MonkeyDLuffy012: CharacterCard = {
               },
               filters: [
                 {
-                  filter: "name",
-                  value: "Blocker",
+                  filter: "hasKeyword",
+                  value: "blocker",
                 },
               ],
             },

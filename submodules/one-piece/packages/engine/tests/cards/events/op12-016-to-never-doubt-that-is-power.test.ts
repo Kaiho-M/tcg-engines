@@ -40,4 +40,31 @@ describe("OP12-016 To Never Doubt--That Is Power!", () => {
     ).toBe(false);
     expect(view.prompts).toHaveLength(0);
   });
+
+  test("[Main] may be declined, so no DON!! is given and nothing becomes unblockable", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        character: [{ card: op08SilversRayleigh118, playedOnTurn: 0 }],
+        hand: [op12ToNeverDoubtThatIsPower016],
+        activeDon: 4,
+      },
+      { hand: 1 },
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const rayleighId = engine.findCardInZone("south", "character", op08SilversRayleigh118);
+
+    engine.playCard(op12ToNeverDoubtThatIsPower016, "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(engine.getState().cards[rayleighId]?.attachedDon).toBe(0);
+    expect(view.players.south.activeDon).toBe(4);
+    expect(view.players.south.hand).toHaveLength(0);
+    expect(
+      Object.values(engine.getState().modifiers).some(
+        (modifier) => modifier.targetId === rayleighId && modifier.type === "keyword",
+      ),
+    ).toBe(false);
+    expect(view.prompts).toHaveLength(0);
+  });
 });

@@ -106,4 +106,23 @@ describe("OP15-118 Enel", () => {
     expect(view.players.south.deckCount).toBe(5);
     expect(view.prompts).toHaveLength(0);
   });
+
+  test("[On Play] may be declined, keeping the DON!! and the hand", () => {
+    const engine = OnePieceTestEngine.create(
+      { hand: [op15Enel118, eb01Doma005], deck: 5, activeDon: 9 },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const donDeckBefore = engine.getView("south").players.south.donDeckCount;
+
+    engine.playCard(op15Enel118, "south");
+    engine.resolveDecision("effectOptional", { optionId: "no" }, "south");
+
+    const view = engine.getView("south");
+    expect(view.players.south.donDeckCount).toBe(donDeckBefore);
+    expect(view.players.south.hand).toHaveLength(1);
+    expect(view.players.south.deckCount).toBe(5);
+    expect(view.players.south.trash).toHaveLength(0);
+    expect(view.prompts).toHaveLength(0);
+  });
 });
