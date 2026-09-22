@@ -4,12 +4,13 @@ import { eb01Doma005, op16DocQ109, st26MonkeyDLuffy005, st31MonkeyDLuffy004 } fr
 import { OnePieceTestEngine } from "../../../index.ts";
 
 describe("ST31-004 Monkey.D.Luffy", () => {
-  test("[On Play] debuffs one opposing Character per {Straw Hat Crew} card on the field", () => {
+  test("[On Play] gives an opposing Character -1000 power per {Straw Hat Crew} card on the field", () => {
     const engine = OnePieceTestEngine.create(
       {
+        // The default Leader OP01-001 is Straw Hat Crew #1; the played Luffy is #3.
         hand: [st31MonkeyDLuffy004],
         character: [
-          { card: st26MonkeyDLuffy005 }, // Straw Hat Crew #2 (the played Luffy is #1)
+          { card: st26MonkeyDLuffy005 }, // Straw Hat Crew #2
           { card: eb01Doma005 }, // not Straw Hat
         ],
         activeDon: st31MonkeyDLuffy004.cost,
@@ -28,16 +29,16 @@ describe("ST31-004 Monkey.D.Luffy", () => {
     const target = engine.pendingDecision("effectTargetSelection", "south").steps[0];
     if (target?.kind !== "selectEntity") throw new Error("Expected the debuff target.");
     expect(target.candidates).toHaveLength(2);
-    // Two Straw Hat Crew cards on the field allow debuffing both opponents.
-    engine.resolveDecision("effectTargetSelection", { selectedIds: [docQId, higumaId] }, "south");
+    engine.resolveDecision("effectTargetSelection", { selectedIds: [docQId] }, "south");
 
+    // Three Straw Hat Crew cards (Leader, ST26 Luffy, this Luffy): -3000 on the one target.
     const north = engine.getView("south").players.north;
-    expect(north.characters.find((c) => c?.instanceId === docQId)?.power).toBe(-1000);
-    expect(north.characters.find((c) => c?.instanceId === higumaId)?.power).toBe(2000);
+    expect(north.characters.find((c) => c?.instanceId === docQId)?.power).toBe(-3000);
+    expect(north.characters.find((c) => c?.instanceId === higumaId)?.power).toBe(3000);
     expect(engine.getView("south").prompts).toHaveLength(0);
   });
 
-  test("with only itself as {Straw Hat Crew} exactly one opponent is debuffed", () => {
+  test("with the Leader and itself as {Straw Hat Crew} the target loses 2000", () => {
     const engine = OnePieceTestEngine.create(
       { hand: [st31MonkeyDLuffy004], activeDon: st31MonkeyDLuffy004.cost },
       { character: [{ cardId: "OP16-109", rested: false }] },
@@ -54,7 +55,23 @@ describe("ST31-004 Monkey.D.Luffy", () => {
 
     const view = engine.getView("south");
     expect(view.players.north.characters.find((c) => c?.cardId === op16DocQ109.id)?.power).toBe(
-      -1000,
+      -2000,
+    );
+    expect(view.prompts).toHaveLength(0);
+  });
+
+  test("[On Play] may pick no target", () => {
+    const engine = OnePieceTestEngine.create(
+      { hand: [st31MonkeyDLuffy004], activeDon: st31MonkeyDLuffy004.cost },
+      { character: [{ cardId: "OP16-109", rested: false }] },
+    );
+
+    engine.playCard(st31MonkeyDLuffy004, "south");
+    engine.resolveDecision("effectTargetSelection", { selectedIds: [] }, "south");
+
+    const view = engine.getView("south");
+    expect(view.players.north.characters.find((c) => c?.cardId === op16DocQ109.id)?.power).toBe(
+      op16DocQ109.power,
     );
     expect(view.prompts).toHaveLength(0);
   });

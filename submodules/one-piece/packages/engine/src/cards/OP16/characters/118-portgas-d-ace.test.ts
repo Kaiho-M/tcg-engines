@@ -5,30 +5,49 @@ import { OnePieceTestEngine } from "../../../index.ts";
 describe("OP16-118 Portgas.D.Ace", () => {
   test("the counter of 8000-power Characters in hand becomes +2000", () => {
     const engine = OnePieceTestEngine.create(
-      { hand: ["OP16-118", "OP16-004"], activeDon: 5 },
-      { character: ["OP16-065"], activeDon: 5 },
+      // Ace on the field; Vista (8000 power) in hand has no printed counter.
+      { character: ["OP16-118"], hand: ["OP16-011"], activeDon: 5 },
+      { character: ["OP01-018"], activeDon: 5 },
     );
     const lifeBefore = engine.getView("south").players.south.lifeCount;
 
-    // Sakazuki (8000) attacks the Leader (5000). With the boosted counter
-    // 5000 + 2000 (Curiel) + 2000 (Ace's boost) = 9000 >= 8000: saved.
+    // Hajrudin (6000) attacks the Leader (5000). With Vista's counter now
+    // +2000: 5000 + 2000 = 7000 > 6000, saved.
     engine.endTurn("south");
-    engine.asNorth().attack("OP16-065", engine.asSouth().leader());
-    engine.asSouth().chooseCounter("OP16-004");
+    engine.asNorth().attack("OP01-018", engine.asSouth().leader());
+    engine.asSouth().chooseCounter("OP16-011");
     expect(engine.getView("south").players.south.lifeCount).toBe(lifeBefore);
   });
 
-  test("without Ace in hand the same counter no longer saves the Leader", () => {
+  test("'becomes +2000' does not add to a printed +2000 counter", () => {
     const engine = OnePieceTestEngine.create(
-      { hand: ["OP16-004"], activeDon: 5 },
+      // Curiel (8000 power) already has a +2000 counter; two Aces still leave it at 2000.
+      { character: ["OP16-118", "OP16-118"], hand: ["OP16-004"], activeDon: 5 },
       { character: ["OP16-065"], activeDon: 5 },
     );
     const lifeBefore = engine.getView("south").players.south.lifeCount;
 
+    // Sakazuki (8000) attacks the Leader (5000): 5000 + 2000 < 8000, not saved.
     engine.endTurn("south");
     engine.asNorth().attack("OP16-065", engine.asSouth().leader());
     engine.asSouth().chooseCounter("OP16-004");
     expect(engine.getView("south").players.south.lifeCount).toBe(lifeBefore - 1);
+  });
+
+  test("without Ace on the field Vista has no counter to use", () => {
+    const engine = OnePieceTestEngine.create(
+      { hand: ["OP16-011"], activeDon: 5 },
+      { character: ["OP01-018"], activeDon: 5 },
+    );
+    const lifeBefore = engine.getView("south").players.south.lifeCount;
+
+    engine.endTurn("south");
+    engine.asNorth().attack("OP01-018", engine.asSouth().leader());
+    // Vista's counter is 0, so it is offered but disabled in the Counter step.
+    const counterPrompt = engine.getView("south").prompts[0];
+    expect(counterPrompt?.options.map((option) => option.enabled)).toEqual([false]);
+    expect(() => engine.asSouth().chooseCounter("OP16-011")).toThrow();
+    expect(engine.getView("south").players.south.lifeCount).toBe(lifeBefore);
   });
 
   test("[On Play] looks at 5, may take a Whitebeard Pirates card, and orders the rest", () => {

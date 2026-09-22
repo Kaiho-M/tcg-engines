@@ -7,7 +7,7 @@ describe("OP15-017 Morgan", () => {
   test("pays by clogging an opposing Character, then clogs the opposing Leader", () => {
     const engine = OnePieceTestEngine.create(
       { character: [op15Morgan017], activeDon: 2 },
-      { character: [{ card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
+      { character: [{ card: eb01Doma005 }, { card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
     );
     const domaId = engine.findCardInZone("north", "character", eb01Doma005);
     const leaderId = engine.leader("north");
@@ -22,7 +22,10 @@ describe("OP15-017 Morgan", () => {
     const payment = engine.pendingDecision("effectCostGiveDon", "south").steps[0];
     expect(payment?.kind).toBe("payCost");
     if (payment?.kind !== "payCost") throw new Error("Expected the clog cost.");
-    expect(payment.candidates.map((candidate) => candidate.ref.id)).toEqual([leaderId, domaId]);
+    // "to 1 of your opponent's Characters": the opposing Leader cannot receive the cost.
+    expect(payment.candidates.map((candidate) => candidate.ref.id)).not.toContain(leaderId);
+    expect(payment.candidates.map((candidate) => candidate.ref.id)).toContain(domaId);
+    expect(payment.candidates).toHaveLength(2);
     engine.resolveDecision("effectCostGiveDon", { selectedIds: [domaId] }, "south");
 
     expect(engine.getView("south").players.north.restedDon).toBe(1);
@@ -48,7 +51,7 @@ describe("OP15-017 Morgan", () => {
   test("declining the cost leaves the opponent's DON!! untouched", () => {
     const engine = OnePieceTestEngine.create(
       { character: [op15Morgan017], activeDon: 2 },
-      { character: [{ card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
+      { character: [{ card: eb01Doma005 }, { card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
     );
 
     engine.activateEffect(

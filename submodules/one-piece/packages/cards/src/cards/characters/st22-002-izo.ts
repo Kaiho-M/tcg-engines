@@ -29,6 +29,7 @@ export const st22Izo002: CharacterCard = {
   rarity: "SR",
   setId: "ST22",
   cost: 1,
+  power: 0,
   counter: 1000,
   traits: ["Land of Wano", "Whitebeard Pirates"],
   attribute: "ranged",

@@ -49,7 +49,7 @@ describe("OP15-023 Arlong", () => {
   test("[Activate: Main] pays with an opposing rested DON!!, then moves a cost-area DON!!", () => {
     const engine = OnePieceTestEngine.create(
       { character: [op15Arlong023], activeDon: 2 },
-      { character: [{ card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
+      { character: [{ card: eb01Doma005 }, { card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
       {},
     );
     const domaId = engine.findCardInZone("north", "character", eb01Doma005);
@@ -65,7 +65,10 @@ describe("OP15-023 Arlong", () => {
     const payment = engine.pendingDecision("effectCostGiveDon", "south").steps[0];
     expect(payment?.kind).toBe("payCost");
     if (payment?.kind !== "payCost") throw new Error("Expected the clog cost.");
-    expect(payment.candidates.map((candidate) => candidate.ref.id)).toEqual([leaderId, domaId]);
+    // "to 1 of your opponent's Characters": the opposing Leader cannot receive the cost.
+    expect(payment.candidates.map((candidate) => candidate.ref.id)).not.toContain(leaderId);
+    expect(payment.candidates.map((candidate) => candidate.ref.id)).toContain(domaId);
+    expect(payment.candidates).toHaveLength(2);
     engine.resolveDecision("effectCostGiveDon", { selectedIds: [domaId] }, "south");
     expect(engine.getView("south").players.north.restedDon).toBe(1);
 
@@ -86,7 +89,7 @@ describe("OP15-023 Arlong", () => {
   test("[Activate: Main] declines change nothing and do not consume the once-per-turn", () => {
     const engine = OnePieceTestEngine.create(
       { character: [op15Arlong023], activeDon: 2 },
-      { character: [{ card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
+      { character: [{ card: eb01Doma005 }, { card: eb01Doma005 }], activeDon: 2, restedDon: 2 },
       {},
     );
     const arlongId = engine.findCardInZone("south", "character", op15Arlong023);

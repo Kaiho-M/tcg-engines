@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vite-plus/test";
 import type { EventCard } from "@tcg/op-types";
-import { eb01Doma005, eb01Fourtricks025, eb01MountainGod018, op01Kaido094 } from "@tcg/op-cards";
+import { eb01Doma005, eb01Fourtricks025 } from "@tcg/op-cards";
 import { op13StJaygarciaSaturn083 } from "../../../../../cards/src/cards/characters/op13-083-st-jaygarcia-saturn.ts";
 import { op13StShepherdJuPeter084 } from "../../../../../cards/src/cards/characters/op13-084-st-shepherd-ju-peter.ts";
 
@@ -43,34 +43,52 @@ const koByEffect: EventCard = {
 registerCards([koByEffect]);
 
 describe("OP13-084 St. Shepherd Ju Peter", () => {
-  test("may reveal no Five Elders card and bottom-orders all five looked cards", () => {
-    const engine = OnePieceTestEngine.create({
-      hand: [op13StShepherdJuPeter084],
-      deck: [
-        op13StJaygarciaSaturn083,
-        eb01Doma005,
-        eb01MountainGod018,
-        op01Kaido094,
-        eb01Fourtricks025,
-      ],
-      activeDon: op13StShepherdJuPeter084.cost,
-    });
+  test("[Your Turn] with 10 or more trash cards, Five Elders Characters' base power becomes 7000", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        character: [op13StShepherdJuPeter084, op13StJaygarciaSaturn083, eb01Doma005],
+        trash: Array.from({ length: 10 }, () => eb01Fourtricks025),
+        activeDon: 1,
+      },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const juPeterId = engine.findCardInZone("south", "character", op13StShepherdJuPeter084);
+    const saturnId = engine.findCardInZone("south", "character", op13StJaygarciaSaturn083);
+    const domaId = engine.findCardInZone("south", "character", eb01Doma005);
 
-    engine.playCard(op13StShepherdJuPeter084, "south");
-    const search = engine.pendingDecision("effectSearchSelection", "south").steps[0];
-    if (search?.kind !== "selectEntity") throw new Error("Expected Ju Peter's search choice.");
-    expect(search).toMatchObject({ min: 0, max: 1 });
-    engine.resolveDecision("effectSearchSelection", { selectedIds: [] }, "south");
+    const south = engine.getView("south").players.south;
+    expect(south.characters.find((card) => card?.instanceId === juPeterId)?.power).toBe(7000);
+    expect(south.characters.find((card) => card?.instanceId === saturnId)?.power).toBe(7000);
+    expect(south.characters.find((card) => card?.instanceId === domaId)?.power).toBe(
+      eb01Doma005.power,
+    );
 
-    const remainder = engine.pendingDecision("effectSearchRemainderOrder", "south").steps[0];
-    if (remainder?.kind !== "orderItems") throw new Error("Expected Ju Peter's remainder order.");
-    const order = remainder.candidates.map((candidate) => candidate.ref.id).reverse();
-    expect(order).toHaveLength(5);
-    engine.resolveDecision("effectSearchRemainderOrder", { selectedIds: order }, "south");
+    // Only during your turn.
+    engine.endTurn("south");
+    const later = engine.getView("south").players.south;
+    expect(later.characters.find((card) => card?.instanceId === juPeterId)?.power).toBe(
+      op13StShepherdJuPeter084.power,
+    );
+    expect(later.characters.find((card) => card?.instanceId === saturnId)?.power).toBe(
+      op13StJaygarciaSaturn083.power,
+    );
+  });
 
-    const view = engine.getView("south");
-    expect(view.players.south).toMatchObject({ handCount: 0, deckCount: 5 });
-    expect(view.prompts).toHaveLength(0);
+  test("with fewer than 10 trash cards the base power is unchanged", () => {
+    const engine = OnePieceTestEngine.create(
+      {
+        character: [op13StShepherdJuPeter084, op13StJaygarciaSaturn083],
+        trash: Array.from({ length: 9 }, () => eb01Fourtricks025),
+      },
+      {},
+      { firstPlayer: "north", activeSeat: "south" },
+    );
+    const saturnId = engine.findCardInZone("south", "character", op13StJaygarciaSaturn083);
+    expect(
+      engine.getView("south").players.south.characters.find((card) => card?.instanceId === saturnId)
+        ?.power,
+    ).toBe(op13StJaygarciaSaturn083.power);
   });
 
   test("at seven trash cards survives an opponent effect while another Character is removable", () => {
