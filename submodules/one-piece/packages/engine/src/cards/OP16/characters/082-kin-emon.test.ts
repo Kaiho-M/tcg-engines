@@ -3,18 +3,16 @@ import { describe, expect, test } from "vite-plus/test";
 import { OnePieceTestEngine } from "../../../index.ts";
 
 describe("OP16-082 Kin'emon", () => {
-  test("+3 cost is added to its printed cost", () => {
-    const engine = OnePieceTestEngine.create({ hand: ["OP16-082"], activeDon: 7 }, {});
+  test("is played for its printed cost and gains +3 cost only as a Character", () => {
+    // "This Character gains +3 cost": a card in hand is a Character card, not a
+    // Character (rule 2-2), so the modifier does not raise the cost to play it.
+    const engine = OnePieceTestEngine.create({ hand: ["OP16-082"], activeDon: 4 }, {});
 
     engine.playCard("OP16-082");
 
-    expect(engine.getView("south").players.south.activeDon).toBe(0);
-  });
-
-  test("cannot be played with fewer than 7 DON!!", () => {
-    const engine = OnePieceTestEngine.create({ hand: ["OP16-082"], activeDon: 6 }, {});
-
-    expect(() => engine.playCard("OP16-082")).toThrow();
+    const south = engine.getView("south").players.south;
+    expect(south.activeDon).toBe(0);
+    expect(south.characters.find((card) => card?.cardId === "OP16-082")?.cost).toBe(7);
   });
 
   test("[On Play] for a Land of Wano Leader looks at 5, takes a LoW card, and trashes the rest", () => {

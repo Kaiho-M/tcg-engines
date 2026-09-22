@@ -78,7 +78,7 @@ export const op16KinEmon082: CharacterCard = {
             action: "modifyCost",
             target: {
               player: "self",
-              zones: ["hand", "character"],
+              zones: ["character"],
               count: {
                 amount: 1,
               },
