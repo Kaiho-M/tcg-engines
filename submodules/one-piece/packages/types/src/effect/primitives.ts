@@ -68,6 +68,8 @@ export type EffectTrigger =
   | "whenBlockerActivated"
   | "whenTriggerActivates"
   | "whenDonReturned"
+  /** Once, when the match starts, before the first turn ("at the start of the game, play ..."). */
+  | "gameStart"
   | "whenOpponentActivatesEvent"
   | "whenYouActivateEvent"
   | "whenDonGiven"
@@ -82,4 +84,6 @@ export type EffectTrigger =
   | "whenBecomesRested"
   | "whenCharacterRestedByEffect"
   | "whenCardsTrashedFromHandByEffect"
-  | "whenYouTakeDamage";
+  | "whenYouTakeDamage"
+  /** A Character reacting to its own Leader's attack ("When your Leader ... attacks"). */
+  | "whenLeaderAttacks";

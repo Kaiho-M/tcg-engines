@@ -3,6 +3,7 @@ import type { Target, TargetFilter, TotalConstraint } from "@tcg/op-types";
 import {
   baseCost,
   basePower,
+  cardName,
   cardNames,
   donCardsOnField,
   effectBlocksFor,
@@ -256,6 +257,19 @@ export function resolveTargetCount(
     return pool.supported ? pool.candidateIds.length : 0;
   }
   return typeof target.count.amount === "number" ? target.count.amount : 0;
+}
+
+/** Number of cards, or of distinct card names among them when `distinctNames` is set. */
+export function countCards(
+  state: MatchState,
+  instanceIds: readonly string[],
+  options?: { distinctNames?: boolean },
+): number {
+  return options?.distinctNames
+    ? new Set(
+        instanceIds.map((instanceId) => cardName(getCard(getInstance(state, instanceId).cardId))),
+      ).size
+    : instanceIds.length;
 }
 
 export function candidatesForTarget(

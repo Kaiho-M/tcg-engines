@@ -519,6 +519,18 @@ export type PromptResolutionContext =
       };
     }
   | {
+      /** Which end of Life a "top or bottom" turn-Life cost is paid from. */
+      intent: "effectCostTurnLifeFaceUp";
+      sourceInstanceId: string;
+      controller: MatchSeat;
+      trigger: EffectTrigger;
+      blockIndex: number;
+      triggerEvent?: {
+        instanceId: string;
+        effectController: MatchSeat;
+      };
+    }
+  | {
       intent: "effectCostReturnHandToDeck";
       sourceInstanceId: string;
       controller: MatchSeat;
@@ -1115,6 +1127,9 @@ export interface PlayerState {
   activeDon: number;
   restedDon: number;
   donDeckCount: number;
+  /** Turn on which this player last had a hand card trashed by an effect / a Life card removed. */
+  handTrashedByEffectOnTurn?: number;
+  lifeRemovedOnTurn?: number;
   /**
    * How many times this seat has begun a turn as the active player.
    * Used for 6-5-6-1 (neither player can battle on their first turn).

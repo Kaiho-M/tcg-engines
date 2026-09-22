@@ -42,7 +42,9 @@ import {
   giveDonCostParts,
   candidatesForRevealFromHandCost,
   candidatesForReturnCharacterCost,
+  candidatesForGiveDonCost,
   candidatesForRestCardsCost,
+  restDonCandidateId,
   candidatesForReturnCharacterToDeckCost,
   candidatesForReturnTrashToDeckCost,
   koCharacterByEffect,
@@ -150,6 +152,10 @@ function triggerLabel(trigger: EffectTrigger): string {
       return "[When a Character Is Rested by an Effect]";
     case "whenYouTakeDamage":
       return "[When You Take Damage]";
+    case "gameStart":
+      return "[At the Start of the Game]";
+    case "whenLeaderAttacks":
+      return "[When Your Leader Attacks]";
     default: {
       // Compile-time exhaustiveness guard: never reached at runtime.
       const unhandled: never = trigger;
@@ -410,11 +416,12 @@ export function processEffectBlock(
   const giveDonCost = block.costs?.find((cost) => cost.cost === "giveDon");
   if (giveDonCost && !item.costPaymentIdsByType?.giveDon) {
     const { recipientSeat, poolAmount } = giveDonCostParts(state, item.controller, giveDonCost);
-    const recipient = getPlayer(state, recipientSeat);
-    const candidateIds = [
-      recipient.leaderInstanceId,
-      ...recipient.characterArea.filter((instanceId): instanceId is string => instanceId !== null),
-    ];
+    const candidateIds = candidatesForGiveDonCost(
+      state,
+      item.controller,
+      item.sourceInstanceId,
+      giveDonCost,
+    );
     if (candidateIds.length > 1 && poolAmount >= giveDonCost.amount) {
       createChoicePrompt(state, {
         choiceKind: "costPayment",
@@ -447,6 +454,11 @@ export function processEffectBlock(
         },
       });
       return;
+    }
+    // A sole recipient is chosen silently but still recorded, so later actions can refer
+    // to "the card given these DON!! cards" (OP12-016) through previousActionTargetIds.
+    if (candidateIds.length === 1) {
+      item.costPaymentIdsByType = { ...item.costPaymentIdsByType, giveDon: candidateIds };
     }
   }
 
@@ -772,12 +784,16 @@ export function processEffectBlock(
         sourceCardId: source.cardId,
         sourceInstanceId: item.sourceInstanceId,
         eventId: null,
-        options: candidateIds.map((instanceId) => ({
-          id: instanceId,
-          label: cardName(getCardForInstance(state, instanceId)),
-          value: instanceId,
-          targetId: instanceId,
-        })),
+        options: candidateIds.map((instanceId) =>
+          instanceId === restDonCandidateId(restCardsCost.orRestDon ?? -1)
+            ? { id: instanceId, label: `Rest ${restCardsCost.orRestDon} DON!!`, value: instanceId }
+            : {
+                id: instanceId,
+                label: cardName(getCardForInstance(state, instanceId)),
+                value: instanceId,
+                targetId: instanceId,
+              },
+        ),
         minSelections: restCardsCost.amount,
         maxSelections: restCardsCost.amount,
         context: {
@@ -1074,6 +1090,38 @@ export function processEffectBlock(
 
   const addLifeToHandCost = block.costs?.find((cost) => cost.cost === "addLifeToHand");
   const trashLifeCost = block.costs?.find((cost) => cost.cost === "trashLife");
+  const turnLifeFaceUpCost = block.costs?.find((cost) => cost.cost === "turnLifeFaceUp");
+  if (
+    turnLifeFaceUpCost?.position === "choice" &&
+    getPlayer(state, item.controller).life.length > 1 &&
+    !item.costPaymentIds
+  ) {
+    createChoicePrompt(state, {
+      choiceKind: "chooseOption",
+      seat: item.controller,
+      label: `${cardName(card)} Life cost: choose the top or bottom of Life.`,
+      details: `Choose whether to turn ${turnLifeFaceUpCost.faceUp === false ? "face-down" : "face-up"} from the top or bottom of Life.`,
+      sourceCardId: source.cardId,
+      sourceInstanceId: item.sourceInstanceId,
+      eventId: null,
+      options: [
+        { id: "top", label: "Top of Life", value: "top" },
+        { id: "bottom", label: "Bottom of Life", value: "bottom" },
+      ],
+      minSelections: 1,
+      maxSelections: 1,
+      context: { cost: "turnLifeFaceUp" },
+      resolutionContext: {
+        intent: "effectCostTurnLifeFaceUp",
+        sourceInstanceId: item.sourceInstanceId,
+        controller: item.controller,
+        trigger: item.trigger,
+        blockIndex: item.blockIndex,
+        triggerEvent: item.triggerEvent,
+      },
+    });
+    return;
+  }
   if (
     trashLifeCost?.position === "choice" &&
     getPlayer(state, item.controller).life.length > 1 &&
@@ -1255,18 +1303,22 @@ export function processEffectBlock(
       action.action === "draw" && action.amountFromTriggerEvent
         ? { ...action, amount: item.triggerEvent?.amount ?? 0 }
         : action;
+    const targetsTriggerEventCard = "target" in action && action.target?.triggerEventCard === true;
     const bindsTriggerEventTarget =
+      targetsTriggerEventCard ||
       (action.action === "returnToDeck" && action.triggerEventTarget) ||
       (action.action === "copyPower" && action.triggerEventAttacker);
-    const triggerEventTargetId =
-      action.action === "returnToDeck" && action.triggerEventTarget
+    const triggerEventTargetId = targetsTriggerEventCard
+      ? item.triggerEvent?.instanceId
+      : action.action === "returnToDeck" && action.triggerEventTarget
         ? item.triggerEvent?.targetInstanceId
         : action.action === "copyPower" && action.triggerEventAttacker
           ? item.triggerEvent?.instanceId
           : undefined;
-    const triggerEventTargetPool = bindsTriggerEventTarget
-      ? candidatePoolForTarget(state, item.controller, item.sourceInstanceId, action.target)
-      : undefined;
+    const triggerEventTargetPool =
+      bindsTriggerEventTarget && "target" in action && action.target
+        ? candidatePoolForTarget(state, item.controller, item.sourceInstanceId, action.target)
+        : undefined;
     const selectedTargetIds = bindsTriggerEventTarget
       ? triggerEventTargetId &&
         triggerEventTargetPool?.supported &&
@@ -2239,14 +2291,13 @@ export function resolveEffectChoicePrompt(
       const context = prompt.resolutionContext;
       const selectedIds = command.selectedIds ?? [];
       const cost = context.cost;
-      const { recipientSeat, poolAmount } = giveDonCostParts(state, context.controller, cost);
-      const recipient = getPlayer(state, recipientSeat);
-      const liveCandidateIds = [
-        recipient.leaderInstanceId,
-        ...recipient.characterArea.filter(
-          (instanceId): instanceId is string => instanceId !== null,
-        ),
-      ];
+      const { poolAmount } = giveDonCostParts(state, context.controller, cost);
+      const liveCandidateIds = candidatesForGiveDonCost(
+        state,
+        context.controller,
+        context.sourceInstanceId,
+        cost,
+      );
       if (
         selectedIds.length !== 1 ||
         !context.candidateIds.includes(selectedIds[0]!) ||
@@ -2465,7 +2516,8 @@ export function resolveEffectChoicePrompt(
       return true;
     }
     case "effectCostTrashLife":
-    case "effectCostAddLifeToHand": {
+    case "effectCostAddLifeToHand":
+    case "effectCostTurnLifeFaceUp": {
       if (command.optionId !== "top" && command.optionId !== "bottom") {
         return false;
       }

@@ -30,6 +30,7 @@ export type Condition =
   | GivenDonCountCondition
   | CompoundCondition
   | PlayedThisTurnCondition
+  | EventThisTurnCondition
   | FaceUpLifeCondition
   | ReplacementCondition
   | ExistsOnFieldCondition
@@ -93,6 +94,8 @@ export interface OncePerTurnCondition {
 export interface LeaderNameCondition {
   condition: "leaderName";
   name: string;
+  /** "includes" matches a leader whose card name contains the text (default: exact). */
+  match?: "exact" | "includes";
 }
 
 export interface LeaderAttributeCondition {
@@ -113,6 +116,8 @@ export interface ZoneCountCondition {
   comparison: Comparison;
   value: number;
   filters?: TargetFilter[];
+  /** Count distinct card names instead of cards ("5 Characters with different card names"). */
+  distinctNames?: boolean;
 }
 
 export interface ZoneValueTotalCondition {
@@ -190,6 +195,8 @@ export interface CompareHandsCondition {
 
 export interface LeaderMulticoloredCondition {
   condition: "leaderMulticolored";
+  /** True to require a monocolored Leader instead. */
+  negate?: boolean;
 }
 
 export interface DonFieldCountCondition {
@@ -227,6 +234,13 @@ export interface CompoundCondition {
 
 export interface PlayedThisTurnCondition {
   condition: "playedThisTurn";
+}
+
+/** Something happened to a player earlier this turn ("If a card was removed from your opponent's Life cards during this turn"). */
+export interface EventThisTurnCondition {
+  condition: "eventThisTurn";
+  player: Player;
+  event: "handTrashedByEffect" | "lifeRemoved";
 }
 
 export interface FaceUpLifeCondition {

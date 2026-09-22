@@ -20,6 +20,7 @@ import {
   getPermanentModifierTotal,
   getPermanentSetBasePower,
   getPermanentSetCost,
+  getPermanentSetCounter,
   isRefreshPreventedByPermanentEffect,
 } from "./effects/permanent.ts";
 
@@ -86,7 +87,8 @@ export function getCardCounter(state: MatchState, instanceId: string): number {
   if (card.cardType !== "character") {
     return 0;
   }
-  return (card.counter ?? 0) + getPermanentModifierTotal(state, instanceId, "counter");
+  const printed = getPermanentSetCounter(state, instanceId) ?? card.counter ?? 0;
+  return printed + getPermanentModifierTotal(state, instanceId, "counter");
 }
 
 export function leaderLife(card: OPCard): number {
@@ -274,6 +276,19 @@ export function enqueueInPlayEffectsForTrigger(
   sourceControllers?: readonly MatchSeat[],
   excludeInstanceIds?: readonly string[],
 ) {
+  // Remember, per player, the turn these events last happened for "during this turn" conditions.
+  if (trigger === "whenCardTrashedFromHandByEffect" && triggerEvent) {
+    getPlayer(
+      state,
+      getInstance(state, triggerEvent.instanceId).controller,
+    ).handTrashedByEffectOnTurn = state.turnNumber;
+  }
+  if (trigger === "whenLifeRemoved" && triggerEvent?.targetInstanceId) {
+    getPlayer(
+      state,
+      getInstance(state, triggerEvent.targetInstanceId).controller,
+    ).lifeRemovedOnTurn = state.turnNumber;
+  }
   // 8-6-1: when both players' effect timings are fulfilled at the same time,
   // the turn player's effects resolve first.
   const seats = sourceControllers ?? [state.activeSeat, otherSeat(state.activeSeat)];

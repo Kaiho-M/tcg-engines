@@ -75,6 +75,16 @@ type PlayCardCost = Extract<Cost, { cost: "playCard" }>;
 type TrashCardCost = Extract<Cost, { cost: "trashCard" }>;
 type CardCostOption = PlayCardCost | TrashCardCost["options"][number];
 type TrashFromHandCost = Extract<Cost, { cost: "trashFromHand" }>;
+
+/** The Life cards a turn-Life cost takes; a "choice" end arrives as the payment id ("top" / "bottom"). */
+function turnLifeFaceUpCostCards(
+  life: readonly string[],
+  cost: Extract<Cost, { cost: "turnLifeFaceUp" }>,
+  costPaymentIds: string[] | undefined,
+): string[] {
+  const end = cost.position === "choice" ? costPaymentIds?.[0] : cost.position;
+  return end === "bottom" ? life.slice(-cost.count) : life.slice(0, cost.count);
+}
 type EffectRemovalAction = Extract<
   Action,
   { action: "returnToHand" | "returnToDeck" | "trashFromField" }
@@ -967,7 +977,7 @@ export function candidatesForRestCardsCost(
   cost: RestCardsCost,
 ): string[] {
   const player = getPlayer(state, controller);
-  return [
+  const cardIds = [
     player.leaderInstanceId,
     ...player.characterArea.filter((entry): entry is string => Boolean(entry)),
     ...(player.stageArea ? [player.stageArea] : []),
@@ -980,6 +990,20 @@ export function candidatesForRestCardsCost(
         return result.supported && result.matches;
       }),
   );
+  // "rest your Leader or N of your DON!! cards": the DON!! alternative is one virtual candidate.
+  if (cost.orRestDon !== undefined && player.activeDon >= cost.orRestDon) {
+    cardIds.push(restDonCandidateId(cost.orRestDon));
+  }
+  return cardIds;
+}
+
+export function restDonCandidateId(amount: number): string {
+  return `rest-don:${amount}`;
+}
+
+function restDonCandidateAmount(candidateId: string): number | null {
+  const match = /^rest-don:(\d+)$/.exec(candidateId);
+  return match ? Number(match[1]) : null;
 }
 
 function candidatesForCardCostOption(
@@ -1060,6 +1084,25 @@ export function candidatesForTrashCardCost(
       ),
     ),
   ];
+}
+
+export function candidatesForGiveDonCost(
+  state: MatchState,
+  controller: MatchSeat,
+  sourceInstanceId: string,
+  cost: Extract<Cost, { cost: "giveDon" }>,
+): string[] {
+  const { recipientSeat } = giveDonCostParts(state, controller, cost);
+  const recipient = getPlayer(state, recipientSeat);
+  return [
+    recipient.leaderInstanceId,
+    ...recipient.characterArea.filter((instanceId): instanceId is string => instanceId !== null),
+  ].filter((instanceId) =>
+    (cost.filters ?? []).every((filter) => {
+      const result = matchesTargetFilter(state, sourceInstanceId, instanceId, filter);
+      return result.supported && result.matches;
+    }),
+  );
 }
 
 export function candidatesForKoCharacterCost(
@@ -2007,6 +2050,7 @@ export function processEffectAction(
       }
       return true;
     case "modifyCounter":
+    case "setCounter":
       // Counter modifiers are continuous effects evaluated from their source card.
       return false;
     case "draw": {
@@ -6098,14 +6142,8 @@ export function canPayCosts(
         }
         break;
       case "giveDon": {
-        const { recipientSeat, poolAmount } = giveDonCostParts(state, controller, cost);
-        const recipient = getPlayer(state, recipientSeat);
-        const candidates = [
-          recipient.leaderInstanceId,
-          ...recipient.characterArea.filter(
-            (instanceId): instanceId is string => instanceId !== null,
-          ),
-        ];
+        const { poolAmount } = giveDonCostParts(state, controller, cost);
+        const candidates = candidatesForGiveDonCost(state, controller, sourceInstanceId, cost);
         const selected = costPaymentIdsByType?.giveDon ?? candidates.slice(0, 1);
         if (
           poolAmount < cost.amount ||
@@ -6285,18 +6323,29 @@ export function canPayCosts(
         }
         break;
       }
-      case "turnLifeFaceUp":
-        if (getPlayer(state, controller).life.length < cost.count) {
+      case "turnLifeFaceUp": {
+        const life = getPlayer(state, controller).life;
+        if (life.length < cost.count) {
           return false;
         }
         if (
-          getPlayer(state, controller)
-            .life.slice(0, cost.count)
-            .some((instanceId) => getInstance(state, instanceId).faceUp === (cost.faceUp ?? true))
+          cost.position === "choice" &&
+          life.length > 1 &&
+          costPaymentIds !== undefined &&
+          (costPaymentIds.length !== 1 ||
+            (costPaymentIds[0] !== "top" && costPaymentIds[0] !== "bottom"))
+        ) {
+          return false;
+        }
+        if (
+          turnLifeFaceUpCostCards(life, cost, costPaymentIds).some(
+            (instanceId) => getInstance(state, instanceId).faceUp === (cost.faceUp ?? true),
+          )
         ) {
           return false;
         }
         break;
+      }
       case "addLifeToHand": {
         const player = getPlayer(state, controller);
         if (
@@ -6439,10 +6488,10 @@ export function payCosts(
         getPlayer(state, controller).restedDon += cost.amount;
         break;
       case "giveDon": {
-        const { donorSeat, recipientSeat, poolAmount } = giveDonCostParts(state, controller, cost);
+        const { donorSeat, poolAmount } = giveDonCostParts(state, controller, cost);
         const donor = getPlayer(state, donorSeat);
-        const recipient = getPlayer(state, recipientSeat);
-        const targetId = (costPaymentIdsByType?.giveDon ?? [recipient.leaderInstanceId])[0]!;
+        const targetId = (costPaymentIdsByType?.giveDon ??
+          candidatesForGiveDonCost(state, controller, sourceInstanceId, cost))[0]!;
         if (poolAmount < cost.amount) {
           return false;
         }
@@ -6731,6 +6780,13 @@ export function payCosts(
             cost.amount,
           );
         for (const instanceId of selected) {
+          const donAmount = restDonCandidateAmount(instanceId);
+          if (donAmount !== null) {
+            const player = getPlayer(state, controller);
+            player.activeDon -= donAmount;
+            player.restedDon += donAmount;
+            continue;
+          }
           restCard(state, instanceId, controller);
         }
         break;
@@ -6762,7 +6818,11 @@ export function payCosts(
         break;
       }
       case "turnLifeFaceUp": {
-        const lifeIds = getPlayer(state, controller).life.slice(0, cost.count);
+        const lifeIds = turnLifeFaceUpCostCards(
+          getPlayer(state, controller).life,
+          cost,
+          costPaymentIds,
+        );
         const faceUp = cost.faceUp ?? true;
         for (const instanceId of lifeIds) {
           const instance = getInstance(state, instanceId);

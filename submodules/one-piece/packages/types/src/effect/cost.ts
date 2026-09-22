@@ -56,6 +56,8 @@ export interface GiveDonCost {
   donState?: "rested" | "active";
   /** Whose Leader/Characters receive the DON!!; defaults to the effect controller. */
   recipientPlayer?: Player;
+  /** Restricts which Leader or Characters may receive the DON!! ("to 1 of your [Silvers Rayleigh]"). */
+  filters?: TargetFilter[];
 }
 
 export type ReturnDonCost =
@@ -99,6 +101,8 @@ export interface TurnLifeFaceUpCost {
   count: number;
   /** Defaults to true for legacy definitions. False turns currently face-up Life face-down. */
   faceUp?: boolean;
+  /** Which end of Life to turn; defaults to top. "choice" lets the player pick ("from the top or bottom"). */
+  position?: "top" | "bottom" | "choice";
 }
 
 export interface ReturnCharacterCost {
@@ -160,6 +164,12 @@ export interface RestCardsCost {
   cost: "restCards";
   amount: number;
   filters?: TargetFilter[];
+  /**
+   * Alternative payment: rest this many active DON!! cards instead of the cards
+   * ("You may rest your Leader or 1 of your DON!! cards", ST32-001). Offered as the
+   * virtual candidate `rest-don:<n>` in the cost prompt.
+   */
+  orRestDon?: number;
 }
 
 export interface TrashCharacterCost {

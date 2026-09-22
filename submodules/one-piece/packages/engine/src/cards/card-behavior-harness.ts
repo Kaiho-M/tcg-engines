@@ -60,6 +60,7 @@ function printedTextMentionsTrigger(card: OPCard, trigger: EffectTrigger): boole
     whenBlockerActivated: /when .*activates? \[Blocker\]|when you activate .*Blocker/i,
     whenTriggerActivates: /when .*Trigger.*activates|when you activate .*Trigger/i,
     whenDonReturned: /DON!! cards?.*returned|returned to your DON!! deck/i,
+    gameStart: /at the start of the game/i,
     whenOpponentActivatesEvent: /opponent activates? an Event/i,
     whenYouActivateEvent: /When you activate an Event/i,
     whenDonGiven: /given a DON!! card/i,
@@ -75,6 +76,7 @@ function printedTextMentionsTrigger(card: OPCard, trigger: EffectTrigger): boole
     whenCharacterRestedByEffect: /If a Character is rested by your effect/i,
     whenCardsTrashedFromHandByEffect: /trashed from your hand by .*card['’]s effect/i,
     whenYouTakeDamage: /when you take damage/i,
+    whenLeaderAttacks: /When your Leader .*attacks/i,
   };
 
   return triggerPatterns[trigger].test(text);

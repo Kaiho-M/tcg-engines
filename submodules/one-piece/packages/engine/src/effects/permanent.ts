@@ -5,6 +5,36 @@ import { evaluateConditions } from "./conditions.ts";
 import { candidatePoolForTarget, matchesTargetFilter } from "./targeting.ts";
 
 const activeEvaluations = new WeakMap<MatchState, Set<string>>();
+/**
+ * Results of the guarded evaluations below, kept only while an outermost evaluation is
+ * running. A cost or power lookup walks every permanent effect in play, and a permanent
+ * effect whose condition looks at costs (Sabo OP13-004: "a Character with a cost of 8 or
+ * more") walks every card's cost again. Without the cache the walk is exponential in the
+ * number of cards in play: a board of eight Characters took minutes.
+ */
+const evaluationCache = new WeakMap<MatchState, Map<string, unknown>>();
+
+/** Run `compute` once per outermost evaluation; `guardValue` breaks a cycle back into `key`. */
+function memoizedEvaluation<T>(state: MatchState, key: string, guardValue: T, compute: () => T): T {
+  const active = activeEvaluations.get(state) ?? new Set<string>();
+  if (active.has(key)) return guardValue;
+  const cache = evaluationCache.get(state) ?? new Map<string, unknown>();
+  if (cache.has(key)) return cache.get(key) as T;
+  activeEvaluations.set(state, active);
+  evaluationCache.set(state, cache);
+  active.add(key);
+  try {
+    const value = compute();
+    cache.set(key, value);
+    return value;
+  } finally {
+    active.delete(key);
+    if (active.size === 0) {
+      activeEvaluations.delete(state);
+      evaluationCache.delete(state);
+    }
+  }
+}
 
 function actionIsDynamicModifier(
   action: Action,
@@ -347,12 +377,7 @@ function effectsNegatedByPermanentEffect(
   const targetController = state.cards[targetInstanceId]?.controller;
   if (!targetController) return false;
   const evaluationKey = `effectsNegated:${targetInstanceId}:${trigger ?? "all"}`;
-  const active = activeEvaluations.get(state) ?? new Set<string>();
-  if (active.has(evaluationKey)) return false;
-  activeEvaluations.set(state, active);
-  active.add(evaluationKey);
-
-  try {
+  return memoizedEvaluation(state, evaluationKey, false, () => {
     for (const source of inPlaySources(state)) {
       if (sourceEffectsAreNegatedByModifier(state, source.instanceId)) {
         continue;
@@ -402,10 +427,7 @@ function effectsNegatedByPermanentEffect(
       }
     }
     return false;
-  } finally {
-    active.delete(evaluationKey);
-    if (active.size === 0) activeEvaluations.delete(state);
-  }
+  });
 }
 
 export function arePlayerEffectsNegatedByPermanentEffect(
@@ -465,14 +487,7 @@ export function getPermanentModifierTotal(
   type: "power" | "cost" | "counter",
 ): number {
   const evaluationKey = `${type}:${targetInstanceId}`;
-  const active = activeEvaluations.get(state) ?? new Set<string>();
-  if (active.has(evaluationKey)) {
-    return 0;
-  }
-  activeEvaluations.set(state, active);
-  active.add(evaluationKey);
-
-  try {
+  return memoizedEvaluation(state, evaluationKey, 0, () => {
     let total = 0;
     for (const source of Object.values(state.cards)) {
       const card = getCard(source.cardId);
@@ -578,12 +593,7 @@ export function getPermanentModifierTotal(
       }
     }
     return total;
-  } finally {
-    active.delete(evaluationKey);
-    if (active.size === 0) {
-      activeEvaluations.delete(state);
-    }
-  }
+  });
 }
 
 // 4-9-2-1: permanent effects that set a base power compete by absolute value;
@@ -670,8 +680,13 @@ export function getPermanentSetBasePower(
   }
 }
 
-export function getPermanentSetCost(state: MatchState, targetInstanceId: string): number | null {
-  const evaluationKey = `setCost:${targetInstanceId}`;
+/**
+ * "The counter of ... becomes +N" is an absolute value, so two copies of the
+ * same source leave the counter at N. The most recently played source wins;
+ * `modifyCounter` deltas are then added on top by `getCardCounter`.
+ */
+export function getPermanentSetCounter(state: MatchState, targetInstanceId: string): number | null {
+  const evaluationKey = `setCounter:${targetInstanceId}`;
   const active = activeEvaluations.get(state) ?? new Set<string>();
   if (active.has(evaluationKey)) {
     return null;
@@ -680,6 +695,76 @@ export function getPermanentSetCost(state: MatchState, targetInstanceId: string)
   active.add(evaluationKey);
 
   try {
+    let winner: { value: number; order: number } | null = null;
+    for (const source of Object.values(state.cards)) {
+      const sourceIsSelfInHand = source.instanceId === targetInstanceId && source.zone === "hand";
+      if (
+        (!sourceIsInPlay(state, source.instanceId) && !sourceIsSelfInHand) ||
+        sourceEffectsAreNegated(state, source.instanceId)
+      ) {
+        continue;
+      }
+      const card = getCard(source.cardId);
+      for (const effect of card.effects?.permanentEffects ?? []) {
+        const setActions = effect.actions.filter(
+          (action): action is Extract<Action, { action: "setCounter" }> =>
+            action.action === "setCounter",
+        );
+        if (setActions.length === 0) {
+          continue;
+        }
+        const conditions = evaluateConditions(
+          state,
+          source.controller,
+          source.instanceId,
+          effect.conditions,
+        );
+        if (!conditions.supported || !conditions.matches) {
+          continue;
+        }
+        for (const action of setActions) {
+          if (action.condition) {
+            const actionCondition = evaluateConditions(
+              state,
+              source.controller,
+              source.instanceId,
+              [action.condition],
+            );
+            if (!actionCondition.supported || !actionCondition.matches) {
+              continue;
+            }
+          }
+          if (action.target.count.amount !== "all" && !action.target.self) {
+            continue;
+          }
+          const pool = candidatePoolForTarget(
+            state,
+            source.controller,
+            source.instanceId,
+            action.target,
+          );
+          if (!pool.supported || !pool.candidateIds.includes(targetInstanceId)) {
+            continue;
+          }
+          const order = source.playedOnTurn ?? -1;
+          if (!winner || order >= winner.order) {
+            winner = { value: action.value, order };
+          }
+        }
+      }
+    }
+    return winner?.value ?? null;
+  } finally {
+    active.delete(evaluationKey);
+    if (active.size === 0) {
+      activeEvaluations.delete(state);
+    }
+  }
+}
+
+export function getPermanentSetCost(state: MatchState, targetInstanceId: string): number | null {
+  const evaluationKey = `setCost:${targetInstanceId}`;
+  return memoizedEvaluation<number | null>(state, evaluationKey, null, () => {
     for (const source of Object.values(state.cards)) {
       const sourceIsSelfInHand = source.instanceId === targetInstanceId && source.zone === "hand";
       if (
@@ -716,12 +801,7 @@ export function getPermanentSetCost(state: MatchState, targetInstanceId: string)
       }
     }
     return null;
-  } finally {
-    active.delete(evaluationKey);
-    if (active.size === 0) {
-      activeEvaluations.delete(state);
-    }
-  }
+  });
 }
 
 export function getPermanentKeywords(state: MatchState, targetInstanceId: string): Set<Keyword> {

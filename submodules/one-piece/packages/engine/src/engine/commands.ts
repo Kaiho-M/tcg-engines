@@ -379,6 +379,16 @@ export function applyQueuedCommandMutation(
       emitLog(state, "system", "The match begins.", {
         visibility: "public",
       });
+      // Leader abilities that fire "at the start of the game" (OP13-079), first player first.
+      for (const seat of [state.config.firstPlayer, otherSeat(state.config.firstPlayer)]) {
+        enqueueEffectsForTrigger(
+          state,
+          state.players[seat].leaderInstanceId,
+          seat,
+          "gameStart",
+          undefined,
+        );
+      }
       enqueueResolution(state, {
         kind: "beginTurn",
         seat: state.config.firstPlayer,

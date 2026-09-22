@@ -885,6 +885,9 @@ export function beginAttack(
     targetInstanceId: targetId,
   };
   enqueueEffectsForTrigger(state, attackerId, seat, "whenAttacking", undefined, attackEvent);
+  if (attacker.zone === "leader") {
+    enqueueInPlayEffectsForTrigger(state, "whenLeaderAttacks", attackEvent, [seat]);
+  }
   // "When your opponent attacks" can only live on the defending player's
   // in-play cards, and the attacking (turn) player's [When Attacking] effects
   // enqueue above, so 8-6-1 turn-player-first ordering already holds.

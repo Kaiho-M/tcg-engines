@@ -9,8 +9,7 @@ import {
   getPlayer,
   otherSeat,
 } from "../shared.ts";
-import { candidatesForTarget } from "./targeting.ts";
-import { matchesTargetFilter } from "./targeting.ts";
+import { candidatesForTarget, countCards, matchesTargetFilter } from "./targeting.ts";
 import type { MatchSeat, MatchState, ResolutionItem } from "../types.ts";
 
 type TriggerEvent = Extract<ResolutionItem, { kind: "effectBlock" }>["triggerEvent"];
@@ -83,7 +82,13 @@ function evaluateCondition(
       break;
     }
     case "leaderName":
-      return { supported: true, matches: cardNames(leader).includes(condition.name) };
+      return {
+        supported: true,
+        matches:
+          condition.match === "includes"
+            ? cardNames(leader).some((name) => name.includes(condition.name))
+            : cardNames(leader).includes(condition.name),
+      };
     case "leaderAttribute":
       return { supported: true, matches: leader.attribute === condition.attribute };
     case "leaderTrait":
@@ -94,8 +99,10 @@ function evaluateCondition(
             ? (leader.traits ?? []).includes(condition.trait)
             : (leader.traits ?? []).some((trait) => trait.includes(condition.trait)),
       };
-    case "leaderMulticolored":
-      return { supported: true, matches: leader.color.length > 1 };
+    case "leaderMulticolored": {
+      const multicolored = leader.color.length > 1;
+      return { supported: true, matches: condition.negate ? !multicolored : multicolored };
+    }
     case "leaderColor":
       return { supported: true, matches: leader.color.includes(condition.color) };
     case "zoneCount": {
@@ -139,7 +146,7 @@ function evaluateCondition(
               : condition.zone === "field"
                 ? 1 + player.characterArea.filter(Boolean).length + (player.stageArea ? 1 : 0)
                 : instanceIds.length;
-      if (condition.filters?.length) {
+      if (condition.filters?.length || condition.distinctNames) {
         if (
           condition.zone === "costArea" ||
           condition.zone === "don" ||
@@ -148,16 +155,17 @@ function evaluateCondition(
           return { supported: false, matches: false };
         }
         let supported = true;
-        total = instanceIds.filter((instanceId) =>
-          condition.filters!.every((filter) => {
+        const countedIds = instanceIds.filter((instanceId) =>
+          (condition.filters ?? []).every((filter) => {
             const result = matchesTargetFilter(state, sourceInstanceId, instanceId, filter);
             supported &&= result.supported;
             return result.matches;
           }),
-        ).length;
+        );
         if (!supported) {
           return { supported: false, matches: false };
         }
+        total = countCards(state, countedIds, condition);
       }
       switch (condition.comparison) {
         case "eq":
@@ -604,6 +612,14 @@ function evaluateCondition(
           return result.supported && result.matches;
         }),
       };
+    }
+    case "eventThisTurn": {
+      const player = condition.player === "self" ? controllerPlayer : opponentPlayer;
+      const lastTurn =
+        condition.event === "handTrashedByEffect"
+          ? player.handTrashedByEffectOnTurn
+          : player.lifeRemovedOnTurn;
+      return { supported: true, matches: lastTurn === state.turnNumber };
     }
     case "replacement":
     case "triggerEvent":
