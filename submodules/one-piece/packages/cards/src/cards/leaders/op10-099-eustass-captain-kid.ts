@@ -42,7 +42,6 @@ export const op10EustassCaptainKid099: LeaderCard = {
           {
             cost: "turnLifeFaceUp",
             count: 1,
-            faceUp: true,
           },
         ],
         actions: [
@@ -85,6 +84,7 @@ export const op10EustassCaptainKid099: LeaderCard = {
             },
             keyword: "blocker",
             duration: "untilEndOfOpponentNextTurn",
+            previousActionTargets: true,
           },
         ],
         optional: true,

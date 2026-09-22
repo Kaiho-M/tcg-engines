@@ -48,6 +48,80 @@ export const op17EdwardNewgate040: CharacterCard = {
           },
         ],
       },
+      {
+        trigger: "whenLeaderAttacks",
+        eventFilter: {
+          filters: [
+            {
+              filter: "trait",
+              value: "Rocks Pirates",
+              match: "includes",
+            },
+          ],
+        },
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 3000,
+            duration: "thisBattle",
+          },
+        ],
+        optional: true,
+        oncePerTurn: true,
+        oncePerTurnKey: "shared:leader-battle:1",
+      },
+      {
+        trigger: "onOpponentAttack",
+        eventFilter: {
+          targetFilters: [
+            {
+              filter: "cardCategory",
+              value: "leader",
+            },
+            {
+              filter: "trait",
+              value: "Rocks Pirates",
+              match: "includes",
+            },
+          ],
+        },
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "modifyPower",
+            target: {
+              player: "self",
+              zones: ["leader"],
+              count: {
+                amount: 1,
+              },
+            },
+            value: 3000,
+            duration: "thisBattle",
+          },
+        ],
+        optional: true,
+        oncePerTurn: true,
+        oncePerTurnKey: "shared:leader-battle:1",
+      },
     ],
   },
   i18n: op17EdwardNewgate040I18n,

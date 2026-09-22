@@ -32,9 +32,14 @@ export const op12ColorOfArmsHaki019: EventCard = {
           {
             cost: "giveDon",
             amount: 1,
+            filters: [
+              {
+                filter: "name",
+                value: "Silvers Rayleigh",
+              },
+            ],
           },
         ],
-        optional: true,
         actions: [
           {
             action: "modifyPower",
@@ -50,6 +55,7 @@ export const op12ColorOfArmsHaki019: EventCard = {
             duration: "thisTurn",
           },
         ],
+        optional: true,
       },
       {
         trigger: "counter",
@@ -58,11 +64,30 @@ export const op12ColorOfArmsHaki019: EventCard = {
             action: "modifyPower",
             target: {
               player: "self",
-              zones: ["character"],
+              zones: ["leader", "character"],
               count: {
                 amount: 1,
                 upTo: true,
               },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
             },
             value: 2000,
             duration: "thisBattle",

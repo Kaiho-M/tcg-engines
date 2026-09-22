@@ -386,6 +386,7 @@ export interface SetBasePowerAction {
   value: number;
   /** Defaults to thisTurn for triggered uses of the action. */
   duration?: Duration;
+  condition?: Condition;
 }
 
 /** Set a card's base power from another card while preserving other modifiers. */

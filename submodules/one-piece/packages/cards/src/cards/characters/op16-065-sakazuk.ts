@@ -43,7 +43,7 @@ export const op16Sakazuk065: CharacterCard = {
   traits: ["Navy Admiral"],
   attribute: "special",
   effect:
-    "[On Play] DON!! -1: Give up to 1 of your opponent's Characters -6000 power until the end of your opponent's next End Phase. [Activate:Main] [Once Per Turn] You may rest 1 of your DON!! cards: If your Leader has the {Navy} type, add up to 2 DON!! cards from your DON!! deck and set them as active.",
+    "[On Play] DON!! −1: Give up to 1 of your opponent's Characters −6000 power until the end of your opponent's next End Phase.\n[Activate: Main] [Once Per Turn] You may rest 1 of your DON!! cards: If your Leader has the {Navy} type, add up to 2 DON!! cards from your DON!! deck and set them as active.",
   effects: {
     effects: [
       {
@@ -69,6 +69,7 @@ export const op16Sakazuk065: CharacterCard = {
             duration: "untilEndOfOpponentNextEndPhase",
           },
         ],
+        optional: true,
       },
       {
         trigger: "activateMain",

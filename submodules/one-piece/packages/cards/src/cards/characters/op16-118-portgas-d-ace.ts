@@ -38,33 +38,6 @@ export const op16PortgasDAce118: CharacterCard = {
   effect:
     'The counter of all of your Character cards with 8000 power in your hand becomes +2000.\n[On Play]/[On K.O.] Look at 5 cards from the top of your deck; reveal up to 1 [Monkey.D.Luffy] or up to 1 card with a type including "Whitebeard Pirates" and add it to your hand. Then, place the rest a the bottom of your deck in any order.',
   effects: {
-    permanentEffects: [
-      {
-        conditions: [],
-        actions: [
-          {
-            action: "modifyCounter",
-            target: {
-              player: "self",
-              zones: ["hand"],
-              count: {
-                amount: "all",
-              },
-              filters: [
-                {
-                  filter: "power",
-                  comparison: "eq",
-                  value: 8000,
-                },
-              ],
-            },
-            value: 2000,
-            duration: "permanent",
-          },
-        ],
-      },
-    ],
-
     effects: [
       {
         trigger: "onPlay",
@@ -133,6 +106,34 @@ export const op16PortgasDAce118: CharacterCard = {
             ],
             revealDestination: "hand",
             remainderPosition: "bottom",
+          },
+        ],
+      },
+    ],
+    permanentEffects: [
+      {
+        actions: [
+          {
+            action: "setCounter",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "cardCategory",
+                  value: "character",
+                },
+                {
+                  filter: "power",
+                  comparison: "eq",
+                  value: 8000,
+                },
+              ],
+            },
+            value: 2000,
           },
         ],
       },

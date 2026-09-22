@@ -35,7 +35,7 @@ export const op17Kaido063: CharacterCard = {
   traits: ["Animal Kingdom Pirates The Four Emperors"],
   attribute: "strike",
   effect:
-    "All Character cards in your hand without a Counter have a +1000 Counter.\n[Activate: Main] [Once Per Turn] DON!! -1: If this Character was played on this turn, negate the effect of up to 1 of your opponent's Characters with a cost of 6 or less during this turn, and K.O. it.",
+    "All Character cards in your hand without a Counter have a +1000 Counter.\n[Activate: Main] [Once Per Turn] DON!! −1: If this Character was played on this turn, negate the effect of up to 1 of your opponent's Characters with a cost of 6 or less during this turn, and K.O. it.",
   effects: {
     effects: [
       {
@@ -85,8 +85,35 @@ export const op17Kaido063: CharacterCard = {
             ],
           },
         ],
-        optional: true,
         oncePerTurn: true,
+      },
+    ],
+    permanentEffects: [
+      {
+        actions: [
+          {
+            action: "modifyCounter",
+            target: {
+              player: "self",
+              zones: ["hand"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "cardCategory",
+                  value: "character",
+                },
+                {
+                  filter: "counter",
+                  comparison: "eq",
+                  value: 0,
+                },
+              ],
+            },
+            value: 1000,
+          },
+        ],
       },
     ],
   },

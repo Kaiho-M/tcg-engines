@@ -25,9 +25,41 @@ export const op17WangZhi041: CharacterCard = {
   traits: ["Rocks Pirates"],
   attribute: "strike",
   effect:
-    "[Blocker]\n\n[On Play] You may trash 1 card from your hand: Place all of your opponent's Characters with a base cost of 1 at the bottom of the owner's deck in any order of the owner's choosing",
+    "[Blocker]\n[On Play] You may trash 1 card from your hand: Place all of your opponent's Characters with a base cost of 1 at the bottom of the owner's deck in any order of the owner's choosing.",
   effects: {
     keywords: ["blocker"],
+    effects: [
+      {
+        trigger: "onPlay",
+        costs: [
+          {
+            cost: "trashFromHand",
+            amount: 1,
+          },
+        ],
+        actions: [
+          {
+            action: "returnToDeck",
+            target: {
+              player: "opponent",
+              zones: ["character"],
+              count: {
+                amount: "all",
+              },
+              filters: [
+                {
+                  filter: "baseCost",
+                  comparison: "eq",
+                  value: 1,
+                },
+              ],
+            },
+            position: "bottom",
+          },
+        ],
+        optional: true,
+      },
+    ],
   },
   i18n: op17WangZhi041I18n,
 };

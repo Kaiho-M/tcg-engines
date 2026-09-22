@@ -23,9 +23,46 @@ export const op16LetSGoToTheNavyHeadquarters038: EventCard = {
   cost: 1,
   traits: ["Straw Hat Crew Impel Down"],
   effect:
-    "[Main] You may rest 6 of your DON!! cards: If you have 5 {Impel Down} type Characters with different card names, set your Leader and all of your Characters as active.\n\n[Counter] Your Leader gains +3000 power during this battle.",
+    "[Main] You may rest 6 of your DON!! cards: If you have 5 {Impel Down} type Characters with different card names, set your Leader and all of your Characters as active.\n[Counter] Your Leader gains +3000 power during this battle.",
   effects: {
     effects: [
+      {
+        trigger: "main",
+        costs: [
+          {
+            cost: "restDon",
+            amount: 6,
+          },
+        ],
+        actions: [
+          {
+            action: "setActive",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: "all",
+              },
+            },
+            condition: {
+              condition: "zoneCount",
+              player: "self",
+              zone: "character",
+              comparison: "eq",
+              value: 5,
+              filters: [
+                {
+                  filter: "trait",
+                  value: "Impel Down",
+                  match: "includes",
+                },
+              ],
+              distinctNames: true,
+            },
+          },
+        ],
+        optional: true,
+      },
       {
         trigger: "counter",
         actions: [

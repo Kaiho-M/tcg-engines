@@ -32,9 +32,14 @@ export const op12ColorOfObservationHaki017: EventCard = {
           {
             cost: "giveDon",
             amount: 1,
+            filters: [
+              {
+                filter: "name",
+                value: "Silvers Rayleigh",
+              },
+            ],
           },
         ],
-        optional: true,
         actions: [
           {
             action: "search",
@@ -52,21 +57,40 @@ export const op12ColorOfObservationHaki017: EventCard = {
                 filter: "anyOf",
                 filters: [
                   {
-                    filter: "cardCategory",
-                    value: "event",
+                    filter: "allOf",
+                    filters: [
+                      {
+                        filter: "color",
+                        value: "red",
+                      },
+                      {
+                        filter: "cardCategory",
+                        value: "event",
+                      },
+                    ],
                   },
                   {
-                    filter: "cardCategory",
-                    value: "character",
+                    filter: "allOf",
+                    filters: [
+                      {
+                        filter: "cost",
+                        comparison: "gte",
+                        value: 3,
+                      },
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
                   },
                 ],
               },
             ],
-            revealFilterMode: "all",
             revealDestination: "hand",
             remainderPosition: "bottom",
           },
         ],
+        optional: true,
       },
     ],
   },

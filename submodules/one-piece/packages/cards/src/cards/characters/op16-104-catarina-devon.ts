@@ -35,25 +35,53 @@ export const op16CatarinaDevon104: CharacterCard = {
         trigger: "whenAttacking",
         actions: [
           {
-            action: "setBasePowerFrom",
+            action: "copyPower",
             target: {
-              player: "self",
-              zones: ["character"],
-              count: {
-                amount: 1,
-              },
-              self: true,
-            },
-            source: {
               player: "opponent",
               zones: ["character"],
               count: {
                 amount: 1,
                 upTo: true,
               },
-              chosenBy: "self",
             },
             duration: "thisTurn",
+          },
+        ],
+      },
+      {
+        trigger: "trigger",
+        actions: [
+          {
+            action: "draw",
+            player: "self",
+            amount: 1,
+          },
+          {
+            action: "play",
+            source: {
+              player: "self",
+              zone: "trash",
+            },
+            count: {
+              amount: 1,
+              upTo: true,
+            },
+            filters: [
+              {
+                filter: "cost",
+                comparison: "eq",
+                value: 1,
+              },
+              {
+                filter: "trait",
+                value: "Blackbeard Pirates",
+                match: "includes",
+              },
+              {
+                filter: "cardCategory",
+                value: "character",
+              },
+            ],
           },
         ],
       },

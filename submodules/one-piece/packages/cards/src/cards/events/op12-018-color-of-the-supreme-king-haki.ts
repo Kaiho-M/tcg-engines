@@ -23,41 +23,55 @@ export const op12ColorOfTheSupremeKingHaki018: EventCard = {
   cost: 0,
   traits: ["Former Roger Pirates"],
   effect:
-    "[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle. Then, you may rest 1 of your DON!! cards. If you do, give your opponent's Leader and all of their Characters -1000 power during this turn.",
+    "[Counter] Up to 1 of your Characters or [Silvers Rayleigh] gains +2000 power during this battle. Then, you may rest 1 of your DON!! cards. If you do, give your opponent's Leader and all of their Characters −1000 power during this turn.",
   effects: {
     effects: [
       {
         trigger: "counter",
-        optional: true,
         actions: [
           {
             action: "modifyPower",
             target: {
               player: "self",
-              zones: ["character"],
+              zones: ["leader", "character"],
               count: {
                 amount: 1,
                 upTo: true,
               },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
             },
             value: 2000,
             duration: "thisBattle",
           },
+        ],
+      },
+      {
+        trigger: "counter",
+        costs: [
           {
-            action: "rest",
-            target: {
-              player: "self",
-              zones: ["costArea"],
-              count: {
-                amount: 1,
-              },
-            },
-            condition: {
-              condition: "activeDonCount",
-              comparison: "gte",
-              value: 1,
-            },
+            cost: "restDon",
+            amount: 1,
           },
+        ],
+        actions: [
           {
             action: "modifyPower",
             target: {
@@ -69,14 +83,9 @@ export const op12ColorOfTheSupremeKingHaki018: EventCard = {
             },
             value: -1000,
             duration: "thisTurn",
-            condition: {
-              condition: "restedCardCount",
-              player: "self",
-              comparison: "gte",
-              value: 1,
-            },
           },
         ],
+        optional: true,
       },
     ],
   },

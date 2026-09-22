@@ -34,13 +34,12 @@ export const op17ThereSNoAuthorityInTheWorldThatLastsForever055: EventCard = {
             amount: 1,
           },
         ],
-        optional: true,
         actions: [
           {
             action: "grantKeyword",
             target: {
               player: "self",
-              zones: ["character"],
+              zones: ["leader", "character"],
               count: {
                 amount: 1,
                 upTo: true,
@@ -56,6 +55,7 @@ export const op17ThereSNoAuthorityInTheWorldThatLastsForever055: EventCard = {
             duration: "thisTurn",
           },
         ],
+        optional: true,
       },
       {
         trigger: "counter",

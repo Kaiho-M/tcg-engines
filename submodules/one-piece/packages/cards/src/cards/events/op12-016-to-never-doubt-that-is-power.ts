@@ -32,30 +32,30 @@ export const op12ToNeverDoubtThatIsPower016: EventCard = {
           {
             cost: "giveDon",
             amount: 2,
+            filters: [
+              {
+                filter: "name",
+                value: "Silvers Rayleigh",
+              },
+            ],
+          },
+        ],
+        actions: [
+          {
+            action: "grantKeyword",
+            target: {
+              player: "self",
+              zones: ["leader", "character"],
+              count: {
+                amount: 1,
+              },
+            },
+            keyword: "unblockable",
+            duration: "thisTurn",
+            previousActionTargets: true,
           },
         ],
         optional: true,
-        actions: [
-          {
-            action: "cannotActivate",
-            target: {
-              player: "self",
-              zones: ["character"],
-              count: {
-                amount: 1,
-                upTo: true,
-              },
-              filters: [
-                {
-                  filter: "name",
-                  value: "Silvers Rayleigh",
-                },
-              ],
-            },
-            keyword: "blocker",
-            duration: "thisTurn",
-          },
-        ],
       },
       {
         trigger: "counter",
@@ -64,11 +64,30 @@ export const op12ToNeverDoubtThatIsPower016: EventCard = {
             action: "modifyPower",
             target: {
               player: "self",
-              zones: ["character"],
+              zones: ["leader", "character"],
               count: {
                 amount: 1,
                 upTo: true,
               },
+              filters: [
+                {
+                  filter: "anyOf",
+                  groups: [
+                    [
+                      {
+                        filter: "cardCategory",
+                        value: "character",
+                      },
+                    ],
+                    [
+                      {
+                        filter: "name",
+                        value: "Silvers Rayleigh",
+                      },
+                    ],
+                  ],
+                },
+              ],
             },
             value: 2000,
             duration: "thisBattle",

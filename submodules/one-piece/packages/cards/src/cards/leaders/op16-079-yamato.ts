@@ -40,12 +40,17 @@ export const op16Yamato079: LeaderCard = {
     effects: [
       {
         trigger: "whenYouPlayCharacter",
-        conditions: [
-          {
-            condition: "triggerEventFromZone",
-            zone: "trash",
-          },
-        ],
+        eventFilter: {
+          player: "self",
+          fromZone: "trash",
+          filters: [
+            {
+              filter: "trait",
+              value: "Land of Wano",
+              match: "includes",
+            },
+          ],
+        },
         actions: [
           {
             action: "grantKeyword",
@@ -54,15 +59,8 @@ export const op16Yamato079: LeaderCard = {
               zones: ["character"],
               count: {
                 amount: 1,
-                upTo: true,
               },
-              filters: [
-                {
-                  filter: "trait",
-                  value: "Land of Wano",
-                  match: "includes",
-                },
-              ],
+              triggerEventCard: true,
             },
             keyword: "rush",
             duration: "thisTurn",

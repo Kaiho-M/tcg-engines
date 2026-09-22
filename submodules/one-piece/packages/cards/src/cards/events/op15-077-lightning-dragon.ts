@@ -32,7 +32,7 @@ export const op15LightningDragon077: EventCard = {
   cost: 0,
   traits: ["Sky Island"],
   effect:
-    "[Main] DON!! -1: Draw 1 card. Then, up to 1 of your opponent's rested Characters with 6000 power or less will not become active in your opponent's next Refresh Phase.",
+    "[Main] DON!! −1: Draw 1 card. Then, up to 1 of your opponent's rested Characters with 6000 power or less will not become active in your opponent's next Refresh Phase.",
   effects: {
     effects: [
       {
@@ -62,6 +62,11 @@ export const op15LightningDragon077: EventCard = {
                 {
                   filter: "state",
                   value: "rested",
+                },
+                {
+                  filter: "power",
+                  comparison: "lte",
+                  value: 6000,
                 },
               ],
             },
