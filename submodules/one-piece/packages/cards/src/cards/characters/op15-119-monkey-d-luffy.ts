@@ -40,10 +40,14 @@ export const op15MonkeyDLuffy119: CharacterCard = {
     effects: [
       {
         trigger: "whenBlockerActivated",
+        eventFilter: {
+          causedBy: "opponent",
+        },
         actions: [
           {
             action: "revealFromLife",
             player: "self",
+            upTo: true,
           },
           {
             action: "modifyPower",
@@ -57,6 +61,7 @@ export const op15MonkeyDLuffy119: CharacterCard = {
             },
             value: 1000,
             valuePerPreviousActionTargetCost: true,
+            previousActionTargets: true,
             duration: "thisTurn",
           },
         ],
@@ -67,6 +72,7 @@ export const op15MonkeyDLuffy119: CharacterCard = {
           {
             action: "revealFromLife",
             player: "self",
+            upTo: true,
           },
           {
             action: "modifyPower",
@@ -80,6 +86,7 @@ export const op15MonkeyDLuffy119: CharacterCard = {
             },
             value: 1000,
             valuePerPreviousActionTargetCost: true,
+            previousActionTargets: true,
             duration: "thisTurn",
           },
         ],
