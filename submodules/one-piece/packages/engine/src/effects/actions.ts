@@ -6526,6 +6526,11 @@ export function payCosts(
         const selected =
           trashHandIds ??
           candidatesForTrashFromHandCost(state, seat, sourceInstanceId, cost).slice(0, cost.amount);
+        // The cost may also accept field cards (`fieldZones`); only the hand
+        // cards count as "trashed from your hand" below.
+        const trashedFromHand = selected.filter(
+          (instanceId) => getInstance(state, instanceId).zone === "hand",
+        );
         for (const instanceId of selected) {
           returnAttachedDonToCostArea(state, instanceId);
           // The aggregate "trashes N card(s) from hand." line below is the
@@ -6554,6 +6559,20 @@ export function payCosts(
               judgeMessage: `${getPlayer(state, seat).playerName} trashes ${formatCardList(state, selected)} from hand.`,
             },
           );
+        }
+        // Paying a cost is part of the paying card's effect, so a hand card
+        // trashed this way was "trashed from your hand by [that] card's
+        // effect": Kuzan OP12-040 draws when Garp OP12-056 pays its [On Play]
+        // cost, the same as when the trash is the effect's action above.
+        if (trashedFromHand.length > 0) {
+          const triggerEvent = {
+            instanceId: trashedFromHand[0]!,
+            effectController: controller,
+            amount: trashedFromHand.length,
+            sourceInstanceId,
+          };
+          enqueueInPlayEffectsForTrigger(state, "whenCardTrashedFromHandByEffect", triggerEvent);
+          enqueueInPlayEffectsForTrigger(state, "whenCardsTrashedFromHandByEffect", triggerEvent);
         }
         break;
       }
