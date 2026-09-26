@@ -143,8 +143,23 @@ export function canPlayCard(
     }
     return allow();
   }
-  if (card.cardType === "event" && !effectBlocksFor(card, "main").length) {
-    return deny("This event does not have a playable [Main] effect.");
+  if (card.cardType === "event") {
+    const mainBlocks = effectBlocksFor(card, "main");
+    if (!mainBlocks.length) {
+      return deny("This event does not have a playable [Main] effect.");
+    }
+    // Playing an event is activating its [Main] effect, so a mandatory block
+    // cost that cannot be paid (e.g. "DON!! -2" with fewer DON!! on the
+    // field) forbids the play itself, mirroring canActivateEffect. An
+    // optional block ("You may <cost>: ...") is skipped at resolution
+    // instead, so it keeps the play legal.
+    if (
+      !mainBlocks.some(
+        (block) => block.optional || canPayCosts(state, seat, instanceId, block.costs, undefined),
+      )
+    ) {
+      return deny("The [Main] effect's costs cannot be paid.");
+    }
   }
   if (card.cardType === "leader") {
     return deny("Leaders cannot be played from hand.");

@@ -163,33 +163,43 @@ describe("One Piece challenging bot heuristics", () => {
     );
   });
 
-  test("Regression: both challenging heuristics close out games instead of stalling", () => {
-    // Seeds that previously stalled under weak attack policy at 0 opposing Life.
-    const cases: Array<[seed: number, south: TestDeckId, north: TestDeckId, first: MatchSeat]> = [
-      [12919, "red-aggro", "red-aggro", "north"],
-      [10960, "red-aggro", "red-aggro", "south"],
-      [11806, "yellow-trigger", "red-aggro", "south"],
-    ];
-    for (const agent of [heuristicAgent, aggressiveAgent]) {
-      for (const [seed, southDeckId, northDeckId, firstPlayer] of cases) {
-        const result = runBotMatch(
-          deckMatchConfig(southDeckId, northDeckId, firstPlayer, seed),
-          { south: agent, north: randomStrategy },
-          { maxCommands: 500, seed },
-        );
-        assert.strictEqual(result.illegalCommands, 0, `${agent.id} seed ${seed}: illegal commands`);
-        assert.ok(
-          !result.stuck,
-          `${agent.id} seed ${seed} (${southDeckId} vs ${northDeckId}): stalled (${result.termination})`,
-        );
-        assert.strictEqual(
-          result.termination,
-          "rules-win",
-          `${agent.id} seed ${seed}: expected rules-win, got ${result.termination}`,
-        );
+  // Six full matches; the default 5s timeout is too tight once unpayable
+  // event plays are illegal and the games unfold differently.
+  test(
+    "Regression: both challenging heuristics close out games instead of stalling",
+    { timeout: 60_000 },
+    () => {
+      // Seeds that previously stalled under weak attack policy at 0 opposing Life.
+      const cases: Array<[seed: number, south: TestDeckId, north: TestDeckId, first: MatchSeat]> = [
+        [12919, "red-aggro", "red-aggro", "north"],
+        [10960, "red-aggro", "red-aggro", "south"],
+        [11806, "yellow-trigger", "red-aggro", "south"],
+      ];
+      for (const agent of [heuristicAgent, aggressiveAgent]) {
+        for (const [seed, southDeckId, northDeckId, firstPlayer] of cases) {
+          const result = runBotMatch(
+            deckMatchConfig(southDeckId, northDeckId, firstPlayer, seed),
+            { south: agent, north: randomStrategy },
+            { maxCommands: 500, seed },
+          );
+          assert.strictEqual(
+            result.illegalCommands,
+            0,
+            `${agent.id} seed ${seed}: illegal commands`,
+          );
+          assert.ok(
+            !result.stuck,
+            `${agent.id} seed ${seed} (${southDeckId} vs ${northDeckId}): stalled (${result.termination})`,
+          );
+          assert.strictEqual(
+            result.termination,
+            "rules-win",
+            `${agent.id} seed ${seed}: expected rules-win, got ${result.termination}`,
+          );
+        }
       }
-    }
-  });
+    },
+  );
 
   // The full matchup matrix simulates thousands of full games; measured wall
   // time is ~19 minutes, so the default 180s test timeout is far too small.

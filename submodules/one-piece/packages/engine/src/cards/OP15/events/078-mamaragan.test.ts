@@ -24,4 +24,11 @@ describe("OP15-078 Mamaragan", () => {
     expect(engine.getView("south").players.south.hand).toHaveLength(1);
     expect(engine.getView("south").prompts).toHaveLength(0);
   });
+
+  test("cannot be played with fewer than 2 DON!! on the field", () => {
+    const engine = OnePieceTestEngine.create({ hand: ["OP15-078"], activeDon: 1 }, {});
+
+    expect(() => engine.playCard("OP15-078")).toThrow();
+    expect(engine.getView("south").players.south.hand).toHaveLength(1);
+  });
 });
